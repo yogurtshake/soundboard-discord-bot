@@ -252,6 +252,7 @@ async def troll(ctx, *, chName: str):
     elif(chName.lower() == "general"): id = 134415388233433090
     elif(chName.lower() == "poor man's general"): id = 212770924607438848
     elif(chName.lower() == "poverse general"): id = 1234341517041078383
+    elif(chName.lower() == "harvey dent"): id = 1339030117430853708
     else: id = 134415388233433090
 
     channel = bot.get_channel(id)
