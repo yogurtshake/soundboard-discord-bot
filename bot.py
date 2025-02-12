@@ -348,6 +348,20 @@ async def alltimestats(ctx):
 @commands.is_owner()
 async def kys(ctx):
     await ctx.send("So uncivilized. Shutting down...")
+    
+    file_path = 'session_stats.txt'
+
+    try:
+        os.remove(file_path)
+        await ctx.send("*Session stats deleted.*")
+        print(f"{file_path} has been deleted successfully.")
+    except FileNotFoundError:
+        print(f"{file_path} does not exist.")
+    except PermissionError:
+        print(f"Permission denied: unable to delete {file_path}.")
+    except Exception as e:
+        print(f"Error: {e}")
+    
     await bot.close()
     sys.exit()
     
