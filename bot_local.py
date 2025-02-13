@@ -125,7 +125,8 @@ async def randomhand(ctx):
 @bot.command()
 async def soundlist(ctx):
     lines = os.listdir(SOUNDS_FOLDER_PATH)
-    output = '\n'.join(lines)
+    sorted_lines = sorted(lines, key = str.lower)
+    output = '\n'.join(sorted_lines)
     chunk_size = 2000
 
     await ctx.send("### **List of all soundboard sounds:** \n\n")
