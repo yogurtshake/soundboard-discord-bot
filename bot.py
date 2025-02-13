@@ -125,7 +125,8 @@ async def randomhand(ctx):
 @bot.command()
 async def soundlist(ctx):
     lines = os.listdir(SOUNDS_FOLDER_PATH)
-    output = '\n'.join(lines)
+    sorted_lines = sorted(lines, key = str.lower)
+    output = '\n'.join(sorted_lines)
     chunk_size = 2000
 
     await ctx.send("### **List of all soundboard sounds:** \n\n")
@@ -252,6 +253,7 @@ async def troll(ctx, *, chName: str):
     elif(chName.lower() == "general"): id = 134415388233433090
     elif(chName.lower() == "poor man's general"): id = 212770924607438848
     elif(chName.lower() == "poverse general"): id = 1234341517041078383
+    elif(chName.lower() == "harvey dent"): id = 1339030117430853708
     else: id = 134415388233433090
 
     channel = bot.get_channel(id)

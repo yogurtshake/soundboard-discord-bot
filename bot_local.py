@@ -15,6 +15,7 @@ if "\\" in os.getcwd():
 else: 
     SOUNDS_FOLDER_PATH = os.getcwd() + '/all_sounds'
 SLASH = "/" 
+SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
 playing = False
 handcount = 0
@@ -157,12 +158,11 @@ async def s(ctx, *name):
     input = ' '.join(name)
     
     sound_path = SOUNDS_FOLDER_PATH + SLASH + input + ".ogg"
-
-    if not os.path.isfile(sound_path):
-        await ctx.send(f"*'{sound_path.split('/')[-1]}' does not exist. You piece of shit.*")
-        return
-
     basename = sound_path.split('/')[-1].strip()
+
+    if not basename.lower() in SOUNDS:
+        await ctx.send(f"*'{basename}' does not exist. You piece of shit.*")
+        return
 
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
