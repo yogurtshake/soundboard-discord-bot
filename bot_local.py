@@ -8,6 +8,7 @@ from collections import Counter
 
 BOT_TOKEN = "MzU3NjgzMTI2MDY5MzYyNjkw.GugV8Q.GbB2VVNp1BmKt0BktRglikOvke6KIejHjoi47A"
 TEXT_CHANNEL_ID = 1337536863640227881
+WINDOWS = False
 
 if "\\" in os.getcwd(): 
     SOUNDS_FOLDER_PATH = os.getcwd().replace("\\", "/") + '/all_sounds'

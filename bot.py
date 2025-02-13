@@ -163,6 +163,10 @@ async def s(ctx, *name):
     if not basename.lower() in SOUNDS:
         await ctx.send(f"*'{basename}' does not exist. You piece of shit.*")
         return
+    elif not os.path.exists(sound_path) and not WINDOWS:
+        await ctx.send(f"*'{basename}' is missing CAPS somewhere. You piece of shit.*")
+        return
+
 
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
