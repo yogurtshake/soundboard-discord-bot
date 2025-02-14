@@ -352,6 +352,38 @@ async def alltimestats(ctx):
 
 
 @bot.command()
+async def refresh(ctx):
+    global SOUNDS
+    
+    oldCount = len(SOUNDS)
+    SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+    newCount = len(SOUNDS_NEW)
+    
+    if oldCount == newCount:
+        await ctx.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
+   
+    elif newCount > oldCount: 
+        difference = list(set(SOUNDS_NEW) - set(SOUNDS))
+        difference_str = '\n'.join(difference)
+        
+        if newCount - oldCount == 1: word = "sound"
+        else: word = "sounds"
+        
+        await ctx.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
+    
+    elif newCount < oldCount:
+        difference = list(set(SOUNDS) - set(SOUNDS_NEW))
+        difference_str = '\n'.join(difference)
+        
+        if oldCount - newCount == 1: word = "sound"
+        else: word = "sounds"
+        
+        await ctx.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
+    
+    SOUNDS = SOUNDS_NEW
+
+
+@bot.command()
 @commands.is_owner()
 async def kys(ctx):
     await ctx.send("So uncivilized. Shutting down...")
