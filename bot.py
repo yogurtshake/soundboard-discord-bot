@@ -479,11 +479,11 @@ async def sendlogfile(ctx):
 
     try:
         with open(log_file_path, 'r') as file:
-            await ctx.send("Here is the log file:", file=discord.File(file, log_file_path))
+            await tchannel.send("Here is the log file:", file=discord.File(file, log_file_path))
     except FileNotFoundError:
-        await ctx.send("*The log file does not exist.*")
+        await tchannel.send("*The log file does not exist.*")
     except Exception as e:
-        await ctx.send(f"*An error occurred while reading the log file: {e}*")
+        await tchannel.send(f"*An error occurred while reading the log file: {e}*")
 
 @sendlogfile.error
 async def sendlogfile_error(ctx, error):
@@ -502,10 +502,10 @@ async def update(ctx):
     try:
         result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
 
-        await ctx.send(f"```{result.stdout or result.stderr}```")
+        await tchannel.send(f"```{result.stdout or result.stderr}```")
 
         if "Already up to date." in result.stdout:
-            await ctx.send("*No updates found. Bot is already up to date!*")
+            await tchannel.send("*No updates found. Bot is already up to date!*")
             return
 
         if "all_sounds" in result.stdout:
@@ -514,7 +514,7 @@ async def update(ctx):
             newCount = len(SOUNDS_NEW)
             
             if oldCount == newCount:
-                await ctx.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
+                await tchannel.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
 
             elif newCount > oldCount: 
                 difference = list(set(SOUNDS_NEW) - set(SOUNDS))
@@ -523,7 +523,7 @@ async def update(ctx):
                 if newCount - oldCount == 1: word = "sound"
                 else: word = "sounds"
                 
-                await ctx.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
+                await tchannel.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
             
             elif newCount < oldCount:
                 difference = list(set(SOUNDS) - set(SOUNDS_NEW))
@@ -532,21 +532,21 @@ async def update(ctx):
                 if oldCount - newCount == 1: word = "sound"
                 else: word = "sounds"
                 
-                await ctx.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
+                await tchannel.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
             
             SOUNDS = SOUNDS_NEW
 
         if "bot.py" in result.stdout:
-            await ctx.send("Update complete.")
+            await tchannel.send("Update complete.")
 
-            await ctx.invoke(bot.get_command('restart'))
+            await tchannel.invoke(bot.get_command('restart'))
             
-        await ctx.send("Updates pulled successfully. They did not affect bot.py nor all_sounds/.")
+        await tchannel.send("Updates pulled successfully. They did not affect bot.py nor all_sounds/.")
     
     except subprocess.CalledProcessError as e:
-        await ctx.send(f"Error pulling updates: {e.stderr}")
+        await tchannel.send(f"Error pulling updates: {e.stderr}")
     except Exception as e:
-        await ctx.send(f"An unexpected error occurred: {str(e)}")
+        await tchannel.send(f"An unexpected error occurred: {str(e)}")
 
 @update.error
 async def update_error(ctx, error):
@@ -559,39 +559,39 @@ async def update_error(ctx, error):
 @bot.command(help="Pushes output.log and all_time_stats.txt to github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def pushtextfiles(ctx):
-    await ctx.send("Fetching latest changes from GitHub...")
+    await tchannel.send("Fetching latest changes from GitHub...")
 
     try:
         subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
 
         status_result = subprocess.run(["git", "status"], capture_output=True, text=True, check=True)
         if "Your branch is behind" in status_result.stdout:
-            await ctx.send("*There are changes on the remote repository, idiot. Update then try again.*")
+            await tchannel.send("*There are changes on the remote repository, idiot. Update then try again.*")
             return
 
-        await ctx.send("Pushing updates for *output.log* and *all_time_stats.txt* to GitHub...")
+        await tchannel.send("Pushing updates for *output.log* and *all_time_stats.txt* to GitHub...")
 
         subprocess.run(["git", "add", "output.log", "all_time_stats.txt"], check=True)
 
         result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
         if not result.stdout.strip():
-            await ctx.send("No changes to commit for *output.log* and *all_time_stats.txt*.")
+            await tchannel.send("No changes to commit for *output.log* and *all_time_stats.txt*.")
             return
 
         commit_result = subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], capture_output=True, text=True, check=True)
-        await ctx.send(f"```{commit_result.stdout or commit_result.stderr}```")
+        await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
 
         result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
 
         output = result.stdout if result.stdout else result.stderr
-        await ctx.send(f"```{output}```")
-        await ctx.send("Updates pushed successfully!")
+        await tchannel.send(f"```{output}```")
+        await tchannel.send("Updates pushed successfully!")
     
     except subprocess.CalledProcessError as e:
         error_message = e.stderr if e.stderr else "An error occurred, but no error message was provided."
-        await ctx.send(f"Error pushing updates: {error_message}")
+        await tchannel.send(f"Error pushing updates: {error_message}")
     except Exception as e:
-        await ctx.send(f"An unexpected error occurred: {str(e)}")
+        await tchannel.send(f"An unexpected error occurred: {str(e)}")
 
 @pushtextfiles.error
 async def pushtextfiles_error(ctx, error):
@@ -604,15 +604,13 @@ async def pushtextfiles_error(ctx, error):
 @bot.command(help="Restarts the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def restart(ctx):
-    await ctx.send("Restarting...")
+    await tchannel.send("Restarting...")
 
     try:
-        await bot.close()
-
         file_path = 'session_stats.txt'
         try:
             os.remove(file_path)
-            await ctx.send("*Session stats deleted.*")
+            await tchannel.send("*Session stats deleted.*")
             print(f"{file_path} has been deleted successfully.")
         except FileNotFoundError:
             print(f"{file_path} does not exist.")
@@ -620,7 +618,9 @@ async def restart(ctx):
             print(f"Permission denied: unable to delete {file_path}.")
         except Exception as e:
             print(f"Error: {e}")
-
+            
+        await bot.close()
+        
         if WINDOWS:
             subprocess.Popen("python bot.py", shell=True)
         else:
@@ -630,7 +630,7 @@ async def restart(ctx):
         sys.exit()
         
     except Exception as e:
-        await ctx.send(f"An unexpected error occurred: {str(e)}")
+        await tchannel.send(f"An unexpected error occurred: {str(e)}")
 
 @restart.error
 async def restart_error(ctx, error):
@@ -646,10 +646,9 @@ async def kys(ctx):
     await ctx.send("So uncivilized. Shutting down...")
     
     file_path = 'session_stats.txt'
-
     try:
         os.remove(file_path)
-        await ctx.send("*Session stats deleted.*")
+        await tchannel.send("*Session stats deleted.*")
         print(f"{file_path} has been deleted successfully.")
     except FileNotFoundError:
         print(f"{file_path} does not exist.")
