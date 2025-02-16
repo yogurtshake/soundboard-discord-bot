@@ -106,9 +106,9 @@ async def on_command_error(ctx, error):
         await ctx.send("*Invalid command. You piece of shit.*")
     else:
         await ctx.send(f"An unexpected error occurred: {error}")
+
     
-    
-@bot.command()
+@bot.command(help="Raises hands in correct order.")
 async def raisehand(ctx):
     global handcount
     if handcount % 3 == 0:
@@ -125,7 +125,7 @@ async def raisehand_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")    
     
     
-@bot.command()
+@bot.command(help="Raises hands in random order.")
 async def randomhand(ctx):
     num = random.randint(0,2)
     if num == 0:
@@ -141,7 +141,7 @@ async def randomhand_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Displays full soundlist in alphabetical order.")
 async def soundlist(ctx):
     global SOUNDS
     numSounds = len(SOUNDS)
@@ -160,7 +160,7 @@ async def soundlist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Plays full dewey fired scene.")
 async def dewey(ctx):
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
@@ -177,7 +177,7 @@ async def dewey_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Plays desired sound.")
 async def s(ctx, *name):
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
@@ -209,7 +209,7 @@ async def s_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Plays random sounds at desired time interval. Default 90s.")
 async def play(ctx, *arr):
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
@@ -255,7 +255,7 @@ async def play_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Stops playing sounds.")
 async def stop(ctx):
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
@@ -272,7 +272,7 @@ async def stop_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Joins user's voice channel.")
 async def join(ctx):
     if ctx.author.voice is None:
         await ctx.send("*You are not connected to a voice channel. You piece of shit.*")
@@ -293,7 +293,7 @@ async def join_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
     
         
-@bot.command()
+@bot.command(help="Joines desired voice channel. ADMIN COMMAND.")
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
    
@@ -320,7 +320,7 @@ async def troll_error(ctx, error):
         await ctx.send("There is no way into the mountain.")
 
 
-@bot.command()
+@bot.command(help="Leaves the current voice channel.")
 async def leave(ctx):
     if ctx.voice_client is not None:
         await ctx.send("Won't be a problem.")
@@ -346,7 +346,7 @@ async def leave_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Displays current session playcount.")
 async def count(ctx):
     global playcount
     await ctx.send(f"### **Playcount this session: {str(playcount)}**")
@@ -356,7 +356,7 @@ async def count_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.")
 async def sessionstats(ctx):
     try:
         with open('session_stats.txt', 'r') as file:
@@ -385,7 +385,7 @@ async def sessionstats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
     
 
-@bot.command()
+@bot.command(help="Displays sound playcount stats for all time.")
 async def alltimestats(ctx):
     with open('all_time_stats.txt', 'r') as file:
         lines = file.readlines()
@@ -410,7 +410,7 @@ async def alltimestats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
     log_file_path = 'output.log'
@@ -441,7 +441,7 @@ async def logs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")  
 
 
-@commands.is_owner()
+@commands.is_owner(help="Displays entire log file output. OWNER COMMAND.")
 @bot.command()
 async def alllogs(ctx):
     log_file_path = 'output.log'
@@ -469,7 +469,7 @@ async def alllogs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")  
 
 
-@bot.command()
+@bot.command(help="Sends the output.log file in discord. OWNER COMMAND.")
 @commands.is_owner()
 async def sendlogfile(ctx):
     log_file_path = 'output.log'
@@ -490,7 +490,7 @@ async def sendlogfile_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Pulls changes from github repo and restarts if necessary. OWNER COMMAND.")
 @commands.is_owner()
 async def update(ctx):
     global SOUNDS
@@ -553,7 +553,7 @@ async def update_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")  
 
 
-@bot.command()
+@bot.command(help="Pushes output.log and all_time_stats.txt to github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def pushtextfiles(ctx):
     await ctx.send("Fetching latest changes from GitHub...")
@@ -598,7 +598,7 @@ async def pushtextfiles_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Restarts the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def restart(ctx):
     await ctx.send("Restarting...")
@@ -637,7 +637,7 @@ async def restart_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command()
+@bot.command(help="Shuts down the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def kys(ctx):
     await ctx.send("So uncivilized. Shutting down...")
