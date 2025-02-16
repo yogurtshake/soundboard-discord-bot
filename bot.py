@@ -3,6 +3,7 @@ import discord
 import random
 import os
 import sys
+import subprocess
 import asyncio
 from collections import Counter
 
@@ -433,6 +434,33 @@ async def alllogs(ctx):
         await ctx.send(f"*An error occurred while reading the log file: {e}*")
 
 @alllogs.error
+async def shutdown_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")  
+
+
+@bot.command()
+@commands.is_owner()
+async def update(ctx):
+    await ctx.send("Pulling latest updates from github...")
+
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+
+    await ctx.send(f"```{result.stdout or result.stderr}```")
+
+    if "Already up to date." in result.stdout:
+        await ctx.send("*No updates found. Bot is already up to date!*")
+        return
+
+    await ctx.send("Update complete! Restarting bot...")
+
+    await bot.close()
+
+    subprocess.Popen("nohup", "python3", "bot.py", ">", "output.log", "2>&1", "&", shell=True) 
+
+@update.error
 async def shutdown_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")

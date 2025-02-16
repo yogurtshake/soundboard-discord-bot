@@ -1,62 +1,51 @@
 -------------------------------------------------------------------------
-Scuffed Discord Bot Instructions - How To Run From Windows Command Line
+			DISCORD BOT INSTRUCTIONS
 -------------------------------------------------------------------------
 
-0. Install Python if you don't have it already, make sure you can run python scripts from the command line. Also install ffmpeg.
-
-1. Download & extract discord_bot.zip (should be a folder called discord_bot)
-
-2. Open the discord_bot folder and copy the path (should look something like C:\Users\urname\Desktop\discord_bot)
-
-3. Open a command prompt window (Windows Key + R, run cmd)
-
-4. Change the directory to the path you copied, use cd (change directory) command, should look like this:
-	
-	> cd C:\Users\urname\Desktop\discord_bot
-
 -------------------------------------------------------------------------
-
-OPTIONAL: STEPS 5-8
-
-Sets up a virtual Python environment (this means the dependencies you install will only be installed to this specific environment, not to your global Python interpreter) 
-
-TLDR: It's good practice, but if you don't care it doesn't really matter.
-
-
-5. 	> python -m venv discord_bot_venv
-
-6. 	> cd discord_bot_venv\Scripts
-
-7. 	> activate
-
-8. If everything's good, you should see (discord_bot_venv) to the left of your new line. Now change the directory back to discord_bot, simply go up 2 levels like this:
-
-	> cd ..
-	> cd .. 
-
--------------------------------------------------------------------------
-
-9. Install dependencies:
-
-	> pip install discord.py pynacl asyncio ffmpeg
-
-9. Now run the script:
-
-	> python bot.py
-
-10. Bot should now be running for as long as you want (must keep the command prompt window open)
-
-11. To stop running it, simply press CTRL + C in the command line (or close the command prompt window, but this seems a bit more scuffed)
-
+Section 1: How to set up a free GCP server for your bot
 -------------------------------------------------------------------------
 
 
+1. Set up a GCP Compute Engine (free tier: https://cloud.google.com/free/docs/free-cloud-features#free-tier).
+
+   Then connect your VM instance via SSH window.
+
+-------------------------------------------------------------------------
+
+2. Install python:
+
+-> sudo apt update
+-> sudo apt install python3-venv
+
+-------------------------------------------------------------------------
+
+3. Create a virtual python environment for the bot:
+
+-> python3 -m venv myenv
+
+-------------------------------------------------------------------------
+
+4. Activate the environment and then install dependencies to it (discord.py, pynacl, asyncio, etc.):
+
+-> source myenv/bin/activate
+
+-> pip install discord.py pynacl asyncio
+
+-------------------------------------------------------------------------
+
+5. Install other dependencies to your server (I need ffmpeg and git):
+
+-> sudo apt install ffmpeg -y
+
+-> sudo apt install git -y (if you want to keep your bot updated with git)
 
 
 
 -------------------------------------------------------------------------
-Scuffed Discord Bot Instructions - GCP Compute Engine VM SSH Window
+Section 2: Other SSH Window instructions - Once the bot.py script exists
 -------------------------------------------------------------------------
+
 
 1. to activate the virtual python environment that has the dependencies installed for the discord bot, use the following command:
 
@@ -68,38 +57,41 @@ Scuffed Discord Bot Instructions - GCP Compute Engine VM SSH Window
 
 -> nohup python bot.py > output.log 2>&1 &
 
-nohup → Keep running after disconnecting.
-python bot.py → Runs your Discord bot.
-> output.log → Save logs to output.log.
-2>&1 → Include error messages in the same log file.
-& → Run in the background.
+    nohup → Keep running after disconnecting.
+    python bot.py → Runs your Discord bot.
+    > output.log → Save logs to output.log.
+    2>&1 → Include error messages in the same log file.
+    & → Run in the background.
 
 -------------------------------------------------------------------------
 
-3. to kill the script, find it with:
+3. to kill the script, simply create and use a shutdown command in discord (might have to be bot owner).
 
+   **OR** use the following in the SSH window:
+
+-> pkill -f bot.py
+
+    **OR** find the script with:
+	
 -> ps aux | grep bot.py
 
-and then take the 4digit number it gives at the start and do 
+    and then take the 4digit number it gives at the start and do: 
 
 -> kill *number here*
 
-**OR** simply use the !kys command in discord (must be bot owner).
-**OR** pkill -f bot.py
-
 -------------------------------------------------------------------------
 
-4. to view logs, use:
+4. to view logs, create and use a bot command in discord. Or use in SSH window:
 
 -> tail -f output.log
 
 -------------------------------------------------------------------------
 
-5. to delete a folder (probably the all_sounds folder), use:
+5. to delete a folder, use:
 
--> rm -r all_sounds
+-> rm -r foldername
 
-   to delete a single file (probably bot.py), just use:
+   to delete a single file, just use:
 
 -> rm filename.ext
 
@@ -110,3 +102,81 @@ and then take the 4digit number it gives at the start and do
 6. to add a new file to a folder (probably a new .ogg sound file to add to all_sounds), use:
 
 -> mv sound.ogg all_sounds/
+
+
+
+-------------------------------------------------------------------------
+Section 3: How to use git in your VM SSH Window (github)
+-------------------------------------------------------------------------
+
+1. IF YOUR GITHUB REPO IS PRIVATE, use an SSH deploy key to connect your bot to your repo.
+
+   i) Generate an SSH key in your VM SSH window:
+   
+   -> ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
+
+      Press enter to save it in the default path (/home/youruser/.ssh/id_rsa). Press enter twice more to save without a passphrase.
+
+   ii) Display then copy the public key:
+
+   -> cat ~/.ssh/id_rsa.pub
+
+      Copy the output. 
+
+   iii) Add the key as a Deploy Key in GitHub: 
+
+      Go to your repo in Github > Settings > Deploy Keys > Add Deploy Key. 
+      Add a title, then paste the key under Key. Allow write access if you want. Click Add Key.
+
+   iv) Test the connection in your SSH window: 
+
+   -> ssh -T git@github.com
+
+      Enter "yes" if prompted to do so.
+
+      You should see the following message: 
+
+      "Hi! You've successfully authenticated, but GitHub does not provide shell access."
+
+-------------------------------------------------------------------------
+
+2. Clone your repository: 
+
+-> git clone git@github.com:yourusername/yourbot.git
+
+-------------------------------------------------------------------------
+
+3. To pull changes, navigate to the repo folder in your VM (-> cd folder) and use:
+
+-> git pull origin main
+
+-------------------------------------------------------------------------
+
+4. To check the status of your repo use:
+
+-> git status
+
+   If you are up to date, it will show the following:
+
+   "On branch main
+    Your branch is up to date with 'origin/main'."
+
+-------------------------------------------------------------------------
+
+5. Create a bot command in your script to update your bot.
+
+   @bot.command()
+   @commands.is_owner()
+   async def updatebot(ctx):
+       await ctx.send("Shutting down, updating, and restarting...")
+
+       await bot.close()
+
+       subprocess.run(["git", "pull", "origin", "main"])
+
+       os.execv(sys.executable, ['python3'] + sys.argv)
+
+-------------------------------------------------------------------------
+
+
+
