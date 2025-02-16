@@ -416,19 +416,31 @@ async def shutdown_error(ctx, error):
 async def update(ctx):
     await ctx.send("Pulling latest updates from github...")
 
-    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+    try:
+        result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
 
-    await ctx.send(f"```{result.stdout or result.stderr}```")
+        await ctx.send(f"```{result.stdout or result.stderr}```")
 
-    if "Already up to date." in result.stdout:
-        await ctx.send("*No updates found. Bot is already up to date!*")
-        return
+        if "Already up to date." in result.stdout:
+            await ctx.send("*No updates found. Bot is already up to date!*")
+            return
 
-    await ctx.send("Update complete! Restarting bot...")
+        await ctx.send("Update complete! Restarting bot...")
 
-    await bot.close()
+        await bot.close()
 
-    subprocess.Popen("nohup", "python3", "bot.py", ">", "output.log", "2>&1", "&", shell=True) 
+        if WINDOWS:
+            subprocess.Popen("python bot.py", shell=True)
+        else:
+            subprocess.Popen("source /home/lucassukeunkim/myenv/bin/activate", shell=True)
+            subprocess.Popen("nohup", "python3", "bot.py", ">", "output.log", "2>&1", "&", shell=True) 
+    
+        sys.exit()
+    
+    except subprocess.CalledProcessError as e:
+        await ctx.send(f"Error pulling updates: {e.stderr.decode()}")
+    except Exception as e:
+        await ctx.send(f"An unexpected error occurred: {str(e)}")
 
 @update.error
 async def shutdown_error(ctx, error):
@@ -445,23 +457,29 @@ async def updatesounds(ctx):
     
     await ctx.send("Pulling latest soundlist updates from github...")
 
-    result = subprocess.run(["git", "checkout", "origin/main", "--", SOUNDS_FOLDER_PATH], capture_output=True, text=True)
-    
-    await ctx.send(f"```{result.stdout or result.stderr}```")
+    try:
+        result = subprocess.run(["git", "checkout", "origin/main", "--", "all_sounds/"], capture_output=True, text=True)
+        
+        await ctx.send(f"```{result.stdout or result.stderr}```")
 
-    if "Already up to date." in result.stdout:
-        await ctx.send("*No soundlist updates found. Already up to date!*")
-        return
-    
-    await ctx.send("Soundlist updates pulled. Refreshing soundlist...")
-    
+        if "Already up to date." in result.stdout:
+            await ctx.send("*No soundlist updates found. Already up to date!*")
+            return
+        
+        await ctx.send("Soundlist updates pulled. Refreshing soundlist...")
+        
+    except subprocess.CalledProcessError as e:
+        await ctx.send(f"Error pulling updates: {e.stderr.decode()}")
+    except Exception as e:
+        await ctx.send(f"An unexpected error occurred: {str(e)}")
+        
     oldCount = len(SOUNDS)
     SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
     newCount = len(SOUNDS_NEW)
     
     if oldCount == newCount:
         await ctx.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
-   
+
     elif newCount > oldCount: 
         difference = list(set(SOUNDS_NEW) - set(SOUNDS))
         difference_str = '\n'.join(difference)
@@ -481,7 +499,6 @@ async def updatesounds(ctx):
         await ctx.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
     
     SOUNDS = SOUNDS_NEW
-    
 
 @updatesounds.error
 async def shutdown_error(ctx, error):
@@ -489,6 +506,33 @@ async def shutdown_error(ctx, error):
         await ctx.send("# No.")
     else:
         await ctx.send(f"*An unexpected error occurred: {error}*")  
+
+
+@bot.command()
+@commands.is_owner()
+async def restart(ctx):
+    await ctx.send("Restarting...")
+
+    try:
+        await bot.close()
+
+        if WINDOWS:
+            subprocess.Popen("python bot.py", shell=True)
+        else:
+            subprocess.Popen("source /home/lucassukeunkim/myenv/bin/activate", shell=True)
+            subprocess.Popen("nohup", "python3", "bot.py", ">", "output.log", "2>&1", "&", shell=True) 
+    
+        sys.exit()
+        
+    except Exception as e:
+        await ctx.send(f"An unexpected error occurred: {str(e)}")
+
+@restart.error
+async def restart_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command()
