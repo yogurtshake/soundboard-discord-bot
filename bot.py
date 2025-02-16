@@ -518,7 +518,7 @@ async def update(ctx):
         if "bot.py" in result.stdout:
             await tchannel.send("Update complete.")
 
-            await tchannel.invoke(bot.get_command('restart'))
+            await ctx.invoke(bot.get_command('restart'))
             
         await tchannel.send("Updates pulled successfully. They did not affect bot.py nor all_sounds/.")
     
