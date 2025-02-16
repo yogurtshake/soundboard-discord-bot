@@ -558,8 +558,8 @@ async def pushtextfiles(ctx):
 
     try:
         result = subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
-        if not result.stdout == "":
-            await ctx.send(f"```{result.stdout}```")
+        await ctx.send(f"```{result.stdout}```")
+        if not (result.stdout == None or result.stdout == ""):
             await ctx.send("*There are changes on the remote repository, idiot. Update then try again.*")
             return
 
