@@ -1,6 +1,2 @@
--fix updatesounds command
-	-doesn't work (git command wrong?)
-
--fix update command for non-windows
+-fix update and restart commands for non-windows
 	-cant pass the command as a string because the 1 and 2 need to be ints
-
