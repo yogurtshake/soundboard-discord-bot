@@ -109,6 +109,7 @@ Section 2: Other SSH Window instructions - Once the bot.py script exists
 Section 3: How to use git in your VM SSH Window (github)
 -------------------------------------------------------------------------
 
+
 1. IF YOUR GITHUB REPO IS PRIVATE, use an SSH deploy key to connect your bot to your repo.
 
    i) Generate an SSH key in your VM SSH window:
