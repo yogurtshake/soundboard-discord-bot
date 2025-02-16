@@ -221,6 +221,3 @@ async def update(ctx):
         await ctx.send(f"An unexpected error occurred: {str(e)}")
 
 -------------------------------------------------------------------------
-
-
-
