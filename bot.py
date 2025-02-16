@@ -577,23 +577,25 @@ async def pushtextfiles(ctx):
     await ctx.send("Fetching latest changes from GitHub...")
 
     try:
-        subprocess.run(["git", "fetch"], check=True)
+        fetch_result = subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+        await ctx.send(f"```{fetch_result.stdout or fetch_result.stderr}```")
 
         await ctx.send("Pushing updates for *output.log* and *all_time_stats.txt* to GitHub...")
 
-        subprocess.run(["git", "add", "output.log", "all_time_stats.txt"], check=True)
+        add_result = subprocess.run(["git", "add", "output.log", "all_time_stats.txt"], capture_output=True, text=True, check=True)
+        await ctx.send(f"```{add_result.stdout or add_result.stderr}```")
 
-        result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
-        if not result.stdout.strip():
+        diff_result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
+        await ctx.send(f"```{diff_result.stdout or diff_result.stderr}```")
+        if not diff_result.stdout.strip():
             await ctx.send("No changes to commit for *output.log* and *all_time_stats.txt*.")
             return
 
-        subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], check=True)
+        commit_result = subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], capture_output=True, text=True, check=True)
+        await ctx.send(f"```{commit_result.stdout or commit_result.stderr}```")
 
-        result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
-
-        output = result.stdout if result.stdout else result.stderr
-        await ctx.send(f"```{output}```")
+        push_result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
+        await ctx.send(f"```{push_result.stdout or push_result.stderr}```")
         await ctx.send("Updates pushed successfully!")
     
     except subprocess.CalledProcessError as e:
