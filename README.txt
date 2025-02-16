@@ -173,19 +173,31 @@ Section 3: How to use git in your VM SSH Window (github)
 async def update(ctx):
     await ctx.send("Pulling latest updates from github...")
 
-    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+    try:
+        result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
 
-    await ctx.send(f"```{result.stdout or result.stderr}```")
+        await ctx.send(f"```{result.stdout or result.stderr}```")
 
-    if "Already up to date." in result.stdout:
-        await ctx.send("*No updates found. Bot is already up to date!*")
-        return
+        if "Already up to date." in result.stdout:
+            await ctx.send("*No updates found. Bot is already up to date!*")
+            return
 
-    await ctx.send("Update complete! Restarting bot...")
+        await ctx.send("Update complete! Restarting bot...")
 
-    await bot.close()
+        await bot.close()
 
-    subprocess.Popen("nohup", "python3", "bot.py", ">", "output.log", "2>&1", "&", shell=True) 
+        if WINDOWS:
+            subprocess.Popen("python bot.py", shell=True)
+        else:
+            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
+            subprocess.Popen(command, shell=True) 
+            
+        sys.exit()
+    
+    except subprocess.CalledProcessError as e:
+        await ctx.send(f"Error pulling updates: {e.stderr.decode()}")
+    except Exception as e:
+        await ctx.send(f"An unexpected error occurred: {str(e)}")
 
 -------------------------------------------------------------------------
 
