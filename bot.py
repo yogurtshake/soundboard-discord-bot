@@ -127,12 +127,14 @@ async def randomhand(ctx):
 
 @bot.command()
 async def soundlist(ctx):
+    global SOUNDS
+    numSounds = len(SOUNDS)
     lines = os.listdir(SOUNDS_FOLDER_PATH)
     sorted_lines = sorted(lines, key = str.lower)
     output = '\n'.join(sorted_lines)
     chunk_size = 2000
 
-    await ctx.send("### **List of all soundboard sounds:** \n\n")
+    await ctx.send(f"### **List of all {numSounds} soundboard sounds:** \n\n")
     
     for i in range(0, len(output), chunk_size):
         await ctx.send(output[i:i + chunk_size])
@@ -353,38 +355,6 @@ async def alltimestats(ctx):
 
 
 @bot.command()
-async def refresh(ctx):
-    global SOUNDS
-    
-    oldCount = len(SOUNDS)
-    SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
-    newCount = len(SOUNDS_NEW)
-    
-    if oldCount == newCount:
-        await ctx.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
-   
-    elif newCount > oldCount: 
-        difference = list(set(SOUNDS_NEW) - set(SOUNDS))
-        difference_str = '\n'.join(difference)
-        
-        if newCount - oldCount == 1: word = "sound"
-        else: word = "sounds"
-        
-        await ctx.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
-    
-    elif newCount < oldCount:
-        difference = list(set(SOUNDS) - set(SOUNDS_NEW))
-        difference_str = '\n'.join(difference)
-        
-        if oldCount - newCount == 1: word = "sound"
-        else: word = "sounds"
-        
-        await ctx.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
-    
-    SOUNDS = SOUNDS_NEW
-
-
-@bot.command()
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
     log_file_path = 'output.log'
@@ -461,6 +431,59 @@ async def update(ctx):
     subprocess.Popen("nohup", "python3", "bot.py", ">", "output.log", "2>&1", "&", shell=True) 
 
 @update.error
+async def shutdown_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")  
+
+
+@bot.command()
+@commands.is_owner()
+async def updatesounds(ctx):
+    global SOUNDS
+    
+    await ctx.send("Pulling latest soundlist updates from github...")
+
+    result = subprocess.run(["git", "checkout", "origin/main", "--", SOUNDS_FOLDER_PATH], capture_output=True, text=True)
+    
+    await ctx.send(f"```{result.stdout or result.stderr}```")
+
+    if "Already up to date." in result.stdout:
+        await ctx.send("*No soundlist updates found. Already up to date!*")
+        return
+    
+    await ctx.send("Soundlist updates pulled. Refreshing soundlist...")
+    
+    oldCount = len(SOUNDS)
+    SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+    newCount = len(SOUNDS_NEW)
+    
+    if oldCount == newCount:
+        await ctx.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
+   
+    elif newCount > oldCount: 
+        difference = list(set(SOUNDS_NEW) - set(SOUNDS))
+        difference_str = '\n'.join(difference)
+        
+        if newCount - oldCount == 1: word = "sound"
+        else: word = "sounds"
+        
+        await ctx.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
+    
+    elif newCount < oldCount:
+        difference = list(set(SOUNDS) - set(SOUNDS_NEW))
+        difference_str = '\n'.join(difference)
+        
+        if oldCount - newCount == 1: word = "sound"
+        else: word = "sounds"
+        
+        await ctx.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
+    
+    SOUNDS = SOUNDS_NEW
+    
+
+@updatesounds.error
 async def shutdown_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
