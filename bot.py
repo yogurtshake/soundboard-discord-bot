@@ -441,8 +441,9 @@ async def logs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")  
 
 
-@commands.is_owner(help="Displays entire log file output. OWNER COMMAND.")
-@bot.command()
+
+@bot.command(help="Displays entire log file output. OWNER COMMAND.")
+@commands.is_owner()
 async def alllogs(ctx):
     log_file_path = 'output.log'
     chunk_size = 1994
