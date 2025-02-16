@@ -36,7 +36,7 @@ async def on_ready():
     tchannel = bot.get_channel(TEXT_CHANNEL_ID)
     await tchannel.send("**Atyiseusseatyiseuss!**")
     if WINDOWS:
-        await tchannel.send("*scuffed ass Windows*")
+        await tchannel.send("*running locally on Windows*")
 
 
 @bot.event
@@ -112,6 +112,10 @@ async def raisehand(ctx):
     await ctx.send(m)
     handcount += 1
     
+@raisehand.error
+async def raisehand_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")    
+    
     
 @bot.command()
 async def randomhand(ctx):
@@ -124,6 +128,10 @@ async def randomhand(ctx):
         m = "Leonard?"
     await ctx.send(m)
 
+@randomhand.error
+async def randomhand_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+
 
 @bot.command()
 async def soundlist(ctx):
@@ -132,13 +140,17 @@ async def soundlist(ctx):
     lines = os.listdir(SOUNDS_FOLDER_PATH)
     sorted_lines = sorted(lines, key = str.lower)
     output = '\n'.join(sorted_lines)
-    chunk_size = 2000
+    chunk_size = 1994
 
     await ctx.send(f"### **List of all {numSounds} soundboard sounds:** \n\n")
     
     for i in range(0, len(output), chunk_size):
-        await ctx.send(output[i:i + chunk_size])
-    
+        await ctx.send(f"```{output[i:i + chunk_size]}```")
+
+@soundlist.error
+async def soundlist_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+
 
 @bot.command()
 async def dewey(ctx):
@@ -151,7 +163,11 @@ async def dewey(ctx):
     
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {e}'))
-    
+
+@dewey.error
+async def dewey_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+
 
 @bot.command()
 async def s(ctx, *name):
@@ -179,6 +195,10 @@ async def s(ctx, *name):
         file.write(basename + '\n')
     with open('all_time_stats.txt', 'a') as file:
         file.write(basename + '\n')
+
+@s.error
+async def s_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command()
@@ -222,6 +242,10 @@ async def play(ctx, *arr):
                 
             playcount += 1
 
+@play.error
+async def play_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+
 
 @bot.command()
 async def stop(ctx):
@@ -234,6 +258,10 @@ async def stop(ctx):
     global playing
     playing = False               
     ctx.voice_client.stop()
+
+@stop.error
+async def stop_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command()
@@ -251,7 +279,11 @@ async def join(ctx):
     else:
         await ctx.voice_client.move_to(channel)
         await ctx.send(f'Moved to {channel}')
-        
+
+@join.error
+async def join_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+    
         
 @bot.command()
 @commands.has_permissions(administrator=True)
@@ -275,7 +307,7 @@ async def troll(ctx, *, chName: str):
         await ctx.send(f'Moved to {channel}')
 
 @troll.error
-async def shutdown_error(ctx, error):
+async def troll_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("There is no way into the mountain.")
 
@@ -301,11 +333,19 @@ async def leave(ctx):
     except Exception as e:
         print(f"Error: {e}")
 
+@leave.error
+async def leave_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+
 
 @bot.command()
 async def count(ctx):
     global playcount
     await ctx.send(f"### **Playcount this session: {str(playcount)}**")
+    
+@count.error
+async def count_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command()
@@ -322,15 +362,19 @@ async def sessionstats(ctx):
         stuff = [f'{item}: {count}' for item, count in sorted_items]
         output = '\n'.join(stuff)
         
-        chunk_size = 2000
+        chunk_size = 1994
 
         await ctx.send("## **Bot soundboard stats for this session:** \n\n")
         
         for i in range(0, len(output), chunk_size):
-            await ctx.send(output[i:i + chunk_size])
+            await ctx.send(f"```{output[i:i + chunk_size]}```")
     
     except FileNotFoundError:
         await ctx.send("*No stats for this session yet!*")
+
+@sessionstats.error
+async def sessionstats_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
     
 
 @bot.command()
@@ -346,19 +390,23 @@ async def alltimestats(ctx):
     stuff = [f'{item}: {count}' for item, count in sorted_items]
     output = '\n'.join(stuff)
     
-    chunk_size = 2000
+    chunk_size = 1994
 
     await ctx.send("## **Bot soundboard stats for all time:** \n\n")
     
     for i in range(0, len(output), chunk_size):
-        await ctx.send(output[i:i + chunk_size])
+        await ctx.send(f"```{output[i:i + chunk_size]}```")
+
+@alltimestats.error
+async def alltimestats_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command()
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
     log_file_path = 'output.log'
-    chunk_size = 2000
+    chunk_size = 1994
 
     try:
         with open(log_file_path, 'r') as file:
@@ -371,13 +419,14 @@ async def logs(ctx, lines: int = 20):
         
         for i in range(0, len(output), chunk_size):
             await ctx.send(f"```{output[i:i + chunk_size]}```")
+            
     except FileNotFoundError:
         await ctx.send("*The log file does not exist. You piece of shit.*")
     except Exception as e:
         await ctx.send(f"*An error occurred while reading the log file: {e}*")
 
 @logs.error
-async def shutdown_error(ctx, error):
+async def logs_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
@@ -388,7 +437,7 @@ async def shutdown_error(ctx, error):
 @bot.command()
 async def alllogs(ctx):
     log_file_path = 'output.log'
-    chunk_size = 2000
+    chunk_size = 1994
     
     try:
         with open(log_file_path, 'r') as file:
@@ -398,13 +447,14 @@ async def alllogs(ctx):
         
         for i in range(0, len(log_content), chunk_size):
             await ctx.send(f"```{log_content[i:i + chunk_size]}```")
+            
     except FileNotFoundError:
         await ctx.send("*The log file does not exist.*")
     except Exception as e:
         await ctx.send(f"*An error occurred while reading the log file: {e}*")
 
 @alllogs.error
-async def shutdown_error(ctx, error):
+async def alllogs_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
@@ -443,7 +493,7 @@ async def update(ctx):
         await ctx.send(f"An unexpected error occurred: {str(e)}")
 
 @update.error
-async def shutdown_error(ctx, error):
+async def update_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
@@ -501,7 +551,7 @@ async def updatesounds(ctx):
     SOUNDS = SOUNDS_NEW
 
 @updatesounds.error
-async def shutdown_error(ctx, error):
+async def updatesounds_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
@@ -557,7 +607,7 @@ async def kys(ctx):
     sys.exit()
     
 @kys.error
-async def shutdown_error(ctx, error):
+async def kys_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
