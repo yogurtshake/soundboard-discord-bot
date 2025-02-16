@@ -538,7 +538,7 @@ async def update(ctx):
 
             await ctx.invoke(bot.get_command('restart'))
             
-        await ctx.send("Updates pulled successfully.")
+        await ctx.send("Updates pulled successfully. They did not affect bot.py nor all_sounds/.")
     
     except subprocess.CalledProcessError as e:
         await ctx.send(f"Error pulling updates: {e.stderr}")
