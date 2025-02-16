@@ -463,6 +463,27 @@ async def alllogs_error(ctx, error):
 
 @bot.command()
 @commands.is_owner()
+async def sendlogfile(ctx):
+    log_file_path = 'output.log'
+
+    try:
+        with open(log_file_path, 'r') as file:
+            await ctx.send("Here is the log file:", file=discord.File(file, log_file_path))
+    except FileNotFoundError:
+        await ctx.send("*The log file does not exist.*")
+    except Exception as e:
+        await ctx.send(f"*An error occurred while reading the log file: {e}*")
+
+@sendlogfile.error
+async def sendlogfile_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
+
+
+@bot.command()
+@commands.is_owner()
 async def update(ctx):
     await ctx.send("Pulling latest updates from github...")
 
@@ -556,6 +577,33 @@ async def updatesounds_error(ctx, error):
         await ctx.send("# No.")
     else:
         await ctx.send(f"*An unexpected error occurred: {error}*")  
+
+
+@bot.command()
+@commands.is_owner()
+async def pushupdates(ctx):
+    await ctx.send("Pushing updates to GitHub...")
+
+    try:
+        subprocess.run(["git", "add", "output.log", "all_time_stats.txt"], check=True)
+        subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], check=True)
+
+        result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
+
+        await ctx.send(f"```{result.stdout or result.stderr}```")
+        await ctx.send("Updates pushed successfully!")
+    
+    except subprocess.CalledProcessError as e:
+        await ctx.send(f"Error pushing updates: {e.stderr.decode()}")
+    except Exception as e:
+        await ctx.send(f"An unexpected error occurred: {str(e)}")
+
+@pushupdates.error
+async def pushupdates_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command()
