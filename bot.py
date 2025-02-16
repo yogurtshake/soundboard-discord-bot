@@ -591,7 +591,7 @@ async def updatesounds_error(ctx, error):
 
 @bot.command()
 @commands.is_owner()
-async def pushupdates(ctx):
+async def pushtextfiles(ctx):
     await ctx.send("Fetching latest changes from GitHub...")
 
     try:
@@ -620,8 +620,8 @@ async def pushupdates(ctx):
     except Exception as e:
         await ctx.send(f"An unexpected error occurred: {str(e)}")
 
-@pushupdates.error
-async def pushupdates_error(ctx, error):
+@pushtextfiles.error
+async def pushtextfiles_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
