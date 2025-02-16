@@ -413,6 +413,7 @@ async def alltimestats_error(ctx, error):
 @bot.command(help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
+    tchannel = bot.get_channel(TEXT_CHANNEL_ID)
     log_file_path = 'output.log'
     chunk_size = 1994
 
@@ -423,15 +424,15 @@ async def logs(ctx, lines: int = 20):
         recent_log_content = log_content[-lines:]
         output = ''.join(recent_log_content)
 
-        await ctx.send("## **Recent logs from output.log:** \n\n")
+        await tchannel.send("## **Recent logs from output.log:** \n\n")
         
         for i in range(0, len(output), chunk_size):
-            await ctx.send(f"```{output[i:i + chunk_size]}```")
+            await tchannel.send(f"```{output[i:i + chunk_size]}```")
             
     except FileNotFoundError:
-        await ctx.send("*The log file does not exist. You piece of shit.*")
+        await tchannel.send("*The log file does not exist. You piece of shit.*")
     except Exception as e:
-        await ctx.send(f"*An error occurred while reading the log file: {e}*")
+        await tchannel.send(f"*An error occurred while reading the log file: {e}*")
 
 @logs.error
 async def logs_error(ctx, error):
@@ -445,6 +446,7 @@ async def logs_error(ctx, error):
 @bot.command(help="Displays entire log file output. OWNER COMMAND.")
 @commands.is_owner()
 async def alllogs(ctx):
+    tchannel = bot.get_channel(TEXT_CHANNEL_ID)
     log_file_path = 'output.log'
     chunk_size = 1994
     
@@ -452,15 +454,15 @@ async def alllogs(ctx):
         with open(log_file_path, 'r') as file:
             log_content = file.read()
 
-        await ctx.send("## **Contents of output.log:** \n\n")
+        await tchannel.send("## **Contents of output.log:** \n\n")
         
         for i in range(0, len(log_content), chunk_size):
-            await ctx.send(f"```{log_content[i:i + chunk_size]}```")
+            await tchannel.send(f"```{log_content[i:i + chunk_size]}```")
             
     except FileNotFoundError:
-        await ctx.send("*The log file does not exist.*")
+        await tchannel.send("*The log file does not exist.*")
     except Exception as e:
-        await ctx.send(f"*An error occurred while reading the log file: {e}*")
+        await tchannel.send(f"*An error occurred while reading the log file: {e}*")
 
 @alllogs.error
 async def alllogs_error(ctx, error):
