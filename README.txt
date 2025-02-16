@@ -155,6 +155,8 @@ Section 3: How to use git in your VM SSH Window (github)
 
 4. To check the status of your repo use:
 
+-> git fetch
+
 -> git status
 
    If you are up to date, it will show the following:
