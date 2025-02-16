@@ -534,29 +534,9 @@ async def update(ctx):
             SOUNDS = SOUNDS_NEW
 
         if "bot.py" in result.stdout:
-            await ctx.send("Update complete! Restarting bot...")
+            await ctx.send("Update complete!")
 
-            await bot.close()
-
-            file_path = 'session_stats.txt'
-            try:
-                os.remove(file_path)
-                await ctx.send("*Session stats deleted.*")
-                print(f"{file_path} has been deleted successfully.")
-            except FileNotFoundError:
-                print(f"{file_path} does not exist.")
-            except PermissionError:
-                print(f"Permission denied: unable to delete {file_path}.")
-            except Exception as e:
-                print(f"Error: {e}")
-
-            if WINDOWS:
-                subprocess.Popen("python bot.py", shell=True)
-            else:
-                command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py >> output.log 2>&1 &'"
-                subprocess.Popen(command, shell=True) 
-                
-            sys.exit()
+            await ctx.invoke(bot.get_command('restart'))
     
     except subprocess.CalledProcessError as e:
         await ctx.send(f"Error pulling updates: {e.stderr}")
@@ -577,7 +557,11 @@ async def pushtextfiles(ctx):
     await ctx.send("Fetching latest changes from GitHub...")
 
     try:
-        subprocess.run(["git", "fetch"], check=True)
+        result = subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+        if not result.stdout == "":
+            await ctx.send(f"```{result.stdout}```")
+            await ctx.send("*There are changes on the remote repository, idiot. Update then try again.*")
+            return
 
         await ctx.send("Pushing updates for *output.log* and *all_time_stats.txt* to GitHub...")
 
