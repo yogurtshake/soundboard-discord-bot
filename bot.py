@@ -559,8 +559,7 @@ async def pushtextfiles(ctx):
     await ctx.send("Fetching latest changes from GitHub...")
 
     try:
-        fetch_result = subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
-        await ctx.send(f"```{fetch_result.stdout or fetch_result.stderr}```")
+        subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
 
         status_result = subprocess.run(["git", "status"], capture_output=True, text=True, check=True)
         if "Your branch is behind" in status_result.stdout:
