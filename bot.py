@@ -541,9 +541,13 @@ async def updatesounds(ctx):
 
         await ctx.send("Pulling latest soundlist updates from GitHub...")
 
-        subprocess.run(["git", "checkout", "origin/main", "--", "all_sounds/"])
+        result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
         
-        await ctx.send("Soundlist updates pulled. Refreshing soundlist...")
+        await ctx.send(f"```{result.stdout or result.stderr}```")
+        
+        if "Already up to date." in result.stdout:
+            await ctx.send("*No soundlist updates found. Already up to date!*")
+            return
         
     except subprocess.CalledProcessError as e:
         await ctx.send(f"Error pulling updates: {e.stderr.decode()}")
