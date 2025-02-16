@@ -207,11 +207,8 @@ async def update(ctx):
 
         await bot.close()
 
-        if WINDOWS:
-            subprocess.Popen("python bot.py", shell=True)
-        else:
-            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
-            subprocess.Popen(command, shell=True) 
+        command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py >> output.log 2>&1 &'"
+        subprocess.Popen(command, shell=True) 
             
         sys.exit()
     
@@ -219,5 +216,12 @@ async def update(ctx):
         await ctx.send(f"Error pulling updates: {e.stderr.decode()}")
     except Exception as e:
         await ctx.send(f"An unexpected error occurred: {str(e)}")
+
+@restart.error
+async def restart_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
 
 -------------------------------------------------------------------------
