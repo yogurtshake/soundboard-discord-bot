@@ -166,16 +166,24 @@ Section 3: How to use git in your VM SSH Window (github)
 
 5. Create a bot command in your script to update your bot.
 
-   @bot.command()
-   @commands.is_owner()
-   async def updatebot(ctx):
-       await ctx.send("Shutting down, updating, and restarting...")
+@bot.command()
+@commands.is_owner()
+async def update(ctx):
+    await ctx.send("Pulling latest updates from github...")
 
-       await bot.close()
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
 
-       subprocess.run(["git", "pull", "origin", "main"])
+    await ctx.send(f"```{result.stdout or result.stderr}```")
 
-       os.execv(sys.executable, ['python3'] + sys.argv)
+    if "Already up to date." in result.stdout:
+        await ctx.send("*No updates found. Bot is already up to date!*")
+        return
+
+    await ctx.send("Update complete! Restarting bot...")
+
+    await bot.close()
+
+    subprocess.Popen("nohup", "python3", "bot.py", ">", "output.log", "2>&1", "&", shell=True) 
 
 -------------------------------------------------------------------------
 
