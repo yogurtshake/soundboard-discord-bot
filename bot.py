@@ -26,12 +26,14 @@ playcount = 0
 intents = discord.Intents.default()
 intents.message_content = True
 intents.voice_states = True
+tchannel = None
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
 @bot.event
 async def on_ready():
+    global tchannel
     print("Atyiseusseatyiseuss!")
     tchannel = bot.get_channel(TEXT_CHANNEL_ID)
     await tchannel.send("**Atyiseusseatyiseuss!**")
@@ -413,7 +415,6 @@ async def alltimestats_error(ctx, error):
 @bot.command(help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
-    tchannel = bot.get_channel(TEXT_CHANNEL_ID)
     log_file_path = 'output.log'
     chunk_size = 1994
 
@@ -446,7 +447,6 @@ async def logs_error(ctx, error):
 @bot.command(help="Displays entire log file output. OWNER COMMAND.")
 @commands.is_owner()
 async def alllogs(ctx):
-    tchannel = bot.get_channel(TEXT_CHANNEL_ID)
     log_file_path = 'output.log'
     chunk_size = 1994
     
