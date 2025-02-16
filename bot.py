@@ -508,6 +508,18 @@ async def update(ctx):
 
         await bot.close()
 
+        file_path = 'session_stats.txt'
+        try:
+            os.remove(file_path)
+            await ctx.send("*Session stats deleted.*")
+            print(f"{file_path} has been deleted successfully.")
+        except FileNotFoundError:
+            print(f"{file_path} does not exist.")
+        except PermissionError:
+            print(f"Permission denied: unable to delete {file_path}.")
+        except Exception as e:
+            print(f"Error: {e}")
+
         if WINDOWS:
             subprocess.Popen("python bot.py", shell=True)
         else:
@@ -635,6 +647,18 @@ async def restart(ctx):
 
     try:
         await bot.close()
+
+        file_path = 'session_stats.txt'
+        try:
+            os.remove(file_path)
+            await ctx.send("*Session stats deleted.*")
+            print(f"{file_path} has been deleted successfully.")
+        except FileNotFoundError:
+            print(f"{file_path} does not exist.")
+        except PermissionError:
+            print(f"Permission denied: unable to delete {file_path}.")
+        except Exception as e:
+            print(f"Error: {e}")
 
         if WINDOWS:
             subprocess.Popen("python bot.py", shell=True)
