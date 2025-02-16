@@ -85,6 +85,7 @@ and then take the 4digit number it gives at the start and do
 -> kill *number here*
 
 **OR** simply use the !kys command in discord (must be bot owner).
+**OR** pkill -f bot.py
 
 -------------------------------------------------------------------------
 

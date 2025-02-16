@@ -385,6 +385,63 @@ async def refresh(ctx):
 
 @bot.command()
 @commands.is_owner()
+async def logs(ctx, lines: int = 20):
+    log_file_path = 'output.log'
+    chunk_size = 2000
+
+    try:
+        with open(log_file_path, 'r') as file:
+            log_content = file.readlines()
+
+        recent_log_content = log_content[-lines:]
+        output = ''.join(recent_log_content)
+
+        await ctx.send("## **Recent logs from output.log:** \n\n")
+        
+        for i in range(0, len(output), chunk_size):
+            await ctx.send(output[i:i + chunk_size])
+    except FileNotFoundError:
+        await ctx.send("*The log file does not exist. You piece of shit.*")
+    except Exception as e:
+        await ctx.send(f"*An error occurred while reading the log file: {e}*")
+
+@logs.error
+async def shutdown_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")  
+
+
+@commands.is_owner()
+@bot.command()
+async def alllogs(ctx):
+    log_file_path = 'output.log'
+    chunk_size = 2000
+    
+    try:
+        with open(log_file_path, 'r') as file:
+            log_content = file.read()
+
+        await ctx.send("## **Contents of output.log:** \n\n")
+        
+        for i in range(0, len(log_content), chunk_size):
+            await ctx.send(log_content[i:i + chunk_size])
+    except FileNotFoundError:
+        await ctx.send("*The log file does not exist.*")
+    except Exception as e:
+        await ctx.send(f"*An error occurred while reading the log file: {e}*")
+
+@alllogs.error
+async def shutdown_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")  
+
+
+@bot.command()
+@commands.is_owner()
 async def kys(ctx):
     await ctx.send("So uncivilized. Shutting down...")
     
