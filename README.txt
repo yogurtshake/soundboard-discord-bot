@@ -55,11 +55,11 @@ Section 2: Other SSH Window instructions - Once the bot.py script exists
 
 2. to start the bot use:
 
--> nohup python bot.py > output.log 2>&1 &
+-> nohup python bot.py >> output.log 2>&1 &
 
     nohup → Keep running after disconnecting.
     python bot.py → Runs your Discord bot.
-    > output.log → Save logs to output.log.
+    >> output.log → Appends logs to output.log.
     2>&1 → Include error messages in the same log file.
     & → Run in the background.
 
@@ -166,7 +166,15 @@ Section 3: How to use git in your VM SSH Window (github)
 
 -------------------------------------------------------------------------
 
-5. Create a bot command in your script to update your bot.
+5. Set your global git user email and username identity:
+
+-> git config --global user.email "you@example.com"
+
+-> git config --global user.name "Your Name"
+
+-------------------------------------------------------------------------
+
+6. Create a bot command in your script to update your bot.
 
 @bot.command()
 @commands.is_owner()

@@ -1,10 +1,10 @@
 from discord.ext import commands
 import discord
+import asyncio
 import random
 import os
 import sys
 import subprocess
-import asyncio
 from collections import Counter
 
 BOT_TOKEN = "MzU3NjgzMTI2MDY5MzYyNjkw.GugV8Q.GbB2VVNp1BmKt0BktRglikOvke6KIejHjoi47A"
@@ -553,7 +553,7 @@ async def update(ctx):
             if WINDOWS:
                 subprocess.Popen("python bot.py", shell=True)
             else:
-                command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
+                command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py >> output.log 2>&1 &'"
                 subprocess.Popen(command, shell=True) 
                 
             sys.exit()
@@ -634,7 +634,7 @@ async def restart(ctx):
         if WINDOWS:
             subprocess.Popen("python bot.py", shell=True)
         else:
-            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
+            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py >> output.log 2>&1 &'"
             subprocess.Popen(command, shell=True) 
     
         sys.exit()
