@@ -511,7 +511,7 @@ async def update(ctx):
         if WINDOWS:
             subprocess.Popen("python bot.py", shell=True)
         else:
-            command = "source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &"
+            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
             subprocess.Popen(command, shell=True) 
             
         sys.exit()
@@ -635,7 +635,7 @@ async def restart(ctx):
         if WINDOWS:
             subprocess.Popen("python bot.py", shell=True)
         else:
-            command = "source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &"
+            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
             subprocess.Popen(command, shell=True) 
     
         sys.exit()
