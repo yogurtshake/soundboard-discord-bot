@@ -493,6 +493,7 @@ async def sendlogfile_error(ctx, error):
 @bot.command()
 @commands.is_owner()
 async def update(ctx):
+    global SOUNDS
     await ctx.send("Pulling latest updates from github...")
 
     try:
@@ -504,29 +505,58 @@ async def update(ctx):
             await ctx.send("*No updates found. Bot is already up to date!*")
             return
 
-        await ctx.send("Update complete! Restarting bot...")
-
-        await bot.close()
-
-        file_path = 'session_stats.txt'
-        try:
-            os.remove(file_path)
-            await ctx.send("*Session stats deleted.*")
-            print(f"{file_path} has been deleted successfully.")
-        except FileNotFoundError:
-            print(f"{file_path} does not exist.")
-        except PermissionError:
-            print(f"Permission denied: unable to delete {file_path}.")
-        except Exception as e:
-            print(f"Error: {e}")
-
-        if WINDOWS:
-            subprocess.Popen("python bot.py", shell=True)
-        else:
-            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
-            subprocess.Popen(command, shell=True) 
+        if "all_sounds" in result.stdout:
+            oldCount = len(SOUNDS)
+            SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+            newCount = len(SOUNDS_NEW)
             
-        sys.exit()
+            if oldCount == newCount:
+                await ctx.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
+
+            elif newCount > oldCount: 
+                difference = list(set(SOUNDS_NEW) - set(SOUNDS))
+                difference_str = '\n'.join(difference)
+                
+                if newCount - oldCount == 1: word = "sound"
+                else: word = "sounds"
+                
+                await ctx.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
+            
+            elif newCount < oldCount:
+                difference = list(set(SOUNDS) - set(SOUNDS_NEW))
+                difference_str = '\n'.join(difference)
+                
+                if oldCount - newCount == 1: word = "sound"
+                else: word = "sounds"
+                
+                await ctx.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
+            
+            SOUNDS = SOUNDS_NEW
+
+        if "bot.py" in result.stdout:
+            await ctx.send("Update complete! Restarting bot...")
+
+            await bot.close()
+
+            file_path = 'session_stats.txt'
+            try:
+                os.remove(file_path)
+                await ctx.send("*Session stats deleted.*")
+                print(f"{file_path} has been deleted successfully.")
+            except FileNotFoundError:
+                print(f"{file_path} does not exist.")
+            except PermissionError:
+                print(f"Permission denied: unable to delete {file_path}.")
+            except Exception as e:
+                print(f"Error: {e}")
+
+            if WINDOWS:
+                subprocess.Popen("python bot.py", shell=True)
+            else:
+                command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py > output.log 2>&1 &'"
+                subprocess.Popen(command, shell=True) 
+                
+            sys.exit()
     
     except subprocess.CalledProcessError as e:
         await ctx.send(f"Error pulling updates: {e.stderr.decode()}")
@@ -535,66 +565,6 @@ async def update(ctx):
 
 @update.error
 async def update_error(ctx, error):
-    if isinstance(error, commands.NotOwner):
-        await ctx.send("# No.")
-    else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")  
-
-
-@bot.command()
-@commands.is_owner()
-async def updatesounds(ctx):
-    global SOUNDS
-    
-    await ctx.send("Fetching latest changes from GitHub...")
-
-    try:
-        subprocess.run(["git", "fetch"], check=True)
-
-        await ctx.send("Pulling latest soundlist updates from GitHub...")
-
-        result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
-        
-        await ctx.send(f"```{result.stdout or result.stderr}```")
-        
-        if "Already up to date." in result.stdout:
-            await ctx.send("*No soundlist updates found. Already up to date!*")
-            return
-        
-    except subprocess.CalledProcessError as e:
-        await ctx.send(f"Error pulling updates: {e.stderr.decode()}")
-    except Exception as e:
-        await ctx.send(f"An unexpected error occurred: {str(e)}")
-        
-    oldCount = len(SOUNDS)
-    SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
-    newCount = len(SOUNDS_NEW)
-    
-    if oldCount == newCount:
-        await ctx.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
-
-    elif newCount > oldCount: 
-        difference = list(set(SOUNDS_NEW) - set(SOUNDS))
-        difference_str = '\n'.join(difference)
-        
-        if newCount - oldCount == 1: word = "sound"
-        else: word = "sounds"
-        
-        await ctx.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
-    
-    elif newCount < oldCount:
-        difference = list(set(SOUNDS) - set(SOUNDS_NEW))
-        difference_str = '\n'.join(difference)
-        
-        if oldCount - newCount == 1: word = "sound"
-        else: word = "sounds"
-        
-        await ctx.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
-    
-    SOUNDS = SOUNDS_NEW
-
-@updatesounds.error
-async def updatesounds_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
