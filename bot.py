@@ -100,6 +100,14 @@ async def on_message(message):
                 await message.channel.send('**Wrong! Shuddup.**')
     
     
+@bot.event
+async def on_command_error(ctx, error):
+    if isinstance(error, commands.CommandNotFound):
+        await ctx.send("*Invalid command. You piece of shit.*")
+    else:
+        await ctx.send(f"An unexpected error occurred: {error}")
+    
+    
 @bot.command()
 async def raisehand(ctx):
     global handcount
@@ -526,16 +534,14 @@ async def update_error(ctx, error):
 async def updatesounds(ctx):
     global SOUNDS
     
-    await ctx.send("Pulling latest soundlist updates from github...")
+    await ctx.send("Fetching latest changes from GitHub...")
 
     try:
-        result = subprocess.run(["git", "checkout", "origin/main", "--", "all_sounds/"], capture_output=True, text=True)
-        
-        if not result.stdout and not result.stderr:
-            await ctx.send("*No soundlist updates found. Already up to date!*")
-            return
-        
-        await ctx.send(f"```{result.stdout or result.stderr}```")
+        subprocess.run(["git", "fetch"], check=True)
+
+        await ctx.send("Pulling latest soundlist updates from GitHub...")
+
+        subprocess.run(["git", "checkout", "origin/main", "--", "all_sounds/"])
         
         await ctx.send("Soundlist updates pulled. Refreshing soundlist...")
         
@@ -587,13 +593,13 @@ async def pushupdates(ctx):
     try:
         subprocess.run(["git", "fetch"], check=True)
 
-        await ctx.send("Pushing updates to GitHub...")
+        await ctx.send("Pushing updates for *output.log* and *all_time_stats.txt* to GitHub...")
 
         subprocess.run(["git", "add", "output.log", "all_time_stats.txt"], check=True)
 
-        result = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
-        if not result.stdout:
-            await ctx.send("No changes to commit.")
+        result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
+        if not result.stdout.strip():
+            await ctx.send("No changes to commit for *output.log* and *all_time_stats.txt*.")
             return
 
         subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], check=True)
