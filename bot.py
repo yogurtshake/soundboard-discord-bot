@@ -400,7 +400,7 @@ async def logs(ctx, lines: int = 20):
         await ctx.send("## **Recent logs from output.log:** \n\n")
         
         for i in range(0, len(output), chunk_size):
-            await ctx.send(output[i:i + chunk_size])
+            await ctx.send(f"```{output[i:i + chunk_size]}```")
     except FileNotFoundError:
         await ctx.send("*The log file does not exist. You piece of shit.*")
     except Exception as e:
@@ -427,7 +427,7 @@ async def alllogs(ctx):
         await ctx.send("## **Contents of output.log:** \n\n")
         
         for i in range(0, len(log_content), chunk_size):
-            await ctx.send(log_content[i:i + chunk_size])
+            await ctx.send(f"```{log_content[i:i + chunk_size]}```")
     except FileNotFoundError:
         await ctx.send("*The log file does not exist.*")
     except Exception as e:
