@@ -588,7 +588,8 @@ async def pushtextfiles(ctx):
             await ctx.send("No changes to commit for *output.log* and *all_time_stats.txt*.")
             return
 
-        subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], check=True)
+        commit_result = subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], capture_output=True, text=True, check=True)
+        await ctx.send(f"```{commit_result.stdout or commit_result.stderr}```")
 
         result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
 
