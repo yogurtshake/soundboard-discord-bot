@@ -2476,3 +2476,235 @@ SystemExit
 [2025-02-16 08:41:13] [INFO    ] discord.player: ffmpeg process 103768 has not terminated. Waiting to terminate...
 [2025-02-16 08:41:13] [INFO    ] discord.player: ffmpeg process 103768 should have terminated with a return code of -9.
 [2025-02-16 08:52:18] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+Atyiseusseatyiseuss!
+Finished playing: leads to sauce.ogg
+Finished playing: rule #4.ogg
+Finished playing: patbays.ogg
+Finished playing: richard patrick2.ogg
+Finished playing: fuck it up.ogg
+Finished playing: stop it.ogg
+Finished playing: stop it.ogg
+session_stats.txt has been deleted successfully.
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 48, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 539, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 624, in restart
+    subprocess.Popen(command, shell=True)
+    ^^^^^^^^^^
+SystemExit
+[2025-02-16 09:10:38] [INFO    ] discord.client: logging in using static token
+[2025-02-16 09:10:39] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 0332fc5321e5cb7a9232a1b843fb12d1).
+[2025-02-16 09:11:10] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-02-16 09:11:10] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-02-16 09:11:10] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central1194.discord.media
+[2025-02-16 09:11:10] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-02-16 09:11:13] [INFO    ] discord.player: ffmpeg process 104029 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:13] [INFO    ] discord.player: ffmpeg process 104029 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104032 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104032 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104036 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104036 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104040 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104040 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104044 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104044 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104050 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104050 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104054 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104054 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104056 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104056 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104060 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104060 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104064 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104064 should have terminated with a return code of -9.
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104068 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:14] [INFO    ] discord.player: ffmpeg process 104068 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104072 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104072 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104076 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104076 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104080 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104080 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104084 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104084 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104088 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104088 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104092 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104092 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104096 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104096 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104100 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104100 should have terminated with a return code of -9.
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104104 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:15] [INFO    ] discord.player: ffmpeg process 104104 should have terminated with a return code of -9.
+[2025-02-16 09:11:16] [INFO    ] discord.player: ffmpeg process 104110 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:16] [INFO    ] discord.player: ffmpeg process 104110 should have terminated with a return code of -9.
+[2025-02-16 09:11:16] [INFO    ] discord.player: ffmpeg process 104114 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:16] [INFO    ] discord.player: ffmpeg process 104114 should have terminated with a return code of -9.
+[2025-02-16 09:11:16] [INFO    ] discord.player: ffmpeg process 104118 has not terminated. Waiting to terminate...
+[2025-02-16 09:11:16] [INFO    ] discord.player: ffmpeg process 104118 should have terminated with a return code of -9.
+[2025-02-16 09:11:20] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+Atyiseusseatyiseuss!
+Finished playing: keep out of here.ogg
+Finished playing: rule #4 full.ogg
+Finished playing: your lyrics.ogg
+Finished playing: expert.ogg
+Finished playing: stop it.ogg
+Finished playing: are LAME.ogg
+Finished playing: rosen.ogg
+Finished playing: stop it.ogg
+Finished playing: who.ogg
+Finished playing: MAKE FOR THE GAP.ogg
+Finished playing: here here.ogg
+Finished playing: this is spider.ogg
+Finished playing: beer.ogg
+Finished playing: no way.ogg
+Finished playing: dont.ogg
+Finished playing: still i think.ogg
+Finished playing: hobbits2.ogg
+Finished playing: cock.ogg
+Finished playing: fuck it up.ogg
+Finished playing: another way in.ogg
+Finished playing: did you hear.ogg
+Finished playing: powers back.ogg
+Finished playing: powers back.ogg
+session_stats.txt has been deleted successfully.
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 48, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 539, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 626, in restart
+    subprocess.Popen(command, shell=True)
+    ^^^^^^^^^^
+SystemExit
+[2025-02-16 09:13:48] [INFO    ] discord.client: logging in using static token
+[2025-02-16 09:13:49] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 96c6998bbb1998d5a64027d2a9c8ca60).
+Atyiseusseatyiseuss!
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 48, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 539, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 628, in restart
+    sys.exit()
+SystemExit
+[2025-02-16 09:16:02] [INFO    ] discord.client: logging in using static token
+[2025-02-16 09:16:03] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 44c37a17c208417f55a40b06fcfcccf6).
