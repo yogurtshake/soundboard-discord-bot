@@ -75,7 +75,20 @@ Section 2: Other SSH Window instructions - Once the bot.py script exists
 	
 -> ps aux | grep bot.py
 
-    and then take the 4digit number it gives at the start and do: 
+   Explanation of Each Column:
+	USER: The user who owns the process (lucassu+).
+	PID: The process ID (e.g., 103710, 103711, 103813).
+	%CPU: The percentage of CPU usage.
+	%MEM: The percentage of memory usage.
+	VSZ: The virtual memory size.
+	RSS: The resident set size (physical memory usage).
+	TTY: The terminal associated with the process (? for none, pts/1 for a pseudo-terminal).
+	STAT: The process state (e.g., S for sleeping, R for running).
+	START: The start time of the process.
+	TIME: The cumulative CPU time used by the process.
+	COMMAND: The command that started the process.
+
+   and then take the 4digit number it gives at the start and do: 
 
 -> kill *number here*
 
