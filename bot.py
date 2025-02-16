@@ -531,11 +531,11 @@ async def updatesounds(ctx):
     try:
         result = subprocess.run(["git", "checkout", "origin/main", "--", "all_sounds/"], capture_output=True, text=True)
         
-        await ctx.send(f"```{result.stdout or result.stderr}```")
-
-        if "Already up to date." in result.stdout:
+        if not result.stdout and not result.stderr:
             await ctx.send("*No soundlist updates found. Already up to date!*")
             return
+        
+        await ctx.send(f"```{result.stdout or result.stderr}```")
         
         await ctx.send("Soundlist updates pulled. Refreshing soundlist...")
         
@@ -582,19 +582,31 @@ async def updatesounds_error(ctx, error):
 @bot.command()
 @commands.is_owner()
 async def pushupdates(ctx):
-    await ctx.send("Pushing updates to GitHub...")
+    await ctx.send("Fetching latest changes from GitHub...")
 
     try:
+        subprocess.run(["git", "fetch"], check=True)
+
+        await ctx.send("Pushing updates to GitHub...")
+
         subprocess.run(["git", "add", "output.log", "all_time_stats.txt"], check=True)
+
+        result = subprocess.run(["git", "status", "--porcelain"], capture_output=True, text=True, check=True)
+        if not result.stdout:
+            await ctx.send("No changes to commit.")
+            return
+
         subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], check=True)
 
         result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
 
-        await ctx.send(f"```{result.stdout or result.stderr}```")
+        output = result.stdout if result.stdout else result.stderr
+        await ctx.send(f"```{output}```")
         await ctx.send("Updates pushed successfully!")
     
     except subprocess.CalledProcessError as e:
-        await ctx.send(f"Error pushing updates: {e.stderr.decode()}")
+        error_message = e.stderr.decode() if e.stderr else "An error occurred, but no error message was provided."
+        await ctx.send(f"Error pushing updates: {error_message}")
     except Exception as e:
         await ctx.send(f"An unexpected error occurred: {str(e)}")
 
