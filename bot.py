@@ -472,27 +472,6 @@ async def alllogs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")  
 
 
-@bot.command(help="Sends the output.log file in discord. OWNER COMMAND.")
-@commands.is_owner()
-async def sendlogfile(ctx):
-    log_file_path = 'output.log'
-
-    try:
-        with open(log_file_path, 'r') as file:
-            await tchannel.send("Here is the log file:", file=discord.File(file, log_file_path))
-    except FileNotFoundError:
-        await tchannel.send("*The log file does not exist.*")
-    except Exception as e:
-        await tchannel.send(f"*An error occurred while reading the log file: {e}*")
-
-@sendlogfile.error
-async def sendlogfile_error(ctx, error):
-    if isinstance(error, commands.NotOwner):
-        await ctx.send("# No.")
-    else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
-
-
 @bot.command(help="Pulls changes from github repo and restarts if necessary. OWNER COMMAND.")
 @commands.is_owner()
 async def update(ctx):
