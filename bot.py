@@ -534,9 +534,11 @@ async def update(ctx):
             SOUNDS = SOUNDS_NEW
 
         if "bot.py" in result.stdout:
-            await ctx.send("Update complete!")
+            await ctx.send("Update complete.")
 
             await ctx.invoke(bot.get_command('restart'))
+            
+        await ctx.send("Updates pulled successfully.")
     
     except subprocess.CalledProcessError as e:
         await ctx.send(f"Error pulling updates: {e.stderr}")
