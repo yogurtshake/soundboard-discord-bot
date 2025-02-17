@@ -345,6 +345,8 @@ async def leave(ctx):
     else:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         
+    await ctx.invoke(bot.get_command('sessionstats'))
+        
     file_path = 'session_stats.txt'
 
     try:
