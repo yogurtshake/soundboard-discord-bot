@@ -380,7 +380,7 @@ async def sessionstats(ctx):
         num = len(lines)
 
         await ctx.send("## **Bot soundboard stats for this session:** \n\n")
-        await ctx.send(f"### Playcount: {num)} \n\n")
+        await ctx.send(f"### Playcount: {num} \n\n")
         
         for i in range(0, len(output), chunk_size):
             await ctx.send(f"```{output[i:i + chunk_size]}```")
@@ -410,7 +410,7 @@ async def alltimestats(ctx):
     num = len(lines)
 
     await ctx.send("## **Bot soundboard stats for all time:** \n\n")
-    await ctx.send(f"### Playcount: {num)} \n\n")
+    await ctx.send(f"### Playcount: {num} \n\n")
     
     for i in range(0, len(output), chunk_size):
         await ctx.send(f"```{output[i:i + chunk_size]}```")
