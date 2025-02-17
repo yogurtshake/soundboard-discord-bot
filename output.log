@@ -2708,3 +2708,2185 @@ Traceback (most recent call last):
 SystemExit
 [2025-02-16 09:16:02] [INFO    ] discord.client: logging in using static token
 [2025-02-16 09:16:03] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 44c37a17c208417f55a40b06fcfcccf6).
+Atyiseusseatyiseuss!
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 48, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 539, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 628, in restart
+SystemExit
+[2025-02-16 09:19:34] [INFO    ] discord.client: logging in using static token
+[2025-02-16 09:19:35] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 45c07ad95155ac29edb2e8529257b341).
+Atyiseusseatyiseuss!
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 48, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 539, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 627, in restart
+    sys.exit()
+SystemExit
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 444, in <module>
+    @commands.is_owner(help="Displays entire log file output. OWNER COMMAND.")
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: is_owner() got an unexpected keyword argument 'help'
+nohup: ignoring input
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 444, in <module>
+    @commands.is_owner(help="Displays entire log file output. OWNER COMMAND.")
+     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: is_owner() got an unexpected keyword argument 'help'
+nohup: ignoring input
+[2025-02-16 09:56:12] [INFO    ] discord.client: logging in using static token
+[2025-02-16 09:56:13] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 63b6595d4d1f3e6fca07eb1c5c605396).
+Atyiseusseatyiseuss!
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 48, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 540, in update
+    await ctx.send("Update complete.")
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 628, in restart
+    subprocess.Popen(command, shell=True)
+    ^^^^^^^^^^
+SystemExit
+[2025-02-16 10:00:09] [INFO    ] discord.client: logging in using static token
+[2025-02-16 10:00:09] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 3da8f3d681dd39acf20b458dff6afb65).
+Atyiseusseatyiseuss!
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 48, in on_message
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 542, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 630, in restart
+    sys.exit()
+SystemExit
+[2025-02-16 10:03:54] [INFO    ] discord.client: logging in using static token
+[2025-02-16 10:03:54] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: f625f315818beaa94062f7c6634de070).
+Atyiseusseatyiseuss!
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 50, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 542, in update
+    await tchannel.invoke(bot.get_command('restart'))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 630, in restart
+    sys.exit()
+SystemExit
+[2025-02-16 10:10:33] [INFO    ] discord.client: logging in using static token
+[2025-02-16 10:10:34] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: e221d0d4e6bceb021121ac242e693dd3).
+Atyiseusseatyiseuss!
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 50, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 630, in restart
+    await tchannel.send("*Session stats deleted.*")
+    ^^^^^^^^^^
+SystemExit
+[2025-02-16 10:15:56] [INFO    ] discord.client: logging in using static token
+[2025-02-16 10:15:57] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: afcbe4462a966bad36848ce658c56a61).
+[2025-02-16 13:25:08] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-16 14:29:38] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-16 15:12:20] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-16 15:28:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-16 16:10:23] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-16 17:58:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-16 18:57:38] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-16 22:00:53] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 01:36:22] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 03:28:53] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-02-17 03:28:53] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-02-17 03:28:53] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central3192.discord.media
+[2025-02-17 03:28:54] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-02-17 03:28:55] [INFO    ] discord.player: ffmpeg process 112140 successfully terminated with return code of 0.
+[2025-02-17 03:30:56] [INFO    ] discord.player: ffmpeg process 112186 successfully terminated with return code of 0.
+[2025-02-17 03:31:03] [INFO    ] discord.player: ffmpeg process 112191 successfully terminated with return code of 0.
+[2025-02-17 03:31:11] [INFO    ] discord.player: ffmpeg process 112196 has not terminated. Waiting to terminate...
+[2025-02-17 03:31:11] [INFO    ] discord.player: ffmpeg process 112196 should have terminated with a return code of -9.
+[2025-02-17 03:31:16] [INFO    ] discord.player: ffmpeg process 112200 successfully terminated with return code of 0.
+[2025-02-17 03:31:21] [INFO    ] discord.player: ffmpeg process 112204 successfully terminated with return code of 0.
+[2025-02-17 03:47:20] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 03:48:55] [INFO    ] discord.player: ffmpeg process 112275 has not terminated. Waiting to terminate...
+[2025-02-17 03:48:55] [INFO    ] discord.player: ffmpeg process 112275 should have terminated with a return code of -9.
+[2025-02-17 03:48:59] [INFO    ] discord.player: ffmpeg process 112279 has not terminated. Waiting to terminate...
+[2025-02-17 03:48:59] [INFO    ] discord.player: ffmpeg process 112279 should have terminated with a return code of -9.
+[2025-02-17 03:49:00] [INFO    ] discord.player: ffmpeg process 112285 successfully terminated with return code of 0.
+[2025-02-17 03:49:04] [INFO    ] discord.player: ffmpeg process 112289 has not terminated. Waiting to terminate...
+[2025-02-17 03:49:04] [INFO    ] discord.player: ffmpeg process 112289 should have terminated with a return code of -9.
+[2025-02-17 03:49:09] [INFO    ] discord.player: ffmpeg process 112293 successfully terminated with return code of 0.
+[2025-02-17 04:22:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 05:08:45] [INFO    ] discord.player: ffmpeg process 113039 successfully terminated with return code of 0.
+[2025-02-17 05:08:56] [INFO    ] discord.player: ffmpeg process 113045 has not terminated. Waiting to terminate...
+[2025-02-17 05:08:56] [INFO    ] discord.player: ffmpeg process 113045 should have terminated with a return code of -9.
+[2025-02-17 05:08:59] [INFO    ] discord.player: ffmpeg process 113049 has not terminated. Waiting to terminate...
+[2025-02-17 05:08:59] [INFO    ] discord.player: ffmpeg process 113049 should have terminated with a return code of -9.
+[2025-02-17 05:09:02] [INFO    ] discord.player: ffmpeg process 113053 has not terminated. Waiting to terminate...
+[2025-02-17 05:09:02] [INFO    ] discord.player: ffmpeg process 113053 should have terminated with a return code of -9.
+[2025-02-17 05:09:05] [INFO    ] discord.player: ffmpeg process 113059 has not terminated. Waiting to terminate...
+[2025-02-17 05:09:05] [INFO    ] discord.player: ffmpeg process 113059 should have terminated with a return code of -9.
+[2025-02-17 05:09:06] [INFO    ] discord.player: ffmpeg process 113065 successfully terminated with return code of 0.
+[2025-02-17 05:09:10] [INFO    ] discord.player: ffmpeg process 113069 has not terminated. Waiting to terminate...
+[2025-02-17 05:09:10] [INFO    ] discord.player: ffmpeg process 113069 should have terminated with a return code of -9.
+[2025-02-17 05:09:12] [INFO    ] discord.player: ffmpeg process 113073 has not terminated. Waiting to terminate...
+[2025-02-17 05:09:12] [INFO    ] discord.player: ffmpeg process 113073 should have terminated with a return code of -9.
+[2025-02-17 05:09:17] [INFO    ] discord.player: ffmpeg process 113077 successfully terminated with return code of 0.
+[2025-02-17 05:43:29] [INFO    ] discord.player: ffmpeg process 113377 successfully terminated with return code of 0.
+[2025-02-17 05:43:37] [INFO    ] discord.player: ffmpeg process 113381 has not terminated. Waiting to terminate...
+[2025-02-17 05:43:37] [INFO    ] discord.player: ffmpeg process 113381 should have terminated with a return code of -9.
+[2025-02-17 05:43:40] [INFO    ] discord.player: ffmpeg process 113385 successfully terminated with return code of 0.
+[2025-02-17 05:49:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 06:11:05] [INFO    ] discord.player: ffmpeg process 113669 successfully terminated with return code of 0.
+[2025-02-17 06:11:15] [INFO    ] discord.player: ffmpeg process 113676 has not terminated. Waiting to terminate...
+[2025-02-17 06:11:15] [INFO    ] discord.player: ffmpeg process 113676 should have terminated with a return code of -9.
+[2025-02-17 06:11:20] [INFO    ] discord.player: ffmpeg process 113680 successfully terminated with return code of 0.
+[2025-02-17 06:11:26] [INFO    ] discord.player: ffmpeg process 113686 has not terminated. Waiting to terminate...
+[2025-02-17 06:11:26] [INFO    ] discord.player: ffmpeg process 113686 should have terminated with a return code of -9.
+[2025-02-17 06:11:30] [INFO    ] discord.player: ffmpeg process 113690 has not terminated. Waiting to terminate...
+[2025-02-17 06:11:30] [INFO    ] discord.player: ffmpeg process 113690 should have terminated with a return code of -9.
+[2025-02-17 06:11:35] [INFO    ] discord.player: ffmpeg process 113694 successfully terminated with return code of 0.
+[2025-02-17 06:12:36] [INFO    ] discord.player: ffmpeg process 113704 successfully terminated with return code of 0.
+[2025-02-17 06:14:04] [INFO    ] discord.player: ffmpeg process 113723 successfully terminated with return code of 0.
+[2025-02-17 06:15:35] [INFO    ] discord.player: ffmpeg process 113735 successfully terminated with return code of 0.
+[2025-02-17 06:17:06] [INFO    ] discord.player: ffmpeg process 113748 successfully terminated with return code of 0.
+[2025-02-17 06:18:35] [INFO    ] discord.player: ffmpeg process 113768 successfully terminated with return code of 0.
+[2025-02-17 06:20:06] [INFO    ] discord.player: ffmpeg process 113780 successfully terminated with return code of 0.
+[2025-02-17 06:21:35] [ERROR   ] discord.voice_state: Disconnected from voice... Reconnecting in 1.86s.
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 598, in _poll_voice_ws
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 1037, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1006
+[2025-02-17 06:21:37] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+[2025-02-17 06:21:37] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-02-17 06:21:37] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-02-17 06:21:37] [INFO    ] discord.player: ffmpeg process 113792 has not terminated. Waiting to terminate...
+[2025-02-17 06:21:37] [INFO    ] discord.player: ffmpeg process 113792 should have terminated with a return code of -9.
+[2025-02-17 06:21:37] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central3192.discord.media
+[2025-02-17 06:21:38] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-02-17 06:23:04] [INFO    ] discord.player: ffmpeg process 113808 successfully terminated with return code of 0.
+[2025-02-17 06:24:36] [INFO    ] discord.player: ffmpeg process 113827 successfully terminated with return code of 0.
+[2025-02-17 06:26:06] [INFO    ] discord.player: ffmpeg process 113845 successfully terminated with return code of 0.
+[2025-02-17 06:27:32] [INFO    ] discord.player: ffmpeg process 113859 successfully terminated with return code of 0.
+[2025-02-17 06:29:06] [INFO    ] discord.player: ffmpeg process 113871 successfully terminated with return code of 0.
+[2025-02-17 06:30:35] [INFO    ] discord.player: ffmpeg process 113883 successfully terminated with return code of 0.
+[2025-02-17 06:32:05] [INFO    ] discord.player: ffmpeg process 113894 successfully terminated with return code of 0.
+[2025-02-17 06:33:35] [INFO    ] discord.player: ffmpeg process 114013 successfully terminated with return code of 0.
+[2025-02-17 06:35:04] [INFO    ] discord.player: ffmpeg process 114031 successfully terminated with return code of 0.
+[2025-02-17 06:36:36] [INFO    ] discord.player: ffmpeg process 114043 successfully terminated with return code of 0.
+[2025-02-17 06:38:06] [INFO    ] discord.player: ffmpeg process 114056 successfully terminated with return code of 0.
+[2025-02-17 06:39:35] [INFO    ] discord.player: ffmpeg process 114074 successfully terminated with return code of 0.
+[2025-02-17 06:41:06] [INFO    ] discord.player: ffmpeg process 114095 successfully terminated with return code of 0.
+[2025-02-17 06:42:32] [INFO    ] discord.player: ffmpeg process 114110 successfully terminated with return code of 0.
+[2025-02-17 06:44:06] [INFO    ] discord.player: ffmpeg process 114125 successfully terminated with return code of 0.
+[2025-02-17 06:45:36] [INFO    ] discord.player: ffmpeg process 114146 successfully terminated with return code of 0.
+[2025-02-17 06:47:06] [INFO    ] discord.player: ffmpeg process 114157 successfully terminated with return code of 0.
+[2025-02-17 06:48:36] [INFO    ] discord.player: ffmpeg process 114177 successfully terminated with return code of 0.
+[2025-02-17 06:50:06] [INFO    ] discord.player: ffmpeg process 114189 successfully terminated with return code of 0.
+[2025-02-17 06:51:36] [INFO    ] discord.player: ffmpeg process 114203 successfully terminated with return code of 0.
+[2025-02-17 06:53:06] [INFO    ] discord.player: ffmpeg process 114220 successfully terminated with return code of 0.
+[2025-02-17 06:54:36] [INFO    ] discord.player: ffmpeg process 114241 successfully terminated with return code of 0.
+[2025-02-17 06:56:06] [INFO    ] discord.player: ffmpeg process 114255 successfully terminated with return code of 0.
+[2025-02-17 06:57:36] [INFO    ] discord.player: ffmpeg process 114274 successfully terminated with return code of 0.
+[2025-02-17 06:59:04] [INFO    ] discord.player: ffmpeg process 114288 successfully terminated with return code of 0.
+[2025-02-17 07:00:35] [INFO    ] discord.player: ffmpeg process 114302 successfully terminated with return code of 0.
+[2025-02-17 07:02:06] [INFO    ] discord.player: ffmpeg process 114316 successfully terminated with return code of 0.
+[2025-02-17 07:03:36] [INFO    ] discord.player: ffmpeg process 114336 successfully terminated with return code of 0.
+[2025-02-17 07:05:06] [INFO    ] discord.player: ffmpeg process 114358 successfully terminated with return code of 0.
+[2025-02-17 07:06:36] [INFO    ] discord.player: ffmpeg process 114375 successfully terminated with return code of 0.
+[2025-02-17 07:08:01] [INFO    ] discord.player: ffmpeg process 114390 successfully terminated with return code of 0.
+[2025-02-17 07:09:36] [INFO    ] discord.player: ffmpeg process 114410 successfully terminated with return code of 0.
+[2025-02-17 07:11:06] [INFO    ] discord.player: ffmpeg process 114423 successfully terminated with return code of 0.
+[2025-02-17 07:12:35] [INFO    ] discord.player: ffmpeg process 114438 successfully terminated with return code of 0.
+[2025-02-17 07:14:06] [INFO    ] discord.player: ffmpeg process 114456 successfully terminated with return code of 0.
+[2025-02-17 07:15:31] [INFO    ] discord.player: ffmpeg process 114470 successfully terminated with return code of 0.
+[2025-02-17 07:17:06] [INFO    ] discord.player: ffmpeg process 114485 successfully terminated with return code of 0.
+[2025-02-17 07:18:36] [INFO    ] discord.player: ffmpeg process 114500 successfully terminated with return code of 0.
+[2025-02-17 07:20:04] [INFO    ] discord.player: ffmpeg process 114513 successfully terminated with return code of 0.
+[2025-02-17 07:21:36] [INFO    ] discord.player: ffmpeg process 114526 successfully terminated with return code of 0.
+[2025-02-17 07:23:06] [INFO    ] discord.player: ffmpeg process 114541 successfully terminated with return code of 0.
+[2025-02-17 07:24:36] [INFO    ] discord.player: ffmpeg process 114551 successfully terminated with return code of 0.
+[2025-02-17 07:26:06] [INFO    ] discord.player: ffmpeg process 114568 successfully terminated with return code of 0.
+[2025-02-17 07:27:36] [INFO    ] discord.player: ffmpeg process 114582 successfully terminated with return code of 0.
+[2025-02-17 07:29:06] [INFO    ] discord.player: ffmpeg process 114595 successfully terminated with return code of 0.
+[2025-02-17 07:30:35] [INFO    ] discord.player: ffmpeg process 114608 successfully terminated with return code of 0.
+[2025-02-17 07:32:06] [INFO    ] discord.player: ffmpeg process 114620 successfully terminated with return code of 0.
+[2025-02-17 07:33:35] [INFO    ] discord.player: ffmpeg process 114633 successfully terminated with return code of 0.
+[2025-02-17 07:35:04] [INFO    ] discord.player: ffmpeg process 114643 successfully terminated with return code of 0.
+[2025-02-17 07:36:36] [INFO    ] discord.player: ffmpeg process 114662 successfully terminated with return code of 0.
+[2025-02-17 07:38:06] [INFO    ] discord.player: ffmpeg process 114670 successfully terminated with return code of 0.
+[2025-02-17 07:39:34] [INFO    ] discord.player: ffmpeg process 114683 successfully terminated with return code of 0.
+[2025-02-17 07:41:05] [INFO    ] discord.player: ffmpeg process 114695 successfully terminated with return code of 0.
+[2025-02-17 07:42:35] [INFO    ] discord.player: ffmpeg process 114703 successfully terminated with return code of 0.
+[2025-02-17 07:43:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 07:44:05] [INFO    ] discord.player: ffmpeg process 114719 successfully terminated with return code of 0.
+[2025-02-17 07:45:36] [INFO    ] discord.player: ffmpeg process 114729 successfully terminated with return code of 0.
+[2025-02-17 07:47:04] [INFO    ] discord.player: ffmpeg process 114744 successfully terminated with return code of 0.
+[2025-02-17 07:48:36] [INFO    ] discord.player: ffmpeg process 114759 successfully terminated with return code of 0.
+[2025-02-17 07:50:03] [INFO    ] discord.player: ffmpeg process 114767 successfully terminated with return code of 0.
+[2025-02-17 07:51:36] [INFO    ] discord.player: ffmpeg process 114779 successfully terminated with return code of 0.
+[2025-02-17 07:53:06] [INFO    ] discord.player: ffmpeg process 114791 successfully terminated with return code of 0.
+[2025-02-17 07:54:36] [INFO    ] discord.player: ffmpeg process 114801 successfully terminated with return code of 0.
+[2025-02-17 07:56:04] [INFO    ] discord.player: ffmpeg process 114811 successfully terminated with return code of 0.
+[2025-02-17 07:57:36] [INFO    ] discord.player: ffmpeg process 114828 successfully terminated with return code of 0.
+[2025-02-17 07:59:06] [INFO    ] discord.player: ffmpeg process 114841 successfully terminated with return code of 0.
+[2025-02-17 08:00:36] [INFO    ] discord.player: ffmpeg process 114851 successfully terminated with return code of 0.
+[2025-02-17 08:02:03] [INFO    ] discord.player: ffmpeg process 114862 successfully terminated with return code of 0.
+[2025-02-17 08:03:36] [INFO    ] discord.player: ffmpeg process 114873 successfully terminated with return code of 0.
+[2025-02-17 08:05:06] [INFO    ] discord.player: ffmpeg process 114884 successfully terminated with return code of 0.
+[2025-02-17 08:06:36] [INFO    ] discord.player: ffmpeg process 114901 successfully terminated with return code of 0.
+[2025-02-17 08:08:06] [INFO    ] discord.player: ffmpeg process 114911 successfully terminated with return code of 0.
+[2025-02-17 08:09:36] [INFO    ] discord.player: ffmpeg process 114924 successfully terminated with return code of 0.
+[2025-02-17 08:11:05] [INFO    ] discord.player: ffmpeg process 114934 successfully terminated with return code of 0.
+[2025-02-17 08:12:36] [INFO    ] discord.player: ffmpeg process 114949 successfully terminated with return code of 0.
+[2025-02-17 08:14:06] [INFO    ] discord.player: ffmpeg process 114963 successfully terminated with return code of 0.
+[2025-02-17 08:15:35] [INFO    ] discord.player: ffmpeg process 114976 successfully terminated with return code of 0.
+[2025-02-17 08:17:06] [INFO    ] discord.player: ffmpeg process 114992 successfully terminated with return code of 0.
+[2025-02-17 08:18:35] [INFO    ] discord.player: ffmpeg process 115010 successfully terminated with return code of 0.
+[2025-02-17 08:20:06] [INFO    ] discord.player: ffmpeg process 115023 successfully terminated with return code of 0.
+[2025-02-17 08:21:35] [INFO    ] discord.player: ffmpeg process 115035 successfully terminated with return code of 0.
+[2025-02-17 08:23:04] [INFO    ] discord.player: ffmpeg process 115047 successfully terminated with return code of 0.
+[2025-02-17 08:24:35] [INFO    ] discord.player: ffmpeg process 115060 successfully terminated with return code of 0.
+[2025-02-17 08:26:06] [INFO    ] discord.player: ffmpeg process 115074 successfully terminated with return code of 0.
+[2025-02-17 08:27:35] [INFO    ] discord.player: ffmpeg process 115095 successfully terminated with return code of 0.
+[2025-02-17 08:29:05] [INFO    ] discord.player: ffmpeg process 115109 successfully terminated with return code of 0.
+[2025-02-17 08:30:36] [INFO    ] discord.player: ffmpeg process 115134 successfully terminated with return code of 0.
+[2025-02-17 08:32:06] [INFO    ] discord.player: ffmpeg process 115148 successfully terminated with return code of 0.
+[2025-02-17 08:33:33] [INFO    ] discord.player: ffmpeg process 115160 successfully terminated with return code of 0.
+[2025-02-17 08:35:05] [INFO    ] discord.player: ffmpeg process 115177 successfully terminated with return code of 0.
+[2025-02-17 08:36:36] [INFO    ] discord.player: ffmpeg process 115195 successfully terminated with return code of 0.
+[2025-02-17 08:38:06] [INFO    ] discord.player: ffmpeg process 115216 successfully terminated with return code of 0.
+[2025-02-17 08:39:36] [INFO    ] discord.player: ffmpeg process 115235 successfully terminated with return code of 0.
+[2025-02-17 08:41:04] [INFO    ] discord.player: ffmpeg process 115257 successfully terminated with return code of 0.
+[2025-02-17 08:42:36] [INFO    ] discord.player: ffmpeg process 115279 successfully terminated with return code of 0.
+[2025-02-17 08:44:05] [INFO    ] discord.player: ffmpeg process 115301 successfully terminated with return code of 0.
+[2025-02-17 08:45:35] [INFO    ] discord.player: ffmpeg process 115323 successfully terminated with return code of 0.
+[2025-02-17 08:47:06] [INFO    ] discord.player: ffmpeg process 115350 successfully terminated with return code of 0.
+[2025-02-17 08:48:07] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 08:48:36] [INFO    ] discord.player: ffmpeg process 115377 successfully terminated with return code of 0.
+[2025-02-17 08:50:06] [INFO    ] discord.player: ffmpeg process 115398 successfully terminated with return code of 0.
+[2025-02-17 08:51:36] [INFO    ] discord.player: ffmpeg process 115425 successfully terminated with return code of 0.
+[2025-02-17 08:53:06] [INFO    ] discord.player: ffmpeg process 115449 successfully terminated with return code of 0.
+[2025-02-17 08:54:36] [INFO    ] discord.player: ffmpeg process 115469 successfully terminated with return code of 0.
+[2025-02-17 08:56:06] [INFO    ] discord.player: ffmpeg process 115489 successfully terminated with return code of 0.
+[2025-02-17 08:57:36] [INFO    ] discord.player: ffmpeg process 115517 successfully terminated with return code of 0.
+[2025-02-17 08:59:53] [INFO    ] discord.player: ffmpeg process 115541 successfully terminated with return code of 0.
+[2025-02-17 09:00:36] [INFO    ] discord.player: ffmpeg process 115560 successfully terminated with return code of 0.
+[2025-02-17 09:02:06] [INFO    ] discord.player: ffmpeg process 115581 successfully terminated with return code of 0.
+[2025-02-17 09:03:36] [INFO    ] discord.player: ffmpeg process 115605 successfully terminated with return code of 0.
+[2025-02-17 09:05:06] [INFO    ] discord.player: ffmpeg process 115626 successfully terminated with return code of 0.
+[2025-02-17 09:06:36] [INFO    ] discord.player: ffmpeg process 115650 successfully terminated with return code of 0.
+[2025-02-17 09:08:05] [INFO    ] discord.player: ffmpeg process 115679 successfully terminated with return code of 0.
+[2025-02-17 09:09:36] [INFO    ] discord.player: ffmpeg process 115707 successfully terminated with return code of 0.
+[2025-02-17 09:11:06] [INFO    ] discord.player: ffmpeg process 115746 successfully terminated with return code of 0.
+[2025-02-17 09:12:36] [INFO    ] discord.player: ffmpeg process 115777 successfully terminated with return code of 0.
+[2025-02-17 09:14:06] [INFO    ] discord.player: ffmpeg process 115813 successfully terminated with return code of 0.
+[2025-02-17 09:15:34] [INFO    ] discord.player: ffmpeg process 115844 successfully terminated with return code of 0.
+[2025-02-17 09:17:06] [INFO    ] discord.player: ffmpeg process 115888 successfully terminated with return code of 0.
+[2025-02-17 09:18:34] [INFO    ] discord.player: ffmpeg process 115929 successfully terminated with return code of 0.
+[2025-02-17 09:20:06] [INFO    ] discord.player: ffmpeg process 115961 successfully terminated with return code of 0.
+[2025-02-17 09:20:09] [INFO    ] discord.player: ffmpeg process 115967 successfully terminated with return code of 0.
+[2025-02-17 09:20:18] [INFO    ] discord.player: ffmpeg process 115972 successfully terminated with return code of 0.
+[2025-02-17 09:20:21] [INFO    ] discord.player: ffmpeg process 115978 successfully terminated with return code of 0.
+[2025-02-17 09:20:24] [INFO    ] discord.player: ffmpeg process 115982 successfully terminated with return code of 0.
+[2025-02-17 09:20:27] [INFO    ] discord.player: ffmpeg process 115988 successfully terminated with return code of 0.
+[2025-02-17 09:20:29] [INFO    ] discord.player: ffmpeg process 115992 successfully terminated with return code of 0.
+[2025-02-17 09:20:39] [INFO    ] discord.player: ffmpeg process 115998 successfully terminated with return code of 0.
+[2025-02-17 09:20:41] [INFO    ] discord.player: ffmpeg process 116004 successfully terminated with return code of 0.
+[2025-02-17 09:21:03] [INFO    ] discord.player: ffmpeg process 116018 has not terminated. Waiting to terminate...
+[2025-02-17 09:21:03] [INFO    ] discord.player: ffmpeg process 116018 should have terminated with a return code of -9.
+[2025-02-17 09:21:07] [INFO    ] discord.player: ffmpeg process 116024 successfully terminated with return code of 0.
+[2025-02-17 09:21:11] [INFO    ] discord.player: ffmpeg process 116028 successfully terminated with return code of 0.
+[2025-02-17 09:21:35] [INFO    ] discord.player: ffmpeg process 116034 successfully terminated with return code of 0.
+[2025-02-17 09:21:56] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session afcbe4462a966bad36848ce658c56a61.
+[2025-02-17 09:23:06] [INFO    ] discord.player: ffmpeg process 116059 successfully terminated with return code of 0.
+[2025-02-17 09:24:36] [INFO    ] discord.player: ffmpeg process 116081 successfully terminated with return code of 0.
+[2025-02-17 09:26:06] [INFO    ] discord.player: ffmpeg process 116100 successfully terminated with return code of 0.
+[2025-02-17 09:27:36] [INFO    ] discord.player: ffmpeg process 116124 successfully terminated with return code of 0.
+[2025-02-17 09:29:06] [INFO    ] discord.player: ffmpeg process 116146 successfully terminated with return code of 0.
+[2025-02-17 09:30:35] [INFO    ] discord.player: ffmpeg process 116168 successfully terminated with return code of 0.
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55d080cba9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:31:48] [INFO    ] discord.player: ffmpeg process 116190 successfully terminated with return code of 0.
+[2025-02-17 09:31:57] [INFO    ] discord.player: ffmpeg process 116202 successfully terminated with return code of 0.
+[2025-02-17 09:32:01] [INFO    ] discord.player: ffmpeg process 116208 has not terminated. Waiting to terminate...
+[2025-02-17 09:32:01] [INFO    ] discord.player: ffmpeg process 116208 should have terminated with a return code of -9.
+[2025-02-17 09:32:02] [INFO    ] discord.player: ffmpeg process 116212 has not terminated. Waiting to terminate...
+[2025-02-17 09:32:02] [INFO    ] discord.player: ffmpeg process 116212 should have terminated with a return code of -9.
+[2025-02-17 09:32:07] [INFO    ] discord.player: ffmpeg process 116218 successfully terminated with return code of 0.
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x5557e59e69c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:32:15] [INFO    ] discord.player: ffmpeg process 116222 successfully terminated with return code of 0.
+[2025-02-17 09:32:20] [INFO    ] discord.player: ffmpeg process 116226 successfully terminated with return code of 0.
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x56066fe6d9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:32:24] [INFO    ] discord.player: ffmpeg process 116230 successfully terminated with return code of 0.
+[2025-02-17 09:32:29] [INFO    ] discord.player: ffmpeg process 116234 successfully terminated with return code of 0.
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x5648accdc9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:32:40] [INFO    ] discord.player: ffmpeg process 116238 successfully terminated with return code of 0.
+[2025-02-17 09:32:42] [INFO    ] discord.player: ffmpeg process 116244 has not terminated. Waiting to terminate...
+[2025-02-17 09:32:42] [INFO    ] discord.player: ffmpeg process 116244 should have terminated with a return code of -9.
+[2025-02-17 09:32:47] [INFO    ] discord.player: ffmpeg process 116248 successfully terminated with return code of 0.
+[2025-02-17 09:32:51] [INFO    ] discord.player: ffmpeg process 116252 successfully terminated with return code of 0.
+[2025-02-17 09:32:56] [INFO    ] discord.player: ffmpeg process 116256 successfully terminated with return code of 0.
+[2025-02-17 09:33:06] [INFO    ] discord.player: ffmpeg process 116262 successfully terminated with return code of 0.
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55d9361fd9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:33:10] [INFO    ] discord.player: ffmpeg process 116268 successfully terminated with return code of 0.
+[2025-02-17 09:33:36] [INFO    ] discord.player: ffmpeg process 116278 successfully terminated with return code of 0.
+[2025-02-17 09:35:06] [INFO    ] discord.player: ffmpeg process 116296 successfully terminated with return code of 0.
+[2025-02-17 09:36:20] [INFO    ] discord.player: ffmpeg process 116326 successfully terminated with return code of 0.
+[2025-02-17 09:36:25] [INFO    ] discord.player: ffmpeg process 116330 successfully terminated with return code of 0.
+[2025-02-17 09:36:28] [INFO    ] discord.player: ffmpeg process 116334 has not terminated. Waiting to terminate...
+[2025-02-17 09:36:28] [INFO    ] discord.player: ffmpeg process 116334 should have terminated with a return code of -9.
+[2025-02-17 09:36:31] [INFO    ] discord.player: ffmpeg process 116340 has not terminated. Waiting to terminate...
+[2025-02-17 09:36:31] [INFO    ] discord.player: ffmpeg process 116340 should have terminated with a return code of -9.
+[2025-02-17 09:36:31] [INFO    ] discord.player: ffmpeg process 116344 has not terminated. Waiting to terminate...
+[2025-02-17 09:36:31] [INFO    ] discord.player: ffmpeg process 116344 should have terminated with a return code of -9.
+[2025-02-17 09:36:34] [INFO    ] discord.player: ffmpeg process 116348 has not terminated. Waiting to terminate...
+[2025-02-17 09:36:34] [INFO    ] discord.player: ffmpeg process 116348 should have terminated with a return code of -9.
+[2025-02-17 09:36:38] [INFO    ] discord.player: ffmpeg process 116352 successfully terminated with return code of 0.
+[2025-02-17 09:36:42] [INFO    ] discord.player: ffmpeg process 116356 successfully terminated with return code of 0.
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55d2338489c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:36:46] [INFO    ] discord.player: ffmpeg process 116362 has not terminated. Waiting to terminate...
+[2025-02-17 09:36:46] [INFO    ] discord.player: ffmpeg process 116362 should have terminated with a return code of -9.
+[2025-02-17 09:36:50] [INFO    ] discord.player: ffmpeg process 116366 successfully terminated with return code of 0.
+[2025-02-17 09:36:55] [INFO    ] discord.player: ffmpeg process 116370 successfully terminated with return code of 0.
+[2025-02-17 09:37:03] [INFO    ] discord.player: ffmpeg process 116374 successfully terminated with return code of 0.
+[2025-02-17 09:38:06] [INFO    ] discord.player: ffmpeg process 116399 successfully terminated with return code of 0.
+[2025-02-17 09:38:47] [INFO    ] discord.player: ffmpeg process 116418 successfully terminated with return code of 0.
+[2025-02-17 09:38:50] [INFO    ] discord.player: ffmpeg process 116422 successfully terminated with return code of 0.
+[2025-02-17 09:38:53] [INFO    ] discord.player: ffmpeg process 116426 successfully terminated with return code of 0.
+[2025-02-17 09:38:59] [INFO    ] discord.player: ffmpeg process 116430 successfully terminated with return code of 0.
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55c18603f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:39:05] [INFO    ] discord.player: ffmpeg process 116436 has not terminated. Waiting to terminate...
+[2025-02-17 09:39:05] [INFO    ] discord.player: ffmpeg process 116436 should have terminated with a return code of -9.
+[2025-02-17 09:39:07] [INFO    ] discord.player: ffmpeg process 116442 successfully terminated with return code of 0.
+[2025-02-17 09:39:15] [INFO    ] discord.player: ffmpeg process 116446 successfully terminated with return code of 0.
+[2025-02-17 09:39:19] [INFO    ] discord.player: ffmpeg process 116453 successfully terminated with return code of 0.
+[2025-02-17 09:39:31] [INFO    ] discord.player: ffmpeg process 116459 successfully terminated with return code of 0.
+[2025-02-17 09:39:33] [INFO    ] discord.player: ffmpeg process 116463 has not terminated. Waiting to terminate...
+[2025-02-17 09:39:33] [INFO    ] discord.player: ffmpeg process 116463 should have terminated with a return code of -9.
+[2025-02-17 09:39:36] [INFO    ] discord.player: ffmpeg process 116467 successfully terminated with return code of 0.
+[2025-02-17 09:39:41] [INFO    ] discord.player: ffmpeg process 116471 successfully terminated with return code of 0.
+[2025-02-17 09:40:04] [INFO    ] discord.player: ffmpeg process 116481 successfully terminated with return code of 0.
+[2025-02-17 09:40:06] [INFO    ] discord.player: ffmpeg process 116485 successfully terminated with return code of 0.
+[2025-02-17 09:40:13] [INFO    ] discord.player: ffmpeg process 116489 successfully terminated with return code of 0.
+[2025-02-17 09:40:21] [INFO    ] discord.player: ffmpeg process 116495 has not terminated. Waiting to terminate...
+[2025-02-17 09:40:21] [INFO    ] discord.player: ffmpeg process 116495 should have terminated with a return code of -9.
+[2025-02-17 09:40:29] [INFO    ] discord.player: ffmpeg process 116501 successfully terminated with return code of 0.
+[2025-02-17 09:40:30] [INFO    ] discord.player: ffmpeg process 116507 has not terminated. Waiting to terminate...
+[2025-02-17 09:40:30] [INFO    ] discord.player: ffmpeg process 116507 should have terminated with a return code of -9.
+[2025-02-17 09:40:35] [INFO    ] discord.player: ffmpeg process 116511 successfully terminated with return code of 0.
+[2025-02-17 09:40:39] [INFO    ] discord.player: ffmpeg process 116515 has not terminated. Waiting to terminate...
+[2025-02-17 09:40:39] [INFO    ] discord.player: ffmpeg process 116515 should have terminated with a return code of -9.
+[2025-02-17 09:40:42] [INFO    ] discord.player: ffmpeg process 116519 has not terminated. Waiting to terminate...
+[2025-02-17 09:40:42] [INFO    ] discord.player: ffmpeg process 116519 should have terminated with a return code of -9.
+[2025-02-17 09:40:45] [INFO    ] discord.player: ffmpeg process 116523 successfully terminated with return code of 0.
+[2025-02-17 09:40:49] [INFO    ] discord.player: ffmpeg process 116531 has not terminated. Waiting to terminate...
+[2025-02-17 09:40:49] [INFO    ] discord.player: ffmpeg process 116531 should have terminated with a return code of -9.
+[2025-02-17 09:40:54] [INFO    ] discord.player: ffmpeg process 116535 successfully terminated with return code of 0.
+[2025-02-17 09:40:59] [INFO    ] discord.player: ffmpeg process 116541 successfully terminated with return code of 0.
+[2025-02-17 09:41:00] [INFO    ] discord.player: ffmpeg process 116546 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:00] [INFO    ] discord.player: ffmpeg process 116546 should have terminated with a return code of -9.
+[2025-02-17 09:41:01] [INFO    ] discord.player: ffmpeg process 116550 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:01] [INFO    ] discord.player: ffmpeg process 116550 should have terminated with a return code of -9.
+[2025-02-17 09:41:06] [INFO    ] discord.player: ffmpeg process 116554 successfully terminated with return code of 0.
+[2025-02-17 09:41:09] [INFO    ] discord.player: ffmpeg process 116560 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:09] [INFO    ] discord.player: ffmpeg process 116560 should have terminated with a return code of -9.
+[2025-02-17 09:41:13] [INFO    ] discord.player: ffmpeg process 116564 successfully terminated with return code of 0.
+[2025-02-17 09:41:18] [INFO    ] discord.player: ffmpeg process 116568 successfully terminated with return code of 0.
+[2025-02-17 09:41:19] [INFO    ] discord.player: ffmpeg process 116572 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:19] [INFO    ] discord.player: ffmpeg process 116572 should have terminated with a return code of -9.
+[2025-02-17 09:41:24] [INFO    ] discord.player: ffmpeg process 116576 successfully terminated with return code of 0.
+[2025-02-17 09:41:29] [INFO    ] discord.player: ffmpeg process 116580 successfully terminated with return code of 0.
+[2025-02-17 09:41:31] [INFO    ] discord.player: ffmpeg process 116584 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:31] [INFO    ] discord.player: ffmpeg process 116584 should have terminated with a return code of -9.
+[2025-02-17 09:41:36] [INFO    ] discord.player: ffmpeg process 116590 successfully terminated with return code of 0.
+[2025-02-17 09:41:39] [INFO    ] discord.player: ffmpeg process 116594 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:39] [INFO    ] discord.player: ffmpeg process 116594 should have terminated with a return code of -9.
+[2025-02-17 09:41:43] [INFO    ] discord.player: ffmpeg process 116600 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:43] [INFO    ] discord.player: ffmpeg process 116600 should have terminated with a return code of -9.
+[2025-02-17 09:41:48] [INFO    ] discord.player: ffmpeg process 116606 successfully terminated with return code of 0.
+[2025-02-17 09:41:52] [INFO    ] discord.player: ffmpeg process 116612 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:52] [INFO    ] discord.player: ffmpeg process 116612 should have terminated with a return code of -9.
+[2025-02-17 09:41:52] [INFO    ] discord.player: ffmpeg process 116616 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:52] [INFO    ] discord.player: ffmpeg process 116616 should have terminated with a return code of -9.
+[2025-02-17 09:41:53] [INFO    ] discord.player: ffmpeg process 116620 successfully terminated with return code of -9.
+[2025-02-17 09:41:53] [INFO    ] discord.player: ffmpeg process 116624 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:53] [INFO    ] discord.player: ffmpeg process 116624 should have terminated with a return code of -9.
+[2025-02-17 09:41:53] [INFO    ] discord.player: ffmpeg process 116628 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:53] [INFO    ] discord.player: ffmpeg process 116628 should have terminated with a return code of -9.
+[2025-02-17 09:41:54] [INFO    ] discord.player: ffmpeg process 116632 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:54] [INFO    ] discord.player: ffmpeg process 116632 should have terminated with a return code of -9.
+[2025-02-17 09:41:54] [INFO    ] discord.player: ffmpeg process 116636 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:54] [INFO    ] discord.player: ffmpeg process 116636 should have terminated with a return code of -9.
+[2025-02-17 09:41:55] [INFO    ] discord.player: ffmpeg process 116640 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:55] [INFO    ] discord.player: ffmpeg process 116640 should have terminated with a return code of -9.
+[2025-02-17 09:41:55] [INFO    ] discord.player: ffmpeg process 116644 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:55] [INFO    ] discord.player: ffmpeg process 116644 should have terminated with a return code of -9.
+[2025-02-17 09:41:55] [INFO    ] discord.player: ffmpeg process 116648 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:55] [INFO    ] discord.player: ffmpeg process 116648 should have terminated with a return code of -9.
+[2025-02-17 09:41:56] [INFO    ] discord.player: ffmpeg process 116652 successfully terminated with return code of 0.
+[2025-02-17 09:41:56] [INFO    ] discord.player: ffmpeg process 116656 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:56] [INFO    ] discord.player: ffmpeg process 116656 should have terminated with a return code of -9.
+Atyiseusseatyiseuss!
+Finished playing: crazy.ogg
+Finished playing: bobbed.ogg
+Finished playing: it was horrible.ogg
+Finished playing: it was horrible.ogg
+Finished playing: you could.ogg
+Finished playing: it was horrible.ogg
+Finished playing: it was horrible.ogg
+Finished playing: bobbed.ogg
+Finished playing: crazy.ogg
+Finished playing: you could.ogg
+Finished playing: until.ogg
+Finished playing: it was horrible.ogg
+Finished playing: bobbed.ogg
+Finished playing: rosen.ogg
+Finished playing: bobbed.ogg
+Finished playing: it was horrible.ogg
+Finished playing: crazy.ogg
+Finished playing: until.ogg
+Finished playing: boboom.ogg
+Finished playing: you could.ogg
+Finished playing: hard.ogg
+Finished playing: six.ogg
+Finished playing: hard.ogg
+Finished playing: legend.ogg
+Finished playing: you oughtta.ogg
+Finished playing: own you.ogg
+Finished playing: until.ogg
+Finished playing: you could.ogg
+Finished playing: you could.ogg
+Finished playing: razor sharp.ogg
+Finished playing: inside him.ogg
+Finished playing: sexy bitches.ogg
+Finished playing: fear.ogg
+Finished playing: uncivilized.ogg
+Finished playing: all.ogg
+Finished playing: dewey full scene.mp3
+Finished playing: oou.ogg
+Finished playing: dank hallway.ogg
+Finished playing: chimychim.ogg
+Finished playing: his mum.ogg
+Finished playing: rice krispies.ogg
+Finished playing: bulsabanapopetet.ogg
+Finished playing: the door.ogg
+Finished playing: by rubeus.ogg
+Finished playing: queen.ogg
+Finished playing: chacha.ogg
+Finished playing: open.ogg
+Finished playing: it was horrible.ogg
+Finished playing: alasdo.ogg
+Finished playing: chofasa.ogg
+Finished playing: some MUSIC.ogg
+Finished playing: abandon.ogg
+Finished playing: oo.ogg
+Finished playing: you oughtta.ogg
+Finished playing: not entirely true.ogg
+Finished playing: until.ogg
+Finished playing: the horn.ogg
+Finished playing: i took it.ogg
+Finished playing: WELL DONE.ogg
+Finished playing: still i think.ogg
+Finished playing: how dare.ogg
+Finished playing: woaoaow.ogg
+Finished playing: dr cock.ogg
+Finished playing: prime directive.ogg
+Finished playing: beer.ogg
+Finished playing: its working.ogg
+Finished playing: dewey.ogg
+Finished playing: HADOUKEN.ogg
+Finished playing: 111 cock.ogg
+Finished playing: boboom.ogg
+Finished playing: leads to sauce.ogg
+Finished playing: no.ogg
+Finished playing: its working.ogg
+Finished playing: aa.ogg
+Finished playing: kickass.ogg
+Finished playing: we voted.ogg
+Finished playing: heavy weapons.ogg
+Finished playing: far too many.ogg
+Finished playing: alasdo.ogg
+Finished playing: number 4.ogg
+Finished playing: here here.ogg
+Finished playing: patbays.ogg
+Finished playing: ....ogg
+Finished playing: it was horrible.ogg
+Finished playing: BUT.ogg
+Finished playing: ur fired.ogg
+Finished playing: crochet.ogg
+Finished playing: noh.ogg
+Finished playing: o o o.ogg
+Finished playing: losing ducks.ogg
+Finished playing: inside him.ogg
+Finished playing: pizza time.ogg
+Finished playing: BUT.ogg
+Finished playing: i can only say.ogg
+Finished playing: titanium man.ogg
+Finished playing: bring forth the hobbit.ogg
+Finished playing: bobbed.ogg
+Finished playing: pizza time.ogg
+Finished playing: leaving.ogg
+Finished playing: tale.ogg
+Finished playing: yourself.ogg
+Finished playing: whaddidisay.ogg
+Finished playing: dont touch.ogg
+Finished playing: 111 cock.ogg
+Finished playing: the secret.ogg
+Finished playing: hobbits.ogg
+Finished playing: breadline.ogg
+Finished playing: gogo.ogg
+Finished playing: riff raff.ogg
+Finished playing: the secret.ogg
+Finished playing: he will raise.ogg
+Finished playing: who.ogg
+Finished playing: abandon.ogg
+Finished playing: hard.ogg
+Finished playing: you oughtta.ogg
+Finished playing: it was horrible.ogg
+Finished playing: BUT.ogg
+Finished playing: inside him.ogg
+Finished playing: powers back.ogg
+Finished playing: believe it.ogg
+Finished playing: fat.ogg
+Finished playing: women and children.ogg
+Finished playing: oo.ogg
+Finished playing: dont touch.ogg
+Finished playing: expert.ogg
+Finished playing: yourself.ogg
+Finished playing: its working.ogg
+Finished playing: you need to.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: i dont mind.ogg
+Finished playing: richard patrick.ogg
+Finished playing: kickass.ogg
+Finished playing: DRAGON.ogg
+Finished playing: mwillulmawlu.ogg
+Finished playing: yourself.ogg
+Finished playing: oh.ogg
+Finished playing: stop it.ogg
+Finished playing: own you.ogg
+Finished playing: bulsabanapopetet.ogg
+Finished playing: hedwig's theme.ogg
+Finished playing: dewey full scene.mp3
+Finished playing: mug of ale.ogg
+Finished playing: i can only say.ogg
+Finished playing: leads to sauce.ogg
+Finished playing: atyiseusseatyiseuss.ogg
+Finished playing: oawh.ogg
+Finished playing: noh.ogg
+Finished playing: abandon.ogg
+Finished playing: stop it.ogg
+Finished playing: mug of ale.ogg
+Finished playing: the secret.ogg
+Finished playing: how dare.ogg
+Finished playing: mwillulmawlu.ogg
+Finished playing: sebulba.ogg
+Finished playing: not entirely true.ogg
+Finished playing: no.ogg
+Finished playing: no.ogg
+Finished playing: no.ogg
+Finished playing: no.ogg
+Finished playing: no.ogg
+Finished playing: no.ogg
+Finished playing: if there is a key.ogg
+Finished playing: no.ogg
+Finished playing: arabian.ogg
+Finished playing: arabian.ogg
+Finished playing: arabian.ogg
+Finished playing: kickass.ogg
+Finished playing: woaoaow.ogg
+Finished playing: half of you.ogg
+Finished playing: ROHAN.ogg
+Finished playing: gogo.ogg
+Finished playing: beacons.ogg
+Finished playing: kickass.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian.ogg
+Finished playing: hobbits.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: uncivilized.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian loud.ogg
+Finished playing: i can only say.ogg
+Finished playing: silence.ogg
+Finished playing: expert.ogg
+Finished playing: expert loud.ogg
+Finished playing: expert.ogg
+Finished playing: expert loud.ogg
+Finished playing: he will raise.ogg
+Finished playing: expert.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian loud.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: expert loud.ogg
+Finished playing: unlimited.ogg
+Finished playing: ha.ogg
+Finished playing: ha.ogg
+Finished playing: ha loud.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian loud.ogg
+Finished playing: ha loud.ogg
+Finished playing: ha loud.ogg
+Finished playing: ha.ogg
+Finished playing: ha.ogg
+Finished playing: BRACKIUM2.ogg
+Finished playing: expert.ogg
+Finished playing: arabian.ogg
+Finished playing: stop.ogg
+Finished playing: ha loud.ogg
+Finished playing: we shall pee.ogg
+Finished playing: pizza time.ogg
+Finished playing: bigger fish.ogg
+Finished playing: by rubeus.ogg
+Finished playing: legend.ogg
+Finished playing: rule #4 full.ogg
+Finished playing: aa.ogg
+Finished playing: queen.ogg
+Finished playing: too right you will.ogg
+Finished playing: six.ogg
+Finished playing: women are critical.ogg
+Finished playing: you oughtta.ogg
+Finished playing: help me.ogg
+Finished playing: bulsabanapopetet.ogg
+Finished playing: rule #4 full.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: the horn.ogg
+Finished playing: oo.ogg
+Finished playing: here here.ogg
+Finished playing: mwillulmawlu.ogg
+Finished playing: clattering magpies.ogg
+Finished playing: myass.ogg
+Finished playing: ~~~.ogg
+Finished playing: rice krispies.ogg
+Finished playing: leads to sauce.ogg
+Finished playing: MAKE FOR THE GAP.ogg
+Finished playing: bulsabanapopetet.ogg
+Finished playing: for safekeeping.ogg
+Finished playing: DOTA.ogg
+Finished playing: not entirely true.ogg
+Finished playing: are LAME.ogg
+Finished playing: dont.ogg
+Finished playing: sexy bitches.ogg
+Finished playing: i dont mind.ogg
+Finished playing: cock.ogg
+Finished playing: sound.ogg
+Finished playing: we voted.ogg
+Finished playing: here here.ogg
+[2025-02-17 09:41:57] [INFO    ] discord.player: ffmpeg process 116660 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:57] [INFO    ] discord.player: ffmpeg process 116660 should have terminated with a return code of -9.
+[2025-02-17 09:41:57] [INFO    ] discord.player: ffmpeg process 116664 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:57] [INFO    ] discord.player: ffmpeg process 116664 should have terminated with a return code of -9.
+[2025-02-17 09:41:57] [INFO    ] discord.player: ffmpeg process 116668 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:57] [INFO    ] discord.player: ffmpeg process 116668 should have terminated with a return code of -9.
+[2025-02-17 09:41:58] [INFO    ] discord.player: ffmpeg process 116672 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:58] [INFO    ] discord.player: ffmpeg process 116672 should have terminated with a return code of -9.
+[2025-02-17 09:41:58] [INFO    ] discord.player: ffmpeg process 116676 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:58] [INFO    ] discord.player: ffmpeg process 116676 should have terminated with a return code of -9.
+[2025-02-17 09:41:59] [INFO    ] discord.player: ffmpeg process 116680 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:59] [INFO    ] discord.player: ffmpeg process 116680 should have terminated with a return code of -9.
+[2025-02-17 09:41:59] [INFO    ] discord.player: ffmpeg process 116684 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:59] [INFO    ] discord.player: ffmpeg process 116684 should have terminated with a return code of -9.
+[2025-02-17 09:41:59] [INFO    ] discord.player: ffmpeg process 116688 has not terminated. Waiting to terminate...
+[2025-02-17 09:41:59] [INFO    ] discord.player: ffmpeg process 116688 should have terminated with a return code of -9.
+[2025-02-17 09:42:00] [INFO    ] discord.player: ffmpeg process 116692 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:00] [INFO    ] discord.player: ffmpeg process 116692 should have terminated with a return code of -9.
+[2025-02-17 09:42:00] [INFO    ] discord.player: ffmpeg process 116696 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:00] [INFO    ] discord.player: ffmpeg process 116696 should have terminated with a return code of -9.
+[2025-02-17 09:42:01] [INFO    ] discord.player: ffmpeg process 116700 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:01] [INFO    ] discord.player: ffmpeg process 116700 should have terminated with a return code of -9.
+[2025-02-17 09:42:01] [INFO    ] discord.player: ffmpeg process 116704 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:01] [INFO    ] discord.player: ffmpeg process 116704 should have terminated with a return code of -9.
+[2025-02-17 09:42:01] [INFO    ] discord.player: ffmpeg process 116708 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:01] [INFO    ] discord.player: ffmpeg process 116708 should have terminated with a return code of -9.
+[2025-02-17 09:42:02] [INFO    ] discord.player: ffmpeg process 116712 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:02] [INFO    ] discord.player: ffmpeg process 116712 should have terminated with a return code of -9.
+[2025-02-17 09:42:02] [INFO    ] discord.player: ffmpeg process 116716 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:02] [INFO    ] discord.player: ffmpeg process 116716 should have terminated with a return code of -9.
+[2025-02-17 09:42:03] [INFO    ] discord.player: ffmpeg process 116720 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:03] [INFO    ] discord.player: ffmpeg process 116720 should have terminated with a return code of -9.
+[2025-02-17 09:42:03] [INFO    ] discord.player: ffmpeg process 116724 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:03] [INFO    ] discord.player: ffmpeg process 116724 should have terminated with a return code of -9.
+[2025-02-17 09:42:03] [INFO    ] discord.player: ffmpeg process 116728 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:03] [INFO    ] discord.player: ffmpeg process 116728 should have terminated with a return code of -9.
+[2025-02-17 09:42:09] [INFO    ] discord.player: ffmpeg process 116732 successfully terminated with return code of 0.
+[2025-02-17 09:42:15] [INFO    ] discord.player: ffmpeg process 116738 successfully terminated with return code of 0.
+[2025-02-17 09:42:18] [INFO    ] discord.player: ffmpeg process 116742 successfully terminated with return code of 0.
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55ec0e3199c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:42:23] [INFO    ] discord.player: ffmpeg process 116746 successfully terminated with return code of 0.
+[2025-02-17 09:42:27] [INFO    ] discord.player: ffmpeg process 116750 successfully terminated with return code of 0.
+[2025-02-17 09:42:30] [INFO    ] discord.player: ffmpeg process 116754 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:30] [INFO    ] discord.player: ffmpeg process 116754 should have terminated with a return code of -9.
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55cc3540b9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:42:34] [INFO    ] discord.player: ffmpeg process 116760 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:34] [INFO    ] discord.player: ffmpeg process 116760 should have terminated with a return code of -9.
+[2025-02-17 09:42:37] [INFO    ] discord.player: ffmpeg process 116764 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:37] [INFO    ] discord.player: ffmpeg process 116764 should have terminated with a return code of -9.
+[2025-02-17 09:42:39] [INFO    ] discord.player: ffmpeg process 116768 successfully terminated with return code of 0.
+[2025-02-17 09:42:44] [INFO    ] discord.player: ffmpeg process 116774 successfully terminated with return code of 0.
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x56260605f9c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:42:49] [INFO    ] discord.player: ffmpeg process 116778 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:49] [INFO    ] discord.player: ffmpeg process 116778 should have terminated with a return code of -9.
+[2025-02-17 09:42:52] [INFO    ] discord.player: ffmpeg process 116784 has not terminated. Waiting to terminate...
+[2025-02-17 09:42:52] [INFO    ] discord.player: ffmpeg process 116784 should have terminated with a return code of -9.
+[2025-02-17 09:42:56] [INFO    ] discord.player: ffmpeg process 116790 successfully terminated with return code of 0.
+[2025-02-17 09:43:05] [INFO    ] discord.player: ffmpeg process 116794 successfully terminated with return code of 0.
+[2025-02-17 09:43:09] [INFO    ] discord.player: ffmpeg process 116798 has not terminated. Waiting to terminate...
+[2025-02-17 09:43:09] [INFO    ] discord.player: ffmpeg process 116798 should have terminated with a return code of -9.
+[2025-02-17 09:43:12] [INFO    ] discord.player: ffmpeg process 116804 successfully terminated with return code of 0.
+[2025-02-17 09:43:21] [INFO    ] discord.player: ffmpeg process 116808 successfully terminated with return code of 0.
+[2025-02-17 09:43:23] [INFO    ] discord.player: ffmpeg process 116812 successfully terminated with return code of 0.
+[2025-02-17 09:43:29] [INFO    ] discord.player: ffmpeg process 116818 has not terminated. Waiting to terminate...
+[2025-02-17 09:43:29] [INFO    ] discord.player: ffmpeg process 116818 should have terminated with a return code of -9.
+[2025-02-17 09:43:33] [INFO    ] discord.player: ffmpeg process 116822 has not terminated. Waiting to terminate...
+[2025-02-17 09:43:33] [INFO    ] discord.player: ffmpeg process 116822 should have terminated with a return code of -9.
+[2025-02-17 09:43:35] [INFO    ] discord.player: ffmpeg process 116826 has not terminated. Waiting to terminate...
+[2025-02-17 09:43:35] [INFO    ] discord.player: ffmpeg process 116826 should have terminated with a return code of -9.
+[2025-02-17 09:43:39] [INFO    ] discord.player: ffmpeg process 116830 successfully terminated with return code of 0.
+[2025-02-17 09:43:49] [INFO    ] discord.player: ffmpeg process 116834 successfully terminated with return code of 0.
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x5569427b09c0] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-02-17 09:45:23] [INFO    ] discord.player: ffmpeg process 116852 successfully terminated with return code of 0.
+[2025-02-17 09:45:34] [INFO    ] discord.player: ffmpeg process 116858 successfully terminated with return code of 0.
+[2025-02-17 09:45:42] [INFO    ] discord.player: ffmpeg process 116862 successfully terminated with return code of 0.
+[2025-02-17 09:45:49] [INFO    ] discord.player: ffmpeg process 116866 successfully terminated with return code of 0.
+[2025-02-17 09:46:01] [INFO    ] discord.player: ffmpeg process 116875 successfully terminated with return code of 0.
+[2025-02-17 09:46:12] [INFO    ] discord.player: ffmpeg process 116879 successfully terminated with return code of 0.
+[2025-02-17 09:46:29] [INFO    ] discord.player: ffmpeg process 116885 successfully terminated with return code of 0.
+[2025-02-17 09:46:44] [INFO    ] discord.player: ffmpeg process 116893 successfully terminated with return code of 0.
+[2025-02-17 09:46:56] [INFO    ] discord.player: ffmpeg process 116897 successfully terminated with return code of 0.
+[2025-02-17 09:47:12] [INFO    ] discord.player: ffmpeg process 116901 successfully terminated with return code of 0.
+[2025-02-17 09:47:25] [INFO    ] discord.player: ffmpeg process 116909 successfully terminated with return code of 0.
+[2025-02-17 09:47:35] [INFO    ] discord.player: ffmpeg process 116918 successfully terminated with return code of 0.
+[2025-02-17 09:47:52] [INFO    ] discord.player: ffmpeg process 116924 successfully terminated with return code of 0.
+[2025-02-17 09:48:01] [INFO    ] discord.player: ffmpeg process 116930 has not terminated. Waiting to terminate...
+[2025-02-17 09:48:01] [INFO    ] discord.player: ffmpeg process 116930 should have terminated with a return code of -9.
+[2025-02-17 09:48:06] [INFO    ] discord.player: ffmpeg process 116934 successfully terminated with return code of 0.
+[2025-02-17 09:48:33] [INFO    ] discord.player: ffmpeg process 116940 successfully terminated with return code of 0.
+[2025-02-17 09:48:48] [INFO    ] discord.player: ffmpeg process 116948 successfully terminated with return code of 0.
+[2025-02-17 09:50:18] [INFO    ] discord.player: ffmpeg process 116960 successfully terminated with return code of 0.
+[2025-02-17 09:51:48] [INFO    ] discord.player: ffmpeg process 116974 successfully terminated with return code of 0.
+[2025-02-17 09:53:15] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+[2025-02-17 09:53:15] [INFO    ] discord.player: ffmpeg process 116982 has not terminated. Waiting to terminate...
+[2025-02-17 09:53:15] [INFO    ] discord.player: ffmpeg process 116982 should have terminated with a return code of -9.
+Finished playing: ha.ogg
+Finished playing: keep out of here.ogg
+Finished playing: not entirely true.ogg
+Finished playing: i can only say.ogg
+Finished playing: richard patrick.ogg
+Finished playing: terrible steak.ogg
+Finished playing: for safekeeping.ogg
+Finished playing: woaoaow.ogg
+Finished playing: MAKE FOR THE GAP.ogg
+Finished playing: who gave you by this.ogg
+Finished playing: o o o.ogg
+Finished playing: sound.ogg
+Finished playing: HYAAH.ogg
+Finished playing: half of you.ogg
+Finished playing: expert.ogg
+Finished playing: bruv.ogg
+Finished playing: bruv.ogg
+Finished playing: ha loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian loud.ogg
+Finished playing: expert loud.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: ha loud.ogg
+Finished playing: ha loud.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: expert loud.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: expert.ogg
+Finished playing: arabian.ogg
+Finished playing: ha.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian.ogg
+Finished playing: expert loud.ogg
+Finished playing: expert.ogg
+Finished playing: expert.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian.ogg
+Finished playing: ha.ogg
+Finished playing: expert.ogg
+Finished playing: evening brother.ogg
+Finished playing: wizawizawiz.ogg
+Finished playing: wizawizawiz.ogg
+Finished playing: wizawizawiz.ogg
+Finished playing: wizawizawiz.ogg
+Finished playing: you could.ogg
+Finished playing: you could.ogg
+Finished playing: you could.ogg
+Finished playing: until.ogg
+Finished playing: DOTA.ogg
+Finished playing: boboom.ogg
+Finished playing: chacha.ogg
+Finished playing: hee ooo ouhh.ogg
+session_stats.txt has been deleted successfully.
+Finished playing: assmaster.ogg
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 50, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 521, in update
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 609, in restart
+    except FileNotFoundError:
+    ^^^^^^^^^^
+SystemExit
+[2025-02-17 09:53:16] [INFO    ] discord.client: logging in using static token
+[2025-02-17 09:53:17] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: b6c0908069fe90e53a3ec48054648e6d).
+[2025-02-17 09:53:21] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-02-17 09:53:21] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-02-17 09:53:21] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central3192.discord.media
+[2025-02-17 09:53:21] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-02-17 09:53:34] [INFO    ] discord.player: ffmpeg process 117007 successfully terminated with return code of 0.
+[2025-02-17 09:53:40] [INFO    ] discord.player: ffmpeg process 117014 successfully terminated with return code of 0.
+[2025-02-17 09:53:41] [INFO    ] discord.player: ffmpeg process 117018 has not terminated. Waiting to terminate...
+[2025-02-17 09:53:41] [INFO    ] discord.player: ffmpeg process 117018 should have terminated with a return code of -9.
+[2025-02-17 09:53:43] [INFO    ] discord.player: ffmpeg process 117022 has not terminated. Waiting to terminate...
+[2025-02-17 09:53:43] [INFO    ] discord.player: ffmpeg process 117022 should have terminated with a return code of -9.
+[2025-02-17 09:53:45] [INFO    ] discord.player: ffmpeg process 117026 has not terminated. Waiting to terminate...
+[2025-02-17 09:53:45] [INFO    ] discord.player: ffmpeg process 117026 should have terminated with a return code of -9.
+[2025-02-17 09:53:47] [INFO    ] discord.player: ffmpeg process 117030 has not terminated. Waiting to terminate...
+[2025-02-17 09:53:47] [INFO    ] discord.player: ffmpeg process 117030 should have terminated with a return code of -9.
+[2025-02-17 09:53:48] [INFO    ] discord.player: ffmpeg process 117036 has not terminated. Waiting to terminate...
+[2025-02-17 09:53:48] [INFO    ] discord.player: ffmpeg process 117036 should have terminated with a return code of -9.
+[2025-02-17 09:53:51] [INFO    ] discord.player: ffmpeg process 117040 has not terminated. Waiting to terminate...
+[2025-02-17 09:53:51] [INFO    ] discord.player: ffmpeg process 117040 should have terminated with a return code of -9.
+[2025-02-17 09:53:55] [INFO    ] discord.player: ffmpeg process 117044 successfully terminated with return code of 0.
+[2025-02-17 09:54:00] [INFO    ] discord.player: ffmpeg process 117048 has not terminated. Waiting to terminate...
+[2025-02-17 09:54:00] [INFO    ] discord.player: ffmpeg process 117048 should have terminated with a return code of -9.
+[2025-02-17 09:54:05] [INFO    ] discord.player: ffmpeg process 117052 successfully terminated with return code of 0.
+[2025-02-17 09:54:10] [INFO    ] discord.player: ffmpeg process 117056 has not terminated. Waiting to terminate...
+[2025-02-17 09:54:10] [INFO    ] discord.player: ffmpeg process 117056 should have terminated with a return code of -9.
+[2025-02-17 09:54:15] [INFO    ] discord.player: ffmpeg process 117060 successfully terminated with return code of 0.
+[2025-02-17 09:54:19] [INFO    ] discord.player: ffmpeg process 117066 has not terminated. Waiting to terminate...
+[2025-02-17 09:54:19] [INFO    ] discord.player: ffmpeg process 117066 should have terminated with a return code of -9.
+[2025-02-17 09:54:24] [INFO    ] discord.player: ffmpeg process 117070 successfully terminated with return code of 0.
+[2025-02-17 09:54:27] [INFO    ] discord.player: ffmpeg process 117074 has not terminated. Waiting to terminate...
+[2025-02-17 09:54:27] [INFO    ] discord.player: ffmpeg process 117074 should have terminated with a return code of -9.
+[2025-02-17 09:54:31] [INFO    ] discord.player: ffmpeg process 117078 successfully terminated with return code of 0.
+[2025-02-17 09:54:36] [INFO    ] discord.player: ffmpeg process 117082 successfully terminated with return code of 0.
+[2025-02-17 09:54:41] [INFO    ] discord.player: ffmpeg process 117086 successfully terminated with return code of 0.
+[2025-02-17 09:54:49] [INFO    ] discord.player: ffmpeg process 117090 successfully terminated with return code of 0.
+[2025-02-17 09:54:54] [INFO    ] discord.player: ffmpeg process 117094 has not terminated. Waiting to terminate...
+[2025-02-17 09:54:54] [INFO    ] discord.player: ffmpeg process 117094 should have terminated with a return code of -9.
+[2025-02-17 09:54:59] [INFO    ] discord.player: ffmpeg process 117100 successfully terminated with return code of 0.
+[2025-02-17 09:55:05] [INFO    ] discord.player: ffmpeg process 117104 successfully terminated with return code of 0.
+[2025-02-17 09:55:10] [INFO    ] discord.player: ffmpeg process 117108 has not terminated. Waiting to terminate...
+[2025-02-17 09:55:10] [INFO    ] discord.player: ffmpeg process 117108 should have terminated with a return code of -9.
+[2025-02-17 09:55:15] [INFO    ] discord.player: ffmpeg process 117114 successfully terminated with return code of 0.
+[2025-02-17 09:55:19] [INFO    ] discord.player: ffmpeg process 117118 has not terminated. Waiting to terminate...
+[2025-02-17 09:55:19] [INFO    ] discord.player: ffmpeg process 117118 should have terminated with a return code of -9.
+[2025-02-17 09:55:24] [INFO    ] discord.player: ffmpeg process 117122 successfully terminated with return code of 0.
+[2025-02-17 09:55:30] [INFO    ] discord.player: ffmpeg process 117126 successfully terminated with return code of 0.
+[2025-02-17 09:55:33] [INFO    ] discord.player: ffmpeg process 117130 has not terminated. Waiting to terminate...
+[2025-02-17 09:55:33] [INFO    ] discord.player: ffmpeg process 117130 should have terminated with a return code of -9.
+[2025-02-17 09:55:38] [INFO    ] discord.player: ffmpeg process 117136 successfully terminated with return code of 0.
+[2025-02-17 09:55:43] [INFO    ] discord.player: ffmpeg process 117140 successfully terminated with return code of 0.
+[2025-02-17 09:55:48] [INFO    ] discord.player: ffmpeg process 117144 successfully terminated with return code of -9.
+[2025-02-17 09:55:53] [INFO    ] discord.player: ffmpeg process 117148 successfully terminated with return code of 0.
+[2025-02-17 09:56:01] [INFO    ] discord.player: ffmpeg process 117152 successfully terminated with return code of 0.
+[2025-02-17 09:56:07] [INFO    ] discord.player: ffmpeg process 117156 successfully terminated with return code of 0.
+[2025-02-17 09:56:11] [INFO    ] discord.player: ffmpeg process 117163 successfully terminated with return code of 0.
+[2025-02-17 09:56:14] [INFO    ] discord.player: ffmpeg process 117167 successfully terminated with return code of 0.
+[2025-02-17 09:56:20] [INFO    ] discord.player: ffmpeg process 117171 successfully terminated with return code of 0.
+[2025-02-17 09:56:25] [INFO    ] discord.player: ffmpeg process 117175 successfully terminated with return code of 0.
+[2025-02-17 09:56:39] [INFO    ] discord.player: ffmpeg process 117179 successfully terminated with return code of 0.
+[2025-02-17 09:56:45] [INFO    ] discord.player: ffmpeg process 117183 successfully terminated with return code of 0.
+[2025-02-17 09:56:50] [INFO    ] discord.player: ffmpeg process 117189 successfully terminated with return code of 0.
+[2025-02-17 09:56:55] [INFO    ] discord.player: ffmpeg process 117193 successfully terminated with return code of 0.
+[2025-02-17 09:57:00] [INFO    ] discord.player: ffmpeg process 117197 successfully terminated with return code of 0.
+[2025-02-17 09:57:06] [INFO    ] discord.player: ffmpeg process 117209 successfully terminated with return code of 0.
+[2025-02-17 09:57:21] [INFO    ] discord.player: ffmpeg process 117213 successfully terminated with return code of 0.
+[2025-02-17 09:57:28] [INFO    ] discord.player: ffmpeg process 117217 successfully terminated with return code of 0.
+[2025-02-17 09:57:33] [INFO    ] discord.player: ffmpeg process 117223 has not terminated. Waiting to terminate...
+[2025-02-17 09:57:33] [INFO    ] discord.player: ffmpeg process 117223 should have terminated with a return code of -9.
+[2025-02-17 09:57:37] [INFO    ] discord.player: ffmpeg process 117227 successfully terminated with return code of 0.
+[2025-02-17 09:57:43] [INFO    ] discord.player: ffmpeg process 117231 successfully terminated with return code of 0.
+[2025-02-17 09:57:46] [INFO    ] discord.player: ffmpeg process 117235 successfully terminated with return code of 0.
+[2025-02-17 09:57:52] [INFO    ] discord.player: ffmpeg process 117239 successfully terminated with return code of 0.
+[2025-02-17 09:58:00] [INFO    ] discord.player: ffmpeg process 117243 successfully terminated with return code of 0.
+[2025-02-17 09:58:06] [INFO    ] discord.player: ffmpeg process 117254 successfully terminated with return code of 0.
+[2025-02-17 09:58:23] [INFO    ] discord.player: ffmpeg process 117258 successfully terminated with return code of 0.
+[2025-02-17 09:58:26] [INFO    ] discord.player: ffmpeg process 117262 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:26] [INFO    ] discord.player: ffmpeg process 117262 should have terminated with a return code of -9.
+[2025-02-17 09:58:27] [INFO    ] discord.player: ffmpeg process 117266 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:27] [INFO    ] discord.player: ffmpeg process 117266 should have terminated with a return code of -9.
+[2025-02-17 09:58:29] [INFO    ] discord.player: ffmpeg process 117270 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:29] [INFO    ] discord.player: ffmpeg process 117270 should have terminated with a return code of -9.
+[2025-02-17 09:58:32] [INFO    ] discord.player: ffmpeg process 117274 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:32] [INFO    ] discord.player: ffmpeg process 117274 should have terminated with a return code of -9.
+[2025-02-17 09:58:34] [INFO    ] discord.player: ffmpeg process 117278 successfully terminated with return code of 0.
+[2025-02-17 09:58:36] [INFO    ] discord.player: ffmpeg process 117282 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:36] [INFO    ] discord.player: ffmpeg process 117282 should have terminated with a return code of -9.
+[2025-02-17 09:58:39] [INFO    ] discord.player: ffmpeg process 117286 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:39] [INFO    ] discord.player: ffmpeg process 117286 should have terminated with a return code of -9.
+[2025-02-17 09:58:42] [INFO    ] discord.player: ffmpeg process 117292 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:42] [INFO    ] discord.player: ffmpeg process 117292 should have terminated with a return code of -9.
+[2025-02-17 09:58:47] [INFO    ] discord.player: ffmpeg process 117296 successfully terminated with return code of 0.
+[2025-02-17 09:58:52] [INFO    ] discord.player: ffmpeg process 117300 has not terminated. Waiting to terminate...
+[2025-02-17 09:58:52] [INFO    ] discord.player: ffmpeg process 117300 should have terminated with a return code of -9.
+[2025-02-17 09:58:56] [INFO    ] discord.player: ffmpeg process 117304 successfully terminated with return code of 0.
+[2025-02-17 09:59:01] [INFO    ] discord.player: ffmpeg process 117308 successfully terminated with return code of 0.
+[2025-02-17 09:59:02] [INFO    ] discord.player: ffmpeg process 117312 has not terminated. Waiting to terminate...
+[2025-02-17 09:59:02] [INFO    ] discord.player: ffmpeg process 117312 should have terminated with a return code of -9.
+[2025-02-17 09:59:08] [INFO    ] discord.player: ffmpeg process 117316 successfully terminated with return code of 0.
+[2025-02-17 09:59:28] [INFO    ] discord.player: ffmpeg process 117322 successfully terminated with return code of 0.
+[2025-02-17 09:59:31] [INFO    ] discord.player: ffmpeg process 117326 successfully terminated with return code of 0.
+[2025-02-17 09:59:41] [INFO    ] discord.player: ffmpeg process 117330 successfully terminated with return code of 0.
+[2025-02-17 09:59:45] [INFO    ] discord.player: ffmpeg process 117334 successfully terminated with return code of 0.
+[2025-02-17 09:59:47] [INFO    ] discord.player: ffmpeg process 117338 has not terminated. Waiting to terminate...
+[2025-02-17 09:59:47] [INFO    ] discord.player: ffmpeg process 117338 should have terminated with a return code of -9.
+[2025-02-17 09:59:51] [INFO    ] discord.player: ffmpeg process 117342 successfully terminated with return code of 0.
+[2025-02-17 10:00:00] [INFO    ] discord.player: ffmpeg process 117348 successfully terminated with return code of 0.
+[2025-02-17 10:00:06] [INFO    ] discord.player: ffmpeg process 117352 has not terminated. Waiting to terminate...
+[2025-02-17 10:00:06] [INFO    ] discord.player: ffmpeg process 117352 should have terminated with a return code of -9.
+[2025-02-17 10:00:10] [INFO    ] discord.player: ffmpeg process 117356 successfully terminated with return code of 0.
+[2025-02-17 10:00:15] [INFO    ] discord.player: ffmpeg process 117360 successfully terminated with return code of 0.
+[2025-02-17 10:00:16] [INFO    ] discord.player: ffmpeg process 117364 has not terminated. Waiting to terminate...
+[2025-02-17 10:00:16] [INFO    ] discord.player: ffmpeg process 117364 should have terminated with a return code of -9.
+[2025-02-17 10:00:20] [INFO    ] discord.player: ffmpeg process 117368 successfully terminated with return code of 0.
+[2025-02-17 10:00:25] [INFO    ] discord.player: ffmpeg process 117372 successfully terminated with return code of 0.
+[2025-02-17 10:00:37] [INFO    ] discord.player: ffmpeg process 117378 successfully terminated with return code of 0.
+[2025-02-17 10:01:08] [INFO    ] discord.player: ffmpeg process 117384 successfully terminated with return code of 0.
+[2025-02-17 10:01:20] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+Atyiseusseatyiseuss!
+Finished playing: arabian.ogg
+Finished playing: noh.ogg
+Finished playing: aah.ogg
+Finished playing: mug of ale.ogg
+Finished playing: dont.ogg
+Finished playing: expert.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: you oughtta.ogg
+Finished playing: avada.ogg
+Finished playing: coal.ogg
+Finished playing: chump husband.ogg
+Finished playing: uncivilized.ogg
+Finished playing: 111 cock.ogg
+Finished playing: quite right.ogg
+Finished playing: BRACKIUM2.ogg
+Finished playing: we'll fit.ogg
+Finished playing: who.ogg
+Finished playing: ~~~.ogg
+Finished playing: are LAME.ogg
+Finished playing: yourself.ogg
+Finished playing: the door.ogg
+Finished playing: yourself.ogg
+Finished playing: dew it.ogg
+Finished playing: silence.ogg
+Finished playing: underage.ogg
+Finished playing: myass.ogg
+Finished playing: still i think.ogg
+Finished playing: women are critical.ogg
+Finished playing: very poor taste.ogg
+Finished playing: genius.ogg
+Finished playing: uncivilized.ogg
+Finished playing: far too many.ogg
+Finished playing: sexy bitches.ogg
+Finished playing: last chance.ogg
+Finished playing: you could.ogg
+Finished playing: oou.ogg
+Finished playing: cred.ogg
+Finished playing: DRAGON.ogg
+Finished playing: BRACKIUM2.ogg
+Finished playing: underage.ogg
+Finished playing: rule #4 full.ogg
+Finished playing: wizawizawiz.ogg
+Finished playing: sound.ogg
+Finished playing: its working.ogg
+Finished playing: razor sharp.ogg
+Finished playing: prime directive.ogg
+Finished playing: very poor taste.ogg
+Finished playing: own you.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: did you hear.ogg
+Finished playing: leaving.ogg
+Finished playing: too right you will.ogg
+Finished playing: you oughtta.ogg
+Finished playing: YES.ogg
+Finished playing: bring forth the hobbit.ogg
+Finished playing: dont touch.ogg
+Finished playing: mwillulmawlu.ogg
+Finished playing: losing ducks.ogg
+Finished playing: dr cock.ogg
+Finished playing: titanium man.ogg
+Finished playing: legend.ogg
+Finished playing: hard.ogg
+Finished playing: hedwig's theme.ogg
+Finished playing: yeah!.ogg
+Finished playing: pippen to the ground.ogg
+Finished playing: richard patrick.ogg
+Finished playing: expert loud.ogg
+Finished playing: queen.ogg
+Finished playing: sebulba.ogg
+Finished playing: breadline.ogg
+Finished playing: queen.ogg
+Finished playing: too right you will.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: ha loud.ogg
+Finished playing: expert loud.ogg
+Finished playing: evening brother.ogg
+Finished playing: hahahn.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: ha loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: ha loud.ogg
+Finished playing: expert loud.ogg
+Finished playing: ha loud.ogg
+session_stats.txt has been deleted successfully.
+session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 50, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 536, in update
+    await tchannel.send("Update complete.")
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 624, in restart
+    subprocess.Popen(command, shell=True)
+    ^^^^^^^^^^
+SystemExit
+[2025-02-17 10:03:19] [INFO    ] discord.client: logging in using static token
+[2025-02-17 10:03:20] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 87b0b159ba76fd76cd8381eec9f762d2).
+[2025-02-17 10:03:27] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-02-17 10:03:27] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-02-17 10:03:27] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central8409.discord.media
+[2025-02-17 10:03:27] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-02-17 10:03:30] [INFO    ] discord.player: ffmpeg process 117420 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:30] [INFO    ] discord.player: ffmpeg process 117420 should have terminated with a return code of -9.
+[2025-02-17 10:03:30] [INFO    ] discord.player: ffmpeg process 117425 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:30] [INFO    ] discord.player: ffmpeg process 117425 should have terminated with a return code of -9.
+[2025-02-17 10:03:31] [INFO    ] discord.player: ffmpeg process 117429 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:31] [INFO    ] discord.player: ffmpeg process 117429 should have terminated with a return code of -9.
+[2025-02-17 10:03:31] [INFO    ] discord.player: ffmpeg process 117433 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:31] [INFO    ] discord.player: ffmpeg process 117433 should have terminated with a return code of -9.
+[2025-02-17 10:03:31] [INFO    ] discord.player: ffmpeg process 117437 successfully terminated with return code of -9.
+[2025-02-17 10:03:32] [INFO    ] discord.player: ffmpeg process 117441 successfully terminated with return code of -9.
+[2025-02-17 10:03:32] [INFO    ] discord.player: ffmpeg process 117445 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:32] [INFO    ] discord.player: ffmpeg process 117445 should have terminated with a return code of -9.
+[2025-02-17 10:03:32] [INFO    ] discord.player: ffmpeg process 117449 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:32] [INFO    ] discord.player: ffmpeg process 117449 should have terminated with a return code of -9.
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117453 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117453 should have terminated with a return code of -9.
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117457 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117457 should have terminated with a return code of -9.
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117461 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117461 should have terminated with a return code of -9.
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117465 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:33] [INFO    ] discord.player: ffmpeg process 117465 should have terminated with a return code of -9.
+[2025-02-17 10:03:34] [INFO    ] discord.player: ffmpeg process 117469 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:34] [INFO    ] discord.player: ffmpeg process 117469 should have terminated with a return code of -9.
+[2025-02-17 10:03:34] [INFO    ] discord.player: ffmpeg process 117473 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:34] [INFO    ] discord.player: ffmpeg process 117473 should have terminated with a return code of -9.
+[2025-02-17 10:03:34] [INFO    ] discord.player: ffmpeg process 117477 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:34] [INFO    ] discord.player: ffmpeg process 117477 should have terminated with a return code of -9.
+[2025-02-17 10:03:35] [INFO    ] discord.player: ffmpeg process 117481 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:35] [INFO    ] discord.player: ffmpeg process 117481 should have terminated with a return code of -9.
+[2025-02-17 10:03:35] [INFO    ] discord.player: ffmpeg process 117485 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:35] [INFO    ] discord.player: ffmpeg process 117485 should have terminated with a return code of -9.
+[2025-02-17 10:03:35] [INFO    ] discord.player: ffmpeg process 117489 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:35] [INFO    ] discord.player: ffmpeg process 117489 should have terminated with a return code of -9.
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117493 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117493 should have terminated with a return code of -9.
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117497 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117497 should have terminated with a return code of -9.
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117501 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117501 should have terminated with a return code of -9.
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117505 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:36] [INFO    ] discord.player: ffmpeg process 117505 should have terminated with a return code of -9.
+[2025-02-17 10:03:37] [INFO    ] discord.player: ffmpeg process 117509 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:37] [INFO    ] discord.player: ffmpeg process 117509 should have terminated with a return code of -9.
+[2025-02-17 10:03:37] [INFO    ] discord.player: ffmpeg process 117513 has not terminated. Waiting to terminate...
+[2025-02-17 10:03:37] [INFO    ] discord.player: ffmpeg process 117513 should have terminated with a return code of -9.
+[2025-02-17 10:03:41] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+Atyiseusseatyiseuss!
+Finished playing: we shall pee.ogg
+Finished playing: crochet.ogg
+Finished playing: happy birthday.ogg
+Finished playing: bulsabanapopetet.ogg
+Finished playing: DOTA.ogg
+Finished playing: fat.ogg
+Finished playing: atyiseusseatyiseuss.ogg
+Finished playing: who.ogg
+Finished playing: fuck it up.ogg
+Finished playing: razor sharp.ogg
+Finished playing: woaoaow.ogg
+Finished playing: titanium man.ogg
+Finished playing: women are critical.ogg
+Finished playing: sound.ogg
+Finished playing: hoff.ogg
+Finished playing: queen.ogg
+Finished playing: some MUSIC.ogg
+Finished playing: hahahn.ogg
+Finished playing: quite right.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: hee ooo ouhh.ogg
+Finished playing: heavy weapons.ogg
+Finished playing: both of you.ogg
+Finished playing: both of you.ogg
+session_stats.txt has been deleted successfully.
+session_stats.txt does not exist.
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 383
+    await ctx.send(f"### Playcount: {num)} \n\n")
+                                                ^
+SyntaxError: f-string: unmatched ')'
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 50, in on_message
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 538, in update
+    @update.error
+                ^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 626, in restart
+    else:
+        ^^
+SystemExit
+nohup: ignoring input
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 383
+    await ctx.send(f"### Playcount: {num)} \n\n")
+                                                ^
+SyntaxError: f-string: unmatched ')'
+nohup: ignoring input
+[2025-02-17 10:16:38] [INFO    ] discord.client: logging in using static token
+[2025-02-17 10:16:39] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: a7b927c358f9e641fccc96e25fa5dfdb).
+[2025-02-17 10:18:11] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:18:21] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:18:31] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 30 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:18:41] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 40 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:18:51] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 50 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:19:01] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 60 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:19:11] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 70 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:19:21] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 80 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:19:31] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 90 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:19:41] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 100 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:19:51] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 110 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:20:01] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 120 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:20:11] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 130 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+nohup: ignoring input
+[2025-02-17 10:20:19] [INFO    ] discord.client: logging in using static token
+[2025-02-17 10:20:19] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 75858c8bc87fccd01554797f3dd14f61).
+[2025-02-17 10:20:21] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 140 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-02-17 10:20:31] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 150 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 658, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 49, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 490, in update
+    result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
