@@ -187,6 +187,21 @@ async def s(ctx, *name):
     
     input = ' '.join(name)
     
+    if not name:
+        files = os.listdir(SOUNDS_FOLDER_PATH)
+        sound_path = SOUNDS_FOLDER_PATH + SLASH + random.choice(files)
+        basename = sound_path.split('/')[-1].strip()
+
+        ctx.voice_client.stop()
+        ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
+
+        with open('session_stats.txt', 'a') as file:
+            file.write(basename + '\n')
+        with open('all_time_stats.txt', 'a') as file:
+            file.write(basename + '\n')
+        
+        return
+    
     sound_path = SOUNDS_FOLDER_PATH + SLASH + input + ".ogg"
     basename = sound_path.split('/')[-1].strip()
 
