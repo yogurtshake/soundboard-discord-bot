@@ -337,7 +337,7 @@ async def troll_error(ctx, error):
         await ctx.send("There is no way into the mountain.")
 
 
-@bot.command(help="Leaves the current voice channel.")
+@bot.command(help="Leaves the current voice channel and displays sessions stats.")
 async def leave(ctx):
     if ctx.voice_client is not None:
         await ctx.send("Won't be a problem.")
@@ -362,16 +362,6 @@ async def leave(ctx):
 
 @leave.error
 async def leave_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
-
-
-@bot.command(help="Displays current session playcount.")
-async def count(ctx):
-    global playcount
-    await ctx.send(f"### **Playcount this session: {str(playcount)}**")
-    
-@count.error
-async def count_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
