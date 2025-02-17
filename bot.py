@@ -179,7 +179,7 @@ async def dewey_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command(help="Plays desired sound.")
+@bot.command(help="Plays desired sound. Chooses randomly if no input given.")
 async def s(ctx, *name):
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
