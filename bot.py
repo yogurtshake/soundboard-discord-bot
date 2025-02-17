@@ -21,7 +21,6 @@ SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
 playing = False
 handcount = 0
-playcount = 0
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -234,7 +233,6 @@ async def play(ctx, *arr):
     
     files = os.listdir(SOUNDS_FOLDER_PATH)
     
-    global playcount
     global playing
     playing = True
     
@@ -264,8 +262,7 @@ async def play(ctx, *arr):
                 file.write(basename + '\n')
             with open('all_time_stats.txt', 'a') as file:
                 file.write(basename + '\n')
-                
-            playcount += 1
+
 
 @play.error
 async def play_error(ctx, error):
@@ -380,8 +377,10 @@ async def sessionstats(ctx):
         output = '\n'.join(stuff)
         
         chunk_size = 1994
+        num = len(lines)
 
         await ctx.send("## **Bot soundboard stats for this session:** \n\n")
+        await ctx.send(f"### Playcount: {num)} \n\n")
         
         for i in range(0, len(output), chunk_size):
             await ctx.send(f"```{output[i:i + chunk_size]}```")
@@ -408,8 +407,10 @@ async def alltimestats(ctx):
     output = '\n'.join(stuff)
     
     chunk_size = 1994
+    num = len(lines)
 
     await ctx.send("## **Bot soundboard stats for all time:** \n\n")
+    await ctx.send(f"### Playcount: {num)} \n\n")
     
     for i in range(0, len(output), chunk_size):
         await ctx.send(f"```{output[i:i + chunk_size]}```")
