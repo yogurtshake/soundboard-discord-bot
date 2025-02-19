@@ -712,6 +712,11 @@ async def restart(ctx):
         if vc.is_connected():
             vc.stop()
             await vc.disconnect()
+            
+            if vc.channel.guild.id != HOME_SERVER_ID:
+                channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
+                await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner is restarting the bot.*")
+            
             await tchannel.send(f"*Disconnected from voice channel: `{vc.channel.name}` in server `{vc.channel.guild.name}`.*")
     
     await tchannel.send("Restarting...")
@@ -764,6 +769,11 @@ async def kys(ctx):
         if vc.is_connected():
             vc.stop()
             await vc.disconnect()
+            
+            if vc.channel.guild.id != HOME_SERVER_ID:
+                channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
+                await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner has shut down the bot.*")
+            
             await tchannel.send(f"*Disconnected from voice channel: `{vc.channel.name}` in server `{vc.channel.guild.name}`.*")
     
     await ctx.send("So uncivilized. Shutting down...")
