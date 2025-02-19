@@ -3,3 +3,5 @@
 -FIX PROBLEM OF DOUBLE SCRIPT INSTANCE
 -add routine check for any unexpected second processes?
 -add bot command that kills all but one?
+
+-multiple servers?
