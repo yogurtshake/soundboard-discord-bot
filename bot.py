@@ -311,14 +311,14 @@ async def troll_error(ctx, error):
 
 
 @bot.command(help="Leaves the current voice channel and displays sessions stats.")
-async def leave(ctx):
-    ctx.voice_client.stop()
-    
+async def leave(ctx):   
     if ctx.voice_client is not None:
+        ctx.voice_client.stop()
         await ctx.send("Won't be a problem.")
         await ctx.voice_client.disconnect()
     else:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        return
         
     await ctx.invoke(bot.get_command('sessionstats'))
         
@@ -544,6 +544,13 @@ async def logs_error(ctx, error):
 @bot.command(help="Displays entire log file output. OWNER COMMAND.")
 @commands.is_owner()
 async def alllogs(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+    
     log_file_path = 'output.log'
     chunk_size = 1994
     
@@ -572,6 +579,13 @@ async def alllogs_error(ctx, error):
 @bot.command(help="Pulls changes from github repo and restarts if necessary. OWNER COMMAND.")
 @commands.is_owner()
 async def update(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+    
     global SOUNDS
     await tchannel.send("Pulling latest updates from github...")
 
@@ -635,6 +649,13 @@ async def update_error(ctx, error):
 @bot.command(help="Pushes text file(s) updates to github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def pushtextfiles(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+    
     await tchannel.send("Fetching latest changes from GitHub...")
 
     try:
@@ -680,10 +701,18 @@ async def pushtextfiles_error(ctx, error):
 @bot.command(help="Restarts the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def restart(ctx):
-    ctx.voice_client.stop()
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
     
-    if ctx.voice_client is not None:
-        await ctx.voice_client.disconnect()
+    for vc in bot.voice_clients:
+        if vc.is_connected():
+            vc.stop()
+            await vc.disconnect()
+            await tchannel.send(f"*Disconnected from voice channel: `{vc.channel.name}` in server `{vc.channel.guild.name}`.*")
     
     await tchannel.send("Restarting...")
 
@@ -724,6 +753,19 @@ async def restart_error(ctx, error):
 @bot.command(help="Shuts down the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def kys(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+    
+    for vc in bot.voice_clients:
+        if vc.is_connected():
+            vc.stop()
+            await vc.disconnect()
+            await tchannel.send(f"*Disconnected from voice channel: `{vc.channel.name}` in server `{vc.channel.guild.name}`.*")
+    
     await ctx.send("So uncivilized. Shutting down...")
     
     file_path = 'session_stats.txt'
