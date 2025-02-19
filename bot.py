@@ -2,10 +2,14 @@ from discord.ext import commands
 import discord
 import asyncio
 import random
+import shlex
 import os
 import sys
 import subprocess
 from collections import Counter
+
+
+# --------------------------------- GLOBALS ---------------------------------
 
 BOT_TOKEN = "MzU3NjgzMTI2MDY5MzYyNjkw.GugV8Q.GbB2VVNp1BmKt0BktRglikOvke6KIejHjoi47A"
 TEXT_CHANNEL_ID = 1337536863640227881
@@ -30,6 +34,29 @@ tchannel = None
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 
+# --------------------------------- FUNCTIONS ---------------------------------
+
+def load_triggers(file_path):
+    with open("triggers.txt", 'a'):
+        pass
+    
+    triggers = {}
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                trigger, response = line.split(',', 1)
+                triggers[trigger] = response
+    except FileNotFoundError:
+        print(f"The file {file_path} does not exist.")
+    except Exception as e:
+        print(f"An error occurred while reading the file: {e}")
+    return triggers
+
+triggers = load_triggers('triggers.txt')
+
+
+# --------------------------------- EVENTS ---------------------------------
+
 @bot.event
 async def on_ready():
     global tchannel
@@ -47,58 +74,20 @@ async def on_message(message):
     
     if message.content.startswith(bot.command_prefix):
         await bot.process_commands(message)
+        return
     
-    elif "both" in message.content or "two" in message.content:
-        await message.channel.send("**BOTH OF YOU!**")
-    elif "music" in message.content:
-        await message.channel.send("My feeling is: if we're gonna win this thing, we gotta actually start playing some MUSIC.")
-    elif "gimme " in message.content:
-        await message.channel.send("Last chance. GoOOo0oOooOo!")
-    elif "send " in message.content or " send" in message.content:
-        await message.channel.send("Hah! What, so you can send secret messages to your sexy bitches? No, sir.")
-    elif "not " in message.content:
-        await message.channel.send("Not the best choice.")
-    elif "six " in message.content or " six" in message.content:
-        await message.channel.send("At a push seven")
-    elif "yes " in message.content or " yes" in message.content:
-        await message.channel.send("## **YES!**")
-    elif "key " in message.content or " key" in message.content:
-        await message.channel.send("If there is a key, there must be a door.")
-    elif " or " in message.content:
-        await message.channel.send("I think I'll take the first part")
-    elif message.content == "scoring chicks":
-        await message.channel.send("That's it!")
-    elif "getting wasted" in message.content:
-        await message.channel.send("YES!")
-    elif message.content == "sticking it to the man":
-        await message.channel.send("Wrong! Shuddup.")   
-    elif "harvey dent" in message.content :
-        await message.channel.send("# **Richard Patrick**") 
-    elif message.content == "you must be mr. bond" or message.content == "you must be mr. boba fett" or message.content == "you must be mr. bobomb":
-        await message.channel.send("Nope!") 
-    elif message.content == "you must be mr. bobobo bobo":
-        await message.channel.send("Nope Nope!")
-    elif "wait" in message.content:
-        await message.channel.send("Move on.") 
-    elif message.content == "give me another chance":
-        await message.channel.send("Last chance. GoOOo0oOooOo!")
-    elif message.content == "we shall pee":
-        await message.channel.send("WHEN YOU ANSWER FOR THE BURNING OF THE CHILDREN OF THE BODIES OF THE SOLDIERS OF THE WESTFOLD")
-        await message.channel.send("WHEN THE SOLDIERS")
-        await message.channel.send("WHOSE BODIES LAY DEAD AGAINST THE GATES OF THE HORNBURG")
-        await message.channel.send("ARE DEAD")
-        await message.channel.send("when you hang from a chimichim")
-        await message.channel.send("WE SHALL PEE.")
-    elif message.content == "be careful of what?":
-        await message.channel.send("Your friend Palpatine. I just told you.")    
-    else:
-        num = random.randint(0,4)
-        if num == 0:
-            num2 = random.randint(0,4)
-            if num2 == 0:
-                await message.channel.send('# **Wrong! Shuddup.**')
-            else: 
-                await message.channel.send('**Wrong! Shuddup.**')
+    for trigger, response in triggers.items():
+        if trigger in message.content:
+            await message.channel.send(response)
+            return
+    
+    num = random.randint(0,4)
+    if num == 0:
+        num2 = random.randint(0,4)
+        if num2 == 0:
+            await message.channel.send('# **Wrong! Shuddup.**')
+        else: 
+            await message.channel.send('**Wrong! Shuddup.**')
     
     
 @bot.event
@@ -106,8 +95,12 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send("*Invalid command. You piece of shit.*")
     else:
-        await ctx.send(f"An unexpected error occurred: {error}")
+        pass
 
+    
+# --------------------------------- COMMANDS ---------------------------------     
+    
+# -------------- misc commands --------------    
     
 @bot.command(help="Raises hands in correct order.")
 async def raisehand(ctx):
@@ -142,24 +135,7 @@ async def randomhand_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command(help="Displays full soundlist in alphabetical order.")
-async def soundlist(ctx):
-    global SOUNDS
-    numSounds = len(SOUNDS)
-    lines = os.listdir(SOUNDS_FOLDER_PATH)
-    sorted_lines = sorted(lines, key = str.lower)
-    output = '\n'.join(sorted_lines)
-    chunk_size = 1994
-
-    await ctx.send(f"### **List of all {numSounds} soundboard sounds:** \n\n")
-    
-    for i in range(0, len(output), chunk_size):
-        await ctx.send(f"```{output[i:i + chunk_size]}```")
-
-@soundlist.error
-async def soundlist_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
-
+# -------------- sound commands --------------
 
 @bot.command(help="Plays full dewey fired scene.")
 async def dewey(ctx):
@@ -263,7 +239,6 @@ async def play(ctx, *arr):
             with open('all_time_stats.txt', 'a') as file:
                 file.write(basename + '\n')
 
-
 @play.error
 async def play_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
@@ -364,6 +339,27 @@ async def leave_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
+# -------------- file-related commands --------------
+
+@bot.command(help="Displays full soundlist in alphabetical order.")
+async def soundlist(ctx):
+    global SOUNDS
+    numSounds = len(SOUNDS)
+    lines = os.listdir(SOUNDS_FOLDER_PATH)
+    sorted_lines = sorted(lines, key = str.lower)
+    output = '\n'.join(sorted_lines)
+    chunk_size = 1994
+
+    await ctx.send(f"### **List of all `{numSounds}` soundboard sounds:** \n\n")
+    
+    for i in range(0, len(output), chunk_size):
+        await ctx.send(f"```{output[i:i + chunk_size]}```")
+
+@soundlist.error
+async def soundlist_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+    
+
 @bot.command(help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.")
 async def sessionstats(ctx):
     try:
@@ -382,7 +378,7 @@ async def sessionstats(ctx):
         num = len(lines)
 
         await ctx.send("## **Bot soundboard stats for this session:** \n\n")
-        await ctx.send(f"### Playcount: {num} \n\n")
+        await ctx.send(f"### Playcount: `{num}` \n\n")
         
         for i in range(0, len(output), chunk_size):
             await ctx.send(f"```{output[i:i + chunk_size]}```")
@@ -412,7 +408,7 @@ async def alltimestats(ctx):
     num = len(lines)
 
     await ctx.send("## **Bot soundboard stats for all time:** \n\n")
-    await ctx.send(f"### Playcount: {num} \n\n")
+    await ctx.send(f"### Playcount: `{num}` \n\n")
     
     for i in range(0, len(output), chunk_size):
         await ctx.send(f"```{output[i:i + chunk_size]}```")
@@ -421,6 +417,90 @@ async def alltimestats(ctx):
 async def alltimestats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
 
+
+@bot.command(help='Adds a trigger. Usage: !addtrigger "<trigger>" "<response>". ADMIN COMMAND.')
+@commands.has_permissions(administrator=True)
+async def addtrigger(ctx, *, args: str):
+    global triggers
+    try:
+        parts = shlex.split(args)
+        if len(parts) != 2:
+            await ctx.send('Usage: !addtrigger `"<trigger>"` `"<response>"`')
+            return
+        
+        trigger, response = parts
+        
+        with open("triggers.txt", 'a') as file:
+            file.write(f"{trigger},{response}\n")
+        await ctx.send(f"New trigger added: `{trigger}` with response: `{response}`")
+        
+        triggers[trigger] = response + '\n'
+        
+    except Exception as e:
+        await ctx.send(f"An error occurred while adding the trigger: {e}")
+
+@addtrigger.error
+async def addtrigger_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("There is no way into the mountain.")
+
+
+@bot.command(help='Removes a trigger. Usage: !removetrigger "<trigger>". ADMIN COMMAND.')
+@commands.has_permissions(administrator=True)
+async def removetrigger(ctx, *, args: str):
+    global triggers
+    try:
+        parts = shlex.split(args)
+        if len(parts) != 1:
+            await ctx.send('Usage: !removetrigger `"<trigger>"`')
+            return
+        
+        trigger = parts[0]
+        
+        if trigger in triggers:
+            del triggers[trigger]
+            with open("triggers.txt", 'r') as file:
+                lines = file.readlines()
+            with open("triggers.txt", 'w') as file:
+                for line in lines:
+                    if not line.startswith(trigger + ','):
+                        file.write(line)
+            await ctx.send(f"Trigger `{trigger}` removed successfully.")
+        else:
+            await ctx.send(f"Trigger `{trigger}` not found.")
+    
+    except Exception as e:
+        await ctx.send(f"An error occurred while removing the trigger: {e}")
+
+@removetrigger.error
+async def removetrigger_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("There is no way into the mountain.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
+
+
+@bot.command(help="Displays all triggers and their responses, sorted alphabetically by triggers.")
+async def triggerlist(ctx):
+    if not triggers:
+        await ctx.send("*No triggers found.*")
+        return
+
+    sorted_triggers = sorted(triggers.items())
+    output = "\n".join([f"{trigger}: {response}" for trigger, response in sorted_triggers])
+    chunk_size = 1994
+
+    await ctx.send(f"## **List of all `{len(triggers)}` triggers and their responses:** \n\n")
+    
+    for i in range(0, len(output), chunk_size):
+        await ctx.send(f"```{output[i:i + chunk_size]}```")
+
+@triggerlist.error
+async def triggerlist_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: {error}*")
+
+
+# -------------- owner commands --------------
 
 @bot.command(help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
 @commands.is_owner()
@@ -451,7 +531,6 @@ async def logs_error(ctx, error):
         await ctx.send("# No.")
     else:
         await ctx.send(f"*An unexpected error occurred: {error}*")  
-
 
 
 @bot.command(help="Displays entire log file output. OWNER COMMAND.")
@@ -656,5 +735,7 @@ async def kys_error(ctx, error):
     else:
         await ctx.send(f"*An unexpected error occurred: {error}*")    
 
+
+# --------------------------------- RUN ---------------------------------
 
 bot.run(BOT_TOKEN, reconnect=True)
