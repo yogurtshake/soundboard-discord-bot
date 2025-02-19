@@ -66,6 +66,8 @@ async def on_ready():
     await tchannel.send("**Atyiseusseatyiseuss!**")
     if WINDOWS:
         await tchannel.send("*running locally on Windows*")
+    await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
+    
 
 
 @bot.event
@@ -277,13 +279,16 @@ async def join(ctx):
     else:
         await ctx.voice_client.move_to(channel)
         await ctx.send(f'Moved to {channel}')
+    
+    await bot.change_presence(activity=discord.Game(name="some MUSIC"))
+
 
 @join.error
 async def join_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: {error}*")
     
         
-@bot.command(help="Joines desired voice channel. ADMIN COMMAND.")
+@bot.command(help="Joins desired voice channel. Does not require user to be connected. ADMIN COMMAND.")
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
    
@@ -303,6 +308,8 @@ async def troll(ctx, *, chName: str):
     else:
         await ctx.voice_client.move_to(channel)
         await ctx.send(f'Moved to {channel}')
+        
+    await bot.change_presence(activity=discord.Game(name="some MUSIC"))
 
 @troll.error
 async def troll_error(ctx, error):
@@ -316,6 +323,7 @@ async def leave(ctx):
         ctx.voice_client.stop()
         await ctx.send("Won't be a problem.")
         await ctx.voice_client.disconnect()
+        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
     else:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
