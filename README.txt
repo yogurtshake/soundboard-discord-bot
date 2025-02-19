@@ -207,7 +207,7 @@ async def update(ctx):
 
         await bot.close()
 
-        command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py >> output.log 2>&1 &'"
+        command = "bash -c 'source /home/USERNAME/myenv/bin/activate && nohup python3 bot.py >> output.log 2>&1 &'"
         subprocess.Popen(command, shell=True) 
             
         sys.exit()
@@ -217,8 +217,8 @@ async def update(ctx):
     except Exception as e:
         await ctx.send(f"An unexpected error occurred: {str(e)}")
 
-@restart.error
-async def restart_error(ctx, error):
+@update.error
+async def update_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
