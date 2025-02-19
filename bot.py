@@ -643,7 +643,7 @@ async def pushtextfiles(ctx):
 
         result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
         if not result.stdout.strip():
-            await tchannel.send("No changes to commit for `output.log`, `all_time_stats.txt`, and `triggers.txt`.")
+            await tchannel.send("*No changes to commit for `output.log`, `all_time_stats.txt`, and `triggers.txt`.*")
             return
 
         commit_result = subprocess.run(["git", "commit", "-m", "Update output.log, all_time_stats.txt, and triggers.txt"], capture_output=True, text=True, check=True)

@@ -5,3 +5,5 @@
 -add bot command that kills all but one?
 
 -multiple servers?
+
+-add config.txt file and !config command that allows user to edit default bot command message responses?
