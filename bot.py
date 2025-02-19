@@ -62,7 +62,7 @@ triggers = load_triggers('triggers.txt')
 async def on_ready():
     global tchannel
     print("Atyiseusseatyiseuss!")
-    tchannel = bot.get_channel(TEXT_CHANNEL_ID)
+    tchannel = bot.get_channel(HOME_CHANNEL_ID)
     await tchannel.send("**Atyiseusseatyiseuss!**")
     if WINDOWS:
         await tchannel.send("*running locally on Windows*")
