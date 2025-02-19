@@ -336,6 +336,8 @@ async def troll_error(ctx, error):
 
 @bot.command(help="Leaves the current voice channel and displays sessions stats.")
 async def leave(ctx):
+    ctx.voice_client.stop()
+    
     if ctx.voice_client is not None:
         await ctx.send("Won't be a problem.")
         await ctx.voice_client.disconnect()
