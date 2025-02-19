@@ -12,7 +12,8 @@ from collections import Counter
 # --------------------------------- GLOBALS ---------------------------------
 
 BOT_TOKEN = "MzU3NjgzMTI2MDY5MzYyNjkw.GugV8Q.GbB2VVNp1BmKt0BktRglikOvke6KIejHjoi47A"
-TEXT_CHANNEL_ID = 1337536863640227881
+HOME_SERVER_ID = 134415388233433089
+HOME_CHANNEL_ID = 1337536863640227881
 WINDOWS = False
 
 if "\\" in os.getcwd(): 
@@ -322,7 +323,6 @@ async def leave(ctx):
     await ctx.invoke(bot.get_command('sessionstats'))
         
     file_path = 'session_stats.txt'
-
     try:
         os.remove(file_path)
         await ctx.send("*Session stats deleted.*")
@@ -505,6 +505,14 @@ async def triggerlist_error(ctx, error):
 @bot.command(help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+    
+    
     log_file_path = 'output.log'
     chunk_size = 1994
 
@@ -565,7 +573,7 @@ async def alllogs_error(ctx, error):
 @commands.is_owner()
 async def update(ctx):
     global SOUNDS
-    await ctx.send("Pulling latest updates from github...")
+    await tchannel.send("Pulling latest updates from github...")
 
     try:
         result = subprocess.run(["git", "pull", "origin", "main"], capture_output=True, text=True)
@@ -672,6 +680,11 @@ async def pushtextfiles_error(ctx, error):
 @bot.command(help="Restarts the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def restart(ctx):
+    ctx.voice_client.stop()
+    
+    if ctx.voice_client is not None:
+        await ctx.voice_client.disconnect()
+    
     await tchannel.send("Restarting...")
 
     try:
