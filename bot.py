@@ -624,7 +624,7 @@ async def update_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")  
 
 
-@bot.command(help="Pushes output.log and all_time_stats.txt to github repo. OWNER COMMAND.")
+@bot.command(help="Pushes text file(s) updates to github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def pushtextfiles(ctx):
     await tchannel.send("Fetching latest changes from GitHub...")
@@ -637,16 +637,16 @@ async def pushtextfiles(ctx):
             await tchannel.send("*There are changes on the remote repository, idiot. Update then try again.*")
             return
 
-        await tchannel.send("Pushing updates for *output.log* and *all_time_stats.txt* to GitHub...")
+        await tchannel.send("Pushing updates for `output.log`, `all_time_stats.txt`, and `triggers.txt` to GitHub...")
 
-        subprocess.run(["git", "add", "output.log", "all_time_stats.txt"], check=True)
+        subprocess.run(["git", "add", "output.log", "all_time_stats.txt", "triggers.txt"], check=True)
 
         result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
         if not result.stdout.strip():
-            await tchannel.send("No changes to commit for *output.log* and *all_time_stats.txt*.")
+            await tchannel.send("No changes to commit for `output.log`, `all_time_stats.txt`, and `triggers.txt`.")
             return
 
-        commit_result = subprocess.run(["git", "commit", "-m", "Update output.log and all_time_stats.txt"], capture_output=True, text=True, check=True)
+        commit_result = subprocess.run(["git", "commit", "-m", "Update output.log, all_time_stats.txt, and triggers.txt"], capture_output=True, text=True, check=True)
         await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
 
         result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
