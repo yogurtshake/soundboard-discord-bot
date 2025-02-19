@@ -591,7 +591,7 @@ async def update(ctx):
                 if newCount - oldCount == 1: word = "sound"
                 else: word = "sounds"
                 
-                await tchannel.send(f"### Soundlist refreshed: **{newCount - oldCount}** new {word} added. Current soundlist count: {newCount}.\n\n**New sounds:**\n{difference_str}")
+                await tchannel.send(f"### Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
             
             elif newCount < oldCount:
                 difference = list(set(SOUNDS) - set(SOUNDS_NEW))
@@ -600,7 +600,7 @@ async def update(ctx):
                 if oldCount - newCount == 1: word = "sound"
                 else: word = "sounds"
                 
-                await tchannel.send(f"### Soundlist refreshed: **{oldCount - newCount}** {word} removed. Current soundlist count: {newCount}.\n\n**Removed sounds:**\n{difference_str}")
+                await tchannel.send(f"### Soundlist refreshed: `{oldCount - newCount}` {word} removed. Current soundlist count: `{newCount}`.\n\n**Removed sounds:**\n`{difference_str}`")
             
             SOUNDS = SOUNDS_NEW
 
