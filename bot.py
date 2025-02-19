@@ -609,7 +609,7 @@ async def update(ctx):
 
             await ctx.invoke(bot.get_command('restart'))
             
-        await tchannel.send("Updates pulled successfully. They did not affect bot.py nor all_sounds/.")
+        await tchannel.send("Updates pulled successfully. They did not affect `bot.py` nor `all_sounds/`.")
     
     except subprocess.CalledProcessError as e:
         await tchannel.send(f"Error pulling updates: {e.stderr}")
