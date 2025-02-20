@@ -37,23 +37,17 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 # --------------------------------- FUNCTIONS ---------------------------------
 
 def load_triggers(file_path):
-    with open("triggers.txt", 'a'):
+    with open(file_path, 'a'):
         pass
-    
     triggers = {}
     try:
         with open(file_path, 'r') as file:
             for line in file:
                 trigger, response = line.split(',', 1)
                 triggers[trigger] = response
-    except FileNotFoundError:
-        print(f"The file {file_path} does not exist.")
     except Exception as e:
         print(f"An error occurred while reading the file: {e}")
     return triggers
-
-triggers = load_triggers('triggers.txt')
-
 
 # --------------------------------- EVENTS ---------------------------------
 
@@ -67,7 +61,7 @@ async def on_ready():
     for guild in bot.guilds:
         guild_folder = SERVERS_PATH + str(guild.id)
         guild_sounds_folder = guild_folder + "/all_sounds/"
-        guild_file_path = guild_folder + "/" + guild.name
+        guild_file_path = guild_folder + "/0. " + guild.name
 
         if not os.path.exists(guild_folder):
             os.makedirs(guild_folder)
@@ -98,6 +92,8 @@ async def on_message(message):
         await bot.process_commands(message)
         return
     
+    triggers = load_triggers(SERVERS_PATH + str(message.guild.id) + '/triggers.txt')
+    
     for trigger, response in triggers.items():
         if trigger in message.content:
             await message.channel.send(response)
@@ -117,7 +113,7 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send("*Invalid command. You piece of shit.*")
     else:
-        pass
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
     
 # --------------------------------- COMMANDS ---------------------------------     
@@ -143,7 +139,7 @@ async def raisehand(ctx):
     
 @raisehand.error
 async def raisehand_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")    
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")    
     
     
 @bot.command(help="Raises hands in random order.")
@@ -163,7 +159,7 @@ async def randomhand(ctx):
 
 @randomhand.error
 async def randomhand_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 # -------------- sound commands --------------
@@ -180,15 +176,14 @@ async def dewey(ctx):
     
     await ctx.send("You're fired")
     
-    SOUNDS_FOLDER_PATH = SERVERS_PATH + HOME_SERVER_ID + "/all_sounds/"
-    sound_path = SOUNDS_FOLDER_PATH + "dewey full scene.mp3"
+    sound_path = SERVERS_PATH + HOME_SERVER_ID + "/all_sounds/" + "dewey full scene.mp3"
     
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {e}'))
 
 @dewey.error
 async def dewey_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Plays desired sound. Chooses randomly if no input given.")
@@ -216,9 +211,9 @@ async def s(ctx, *name):
         ctx.voice_client.stop()
         ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
 
-        with open('session_stats.txt', 'a') as file:
+        with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
             file.write(basename + '\n')
-        with open('all_time_stats.txt', 'a') as file:
+        with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
             file.write(basename + '\n')
         return
     
@@ -244,9 +239,9 @@ async def s(ctx, *name):
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
 
-    with open('session_stats.txt', 'a') as file:
+    with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
         file.write(basename + '\n')
-    with open('all_time_stats.txt', 'a') as file:
+    with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
         file.write(basename + '\n')
 
 @s.error
@@ -254,7 +249,7 @@ async def s_error(ctx, error):
     if str(error) == "Command raised an exception: IndexError: Cannot choose from an empty sequence":
         await ctx.send("*You have no sounds saved! Add some before playing.*")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Plays random sounds at desired time interval. Default 90s.")
@@ -320,9 +315,9 @@ async def play(ctx, *arr):
                 except asyncio.TimeoutError:
                     pass
                 
-                with open('session_stats.txt', 'a') as file:
+                with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
                     file.write(basename + '\n')
-                with open('all_time_stats.txt', 'a') as file:
+                with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
                     file.write(basename + '\n')
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
@@ -345,7 +340,7 @@ async def play_error(ctx, error):
                        "`!play <delay>`: *Plays random sounds at interval of `<delay>` seconds* \n" +
                        "`!play <min_delay> <max_delay>`: *Plays random sounds at random interval between `<min_delay>` and `<max_delay>` seconds (randomized after each sound)*")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Plays random sounds at desired fast time interval. Default 1 second.")
@@ -397,9 +392,9 @@ async def playfast(ctx, *arr):
                 ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
                 await asyncio.sleep(delay)
                 
-                with open('session_stats.txt', 'a') as file:
+                with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
                     file.write(basename + '\n')
-                with open('all_time_stats.txt', 'a') as file:
+                with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
                     file.write(basename + '\n')
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
@@ -422,7 +417,7 @@ async def playfast_error(ctx, error):
                        "`!playfast`: *Plays random sounds at default interval of 1 second.* \n" +
                        "`!playfast <delay>`: *Plays random sounds at interval of `<delay>` seconds*")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Stops playing sounds.")
@@ -441,7 +436,7 @@ async def stop(ctx):
 
 @stop.error
 async def stop_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Joins user's voice channel.")
@@ -465,7 +460,7 @@ async def join(ctx):
 
 @join.error
 async def join_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
         
 @bot.command(help="Joins desired voice channel. Does not require user to be connected. ADMIN COMMAND.")
@@ -506,7 +501,7 @@ async def troll_error(ctx, error):
     elif str(error) == "chName is a required argument that is missing.":
         await ctx.send("You must specify a channel name.\n\n Example: `!troll general`")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Leaves the current voice channel and displays sessions stats.")
@@ -536,7 +531,7 @@ async def leave(ctx):
 
 @leave.error
 async def leave_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 # -------------- file-related commands --------------
@@ -566,13 +561,13 @@ async def soundlist(ctx):
 
 @soundlist.error
 async def soundlist_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
 
 @bot.command(help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.")
 async def sessionstats(ctx):
     try:
-        with open('session_stats.txt', 'r') as file:
+        with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'r') as file:
             lines = file.readlines()
         
         shortened_lines = [s.strip() for s in lines]
@@ -596,13 +591,13 @@ async def sessionstats(ctx):
 
 @sessionstats.error
 async def sessionstats_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
 
 @bot.command(help="Displays sound playcount stats for all time.")
 async def alltimestats(ctx):
     try:
-        with open('all_time_stats.txt', 'r') as file:
+        with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'r') as file:
             lines = file.readlines()
         
         shortened_lines = [s.strip() for s in lines]
@@ -622,57 +617,54 @@ async def alltimestats(ctx):
         for i in range(0, len(output), chunk_size):
             await ctx.send(f"```{output[i:i + chunk_size]}```")
     except FileNotFoundError:
-        await ctx.send("*No stats yet! Use `!s` or `!play` to start tracking playcount stats.*")
+        await ctx.send("*No stats yet! Use `!s`, `!play`, or `!playfast` to start tracking playcount stats.*")
 
 @alltimestats.error
 async def alltimestats_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help='Adds a trigger. Usage: !addtrigger "<trigger>" "<response>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def addtrigger(ctx, *, args: str):
-    global triggers
     try:
         parts = shlex.split(args)
         if len(parts) != 2:
-            await ctx.send('Usage: !addtrigger `"<trigger>"` `"<response>"`')
+            await ctx.send('Usage: `!addtrigger "<trigger>" "<response>"`')
             return
         
         trigger, response = parts
         
-        with open("triggers.txt", 'a') as file:
+        with open(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt', 'a') as file:
             file.write(f"{trigger},{response}\n")
         await ctx.send(f"New trigger added: `{trigger}` with response: `{response}`")
         
-        triggers[trigger] = response + '\n'
-        
     except Exception as e:
-        await ctx.send(f"An error occurred while adding the trigger: {e}")
+        await ctx.send(f"*An error occurred while adding the trigger: `{e}`*")
 
 @addtrigger.error
 async def addtrigger_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("There is no way into the mountain.")
-
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 @bot.command(help='Removes a trigger. Usage: !removetrigger "<trigger>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def removetrigger(ctx, *, args: str):
-    global triggers
     try:
         parts = shlex.split(args)
         if len(parts) != 1:
-            await ctx.send('Usage: !removetrigger `"<trigger>"`')
+            await ctx.send('Usage: `!removetrigger "<trigger>"`')
             return
         
         trigger = parts[0]
+        triggers = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt')
         
         if trigger in triggers:
-            del triggers[trigger]
-            with open("triggers.txt", 'r') as file:
+            with open(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt', 'r') as file:
                 lines = file.readlines()
-            with open("triggers.txt", 'w') as file:
+            with open(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt', 'w') as file:
                 for line in lines:
                     if not line.startswith(trigger + ','):
                         file.write(line)
@@ -688,11 +680,13 @@ async def removetrigger_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("There is no way into the mountain.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Displays all triggers and their responses, sorted alphabetically by triggers.")
 async def triggerlist(ctx):
+    triggers = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt')
+    
     if not triggers:
         await ctx.send("*No triggers found.*")
         return
@@ -708,7 +702,7 @@ async def triggerlist(ctx):
 
 @triggerlist.error
 async def triggerlist_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 # -------------- owner commands --------------
@@ -749,7 +743,7 @@ async def logs_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")  
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
 @bot.command(help="Displays entire log file output. OWNER COMMAND.")
@@ -784,7 +778,7 @@ async def alllogs_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")  
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
 @bot.command(help="Pulls changes from github repo and restarts if necessary. OWNER COMMAND.")
@@ -854,7 +848,7 @@ async def update_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")  
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
 @bot.command(help="Pushes text file(s) updates to github repo. OWNER COMMAND.")
@@ -906,7 +900,7 @@ async def pushtextfiles_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Displays the servers in which the bot exists and the voice channels to which it is connected. OWNER COMMAND.")
@@ -934,7 +928,7 @@ async def status_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Restarts the bot. OWNER COMMAND.")
@@ -991,7 +985,7 @@ async def restart_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 @bot.command(help="Shuts down the bot. OWNER COMMAND.")
@@ -1040,7 +1034,7 @@ async def kys_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
-        await ctx.send(f"*An unexpected error occurred: {error}*")    
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")    
 
 
 # --------------------------------- RUN ---------------------------------
