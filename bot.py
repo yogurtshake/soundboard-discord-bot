@@ -17,12 +17,10 @@ HOME_CHANNEL_ID = 1337536863640227881
 WINDOWS = False
 
 if "\\" in os.getcwd(): 
-    SOUNDS_FOLDER_PATH = os.getcwd().replace("\\", "/") + '/all_sounds'
+    SERVERS_PATH = os.getcwd().replace("\\", "/") + '/servers/'
     WINDOWS = True
 else: 
-    SOUNDS_FOLDER_PATH = os.getcwd() + '/all_sounds'
-SLASH = "/" 
-SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+    SERVERS_PATH = os.getcwd() + '/servers/'
 
 playing = False
 handcount = 0
@@ -62,13 +60,33 @@ triggers = load_triggers('triggers.txt')
 @bot.event
 async def on_ready():
     global tchannel
-    print("Atyiseusseatyiseuss!")
     tchannel = bot.get_channel(HOME_CHANNEL_ID)
+    
+    await tchannel.send("`Hello there.` Configuring server folders...")
+    
+    for guild in bot.guilds:
+        guild_folder = SERVERS_PATH + str(guild.id)
+        guild_sounds_folder = guild_folder + "/all_sounds/"
+        guild_file_path = guild_folder + "/" + guild.name
+
+        if not os.path.exists(guild_folder):
+            os.makedirs(guild_folder)
+            print(f"Created folder for server: {guild.name} ({guild.id})")
+            await tchannel.send(f"Created folder for server: {guild.name} ({guild.id})")
+        if not os.path.exists(guild_sounds_folder):
+            os.makedirs(guild_sounds_folder)
+            print(f"Created sounds folder for server: {guild.name}")
+            await tchannel.send(f"Created sounds folder for server: {guild.name}")
+
+        with open(guild_file_path, 'w'):
+            pass
+            print(f"Created title file for server: {guild.name} ({guild.id})")
+    
+    print("BOT AWAKE AND READY")
     await tchannel.send("**Atyiseusseatyiseuss!**")
     if WINDOWS:
         await tchannel.send("*running locally on Windows*")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
-    
 
 
 @bot.event
@@ -148,7 +166,9 @@ async def dewey(ctx):
         return
     
     await ctx.send("You're fired")
-    sound_path = SOUNDS_FOLDER_PATH + SLASH + "dewey full scene.mp3"
+    
+    SOUNDS_FOLDER_PATH = SERVERS_PATH + HOME_SERVER_ID + "/all_sounds/"
+    sound_path = SOUNDS_FOLDER_PATH + "dewey full scene.mp3"
     
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {e}'))
@@ -168,9 +188,16 @@ async def s(ctx, *name):
     
     input = ' '.join(name)
     
+    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    
+    
     if not name:
-        files = os.listdir(SOUNDS_FOLDER_PATH)
-        sound_path = SOUNDS_FOLDER_PATH + SLASH + random.choice(files)
+        try:
+            files = os.listdir(SOUNDS_FOLDER_PATH)
+        except FileNotFoundError:
+            await ctx.send("*Sounds folder does not yet exist for this server.*")
+        
+        sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
         basename = sound_path.split('/')[-1].strip()
 
         ctx.voice_client.stop()
@@ -180,13 +207,14 @@ async def s(ctx, *name):
             file.write(basename + '\n')
         with open('all_time_stats.txt', 'a') as file:
             file.write(basename + '\n')
-        
         return
     
-    sound_path = SOUNDS_FOLDER_PATH + SLASH + input + ".ogg"
-    sound_path_mp3 = SOUNDS_FOLDER_PATH + SLASH + input + ".mp3"
+    sound_path = SOUNDS_FOLDER_PATH + input + ".ogg"
+    sound_path_mp3 = SOUNDS_FOLDER_PATH + input + ".mp3"
     basename = sound_path.split('/')[-1].strip()
     basename_mp3 = sound_path_mp3.split('/')[-1].strip()
+
+    SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
     if not basename.lower() in SOUNDS:
         if not basename_mp3.lower() in SOUNDS:
@@ -210,7 +238,10 @@ async def s(ctx, *name):
 
 @s.error
 async def s_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    if str(error) == "Command raised an exception: IndexError: Cannot choose from an empty sequence":
+        await ctx.send("*You have no sounds saved! Add some before playing.*")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command(help="Plays random sounds at desired time interval. Default 90s.")
@@ -237,7 +268,13 @@ async def play(ctx, *arr):
     else:
         delay = 90
     
-    files = os.listdir(SOUNDS_FOLDER_PATH)
+    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    
+    try:
+        files = os.listdir(SOUNDS_FOLDER_PATH)
+    except FileNotFoundError:
+        await ctx.send("*Sounds folder does not yet exist for this server.*")
+    
     playing = True
     pcount = 0
     
@@ -257,7 +294,7 @@ async def play(ctx, *arr):
             playing = False
             return
         
-        sound_path = SOUNDS_FOLDER_PATH + SLASH + random.choice(files)
+        sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
         basename = sound_path.split('/')[-1].strip()
         
         ctx.voice_client.stop()
@@ -285,8 +322,12 @@ async def play(ctx, *arr):
 
 @play.error
 async def play_error(ctx, error):
-    if isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
-        await ctx.send("Wrong input, idiot. \nCorrect usage: \n\n" +
+    global playing
+    if str(error) == "Command raised an exception: IndexError: Cannot choose from an empty sequence":
+        await ctx.send("*You have no sounds saved! Add some before playing.*")
+        playing = False
+    elif isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
+        await ctx.send("Wrong input, idiot. \n\nCorrect usage: \n\n" +
                        "`!play`: *Plays random sounds at default interval of 90 seconds.* \n" +
                        "`!play <delay>`: *Plays random sounds at interval of `<delay>` seconds* \n" +
                        "`!play <min_delay> <max_delay>`: *Plays random sounds at random interval between `<min_delay>` and `<max_delay>` seconds (randomized after each sound)*")
@@ -306,20 +347,22 @@ async def playfast(ctx, *arr):
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
     
-    files = os.listdir(SOUNDS_FOLDER_PATH)
+    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    
+    try:
+        files = os.listdir(SOUNDS_FOLDER_PATH)
+    except FileNotFoundError:
+        await ctx.send("*Sounds folder does not yet exist for this server.*")
     
     if len(arr) > 1:
-            await ctx.send("Wrong input, idiot. \nCorrect usage: \n\n" +
-                       "`!playfast`: *Plays random sounds at default interval of 1 second.* \n" +
-                       "`!playfast <delay>`: *Plays random sounds at interval of `<delay>` seconds*")
-            return
-    if float(arr[0]) > 1:
-            await ctx.send("*Use `!play` for delay greater than 1 second.*")
-            return
-    if float(arr[0]) < 0.1:
-            await ctx.send("*Delay less than 0.1 is forbidden. Bot will explode.*")
-            return
+            raise ValueError("Wrong input.")
     elif len(arr) == 1:
+        if float(arr[0]) > 1:
+                await ctx.send("*Use `!play` for delay greater than 1 second.*")
+                return
+        if float(arr[0]) < 0.1:
+                await ctx.send("*Delay less than 0.1 is forbidden. Bot will explode.*")
+                return
         delay = float(arr[0])
     else:
         delay = 1
@@ -331,7 +374,7 @@ async def playfast(ctx, *arr):
     
     while playing and pfcount < 30:    
         
-        sound_path = SOUNDS_FOLDER_PATH + SLASH + random.choice(files)
+        sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
         basename = sound_path.split('/')[-1].strip()
         
         ctx.voice_client.stop()
@@ -357,8 +400,12 @@ async def playfast(ctx, *arr):
 
 @playfast.error
 async def playfast_error(ctx, error):
-    if isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
-        await ctx.send("Wrong input, idiot. \nCorrect usage: \n\n" +
+    global playing
+    if str(error) == "Command raised an exception: IndexError: Cannot choose from an empty sequence":
+        await ctx.send("*You have no sounds saved! Add some before playing.*")
+        playing = False
+    elif isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
+        await ctx.send("Wrong input, idiot. \n\nCorrect usage: \n\n" +
                        "`!playfast`: *Plays random sounds at default interval of 1 second.* \n" +
                        "`!playfast <delay>`: *Plays random sounds at interval of `<delay>` seconds*")
     else:
@@ -471,12 +518,21 @@ async def leave_error(ctx, error):
 
 @bot.command(help="Displays full soundlist in alphabetical order.")
 async def soundlist(ctx):
-    global SOUNDS
-    numSounds = len(SOUNDS)
-    lines = os.listdir(SOUNDS_FOLDER_PATH)
+    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    
+    try:
+        lines = os.listdir(SOUNDS_FOLDER_PATH)
+    except FileNotFoundError:
+        await ctx.send("*Sounds folder does not yet exist for this server.*")
+    
     sorted_lines = sorted(lines, key = str.lower)
     output = '\n'.join(sorted_lines)
+    numSounds = len(lines)
     chunk_size = 1994
+
+    if numSounds == 0:
+        await ctx.send("*You have no sounds saved!*")
+        return
 
     await ctx.send(f"### **List of all `{numSounds}` soundboard sounds:** \n\n")
     
