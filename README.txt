@@ -63,9 +63,42 @@ Section 2: Other SSH Window instructions - Once the bot.py script exists
     2>&1 → Include error messages in the same log file.
     & → Run in the background.
 
+   NOTE: must be in the directory where bot.py is located.
+
 -------------------------------------------------------------------------
 
-3. to kill the script, simply create and use a shutdown command in discord (might have to be bot owner).
+3. TO SAVE TIME, create a custom shell command that does steps 1 & 2 for you when you call it. Create & edit a shell command file:
+
+-> nano start_bot.sh
+
+   Then enter the following (adjust based on path names):
+
+#!/bin/bash
+source myenv/bin/activate && \
+cd scuffed_discord_bot && \
+nohup python bot.py >> output.log 2>&1 &
+
+   Then do CTRL+X to exit, press Y to save and then press Enter to save as start_bot.sh.
+
+
+   Now, make the script executable:
+
+-> chmod +x start_bot.sh
+
+
+   Finally, move the script to /usr/local/bin/start_bot:
+
+-> sudo mv start_bot.sh /usr/local/bin/start_bot
+
+
+   Now you have a custom command, start_bot, that you can run to start the bot instead of using the series of commands detailed above.
+
+   NOTE: you need to run the command from the directory where /myenv/ is and which is one level up from your bot.py script. 
+        (assuming you have followed the instructions here, this is the default structure, and this is the directory where you begin when you connect via SSH).
+
+-------------------------------------------------------------------------
+
+4. to kill the script, simply create and use a shutdown command in discord (might have to be bot owner).
 
    **OR** use the following in the SSH window:
 
@@ -94,13 +127,13 @@ Section 2: Other SSH Window instructions - Once the bot.py script exists
 
 -------------------------------------------------------------------------
 
-4. to view logs, create and use a bot command in discord. Or use in SSH window:
+5. to view logs, create and use a bot command in discord. Or use in SSH window:
 
 -> tail -f output.log
 
 -------------------------------------------------------------------------
 
-5. to delete a folder, use:
+6. to delete a folder, use:
 
 -> rm -r foldername
 
@@ -112,9 +145,9 @@ Section 2: Other SSH Window instructions - Once the bot.py script exists
 
 -------------------------------------------------------------------------
 
-6. to add a new file to a folder (probably a new .ogg sound file to add to all_sounds), use:
+7. to add a new file to a folder , use:
 
--> mv sound.ogg all_sounds/
+-> mv file.ext foldername/
 
 
 
