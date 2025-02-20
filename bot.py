@@ -921,6 +921,9 @@ async def kys(ctx):
         await ctx.send("*This command can only be used in the bot's home channel.*")
         return
     
+    if not WINDOWS:
+        await ctx.invoke(bot.get_command('pushtextfiles'))
+    
     for vc in bot.voice_clients:
         if vc.is_connected():
             vc.stop()
