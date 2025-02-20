@@ -281,7 +281,7 @@ async def play_error(ctx, error):
 
 
 @bot.command(help="Plays random sounds at desired fast time interval. Default 1s.")
-async def playfast(ctx, arr):
+async def playfast(ctx, *arr):
     global playing
     
     if playing:
