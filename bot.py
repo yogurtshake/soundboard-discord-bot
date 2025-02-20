@@ -218,7 +218,7 @@ async def play(ctx, *arr):
     global playing, stop_event
     
     if playing:
-        await ctx.send("*The bot is already playing, idiot. Stop first and then try again.*")
+        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
         return
     
     stop_event.clear()
@@ -227,36 +227,44 @@ async def play(ctx, *arr):
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
     
+    if len(arr) > 0 and float(arr[0]) < 1:
+        await ctx.send("*Use !playfast for delay less than 1 second.*")
+        return
+    elif len(arr) == 1:
+        delay = float(arr[0])
+    elif len(arr) >= 2:
+        delay = random.uniform(float(arr[0]), float(arr[1]))
+    else:
+        delay = 90
+    
     files = os.listdir(SOUNDS_FOLDER_PATH)
-    
-    message_sent = False
     playing = True
+    pcount = 0
     
-    while playing:    
+    await ctx.send("I've been sittin on some awesome material")
+    
+    max_duration = 60 * 60
+    start_time = asyncio.get_event_loop().time()
+    
+    while playing and pcount < 30:    
         
-        if len(arr) > 0 and float(arr[0]) < 1:
-            await ctx.send("*Use !playfast for delay less than 1 second.*")
-            break
-        elif len(arr) == 1:
-            delay = float(arr[0])
-        elif len(arr) >= 2:
+        if len(arr) >= 2:
             delay = random.uniform(float(arr[0]), float(arr[1]))
-        else:
-            delay = 90
+        
+        elapsed_time = asyncio.get_event_loop().time() - start_time
+        if elapsed_time >= max_duration:
+            await ctx.send(f"*The play command has timed out after maximum of {max_duration // 60} minutes. Start again if you want.*")
+            playing = False
+            return
         
         sound_path = SOUNDS_FOLDER_PATH + SLASH + random.choice(files)
         basename = sound_path.split('/')[-1].strip()
         
         ctx.voice_client.stop()
         
-        if not message_sent:
-            await ctx.send("I've been sittin on some awesome material")
-            message_sent = True
-        
         try:
             if basename.endswith((".ogg", ".mp3")):
                 ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
-                await tchannel.send(f"Delay: `{delay}` seconds.")
                 try:
                     await asyncio.wait_for(stop_event.wait(), timeout=delay)
                 except asyncio.TimeoutError:
@@ -268,6 +276,12 @@ async def play(ctx, *arr):
                     file.write(basename + '\n')
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
+            
+        if delay < 6: pcount += 1
+        
+    if pcount == 30:
+        await ctx.send(f"*Limit of {pcount} fast sounds reached (1 < delay < 6). Chill for a sec, then start again if you want.*")
+        playing = False
 
 @play.error
 async def play_error(ctx, error):
@@ -280,12 +294,12 @@ async def play_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
-@bot.command(help="Plays random sounds at desired fast time interval. Default 1s.")
+@bot.command(help="Plays random sounds at desired fast time interval. Default 1 second.")
 async def playfast(ctx, *arr):
     global playing
     
     if playing:
-        await ctx.send("*The bot is already playing, idiot. Stop first and then try again.*")
+        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
         return
     
     if ctx.voice_client is None:
@@ -294,27 +308,33 @@ async def playfast(ctx, *arr):
     
     files = os.listdir(SOUNDS_FOLDER_PATH)
     
-    message_sent = False
-    playing = True
+    if len(arr) > 1:
+            await ctx.send("Wrong input, idiot. \nCorrect usage: \n\n" +
+                       "`!playfast`: *Plays random sounds at default interval of 1 second.* \n" +
+                       "`!playfast <delay>`: *Plays random sounds at interval of `<delay>` seconds*")
+            return
+    if float(arr[0]) > 1:
+            await ctx.send("*Use `!play` for delay greater than 1 second.*")
+            return
+    if float(arr[0]) < 0.1:
+            await ctx.send("*Delay less than 0.1 is forbidden. Bot will explode.*")
+            return
+    elif len(arr) == 1:
+        delay = float(arr[0])
+    else:
+        delay = 1
     
-    while playing:    
-        
-        if len(arr) > 0 and float(arr[0]) > 1:
-            await ctx.send("*Use !play for delay greater than 1 second.*")
-            break
-        elif len(arr) == 1:
-            delay = float(arr[0])
-        else:
-            delay = 1
+    playing = True
+    pfcount = 0
+    
+    await ctx.send("I've been sittin on some awesome material")
+    
+    while playing and pfcount < 30:    
         
         sound_path = SOUNDS_FOLDER_PATH + SLASH + random.choice(files)
         basename = sound_path.split('/')[-1].strip()
         
         ctx.voice_client.stop()
-        
-        if not message_sent:
-            await ctx.send("I've been sittin on some awesome material")
-            message_sent = True
         
         try:
             if basename.endswith((".ogg", ".mp3")):
@@ -327,6 +347,13 @@ async def playfast(ctx, *arr):
                     file.write(basename + '\n')
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
+            
+        pfcount += 1
+        
+    if pfcount == 30:
+        await ctx.send(f"*Limit of {pfcount} fast sounds reached (0.1 < delay < 1). Bot is gonna explode if it keeps going.*")
+        playing = False
+        
 
 @playfast.error
 async def playfast_error(ctx, error):
