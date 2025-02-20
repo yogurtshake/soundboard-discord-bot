@@ -706,6 +706,34 @@ async def pushtextfiles_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
+@bot.command(help="Displays the servers in which the bot exists and the voice channels to which it is connected. OWNER COMMAND.")
+@commands.is_owner()
+async def status(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+
+    server_info = []
+    for guild in bot.guilds:
+        voice_channels = [vc.name for vc in guild.voice_channels if vc.members and bot.user in vc.members]
+        if voice_channels:
+            server_info.append(f"Exists in: `{guild.name}`. Connected to voice channel: `{', '.join(voice_channels)}`")
+        else:
+            server_info.append(f"Exists in: `{guild.name}`. *Not connected to any voice channels.*")
+
+    await tchannel.send("## **Bot Status:**\n" + f"**Exists in `{len(bot.guilds)}` servers. Connected to `{len(voice_channels)}` voice channels.** \n\n" + "\n".join(server_info))
+
+@status.error
+async def status_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
+
+
 @bot.command(help="Restarts the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def restart(ctx):
