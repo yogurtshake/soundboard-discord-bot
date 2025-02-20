@@ -8,12 +8,11 @@
 
 -add config folder and !config command that allows user to edit default bot command message responses (stored in different text files?)
 
--create & organize folders for each server
-	-in on_ready, create folders for each bot guild if they don't already exist
-
 -commands to add multi-server functionality to:
 	-raisehand, randomhand, dewey, troll: if not home server, command not available
 
 	-s, play, playfast, soundlist, sessionstats, alltimestats, addtrigger, removetrigger, triggerlist.
 
 	-leave default globals as they are, dynamically update SOUNDS_FOLDER_PATH, SOUNDS, and new SERVER_PATH variables
+
+-add !loop command to loop specific sound. (copy paste logic from !s, add loop.)
