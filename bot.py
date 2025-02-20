@@ -127,6 +127,11 @@ async def on_command_error(ctx, error):
 @bot.command(help="Raises hands in correct order.")
 async def raisehand(ctx):
     global handcount
+    
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    
     if handcount % 3 == 0:
         m = "Frankie?"
     elif handcount % 3 == 1:
@@ -143,6 +148,10 @@ async def raisehand_error(ctx, error):
     
 @bot.command(help="Raises hands in random order.")
 async def randomhand(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    
     num = random.randint(0,2)
     if num == 0:
         m = "Frankie?"
@@ -161,6 +170,10 @@ async def randomhand_error(ctx, error):
 
 @bot.command(help="Plays full dewey fired scene.")
 async def dewey(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
@@ -458,13 +471,18 @@ async def join_error(ctx, error):
 @bot.command(help="Joins desired voice channel. Does not require user to be connected. ADMIN COMMAND.")
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
    
     if(chName.lower() == "private"): id = 265210092289261570
     elif(chName.lower() == "general"): id = 134415388233433090
     elif(chName.lower() == "poor man's general"): id = 212770924607438848
     elif(chName.lower() == "poverse general"): id = 1234341517041078383
     elif(chName.lower() == "harvey dent"): id = 1339030117430853708
-    else: id = 134415388233433090
+    else: 
+        await ctx.send("*Invalid channel name, idiot.*")
+        return
 
     channel = bot.get_channel(id)
     
@@ -480,8 +498,15 @@ async def troll(ctx, *, chName: str):
 
 @troll.error
 async def troll_error(ctx, error):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("There is no way into the mountain.")
+    elif str(error) == "chName is a required argument that is missing.":
+        await ctx.send("You must specify a channel name.\n\n Example: `!troll general`")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command(help="Leaves the current voice channel and displays sessions stats.")
