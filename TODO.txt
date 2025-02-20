@@ -9,10 +9,11 @@
 -add config folder and !config command that allows user to edit default bot command message responses (stored in different text files?)
 
 -commands to add multi-server functionality to:
-	-raisehand, randomhand, dewey, troll: if not home server, command not available
 
-	-s, play, playfast, soundlist, sessionstats, alltimestats, addtrigger, removetrigger, triggerlist.
-
-	-leave default globals as they are, dynamically update SOUNDS_FOLDER_PATH, SOUNDS, and new SERVER_PATH variables
+	-addtrigger, removetrigger, triggerlist.
 
 -add !loop command to loop specific sound. (copy paste logic from !s, add loop.)
+
+-fix on_message triggers
+
+-perhaps add command that allows for sound files to be sent to the bot through discord (and added to server's sound folder)? security risk? definitely admin only
