@@ -4,8 +4,16 @@
 -add routine check for any unexpected second processes?
 -add bot command that kills all but one?
 
--multiple servers?
+-create custom help command (different for not home server)
 
--add config.txt file and !config command that allows user to edit default bot command message responses?
+-add config folder and !config command that allows user to edit default bot command message responses (stored in different text files?)
 
--add !pushtextfiles call to shutdown and restart commands?
+-create & organize folders for each server
+	-in on_ready, create folders for each bot guild if they don't already exist
+
+-commands to add multi-server functionality to:
+	-raisehand, randomhand, dewey, troll: if not home server, command not available
+
+	-s, play, playfast, soundlist, sessionstats, alltimestats, addtrigger, removetrigger, triggerlist.
+
+	-leave default globals as they are, dynamically update SOUNDS_FOLDER_PATH, SOUNDS, and new SERVER_PATH variables
