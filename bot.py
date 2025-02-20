@@ -26,6 +26,7 @@ SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
 playing = False
 handcount = 0
+stop_event = asyncio.Event()
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -159,6 +160,8 @@ async def dewey_error(ctx, error):
 
 @bot.command(help="Plays desired sound. Chooses randomly if no input given.")
 async def s(ctx, *name):
+    global playing
+    
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
@@ -212,25 +215,32 @@ async def s_error(ctx, error):
 
 @bot.command(help="Plays random sounds at desired time interval. Default 90s.")
 async def play(ctx, *arr):
+    global playing, stop_event
+    
+    if playing:
+        await ctx.send("*The bot is already playing, idiot. Stop first and then try again.*")
+        return
+    
+    stop_event.clear()
+    
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
     
     files = os.listdir(SOUNDS_FOLDER_PATH)
     
-    global playing
+    message_sent = False
     playing = True
     
-    await ctx.send("I've been sittin on some awesome material")
     while playing:    
         
-        if len(arr) > 0 and isinstance(float(arr[0]), float) and float(arr[0]) < 0.1:
-            await ctx.send("Don't do less than 0.1 you scoundrel")
+        if len(arr) > 0 and float(arr[0]) < 0.1:
+            await ctx.send("*Don't do less than 0.1s you scoundrel*")
             break
-        elif len(arr) == 1 and isinstance(float(arr[0]), float):
+        elif len(arr) == 1:
             delay = float(arr[0])
-        elif len(arr) >= 2 and isinstance(float(arr[0]), float) and isinstance(float(arr[1]), float) and float(arr[0]) > float(arr[1]):
-            delay = random.randint(float(arr[0]), float(arr[1]))
+        elif len(arr) >= 2:
+            delay = random.uniform(float(arr[0]), float(arr[1]))
         else:
             delay = 90
         
@@ -239,30 +249,49 @@ async def play(ctx, *arr):
         
         ctx.voice_client.stop()
         
-        if basename.endswith((".ogg", ".mp3")):
-            ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
-            await asyncio.sleep(delay)
-            
-            with open('session_stats.txt', 'a') as file:
-                file.write(basename + '\n')
-            with open('all_time_stats.txt', 'a') as file:
-                file.write(basename + '\n')
+        if not message_sent:
+            await ctx.send("I've been sittin on some awesome material")
+            message_sent = True
+        
+        try:
+            if basename.endswith((".ogg", ".mp3")):
+                ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
+                await tchannel.send(f"Delay: `{delay}` seconds.")
+                try:
+                    await asyncio.wait_for(stop_event.wait(), timeout=delay)
+                except asyncio.TimeoutError:
+                    pass
+                
+                with open('session_stats.txt', 'a') as file:
+                    file.write(basename + '\n')
+                with open('all_time_stats.txt', 'a') as file:
+                    file.write(basename + '\n')
+        except Exception as e:
+            await ctx.send(f"*An unexpected error occurred: {e}*")
 
 @play.error
 async def play_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: {error}*")
+    if isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
+        await ctx.send("Wrong input, idiot. \nCorrect usage: \n\n" +
+                       "`!play`: *Plays random sounds at default interval of 90 seconds.* \n" +
+                       "`!play <delay>`: *Plays random sounds at interval of `<delay>` seconds* \n" +
+                       "`!play <min_delay> <max_delay>`: *Plays random sounds at random interval between `<min_delay>` and `<max_delay>` seconds (randomized after each sound)*")
+    else:
+        await ctx.send(f"*An unexpected error occurred: {error}*")
 
 
 @bot.command(help="Stops playing sounds.")
 async def stop(ctx):
+    global playing, stop_event
+    
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
     
     await ctx.send("Did you press the stop button?")
     
-    global playing
-    playing = False               
+    playing = False      
+    stop_event.set()         
     ctx.voice_client.stop()
 
 @stop.error

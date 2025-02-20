@@ -7,3 +7,5 @@
 -multiple servers?
 
 -add config.txt file and !config command that allows user to edit default bot command message responses?
+
+-add !pushtextfiles call to shutdown and restart commands?
