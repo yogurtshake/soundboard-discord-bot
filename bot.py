@@ -510,7 +510,6 @@ async def sessionstats(ctx):
         
         for i in range(0, len(output), chunk_size):
             await ctx.send(f"```{output[i:i + chunk_size]}```")
-    
     except FileNotFoundError:
         await ctx.send("*No stats for this session yet!*")
 
@@ -521,25 +520,28 @@ async def sessionstats_error(ctx, error):
 
 @bot.command(help="Displays sound playcount stats for all time.")
 async def alltimestats(ctx):
-    with open('all_time_stats.txt', 'r') as file:
-        lines = file.readlines()
-    
-    shortened_lines = [s.strip() for s in lines]
-    counter = Counter(shortened_lines)
-    
-    sorted_items = sorted(counter.items(), key=lambda item: item[1], reverse=True)
-    
-    stuff = [f'{item}: {count}' for item, count in sorted_items]
-    output = '\n'.join(stuff)
-    
-    chunk_size = 1994
-    num = len(lines)
+    try:
+        with open('all_time_stats.txt', 'r') as file:
+            lines = file.readlines()
+        
+        shortened_lines = [s.strip() for s in lines]
+        counter = Counter(shortened_lines)
+        
+        sorted_items = sorted(counter.items(), key=lambda item: item[1], reverse=True)
+        
+        stuff = [f'{item}: {count}' for item, count in sorted_items]
+        output = '\n'.join(stuff)
+        
+        chunk_size = 1994
+        num = len(lines)
 
-    await ctx.send("## **Bot soundboard stats for all time:** \n\n")
-    await ctx.send(f"### Playcount: `{num}` \n\n")
-    
-    for i in range(0, len(output), chunk_size):
-        await ctx.send(f"```{output[i:i + chunk_size]}```")
+        await ctx.send("## **Bot soundboard stats for all time:** \n\n")
+        await ctx.send(f"### Playcount: `{num}` \n\n")
+        
+        for i in range(0, len(output), chunk_size):
+            await ctx.send(f"```{output[i:i + chunk_size]}```")
+    except FileNotFoundError:
+        await ctx.send("*No stats yet! Use `!s` or `!play` to start tracking playcount stats.*")
 
 @alltimestats.error
 async def alltimestats_error(ctx, error):
