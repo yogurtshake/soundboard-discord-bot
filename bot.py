@@ -59,9 +59,11 @@ async def on_ready():
     await tchannel.send("`Hello there.` Configuring server folders...")
     
     for guild in bot.guilds:
+        
         guild_folder = SERVERS_PATH + str(guild.id)
         guild_sounds_folder = guild_folder + "/all_sounds/"
-        guild_file_path = guild_folder + "/0. " + guild.name
+        guild_title_path = guild_folder + "/0. " + guild.name
+        guild_config_path = guild_folder + "/config.txt"
 
         if not os.path.exists(guild_folder):
             os.makedirs(guild_folder)
@@ -71,10 +73,13 @@ async def on_ready():
             os.makedirs(guild_sounds_folder)
             print(f"Created sounds folder for server: {guild.name}")
             await tchannel.send(f"Created sounds folder for server: {guild.name}")
-
-        with open(guild_file_path, 'w'):
-            pass
-            print(f"Created title file for server: {guild.name} ({guild.id})")
+        if not os.path.exists(guild_title_path):
+            with open(guild_title_path, 'a'):
+                print(f"Created title file for server: {guild.name}")
+        if not os.path.exists(guild_config_path):    
+            with open(guild_config_path, 'a'):
+                print(f"Created config file for server: {guild.name}")
+        
     
     print("BOT AWAKE AND READY")
     await tchannel.send("**Atyiseusseatyiseuss!**")
@@ -112,8 +117,6 @@ async def on_message(message):
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send("*Invalid command. You piece of shit.*")
-    else:
-        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
     
 # --------------------------------- COMMANDS ---------------------------------     
@@ -198,7 +201,6 @@ async def s(ctx, *name):
     
     SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
     
-    
     if not name:
         try:
             files = os.listdir(SOUNDS_FOLDER_PATH)
@@ -228,10 +230,8 @@ async def s(ctx, *name):
         if not basename_mp3.lower() in SOUNDS:
             await ctx.send(f"*Sound `{basename[:-4]}` does not exist. You piece of shit.*")
             return
-
         sound_path = sound_path_mp3
         basename = basename_mp3
-        
     if not os.path.exists(sound_path) and not WINDOWS:
         await ctx.send(f"*'{basename}' is missing CAPS somewhere. You piece of shit.*")
         return
@@ -277,11 +277,7 @@ async def play(ctx, *arr):
         delay = 90
     
     SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
-    
-    try:
-        files = os.listdir(SOUNDS_FOLDER_PATH)
-    except FileNotFoundError:
-        await ctx.send("*Sounds folder does not yet exist for this server.*")
+    files = os.listdir(SOUNDS_FOLDER_PATH)
     
     playing = True
     pcount = 0
@@ -356,11 +352,7 @@ async def playfast(ctx, *arr):
         return
     
     SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
-    
-    try:
-        files = os.listdir(SOUNDS_FOLDER_PATH)
-    except FileNotFoundError:
-        await ctx.send("*Sounds folder does not yet exist for this server.*")
+    files = os.listdir(SOUNDS_FOLDER_PATH)
     
     if len(arr) > 1:
             raise ValueError("Wrong input.")
@@ -416,6 +408,83 @@ async def playfast_error(ctx, error):
         await ctx.send("Wrong input, idiot. \n\nCorrect usage: \n\n" +
                        "`!playfast`: *Plays random sounds at default interval of 1 second.* \n" +
                        "`!playfast <delay>`: *Plays random sounds at interval of `<delay>` seconds*")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@bot.command(help="Plays desired sound over and over again at desired time interval.")
+async def loop(ctx, soundname: str, delaynum: float):
+    global playing, stop_event
+    
+    if ctx.voice_client is None:
+        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        return
+    if playing:
+        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
+        return
+    
+    stop_event.clear()
+    
+    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    
+    sound_path = SOUNDS_FOLDER_PATH + soundname + ".ogg"
+    sound_path_mp3 = SOUNDS_FOLDER_PATH + soundname + ".mp3"
+    basename = sound_path.split('/')[-1].strip()
+    basename_mp3 = sound_path_mp3.split('/')[-1].strip()
+
+    SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+
+    if not basename.lower() in SOUNDS:
+        if not basename_mp3.lower() in SOUNDS:
+            await ctx.send(f"*Sound `{basename[:-4]}` does not exist. You piece of shit.*")
+            return
+        sound_path = sound_path_mp3
+        basename = basename_mp3
+    if not os.path.exists(sound_path) and not WINDOWS:
+        await ctx.send(f"*'{basename}' is missing CAPS somewhere. You piece of shit.*")
+        return
+
+    playing = True
+    lcount = 0
+    delay = delaynum
+    
+    max_duration = 5 * 60
+    start_time = asyncio.get_event_loop().time()
+    
+    while playing and lcount < 30:    
+        
+        elapsed_time = asyncio.get_event_loop().time() - start_time
+        if elapsed_time >= max_duration:
+            await ctx.send(f"*The play command has timed out after maximum of {max_duration // 60} minutes. Start again if you want.*")
+            playing = False
+            return
+        
+        ctx.voice_client.stop()
+        
+        try:
+            ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
+            try:
+                await asyncio.wait_for(stop_event.wait(), timeout=delay)
+            except asyncio.TimeoutError:
+                pass
+            
+            with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
+                file.write(basename + '\n')
+            with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
+                file.write(basename + '\n')
+        except Exception as e:
+            await ctx.send(f"*An unexpected error occurred: {e}*")
+            
+        if delay < 6: lcount += 1
+        
+    if lcount == 30:
+        await ctx.send(f"*Limit of {lcount} fast sound loops reached (1 < delay < 6). Chill for a sec, then start again if you want.*")
+        playing = False
+
+@loop.error
+async def loop_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument) or isinstance(error, commands.BadArgument):
+        await ctx.send("*You must specify a sound name and delay number (in seconds).\n\n Example: `!loop soundname 10`\n Example: `!loop 'sound name with spaces' 10`*")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
@@ -495,10 +564,9 @@ async def troll(ctx, *, chName: str):
 async def troll_error(ctx, error):
     if ctx.guild.id != HOME_SERVER_ID:
         await ctx.send("*This command can only be used in the bot's home server.*")
-        return
-    if isinstance(error, commands.MissingPermissions):
-        await ctx.send("There is no way into the mountain.")
-    elif str(error) == "chName is a required argument that is missing.":
+    elif isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
+    elif isinstance(error, commands.MissingRequiredArgument):
         await ctx.send("You must specify a channel name.\n\n Example: `!troll general`")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
@@ -510,22 +578,28 @@ async def leave(ctx):
         ctx.voice_client.stop()
         await ctx.send("Won't be a problem.")
         await ctx.voice_client.disconnect()
-        await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
+        
+        in_vc = False
+        
+        for vc in bot.voice_clients:
+            if vc.is_connected():
+                in_vc = True
+                break
+        if not in_vc:
+            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
     else:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
         
     await ctx.invoke(bot.get_command('sessionstats'))
         
-    file_path = 'session_stats.txt'
+    file_path = SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt'
     try:
         os.remove(file_path)
         await ctx.send("*Session stats deleted.*")
         print(f"{file_path} has been deleted successfully.")
     except FileNotFoundError:
         print(f"{file_path} does not exist.")
-    except PermissionError:
-        print(f"Permission denied: unable to delete {file_path}.")
     except Exception as e:
         print(f"Error: {e}")
 
@@ -645,7 +719,7 @@ async def addtrigger(ctx, *, args: str):
 @addtrigger.error
 async def addtrigger_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("There is no way into the mountain.")
+        await ctx.send("No.")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
@@ -678,7 +752,7 @@ async def removetrigger(ctx, *, args: str):
 @removetrigger.error
 async def removetrigger_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
-        await ctx.send("There is no way into the mountain.")
+        await ctx.send("No.")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
@@ -950,23 +1024,32 @@ async def restart(ctx):
                 channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
                 await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner is restarting the bot.*")
             
+            file_path = SERVERS_PATH + str(vc.channel.guild.id) + '/session_stats.txt'
+            try:
+                os.remove(file_path)
+                await tchannel.send(f"*Session stats deleted for server: `{vc.channel.guild.name}`*")
+                print(f"{file_path} has been deleted successfully.")
+            except FileNotFoundError:
+                print(f"{file_path} does not exist.")
+            except Exception as e:
+                print(f"Error: {e}")
+            
             await tchannel.send(f"*Disconnected from voice channel: `{vc.channel.name}` in server `{vc.channel.guild.name}`.*")
     
     await tchannel.send("Restarting...")
 
     try:
-        file_path = 'session_stats.txt'
-        try:
-            os.remove(file_path)
-            await tchannel.send("*Session stats deleted.*")
-            print(f"{file_path} has been deleted successfully.")
-        except FileNotFoundError:
-            print(f"{file_path} does not exist.")
-        except PermissionError:
-            print(f"Permission denied: unable to delete {file_path}.")
-        except Exception as e:
-            print(f"Error: {e}")
-            
+        for guild in bot.guilds:
+            file_path = SERVERS_PATH + str(guild.id) + '/session_stats.txt'
+            try:
+                os.remove(file_path)
+                await tchannel.send("*Session stats deleted.*")
+                print(f"{file_path} has been deleted successfully.")
+            except FileNotFoundError:
+                print(f"{file_path} does not exist.")
+            except Exception as e:
+                print(f"Error: {e}")
+                
         await bot.close()
         
         if WINDOWS:
@@ -1009,22 +1092,20 @@ async def kys(ctx):
             if vc.channel.guild.id != HOME_SERVER_ID:
                 channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
                 await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner has shut down the bot.*")
-            
+                
+            file_path = SERVERS_PATH + str(vc.channel.guild.id) + '/session_stats.txt'
+            try:
+                os.remove(file_path)
+                await tchannel.send(f"*Session stats deleted for server: `{vc.channel.guild.name}`*")
+                print(f"{file_path} has been deleted successfully.")
+            except FileNotFoundError:
+                print(f"{file_path} does not exist.")
+            except Exception as e:
+                print(f"Error: {e}")    
+                    
             await tchannel.send(f"*Disconnected from voice channel: `{vc.channel.name}` in server `{vc.channel.guild.name}`.*")
     
     await ctx.send("So uncivilized. Shutting down...")
-    
-    file_path = 'session_stats.txt'
-    try:
-        os.remove(file_path)
-        await tchannel.send("*Session stats deleted.*")
-        print(f"{file_path} has been deleted successfully.")
-    except FileNotFoundError:
-        print(f"{file_path} does not exist.")
-    except PermissionError:
-        print(f"Permission denied: unable to delete {file_path}.")
-    except Exception as e:
-        print(f"Error: {e}")
     
     await bot.close()
     sys.exit()
