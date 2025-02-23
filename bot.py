@@ -22,9 +22,12 @@ if "\\" in os.getcwd():
 else: 
     SERVERS_PATH = os.getcwd() + '/servers/'
 
+PLAYING_DIC = {}
 playing = False
-handcount = 0
+STOP_EVENT_DIC = {}
 stop_event = asyncio.Event()
+
+handcount = 0
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -51,7 +54,13 @@ def load_triggers(file_path):
 
 @bot.event
 async def on_ready():
-    global tchannel
+    global tchannel, PLAYING_DIC, STOP_EVENT_DIC
+    
+    for guild in bot.guilds:
+        PLAYING_DIC[guild.id] = False
+        STOP_EVENT_DIC[guild.id] = asyncio.Event()
+    
+    
     tchannel = bot.get_channel(HOME_CHANNEL_ID)
     
     await tchannel.send("# Hello there." +  "\n\nConfiguring server folders...")
@@ -86,7 +95,6 @@ async def on_ready():
             with open(guild_loops_path, 'a'):
                 print(f"Created loops file for server: {guild.name}")
         
-    
     print("BOT AWAKE AND READY")
     await tchannel.send("**Atyiseusseatyiseuss!**")
     if WINDOWS:
@@ -231,10 +239,10 @@ async def s(ctx, *name):
     basename = sound_path.split('/')[-1].strip()
     basename_mp3 = sound_path_mp3.split('/')[-1].strip()
 
-    SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+    sounds = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
-    if not basename.lower() in SOUNDS:
-        if not basename_mp3.lower() in SOUNDS:
+    if not basename.lower() in sounds:
+        if not basename_mp3.lower() in sounds:
             await ctx.send(f"*Sound `{basename[:-4]}` does not exist. You piece of shit.*")
             return
         sound_path = sound_path_mp3
@@ -432,6 +440,9 @@ async def loop(ctx, soundname: str, delaynum: float):
     if playing:
         await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
         return
+    if delaynum < 0.1:
+        await ctx.send("*Delay less than 0.1 is forbidden. Bot would literally kill itself.*")
+        return
     
     stop_event.clear()
     
@@ -442,10 +453,10 @@ async def loop(ctx, soundname: str, delaynum: float):
     basename = sound_path.split('/')[-1].strip()
     basename_mp3 = sound_path_mp3.split('/')[-1].strip()
 
-    SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+    sounds = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
-    if not basename.lower() in SOUNDS:
-        if not basename_mp3.lower() in SOUNDS:
+    if not basename.lower() in sounds:
+        if not basename_mp3.lower() in sounds:
             await ctx.send(f"*Sound `{basename[:-4]}` does not exist. You piece of shit.*")
             return
         sound_path = sound_path_mp3
@@ -964,8 +975,8 @@ async def update(ctx):
     servers_sounds = {}
     for guild in bot.guilds:
         SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
-        SOUNDS = os.listdir(SOUNDS_FOLDER_PATH)
-        servers_sounds[guild.id] = SOUNDS
+        sounds = os.listdir(SOUNDS_FOLDER_PATH)
+        servers_sounds[guild.id] = sounds
     
     await tchannel.send("Pulling latest updates from github...")
 
@@ -983,18 +994,18 @@ async def update(ctx):
                 if str(guild.id) + "/all_sounds" in result.stdout:  
                     await tchannel.send(f"### Refreshing soundlist for server: `{guild.name}`...")
                     
-                    SOUNDS = servers_sounds[guild.id]
+                    sounds = servers_sounds[guild.id]
                     SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
-                    oldCount = len(SOUNDS)
+                    oldCount = len(sounds)
                     
-                    SOUNDS_NEW = os.listdir(SOUNDS_FOLDER_PATH)
-                    newCount = len(SOUNDS_NEW)
+                    sounds_new = os.listdir(SOUNDS_FOLDER_PATH)
+                    newCount = len(sounds_new)
                     
                     if oldCount == newCount:
                         await tchannel.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
 
                     elif newCount > oldCount: 
-                        difference = list(set(SOUNDS_NEW) - set(SOUNDS))
+                        difference = list(set(sounds_new) - set(sounds))
                         difference_str = '\n'.join(difference)
                         
                         if newCount - oldCount == 1: word = "sound"
@@ -1003,7 +1014,7 @@ async def update(ctx):
                         await tchannel.send(f"Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
                     
                     elif newCount < oldCount:
-                        difference = list(set(SOUNDS) - set(SOUNDS_NEW))
+                        difference = list(set(sounds) - set(sounds_new))
                         difference_str = '\n'.join(difference)
                         
                         if oldCount - newCount == 1: word = "sound"
