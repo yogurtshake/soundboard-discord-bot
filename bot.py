@@ -1000,7 +1000,7 @@ async def update(ctx):
                         if newCount - oldCount == 1: word = "sound"
                         else: word = "sounds"
                         
-                        await tchannel.send(f"### Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
+                        await tchannel.send(f"Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
                     
                     elif newCount < oldCount:
                         difference = list(set(SOUNDS) - set(SOUNDS_NEW))
@@ -1013,10 +1013,10 @@ async def update(ctx):
 
         if "bot.py" in result.stdout:
             await tchannel.send("Update complete.")
-
             await ctx.invoke(bot.get_command('restart'))
+            return
             
-        await tchannel.send("Updates pulled successfully. They did not affect `bot.py` nor any server's `all_sounds/`.")
+        await tchannel.send("Updates pulled successfully. They did not affect `bot.py`.")
     
     except subprocess.CalledProcessError as e:
         await tchannel.send(f"Error pulling updates: {e.stderr}")
