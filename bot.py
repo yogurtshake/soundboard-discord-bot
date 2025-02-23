@@ -1029,22 +1029,23 @@ async def pushtextfiles(ctx):
             await tchannel.send("*There are changes on the remote repository, idiot. Update then try again.*")
             return
 
-        await tchannel.send("Pushing updates for `output.log` and all servers' `all_time_stats.txt`, `triggers.txt`, `loops.txt`, and `config.txt` files to github...")
-
+        await tchannel.send("Staging changes for `output.log` and all servers' `all_time_stats.txt`, `triggers.txt`, `loops.txt`, and `config.txt` files...")
         subprocess.run(["git", "add", "output.log"], check=True)
-
         for guild in bot.guilds:
             guild_path = "servers/" + str(guild.id) + "/"
             subprocess.run(["git", "add", guild_path + "all_time_stats.txt", guild_path + "triggers.txt", guild_path + "loops.txt", guild_path + "config.txt"], check=True)
 
+        await tchannel.send("Checking if changes actually exist...")
         result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
         if not result.stdout.strip():
             await tchannel.send("*No changes to commit for all text files.*")
             return
 
+        await tchannel.send("Committing updates...")
         commit_result = subprocess.run(["git", "commit", "-m", "Update text files"], capture_output=True, text=True, check=True)
         await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
-
+        
+        await tchannel.send("Pushing updates to github...")
         result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
 
         output = result.stdout if result.stdout else result.stderr
