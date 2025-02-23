@@ -292,6 +292,9 @@ async def play(ctx, *arr):
     await ctx.send("I've been sittin on some awesome material")
     
     max_duration = 60 * 60
+    if delay > max_duration:
+        max_duration = 2 * delay + 20
+    
     start_time = asyncio.get_event_loop().time()
     
     while playing and pcount < 30:    
@@ -456,13 +459,16 @@ async def loop(ctx, soundname: str, delaynum: float):
     delay = delaynum
     
     max_duration = 5 * 60
+    if delay > max_duration:
+        max_duration = 2 * delay + 20
+    
     start_time = asyncio.get_event_loop().time()
     
     while playing and lcount < 30:    
         
         elapsed_time = asyncio.get_event_loop().time() - start_time
         if elapsed_time >= max_duration:
-            await ctx.send(f"*The play command has timed out after maximum of {max_duration // 60} minutes. Start again if you want.*")
+            await ctx.send(f"*The loop command has timed out after maximum of {max_duration // 60} minutes. Start again if you want.*")
             playing = False
             return
         
@@ -955,7 +961,12 @@ async def update(ctx):
         await ctx.send("*This command can only be used in the bot's home channel.*")
         return
     
-    global SOUNDS
+    servers_sounds = {}
+    for guild in bot.guilds:
+        SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
+        SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+        servers_sounds[guild.id] = SOUNDS
+    
     await tchannel.send("Pulling latest updates from github...")
 
     try:
@@ -968,39 +979,43 @@ async def update(ctx):
             return
 
         if "all_sounds" in result.stdout:
-            oldCount = len(SOUNDS)
-            SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
-            newCount = len(SOUNDS_NEW)
-            
-            if oldCount == newCount:
-                await tchannel.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
+            for guild in bot.guilds: 
+                await tchannel.send(f"### Refreshing soundlist for server: `{guild.name}`...")
+                
+                SOUNDS = servers_sounds[guild.id]
+                SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
+                oldCount = len(SOUNDS)
+                
+                SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+                newCount = len(SOUNDS_NEW)
+                
+                if oldCount == newCount:
+                    await tchannel.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
 
-            elif newCount > oldCount: 
-                difference = list(set(SOUNDS_NEW) - set(SOUNDS))
-                difference_str = '\n'.join(difference)
+                elif newCount > oldCount: 
+                    difference = list(set(SOUNDS_NEW) - set(SOUNDS))
+                    difference_str = '\n'.join(difference)
+                    
+                    if newCount - oldCount == 1: word = "sound"
+                    else: word = "sounds"
+                    
+                    await tchannel.send(f"### Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
                 
-                if newCount - oldCount == 1: word = "sound"
-                else: word = "sounds"
-                
-                await tchannel.send(f"### Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
-            
-            elif newCount < oldCount:
-                difference = list(set(SOUNDS) - set(SOUNDS_NEW))
-                difference_str = '\n'.join(difference)
-                
-                if oldCount - newCount == 1: word = "sound"
-                else: word = "sounds"
-                
-                await tchannel.send(f"### Soundlist refreshed: `{oldCount - newCount}` {word} removed. Current soundlist count: `{newCount}`.\n\n**Removed sounds:**\n`{difference_str}`")
-            
-            SOUNDS = SOUNDS_NEW
+                elif newCount < oldCount:
+                    difference = list(set(SOUNDS) - set(SOUNDS_NEW))
+                    difference_str = '\n'.join(difference)
+                    
+                    if oldCount - newCount == 1: word = "sound"
+                    else: word = "sounds"
+                    
+                    await tchannel.send(f"### Soundlist refreshed: `{oldCount - newCount}` {word} removed. Current soundlist count: `{newCount}`.\n\n**Removed sounds:**\n`{difference_str}`")
 
         if "bot.py" in result.stdout:
             await tchannel.send("Update complete.")
 
             await ctx.invoke(bot.get_command('restart'))
             
-        await tchannel.send("Updates pulled successfully. They did not affect `bot.py` nor `all_sounds/`.")
+        await tchannel.send("Updates pulled successfully. They did not affect `bot.py` nor any server's `all_sounds/`.")
     
     except subprocess.CalledProcessError as e:
         await tchannel.send(f"Error pulling updates: {e.stderr}")
@@ -1025,7 +1040,7 @@ async def pushtextfiles(ctx):
         await ctx.send("*This command can only be used in the bot's home channel.*")
         return
     
-    await tchannel.send("Fetching latest changes from github...")
+    await tchannel.send("**Fetching** latest changes from github...")
 
     try:
         subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
@@ -1036,7 +1051,7 @@ async def pushtextfiles(ctx):
             return
         
         await tchannel.send("*Local repo is up to date. Continuing with pushing updates.*\n\n" +
-            "**Staging changes** for `output.log` and all servers' `all_time_stats.txt`, `triggers.txt`, `loops.txt`, and `config.txt` files...")
+            "**Staging** changes for `output.log` and all servers' `all_time_stats.txt`, `triggers.txt`, `loops.txt`, and `config.txt` files...")
         subprocess.run(["git", "add", "output.log"], check=True)
         for guild in bot.guilds:
             guild_path = "servers/" + str(guild.id) + "/"
@@ -1048,11 +1063,11 @@ async def pushtextfiles(ctx):
             await tchannel.send("*No changes to commit for all text files.*")
             return
 
-        await tchannel.send("*Changes exist.*\n\n" + "**Committing** updates...")
+        await tchannel.send("*Changes exist!*\n\n" + "**Committing** updates...")
         commit_result = subprocess.run(["git", "commit", "-m", "Update text files"], capture_output=True, text=True, check=True)
         await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
         
-        await tchannel.send("*Updates committed.*\n\n" + "**Pushing** updates to github repo...")
+        await tchannel.send("*Updates committed!*\n\n" + "**Pushing** updates to github repo...")
         result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
 
         output = result.stdout if result.stdout else result.stderr
@@ -1178,6 +1193,7 @@ async def kys(ctx):
         return
     
     if not WINDOWS:
+        await ctx.send("*First, invoking `!pushtextfiles`:*")
         await ctx.invoke(bot.get_command('pushtextfiles'))
     
     for vc in bot.voice_clients:
