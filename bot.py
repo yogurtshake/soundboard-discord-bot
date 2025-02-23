@@ -165,6 +165,7 @@ async def randomhand_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
+
 # -------------- sound commands --------------
 
 @bot.command(help="Plays full dewey fired scene.")
@@ -484,7 +485,7 @@ async def loop(ctx, soundname: str, delaynum: float):
 @loop.error
 async def loop_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument) or isinstance(error, commands.BadArgument):
-        await ctx.send("*You must specify a sound name and delay number (in seconds).\n\n Example: `!loop soundname 10`\n Example: `!loop 'sound name with spaces' 10`*")
+        await ctx.send("*You must specify a sound name and delay number (in seconds).\n\n Example: `!loop soundname 10`\n Example: `!loop \"sound name with spaces\" 10`*")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
@@ -606,6 +607,7 @@ async def leave(ctx):
 @leave.error
 async def leave_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
 
 
 # -------------- file-related commands --------------
@@ -777,6 +779,88 @@ async def triggerlist(ctx):
 @triggerlist.error
 async def triggerlist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@bot.command(help='Use to note down a good loop time. Usage: !addloop "<sound name>" "<delay>". ADMIN COMMAND.')
+@commands.has_permissions(administrator=True)
+async def addloop(ctx, *, args: str):
+    try:
+        parts = shlex.split(args)
+        if len(parts) != 2:
+            await ctx.send('Usage: `!addloop "<sound name>" "<delay>"`')
+            return
+        
+        soundname, delay = parts
+        
+        with open(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt', 'a') as file:
+            file.write(f"{soundname},{delay}\n")
+        await ctx.send(f"New loop info saved. Sound name: `{soundname}` with delay: `{delay}`")
+        
+    except Exception as e:
+        await ctx.send(f"*An error occurred while adding the loop info: `{e}`*")
+
+@addloop.error
+async def addloop_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+@bot.command(help='Removes a saved loop time. Usage: !removeloop "<sound name>". ADMIN COMMAND.')
+@commands.has_permissions(administrator=True)
+async def removeloop(ctx, *, args: str):
+    try:
+        parts = shlex.split(args)
+        if len(parts) != 1:
+            await ctx.send('Usage: `!removeloop "<sound name>"`')
+            return
+        
+        soundname = parts[0]
+        loops = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt')
+        
+        if soundname in loops:
+            with open(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt', 'r') as file:
+                lines = file.readlines()
+            with open(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt', 'w') as file:
+                for line in lines:
+                    if not line.startswith(soundname + ','):
+                        file.write(line)
+            await ctx.send(f"Loop info for `{soundname}` removed successfully.")
+        else:
+            await ctx.send(f"Loop info for `{soundname}` not found.")
+    
+    except Exception as e:
+        await ctx.send(f"An error occurred while removing the loop info: {e}")
+
+@removeloop.error
+async def removeloop_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@bot.command(help="Displays all saved loop infos, sorted alphabetically by sound name.")
+async def looplist(ctx):
+    loops = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt')
+    
+    if not loops:
+        await ctx.send("*No loops found.*")
+        return
+
+    sorted_loops = sorted(loops.items())
+    output = "\n".join([f"{soundname}: {delay}" for soundname, delay in sorted_loops])
+    chunk_size = 1994
+
+    await ctx.send(f"## **List of all `{len(loops)}` sounds with saved loop info:** \n\n")
+    
+    for i in range(0, len(output), chunk_size):
+        await ctx.send(f"```{output[i:i + chunk_size]}```")
+
+@looplist.error
+async def looplist_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
 
 
 # -------------- owner commands --------------
@@ -1116,6 +1200,7 @@ async def kys_error(ctx, error):
         await ctx.send("# No.")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")    
+
 
 
 # --------------------------------- RUN ---------------------------------
