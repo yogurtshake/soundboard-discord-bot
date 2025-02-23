@@ -1,9 +1,5 @@
 -prettier formatting?
 
--FIX PROBLEM OF DOUBLE SCRIPT INSTANCE
--add routine check for any unexpected second processes?
--add bot command that kills all but one?
-
 -create custom help command (different for not home server)
 
 -add config folder and !config command that allows user to edit default bot command message responses (stored in different text files?)
@@ -11,9 +7,3 @@
 	-have bot send any non-context based messages to default channel (restart message)
 
 -perhaps add command that allows for sound files to be sent to the bot through discord (and added to server's sound folder)? security risk? definitely admin only
-
--FIX !PUSHTEXTFILES
--FIX !UPDATE
-
--FIX ISSUE with play-related globals (playing, stop_event). there are problems when 2 servers try to run a play command (!play, !playfast, !loop) at the same time. there are problems when one is playing and the other stops or leaves.
-	-fix following commands: !play, !playfast, !loop, !stop, !leave
