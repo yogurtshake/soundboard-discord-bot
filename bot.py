@@ -37,8 +37,6 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 # --------------------------------- FUNCTIONS ---------------------------------
 
 def load_triggers(file_path):
-    with open(file_path, 'a'):
-        pass
     triggers = {}
     try:
         with open(file_path, 'r') as file:
@@ -64,6 +62,8 @@ async def on_ready():
         guild_sounds_folder = guild_folder + "/all_sounds/"
         guild_title_path = guild_folder + "/0. " + guild.name
         guild_config_path = guild_folder + "/config.txt"
+        guild_triggers_path = guild_folder + "/triggers.txt"
+        guild_loops_path = guild_folder + "/loops.txt"
 
         if not os.path.exists(guild_folder):
             os.makedirs(guild_folder)
@@ -79,6 +79,12 @@ async def on_ready():
         if not os.path.exists(guild_config_path):    
             with open(guild_config_path, 'a'):
                 print(f"Created config file for server: {guild.name}")
+        if not os.path.exists(guild_triggers_path):    
+            with open(guild_triggers_path, 'a'):
+                print(f"Created triggers file for server: {guild.name}")
+        if not os.path.exists(guild_loops_path):    
+            with open(guild_loops_path, 'a'):
+                print(f"Created loops file for server: {guild.name}")
         
     
     print("BOT AWAKE AND READY")
