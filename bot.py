@@ -54,7 +54,7 @@ async def on_ready():
     global tchannel
     tchannel = bot.get_channel(HOME_CHANNEL_ID)
     
-    await tchannel.send("`Hello there.` Configuring server folders...")
+    await tchannel.send("# Hello there." +  "\n\nConfiguring server folders...")
     
     for guild in bot.guilds:
         
