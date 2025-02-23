@@ -61,49 +61,52 @@ async def delete_session_stats(ctx):
         print(f"Error: {e}")
 
 
+async def initialize_guild(guild):
+    global PLAYING, STOP_EVENT
+    PLAYING[guild.id] = False
+    STOP_EVENT[guild.id] = asyncio.Event()
+    
+    guild_folder = SERVERS_PATH + str(guild.id)
+    guild_sounds_folder = guild_folder + "/all_sounds/"
+    guild_title_path = guild_folder + "/0. " + guild.name
+    guild_config_path = guild_folder + "/config.txt"
+    guild_triggers_path = guild_folder + "/triggers.txt"
+    guild_loops_path = guild_folder + "/loops.txt"
+
+    if not os.path.exists(guild_folder):
+        os.makedirs(guild_folder)
+        print(f"Created folder for server: {guild.name} ({guild.id})")
+        await tchannel.send(f"Created folder for server: {guild.name} ({guild.id})")
+    if not os.path.exists(guild_sounds_folder):
+        os.makedirs(guild_sounds_folder)
+        print(f"Created sounds folder for server: {guild.name}")
+        await tchannel.send(f"Created sounds folder for server: {guild.name}")
+    if not os.path.exists(guild_title_path):
+        with open(guild_title_path, 'a'):
+            print(f"Created title file for server: {guild.name}")
+    if not os.path.exists(guild_config_path):    
+        with open(guild_config_path, 'a'):
+            print(f"Created config file for server: {guild.name}")
+    if not os.path.exists(guild_triggers_path):    
+        with open(guild_triggers_path, 'a'):
+            print(f"Created triggers file for server: {guild.name}")
+    if not os.path.exists(guild_loops_path):    
+        with open(guild_loops_path, 'a'):
+            print(f"Created loops file for server: {guild.name}")
+
+
 # --------------------------------- EVENTS ---------------------------------
 
 @bot.event
 async def on_ready():
-    global tchannel, PLAYING, STOP_EVENT
-    
-    for guild in bot.guilds:
-        PLAYING[guild.id] = False
-        STOP_EVENT[guild.id] = asyncio.Event()
+    global tchannel
     
     tchannel = bot.get_channel(HOME_CHANNEL_ID)
     
     await tchannel.send("# Hello there." +  "\n\nConfiguring server folders...")
     
     for guild in bot.guilds:
-        
-        guild_folder = SERVERS_PATH + str(guild.id)
-        guild_sounds_folder = guild_folder + "/all_sounds/"
-        guild_title_path = guild_folder + "/0. " + guild.name
-        guild_config_path = guild_folder + "/config.txt"
-        guild_triggers_path = guild_folder + "/triggers.txt"
-        guild_loops_path = guild_folder + "/loops.txt"
-
-        if not os.path.exists(guild_folder):
-            os.makedirs(guild_folder)
-            print(f"Created folder for server: {guild.name} ({guild.id})")
-            await tchannel.send(f"Created folder for server: {guild.name} ({guild.id})")
-        if not os.path.exists(guild_sounds_folder):
-            os.makedirs(guild_sounds_folder)
-            print(f"Created sounds folder for server: {guild.name}")
-            await tchannel.send(f"Created sounds folder for server: {guild.name}")
-        if not os.path.exists(guild_title_path):
-            with open(guild_title_path, 'a'):
-                print(f"Created title file for server: {guild.name}")
-        if not os.path.exists(guild_config_path):    
-            with open(guild_config_path, 'a'):
-                print(f"Created config file for server: {guild.name}")
-        if not os.path.exists(guild_triggers_path):    
-            with open(guild_triggers_path, 'a'):
-                print(f"Created triggers file for server: {guild.name}")
-        if not os.path.exists(guild_loops_path):    
-            with open(guild_loops_path, 'a'):
-                print(f"Created loops file for server: {guild.name}")
+        await initialize_guild(guild)
         
     print("BOT AWAKE AND READY")
     if WINDOWS:
@@ -135,6 +138,16 @@ async def on_message(message):
             await message.channel.send('# **Wrong! Shuddup.**')
         else: 
             await message.channel.send('**Wrong! Shuddup.**')
+    
+
+@bot.event
+async def on_guild_join(guild):
+    await tchannel.send(f"### Joined server: `{guild.name}` (`{guild.id}`)")
+    await initialize_guild(guild)
+    
+    channel = guild.system_channel or guild.text_channels[0]
+    if channel:
+        await channel.send("Which idiot added me to this shithole?.")    
     
     
 @bot.event
@@ -259,12 +272,12 @@ async def s(ctx, *name):
         await ctx.send(f"*'{basename}' is missing CAPS somewhere. You piece of shit.*")
         return
 
-    choice = "a terrible"
+    choice = "What a terrible"
     if random.randint(0,3) == 0:
-        choice = "a wonderful"
+        choice = "What a wonderful"
     if "richard patrick" in input:
         choice = "THE BEST"
-    await ctx.send(f"`{basename}` is {choice} choice.")
+    await ctx.send(f"Playing `{basename}`. {choice} choice.")
 
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
