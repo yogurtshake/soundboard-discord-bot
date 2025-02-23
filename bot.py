@@ -964,7 +964,7 @@ async def update(ctx):
     servers_sounds = {}
     for guild in bot.guilds:
         SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
-        SOUNDS = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+        SOUNDS = os.listdir(SOUNDS_FOLDER_PATH)
         servers_sounds[guild.id] = SOUNDS
     
     await tchannel.send("Pulling latest updates from github...")
@@ -980,35 +980,36 @@ async def update(ctx):
 
         if "all_sounds" in result.stdout:
             for guild in bot.guilds: 
-                await tchannel.send(f"### Refreshing soundlist for server: `{guild.name}`...")
-                
-                SOUNDS = servers_sounds[guild.id]
-                SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
-                oldCount = len(SOUNDS)
-                
-                SOUNDS_NEW = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
-                newCount = len(SOUNDS_NEW)
-                
-                if oldCount == newCount:
-                    await tchannel.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
+                if str(guild.id) + "/all_sounds" in result.stdout:  
+                    await tchannel.send(f"### Refreshing soundlist for server: `{guild.name}`...")
+                    
+                    SOUNDS = servers_sounds[guild.id]
+                    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
+                    oldCount = len(SOUNDS)
+                    
+                    SOUNDS_NEW = os.listdir(SOUNDS_FOLDER_PATH)
+                    newCount = len(SOUNDS_NEW)
+                    
+                    if oldCount == newCount:
+                        await tchannel.send(f"*No new sounds to add. Current soundlist count: {newCount}.*")
 
-                elif newCount > oldCount: 
-                    difference = list(set(SOUNDS_NEW) - set(SOUNDS))
-                    difference_str = '\n'.join(difference)
+                    elif newCount > oldCount: 
+                        difference = list(set(SOUNDS_NEW) - set(SOUNDS))
+                        difference_str = '\n'.join(difference)
+                        
+                        if newCount - oldCount == 1: word = "sound"
+                        else: word = "sounds"
+                        
+                        await tchannel.send(f"### Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
                     
-                    if newCount - oldCount == 1: word = "sound"
-                    else: word = "sounds"
-                    
-                    await tchannel.send(f"### Soundlist refreshed: `{newCount - oldCount}` new {word} added. Current soundlist count: `{newCount}`.\n\n**New sounds:**\n`{difference_str}`")
-                
-                elif newCount < oldCount:
-                    difference = list(set(SOUNDS) - set(SOUNDS_NEW))
-                    difference_str = '\n'.join(difference)
-                    
-                    if oldCount - newCount == 1: word = "sound"
-                    else: word = "sounds"
-                    
-                    await tchannel.send(f"### Soundlist refreshed: `{oldCount - newCount}` {word} removed. Current soundlist count: `{newCount}`.\n\n**Removed sounds:**\n`{difference_str}`")
+                    elif newCount < oldCount:
+                        difference = list(set(SOUNDS) - set(SOUNDS_NEW))
+                        difference_str = '\n'.join(difference)
+                        
+                        if oldCount - newCount == 1: word = "sound"
+                        else: word = "sounds"
+                        
+                        await tchannel.send(f"### Soundlist refreshed: `{oldCount - newCount}` {word} removed. Current soundlist count: `{newCount}`.\n\n**Removed sounds:**\n`{difference_str}`")
 
         if "bot.py" in result.stdout:
             await tchannel.send("Update complete.")
