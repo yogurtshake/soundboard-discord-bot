@@ -700,7 +700,7 @@ async def alltimestats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help='Adds a trigger. Usage: !addtrigger "<trigger>" "<response>". ADMIN COMMAND.')
+@bot.command(help='Adds a message trigger (if message CONTAINS trigger, bot will respond). Usage: !addtrigger "<trigger>" "<response>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def addtrigger(ctx, *, args: str):
     try:
@@ -725,7 +725,7 @@ async def addtrigger_error(ctx, error):
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
-@bot.command(help='Removes a trigger. Usage: !removetrigger "<trigger>". ADMIN COMMAND.')
+@bot.command(help='Removes a message trigger. Usage: !removetrigger "<trigger>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def removetrigger(ctx, *, args: str):
     try:
@@ -1019,7 +1019,7 @@ async def pushtextfiles(ctx):
         await ctx.send("*This command can only be used in the bot's home channel.*")
         return
     
-    await tchannel.send("Fetching latest changes from GitHub...")
+    await tchannel.send("Fetching latest changes from github...")
 
     try:
         subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
@@ -1029,16 +1029,20 @@ async def pushtextfiles(ctx):
             await tchannel.send("*There are changes on the remote repository, idiot. Update then try again.*")
             return
 
-        await tchannel.send("Pushing updates for `output.log`, `all_time_stats.txt`, and `triggers.txt` to GitHub...")
+        await tchannel.send("Pushing updates for `output.log` and all servers' `all_time_stats.txt`, `triggers.txt`, `loops.txt`, and `config.txt` files to github...")
 
-        subprocess.run(["git", "add", "output.log", "all_time_stats.txt", "triggers.txt"], check=True)
+        subprocess.run(["git", "add", "output.log"], check=True)
+
+        for guild in bot.guilds:
+            guild_path = "servers/" + str(guild.id) + "/"
+            subprocess.run(["git", "add", guild_path + "all_time_stats.txt", guild_path + "triggers.txt", guild_path + "loops.txt", guild_path + "config.txt"], check=True)
 
         result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
         if not result.stdout.strip():
-            await tchannel.send("*No changes to commit for `output.log`, `all_time_stats.txt`, and `triggers.txt`.*")
+            await tchannel.send("*No changes to commit for all text files.*")
             return
 
-        commit_result = subprocess.run(["git", "commit", "-m", "Update output.log, all_time_stats.txt, and triggers.txt"], capture_output=True, text=True, check=True)
+        commit_result = subprocess.run(["git", "commit", "-m", "Update text files"], capture_output=True, text=True, check=True)
         await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
 
         result = subprocess.run(["git", "push", "origin", "main"], capture_output=True, text=True, check=True)
