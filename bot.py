@@ -1049,8 +1049,11 @@ async def update(ctx):
             await tchannel.send("Update complete.")
             await ctx.invoke(bot.get_command('restart'))
             return
-            
-        await tchannel.send("Updates pulled successfully. They did not affect `bot.py`.")
+        
+        if "Fast-forward" in result.stdout:  
+            await tchannel.send("Updates pulled successfully. They did not affect `bot.py`.")
+        else:
+            await tchannel.send("Conflicts detected. Resolve manually or use `!hardreset`. Or, use `!forcepush` and try again.")
     
     except subprocess.CalledProcessError as e:
         await tchannel.send(f"Error pulling updates: {e.stderr}")
@@ -1093,11 +1096,11 @@ async def pushdata(ctx):
         await tchannel.send("*Checking if changes actually exist...*")
         result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
         if not result.stdout.strip():
-            await tchannel.send("*No changes to commit for all text files.*")
+            await tchannel.send("*No changes to commit for all data.*")
             return
 
         await tchannel.send("*Changes exist!*\n\n" + "**Committing** updates...")
-        commit_result = subprocess.run(["git", "commit", "-m", "Update servers data"], capture_output=True, text=True, check=True)
+        commit_result = subprocess.run(["git", "commit", "-m", "Update servers' data"], capture_output=True, text=True, check=True)
         await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
         
         await tchannel.send("*Updates committed!*\n\n" + "**Pushing** updates to github repo...")
@@ -1105,7 +1108,10 @@ async def pushdata(ctx):
 
         output = result.stdout if result.stdout else result.stderr
         await tchannel.send(f"```{output}```")
-        await tchannel.send("**Updates pushed successfully!**")
+        if result.stdout: 
+            await tchannel.send("**Updates pushed successfully!**")
+        else:
+            await tchannel.send("*An error occurred while pushing updates.*")
     
     except subprocess.CalledProcessError as e:
         error_message = e.stderr if e.stderr else "An error occurred, but no error message was provided."
@@ -1115,6 +1121,86 @@ async def pushdata(ctx):
 
 @pushdata.error
 async def pushdata_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@bot.command(help="Hard resets local repo to match github repo. OWNER COMMAND.")
+@commands.is_owner()
+async def hardreset(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+    
+    await tchannel.send("Hard resetting local branch to match remote branch...")
+
+    try:
+        result = subprocess.run(["git", "reset", "--hard", "origin/main"], capture_output=True, text=True)
+        await tchannel.send(f"```{result.stdout or result.stderr}```")
+
+        if "HEAD is now at" in result.stdout:
+            await tchannel.send("Local branch successfully reset to match remote branch.")
+        else:
+            await tchannel.send("Reset failed??? Idk what to do.")
+    
+    except subprocess.CalledProcessError as e:
+        await tchannel.send(f"Error pulling updates: {e.stderr}")
+    except Exception as e:
+        await tchannel.send(f"An unexpected error occurred: {str(e)}")
+
+@hardreset.error
+async def hardreset_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@bot.command(help="Pushes all servers' data updates to github repo. OWNER COMMAND.")
+@commands.is_owner()
+async def forcepush(ctx):
+    if ctx.guild.id != HOME_SERVER_ID:
+        await ctx.send("*This command can only be used in the bot's home server.*")
+        return
+    if ctx.channel.id != HOME_CHANNEL_ID:
+        await ctx.send("*This command can only be used in the bot's home channel.*")
+        return
+
+    try:
+        subprocess.run(["git", "add", "output.log"], check=True)
+        subprocess.run(["git", "add", "servers/"], check=True)
+        
+        result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
+        if not result.stdout.strip():
+            await tchannel.send("*No changes to commit for all data.*")
+            return
+
+        commit_result = subprocess.run(["git", "commit", "-m", "Update servers' data"], capture_output=True, text=True, check=True)
+        await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
+        
+        await tchannel.send("*Updates committed.*\n\n" + "**Force Pushing** updates to github repo...")
+        result = subprocess.run(["git", "push", "--force", "origin", "main"], capture_output=True, text=True, check=True)
+
+        output = result.stdout if result.stdout else result.stderr
+        await tchannel.send(f"```{output}```")
+        if result.stdout: 
+            await tchannel.send("**Updates pushed successfully!**")
+        else:
+            await tchannel.send("*An error occurred while pushing updates.*")
+    
+    except subprocess.CalledProcessError as e:
+        error_message = e.stderr if e.stderr else "An error occurred, but no error message was provided."
+        await tchannel.send(f"Error pushing updates: {error_message}")
+    except Exception as e:
+        await tchannel.send(f"An unexpected error occurred: {str(e)}")
+    
+@forcepush.error
+async def forcepush_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
