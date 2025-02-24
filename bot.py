@@ -1108,7 +1108,7 @@ async def pushdata(ctx):
 
         output = result.stdout if result.stdout else result.stderr
         await tchannel.send(f"```{output}```")
-        if result.stdout: 
+        if result.returncode == 0: 
             await tchannel.send("**Updates pushed successfully!**")
         else:
             await tchannel.send("*An error occurred while pushing updates.*")
@@ -1161,7 +1161,7 @@ async def hardreset_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Pushes all servers' data updates to github repo. OWNER COMMAND.")
+@bot.command(help="Force pushes all servers' data updates to github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def forcepush(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1188,7 +1188,7 @@ async def forcepush(ctx):
 
         output = result.stdout if result.stdout else result.stderr
         await tchannel.send(f"```{output}```")
-        if result.stdout: 
+        if result.returncode == 0: 
             await tchannel.send("**Updates pushed successfully!**")
         else:
             await tchannel.send("*An error occurred while pushing updates.*")
