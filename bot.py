@@ -147,7 +147,7 @@ async def on_guild_join(guild):
         
     channel = guild.system_channel or guild.text_channels[0]
     if channel:
-        await channel.send("Which idiot added me to this shithole?.")    
+        await channel.send("Which idiot added me to this shithole?")    
     
     
 @bot.event
