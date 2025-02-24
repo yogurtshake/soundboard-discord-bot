@@ -76,11 +76,11 @@ async def initialize_guild(guild):
     if not os.path.exists(guild_folder):
         os.makedirs(guild_folder)
         print(f"Created folder for server: {guild.name} ({guild.id})")
-        await tchannel.send(f"Created folder for server: {guild.name} ({guild.id})")
+        await tchannel.send(f"Created folder for server: `{guild.name}` ({guild.id})")
     if not os.path.exists(guild_sounds_folder):
         os.makedirs(guild_sounds_folder)
         print(f"Created sounds folder for server: {guild.name}")
-        await tchannel.send(f"Created sounds folder for server: {guild.name}")
+        await tchannel.send(f"Created sounds folder for server: `{guild.name}`")
     if not os.path.exists(guild_title_path):
         with open(guild_title_path, 'a'):
             print(f"Created title file for server: {guild.name}")
@@ -144,7 +144,7 @@ async def on_message(message):
 async def on_guild_join(guild):
     await tchannel.send(f"### Joined server: `{guild.name}` (`{guild.id}`)")
     await initialize_guild(guild)
-    
+        
     channel = guild.system_channel or guild.text_channels[0]
     if channel:
         await channel.send("Which idiot added me to this shithole?.")    
@@ -468,8 +468,8 @@ async def loop(ctx, soundname: str, delay: float):
     if PLAYING[ctx.guild.id]:
         await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
         return
-    if delay < 0.1:
-        await ctx.send("*Delay less than 0.1 is forbidden. Bot would literally kill itself.*")
+    if delay < 0.3:
+        await ctx.send("*Delay less than 0.3 is forbidden. Bot would literally kill itself.*")
         return
     
     STOP_EVENT[ctx.guild.id].clear()
@@ -1065,9 +1065,9 @@ async def update_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
-@bot.command(help="Pushes text file(s) updates to github repo. OWNER COMMAND.")
+@bot.command(help="Pushes all servers' data updates to github repo. OWNER COMMAND.")
 @commands.is_owner()
-async def pushtextfiles(ctx):
+async def pushdata(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
         await ctx.send("*This command can only be used in the bot's home server.*")
         return
@@ -1086,12 +1086,10 @@ async def pushtextfiles(ctx):
             return
         
         await tchannel.send("*Local repo is up to date. Continuing with pushing updates.*\n\n" +
-            "**Staging** changes for `output.log` and all servers' `all_time_stats.txt`, `triggers.txt`, `loops.txt`, and `config.txt` files...")
+            "**Staging** changes for `output.log` and all servers' folders...")
         subprocess.run(["git", "add", "output.log"], check=True)
-        for guild in bot.guilds:
-            guild_path = "servers/" + str(guild.id) + "/"
-            subprocess.run(["git", "add", guild_path + "all_time_stats.txt", guild_path + "triggers.txt", guild_path + "loops.txt", guild_path + "config.txt"], check=True)
-
+        subprocess.run(["git", "add", "servers/"], check=True)
+        
         await tchannel.send("*Checking if changes actually exist...*")
         result = subprocess.run(["git", "diff", "--cached", "--name-only"], capture_output=True, text=True, check=True)
         if not result.stdout.strip():
@@ -1099,7 +1097,7 @@ async def pushtextfiles(ctx):
             return
 
         await tchannel.send("*Changes exist!*\n\n" + "**Committing** updates...")
-        commit_result = subprocess.run(["git", "commit", "-m", "Update text files"], capture_output=True, text=True, check=True)
+        commit_result = subprocess.run(["git", "commit", "-m", "Update servers data"], capture_output=True, text=True, check=True)
         await tchannel.send(f"```{commit_result.stdout or commit_result.stderr}```")
         
         await tchannel.send("*Updates committed!*\n\n" + "**Pushing** updates to github repo...")
@@ -1115,8 +1113,8 @@ async def pushtextfiles(ctx):
     except Exception as e:
         await tchannel.send(f"An unexpected error occurred: {str(e)}")
 
-@pushtextfiles.error
-async def pushtextfiles_error(ctx, error):
+@pushdata.error
+async def pushdata_error(ctx, error):
     if isinstance(error, commands.NotOwner):
         await ctx.send("# No.")
     else:
