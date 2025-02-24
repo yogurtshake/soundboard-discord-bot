@@ -201,6 +201,10 @@ Section 3: How to use git in your VM SSH Window (github)
 
 -> git reset --hard origin/main
 
+   To force push changes from your local branch to the remote branch (if you have conflicts and want to override) use:
+
+-> git push --force origin main
+
 -------------------------------------------------------------------------
 
 4. To check the status of your repo use:
