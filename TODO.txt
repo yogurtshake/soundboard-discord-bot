@@ -7,7 +7,3 @@
 	-have bot send any non-context based messages to default channel (restart message)
 
 -perhaps add command that allows for sound files to be sent to the bot through discord (and added to server's sound folder)? security risk? definitely admin only
-
--TO TEST: add bot to new server
-
--loop command broke the bot???
