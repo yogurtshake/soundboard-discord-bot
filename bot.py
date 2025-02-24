@@ -158,9 +158,21 @@ async def on_command_error(ctx, error):
     
 # --------------------------------- COMMANDS ---------------------------------     
     
+bot.remove_command('help')
+
+@bot.command(name='help', help='Displays help information for all commands.')
+async def help(ctx):
+    help_message = ""    
+    
+@help.error
+async def help_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")    
+    
+    
+
 # -------------- misc commands --------------    
     
-@bot.command(help="Raises hands in correct order.")
+@bot.command(name='raisehand', help="Raises hands in correct order.")
 async def raisehand(ctx):
     
     global handcount
@@ -182,7 +194,7 @@ async def raisehand_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")    
     
     
-@bot.command(help="Raises hands in random order.")
+@bot.command(name='randomhand', help="Raises hands in random order.")
 async def randomhand(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
         await ctx.send("*This command can only be used in the bot's home server.*")
@@ -205,7 +217,7 @@ async def randomhand_error(ctx, error):
 
 # -------------- sound commands --------------
 
-@bot.command(help="Plays full dewey fired scene.")
+@bot.command(name='dewey', help="Plays full dewey fired scene.")
 async def dewey(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
         await ctx.send("*This command can only be used in the bot's home server.*")
@@ -227,7 +239,7 @@ async def dewey_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Plays desired sound. Chooses randomly if no input given.")
+@bot.command(name='s', help="Plays desired sound. Chooses randomly if no input given.")
 async def s(ctx, *name):
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
@@ -295,7 +307,7 @@ async def s_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Plays random sounds at desired time interval. Default 90s.")
+@bot.command(name='play', help="Plays random sounds at desired time interval. Default 90s.")
 async def play(ctx, *arr):
     global PLAYING, STOP_EVENT
     
@@ -385,7 +397,7 @@ async def play_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Plays random sounds at desired fast time interval. Default 1 second.")
+@bot.command(name='playfast', help="Plays random sounds at desired fast time interval. Default 1 second.")
 async def playfast(ctx, *arr):
     global PLAYING
     
@@ -458,7 +470,7 @@ async def playfast_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Plays desired sound over and over again at desired time interval.")
+@bot.command(name='loop', help="Plays desired sound over and over again at desired time interval.")
 async def loop(ctx, soundname: str, delay: float):
     global PLAYING, STOP_EVENT
     
@@ -542,7 +554,7 @@ async def loop_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Stops playing sounds.")
+@bot.command(name='stop', help="Stops playing sounds.")
 async def stop(ctx):
     global PLAYING, STOP_EVENT
     
@@ -561,7 +573,7 @@ async def stop_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Joins user's voice channel.")
+@bot.command(name='join', help="Joins user's voice channel.")
 async def join(ctx):
     if ctx.author.voice is None:
         await ctx.send("*You are not connected to a voice channel. You piece of shit.*")
@@ -579,13 +591,12 @@ async def join(ctx):
     
     await bot.change_presence(activity=discord.Game(name="some MUSIC"))
 
-
 @join.error
 async def join_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
         
-@bot.command(help="Joins desired voice channel. Does not require user to be connected. ADMIN COMMAND.")
+@bot.command(name='troll', help="Joins desired voice channel. Does not require user to be connected. ADMIN COMMAND.")
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -625,7 +636,7 @@ async def troll_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Leaves the current voice channel and displays sessions stats.")
+@bot.command(name='leave', help="Leaves the current voice channel and displays sessions stats.")
 async def leave(ctx):   
     global PLAYING, STOP_EVENT
     
@@ -658,7 +669,7 @@ async def leave_error(ctx, error):
 
 # -------------- file-related commands --------------
 
-@bot.command(help="Displays full soundlist in alphabetical order.")
+@bot.command(name='soundlist', help="Displays full soundlist in alphabetical order.")
 async def soundlist(ctx):
     SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
     
@@ -686,7 +697,7 @@ async def soundlist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
 
-@bot.command(help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.")
+@bot.command(name='sessionstats', help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.")
 async def sessionstats(ctx):
     try:
         with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'r') as file:
@@ -716,7 +727,7 @@ async def sessionstats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
 
-@bot.command(help="Displays sound playcount stats for all time.")
+@bot.command(name='alltimestats', help="Displays sound playcount stats for all time.")
 async def alltimestats(ctx):
     try:
         with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'r') as file:
@@ -746,7 +757,7 @@ async def alltimestats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help='Adds a message trigger (if message CONTAINS trigger, bot will respond). Usage: !addtrigger "<trigger>" "<response>". ADMIN COMMAND.')
+@bot.command(name='addtrigger', help='Adds a message trigger (if message CONTAINS trigger, bot will respond). Usage: !addtrigger "<trigger>" "<response>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def addtrigger(ctx, *, args: str):
     try:
@@ -771,7 +782,7 @@ async def addtrigger_error(ctx, error):
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
-@bot.command(help='Removes a message trigger. Usage: !removetrigger "<trigger>". ADMIN COMMAND.')
+@bot.command(name='removetrigger', help='Removes a message trigger. Usage: !removetrigger "<trigger>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def removetrigger(ctx, *, args: str):
     try:
@@ -805,7 +816,7 @@ async def removetrigger_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Displays all triggers and their responses, sorted alphabetically by triggers.")
+@bot.command(name='triggerlist', help="Displays all triggers and their responses, sorted alphabetically by triggers.")
 async def triggerlist(ctx):
     triggers = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt')
     
@@ -827,7 +838,7 @@ async def triggerlist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help='Use to note down a good loop time. Usage: !addloop "<sound name>" "<delay>". ADMIN COMMAND.')
+@bot.command(name='addloop', help='Use to note down a good loop time. Usage: !addloop "<sound name>" "<delay>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def addloop(ctx, *, args: str):
     try:
@@ -852,7 +863,7 @@ async def addloop_error(ctx, error):
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
-@bot.command(help='Removes a saved loop time. Usage: !removeloop "<sound name>". ADMIN COMMAND.')
+@bot.command(name='removeloop', help='Removes a saved loop time. Usage: !removeloop "<sound name>". ADMIN COMMAND.')
 @commands.has_permissions(administrator=True)
 async def removeloop(ctx, *, args: str):
     try:
@@ -886,7 +897,7 @@ async def removeloop_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Displays all saved loop infos, sorted alphabetically by sound name.")
+@bot.command(name='looplist', help="Displays all saved loop infos, sorted alphabetically by sound name.")
 async def looplist(ctx):
     loops = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt')
     
@@ -911,7 +922,7 @@ async def looplist_error(ctx, error):
 
 # -------------- owner commands --------------
 
-@bot.command(help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
+@bot.command(name='logs', help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -920,7 +931,6 @@ async def logs(ctx, lines: int = 20):
     if ctx.channel.id != HOME_CHANNEL_ID:
         await ctx.send("*This command can only be used in the bot's home channel.*")
         return
-    
     
     log_file_path = 'output.log'
     chunk_size = 1994
@@ -950,7 +960,7 @@ async def logs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
-@bot.command(help="Displays entire log file output. OWNER COMMAND.")
+@bot.command(name='alllogs', help="Displays entire log file output. OWNER COMMAND.")
 @commands.is_owner()
 async def alllogs(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -985,7 +995,7 @@ async def alllogs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
-@bot.command(help="Pulls changes from github repo and restarts if necessary. OWNER COMMAND.")
+@bot.command(name='update', help="Pulls changes from github repo and restarts if necessary. OWNER COMMAND.")
 @commands.is_owner()
 async def update(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1068,7 +1078,7 @@ async def update_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
-@bot.command(help="Pushes all servers' data updates to github repo. OWNER COMMAND.")
+@bot.command(name='pushdata', help="Pushes all servers' data updates to github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def pushdata(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1127,7 +1137,7 @@ async def pushdata_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Hard resets local repo to match github repo. OWNER COMMAND.")
+@bot.command(name='hardreset', help="Hard resets local repo to match github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def hardreset(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1161,7 +1171,7 @@ async def hardreset_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Force pushes all servers' data updates to github repo. OWNER COMMAND.")
+@bot.command(name='forcepush', help="Force pushes all servers' data updates to github repo. OWNER COMMAND.")
 @commands.is_owner()
 async def forcepush(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1207,7 +1217,7 @@ async def forcepush_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Displays the servers in which the bot exists and the voice channels to which it is connected. OWNER COMMAND.")
+@bot.command(name='status', help="Displays the servers in which the bot exists and the voice channels to which it is connected. OWNER COMMAND.")
 @commands.is_owner()
 async def status(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1235,7 +1245,7 @@ async def status_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Restarts the bot. OWNER COMMAND.")
+@bot.command(name='restart', help="Restarts the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def restart(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1282,7 +1292,7 @@ async def restart_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(help="Shuts down the bot. OWNER COMMAND.")
+@bot.command(name='kys', help="Shuts down the bot. OWNER COMMAND.")
 @commands.is_owner()
 async def kys(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1293,8 +1303,8 @@ async def kys(ctx):
         return
     
     if not WINDOWS:
-        await ctx.send("*First, invoking `!pushtextfiles`:*")
-        await ctx.invoke(bot.get_command('pushtextfiles'))
+        await ctx.send("*First, invoking `!pushdata`:*")
+        await ctx.invoke(bot.get_command('pushdata'))
     
     for vc in bot.voice_clients:
         if vc.is_connected():
