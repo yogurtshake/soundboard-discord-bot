@@ -9988,3 +9988,103 @@ Traceback (most recent call last):
 SystemExit
 [2025-02-23 08:31:04] [INFO    ] discord.client: logging in using static token
 [2025-02-23 08:31:05] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 5ede4f873699675e2a4168e1e32fd804).
+[2025-02-24 08:03:56] [INFO    ] discord.client: logging in using static token
+[2025-02-24 08:03:57] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: a332d40a7ca1f9b280ce81e24f136542).
+[2025-02-24 08:04:09] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-02-24 08:04:09] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-02-24 08:04:09] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central6158.discord.media
+[2025-02-24 08:04:09] [INFO    ] discord.voice_state: Voice connection complete.
+Fatal (internal) error in silk/resampler.c, line 184: assertion failed: inLen >= S->Fs_in_kHz
+av_interleaved_write_frame(): Broken pipe
+av_interleaved_write_frame(): Broken pipe
+Error writing trailer of pipe:1: Broken pipe
+Error closing file pipe:1: Broken pipe
+Error writing trailer of pipe:1: Broken pipe
+Error closing file pipe:1: Broken pipe
+[2025-02-24 08:10:25] [INFO    ] discord.client: logging in using static token
+[2025-02-24 08:10:25] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 9e7d38e2d2ac44930303a4fc58ffeae5).
+[2025-02-24 08:10:33] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-02-24 08:10:33] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-02-24 08:10:33] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central6158.discord.media
+[2025-02-24 08:10:33] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-02-24 08:10:37] [INFO    ] discord.player: ffmpeg process 41841 has not terminated. Waiting to terminate...
+[2025-02-24 08:10:37] [INFO    ] discord.player: ffmpeg process 41841 should have terminated with a return code of -9.
+[2025-02-24 08:10:39] [INFO    ] discord.player: ffmpeg process 41846 has not terminated. Waiting to terminate...
+[2025-02-24 08:10:39] [INFO    ] discord.player: ffmpeg process 41846 should have terminated with a return code of -9.
+[2025-02-24 08:10:42] [INFO    ] discord.player: ffmpeg process 41850 has not terminated. Waiting to terminate...
+[2025-02-24 08:10:42] [INFO    ] discord.player: ffmpeg process 41850 should have terminated with a return code of -9.
+[2025-02-24 08:10:47] [INFO    ] discord.player: ffmpeg process 41854 successfully terminated with return code of 0.
+[2025-02-24 08:10:51] [INFO    ] discord.player: ffmpeg process 41858 has not terminated. Waiting to terminate...
+[2025-02-24 08:10:51] [INFO    ] discord.player: ffmpeg process 41858 should have terminated with a return code of -9.
+[2025-02-24 08:10:52] [INFO    ] discord.player: ffmpeg process 41864 has not terminated. Waiting to terminate...
+[2025-02-24 08:10:52] [INFO    ] discord.player: ffmpeg process 41864 should have terminated with a return code of -9.
+[2025-02-24 08:10:59] [INFO    ] discord.player: ffmpeg process 41868 has not terminated. Waiting to terminate...
+[2025-02-24 08:10:59] [INFO    ] discord.player: ffmpeg process 41868 should have terminated with a return code of -9.
+[2025-02-24 08:11:03] [INFO    ] discord.player: ffmpeg process 41872 has not terminated. Waiting to terminate...
+[2025-02-24 08:11:03] [INFO    ] discord.player: ffmpeg process 41872 should have terminated with a return code of -9.
+[2025-02-24 08:28:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 9e7d38e2d2ac44930303a4fc58ffeae5.
+[2025-02-24 08:35:17] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+BOT AWAKE AND READY
+Finished playing: dont touch.ogg
+Finished playing: five.ogg
+Finished playing: until.ogg
+Finished playing: you could.ogg
+Finished playing: hahahn.ogg
+Finished playing: hahahn.ogg
+Finished playing: until.ogg
+Finished playing: until.ogg
+Created folder for server: richard patrick testing (1343495796435320842)
+Created sounds folder for server: richard patrick testing
+Created title file for server: richard patrick testing
+Created config file for server: richard patrick testing
+Created triggers file for server: richard patrick testing
+Created loops file for server: richard patrick testing
+/home/lucassukeunkim/scuffed_discord_bot/servers/134415388233433089/session_stats.txt has been deleted successfully.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 124, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1050, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1188, in restart
+    except Exception as e:
+        ^^^^^^^^^^
+SystemExit
+[2025-02-24 08:35:19] [INFO    ] discord.client: logging in using static token
+[2025-02-24 08:35:19] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: ac41060447fc2ab37fdc1a318c4cb877).
