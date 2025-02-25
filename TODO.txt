@@ -5,3 +5,5 @@
 -perhaps add command that allows for sound files to be sent to the bot through discord (and added to server's sound folder)? security risk? definitely admin only
 
 -allow for !troll to be used in other servers? would have to get list of server's VC names somehow. remember to update troll_error as well.
+
+-problem with custom bash command start_bot??? why am I sometimes getting double instances??? also how did it update itself???
