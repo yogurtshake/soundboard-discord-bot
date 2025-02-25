@@ -37,6 +37,15 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 # --------------------------------- FUNCTIONS ---------------------------------
 
+def command_with_attributes(*args, category=None, usage=None, **kwargs):
+    def decorator(func):
+        cmd = bot.command(*args, **kwargs)(func)
+        cmd.category = category
+        cmd.usage = usage
+        return cmd
+    return decorator
+
+
 def load_triggers(file_path):
     triggers = {}
     try:
@@ -147,7 +156,7 @@ async def on_guild_join(guild):
         
     channel = guild.system_channel or guild.text_channels[0]
     if channel:
-        await channel.send("Which idiot added me to this shithole?")    
+        await channel.send("Which idiot added me to this shithole?\n\n Use `!help` to get started.")  
     
     
 @bot.event
@@ -160,9 +169,52 @@ async def on_command_error(ctx, error):
     
 bot.remove_command('help')
 
-@bot.command(name='help', help='Displays help information for all commands.')
-async def help(ctx):
-    help_message = ""    
+@command_with_attributes(name='help', category='Help', help='Displays help information for all commands.', usage='`!help`')
+async def help(ctx, *input: str):
+    if not input:
+        await ctx.send("## Welcome to this scuffed ass soundboard bot!\n\n" +
+                       "I can play your saved sounds *(see command category: `SOUNDBOARD - PLAYING`)*\n" + 
+                       "and I can reply to your messages *(see command category: `MESSAGE TRIGGERS`)*.\n\n" + 
+                       "Use **`!help commands`** to see a full list of my commands, their descriptions, and their correct usage.")
+        return
+    
+    message = ' '.join(input)
+    if message != "commands":
+        await ctx.send("Invalid input. Try `!help` or `!help commands`.")
+        return    
+    
+    categories = {}
+    for command in bot.commands:
+        category = getattr(command, 'category', 'Uncategorized')
+        if category not in categories:
+            categories[category] = []
+        categories[category].append(command)
+    
+    help_message = "## Bot Commands:\n\n"
+    
+    if ctx.guild.id != HOME_SERVER_ID:
+        del categories['DEWEY']
+        if not await bot.is_owner(ctx.author):
+            del categories['OWNER COMMANDS']
+    del categories['Help']
+    
+    for category, commands in sorted(categories.items()):
+        help_message += f"**{category}:**\n"
+        for command in commands:
+            help_message += f"**`!{command.name}`** -> {command.help} -> **Usage:** {command.usage}\n"
+        help_message += "\n"
+    
+    chunk_size = 2000
+    lines = help_message.split('\n')
+    chunk = ""
+    
+    for line in lines:
+        if len(chunk) + len(line) + 1 > chunk_size:
+            await ctx.send(chunk)
+            chunk = ""
+        chunk += line + '\n'
+    if chunk:
+        await ctx.send(chunk)
     
 @help.error
 async def help_error(ctx, error):
@@ -172,7 +224,7 @@ async def help_error(ctx, error):
 
 # -------------- misc commands --------------    
     
-@bot.command(name='raisehand', help="Raises hands in correct order.")
+@command_with_attributes(name='raisehand', category='DEWEY', help="Raises hands in correct order.", usage='`!raisehand`')
 async def raisehand(ctx):
     
     global handcount
@@ -194,7 +246,7 @@ async def raisehand_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")    
     
     
-@bot.command(name='randomhand', help="Raises hands in random order.")
+@command_with_attributes(name='randomhand', category='DEWEY', help="Raises hands in random order.", usage='`!randomhand`')
 async def randomhand(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
         await ctx.send("*This command can only be used in the bot's home server.*")
@@ -217,29 +269,7 @@ async def randomhand_error(ctx, error):
 
 # -------------- sound commands --------------
 
-@bot.command(name='dewey', help="Plays full dewey fired scene.")
-async def dewey(ctx):
-    if ctx.guild.id != HOME_SERVER_ID:
-        await ctx.send("*This command can only be used in the bot's home server.*")
-        return
-    
-    if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
-        return
-    
-    await ctx.send("You're fired")
-    
-    sound_path = SERVERS_PATH + HOME_SERVER_ID + "/all_sounds/" + "dewey full scene.mp3"
-    
-    ctx.voice_client.stop()
-    ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {e}'))
-
-@dewey.error
-async def dewey_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: `{error}`*")
-
-
-@bot.command(name='s', help="Plays desired sound. Chooses randomly if no input given.")
+@command_with_attributes(name='s', category='SOUNDBOARD - PLAYING', help="Plays desired sound. Chooses randomly if no input given.", usage='`!s` OR `!s <sound name>`')
 async def s(ctx, *name):
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
@@ -307,7 +337,7 @@ async def s_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='play', help="Plays random sounds at desired time interval. Default 90s.")
+@command_with_attributes(name='play', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired time interval. Default 90s.", usage='`!play` OR `!play <delay>` OR `!play <min_delay> <max_delay>`')
 async def play(ctx, *arr):
     global PLAYING, STOP_EVENT
     
@@ -389,15 +419,15 @@ async def play_error(ctx, error):
         await ctx.send("*You have no sounds saved! Add some before playing.*")
         PLAYING[ctx.guild.id] = False
     elif isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
-        await ctx.send("Wrong input, idiot. \n\nCorrect usage: \n\n" +
+        await ctx.send("Wrong input, idiot. \n\nCorrect usage examples: \n\n" +
                        "`!play`: *Plays random sounds at default interval of 90 seconds.* \n" +
-                       "`!play <delay>`: *Plays random sounds at interval of `<delay>` seconds* \n" +
-                       "`!play <min_delay> <max_delay>`: *Plays random sounds at random interval between `<min_delay>` and `<max_delay>` seconds (randomized after each sound)*")
+                       "`!play 30`: *Plays random sounds at interval of 30 seconds* \n" +
+                       "`!play 25 60`: *Plays random sounds at random interval between 25 and 60 seconds (randomized after each sound)*")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='playfast', help="Plays random sounds at desired fast time interval. Default 1 second.")
+@command_with_attributes(name='playfast', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired fast time interval. Default 1 second.", usage='`!playfast` OR `!playfast <delay>`')
 async def playfast(ctx, *arr):
     global PLAYING
     
@@ -463,14 +493,14 @@ async def playfast_error(ctx, error):
         await ctx.send("*You have no sounds saved! Add some before playing.*")
         PLAYING[ctx.guild.id] = False
     elif isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
-        await ctx.send("Wrong input, idiot. \n\nCorrect usage: \n\n" +
+        await ctx.send("Wrong input, idiot. \n\nCorrect usage examples: \n\n" +
                        "`!playfast`: *Plays random sounds at default interval of 1 second.* \n" +
-                       "`!playfast <delay>`: *Plays random sounds at interval of `<delay>` seconds*")
+                       "`!playfast 0.7`: *Plays random sounds at interval of 0.7 seconds*")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='loop', help="Plays desired sound over and over again at desired time interval.")
+@command_with_attributes(name='loop', category='SOUNDBOARD - PLAYING', help="Plays desired sound over and over again at desired time interval.", usage='`!loop \"<sound name>\" <delay>`')
 async def loop(ctx, soundname: str, delay: float):
     global PLAYING, STOP_EVENT
     
@@ -554,7 +584,7 @@ async def loop_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='stop', help="Stops playing sounds.")
+@command_with_attributes(name='stop', category='SOUNDBOARD - PLAYING', help="Stops playing sounds.", usage='`!stop`')
 async def stop(ctx):
     global PLAYING, STOP_EVENT
     
@@ -573,7 +603,7 @@ async def stop_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='join', help="Joins user's voice channel.")
+@command_with_attributes(name='join', category='VOICE CHANNEL', help="Joins user's current voice channel.", usage='`!join`')
 async def join(ctx):
     if ctx.author.voice is None:
         await ctx.send("*You are not connected to a voice channel. You piece of shit.*")
@@ -596,11 +626,11 @@ async def join_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
         
-@bot.command(name='troll', help="Joins desired voice channel. Does not require user to be connected. ADMIN COMMAND.")
+@command_with_attributes(name='troll', category='VOICE CHANNEL', help="Joins desired voice channel. Does not require user to be connected. **ADMIN COMMAND.**", usage='`!troll <channel name>`')
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
     if ctx.guild.id != HOME_SERVER_ID:
-        await ctx.send("*This command can only be used in the bot's home server.*")
+        await ctx.send("*This command is not yet available in your server.*")
         return
    
     if(chName.lower() == "private"): id = 265210092289261570
@@ -627,7 +657,7 @@ async def troll(ctx, *, chName: str):
 @troll.error
 async def troll_error(ctx, error):
     if ctx.guild.id != HOME_SERVER_ID:
-        await ctx.send("*This command can only be used in the bot's home server.*")
+        await ctx.send("*This command is not yet available in your server.*")
     elif isinstance(error, commands.MissingPermissions):
         await ctx.send("No.")
     elif isinstance(error, commands.MissingRequiredArgument):
@@ -636,7 +666,7 @@ async def troll_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='leave', help="Leaves the current voice channel and displays sessions stats.")
+@command_with_attributes(name='leave', category='VOICE CHANNEL', help="Leaves the current voice channel and displays sessions stats.", usage='`!leave`')
 async def leave(ctx):   
     global PLAYING, STOP_EVENT
     
@@ -669,7 +699,7 @@ async def leave_error(ctx, error):
 
 # -------------- file-related commands --------------
 
-@bot.command(name='soundlist', help="Displays full soundlist in alphabetical order.")
+@command_with_attributes(name='soundlist', category='SOUNDBOARD - DATA', help="Displays full soundlist in alphabetical order.", usage='`!soundlist`')
 async def soundlist(ctx):
     SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
     
@@ -689,21 +719,30 @@ async def soundlist(ctx):
 
     await ctx.send(f"### **List of all `{numSounds}` soundboard sounds:** \n\n")
     
-    for i in range(0, len(output), chunk_size):
-        await ctx.send(f"```{output[i:i + chunk_size]}```")
+    chunk_size = 1994
+    lines = output.split('\n')
+    chunk = ""
+    
+    for line in lines:
+        if len(chunk) + len(line) + 1 > chunk_size:
+            await ctx.send(f"```{chunk}```")
+            chunk = ""
+        chunk += line + '\n'
+    if chunk:
+        await ctx.send(f"```{chunk}```")
 
 @soundlist.error
 async def soundlist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
 
-@bot.command(name='sessionstats', help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.")
+@command_with_attributes(name='sessionstats', category='SOUNDBOARD - DATA', help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.", usage='`!sessionstats`')
 async def sessionstats(ctx):
     try:
         with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'r') as file:
-            lines = file.readlines()
+            filelines = file.readlines()
         
-        shortened_lines = [s.strip() for s in lines]
+        shortened_lines = [s.strip() for s in filelines]
         counter = Counter(shortened_lines)
         
         sorted_items = sorted(counter.items(), key=lambda item: item[1], reverse=True)
@@ -712,13 +751,20 @@ async def sessionstats(ctx):
         output = '\n'.join(stuff)
         
         chunk_size = 1994
-        num = len(lines)
+        lines = output.split('\n')
+        chunk = ""
+        num = len(filelines)
 
         await ctx.send("## **Bot soundboard stats for this session:** \n\n")
         await ctx.send(f"### Playcount: `{num}` \n\n")
         
-        for i in range(0, len(output), chunk_size):
-            await ctx.send(f"```{output[i:i + chunk_size]}```")
+        for line in lines:
+            if len(chunk) + len(line) + 1 > chunk_size:
+                await ctx.send(f"```{chunk}```")
+                chunk = ""
+            chunk += line + '\n'
+        if chunk:
+            await ctx.send(f"```{chunk}```")
     except FileNotFoundError:
         await ctx.send("*No stats for this session yet!*")
 
@@ -727,13 +773,13 @@ async def sessionstats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
 
-@bot.command(name='alltimestats', help="Displays sound playcount stats for all time.")
+@command_with_attributes(name='alltimestats', category='SOUNDBOARD - DATA', help="Displays sound playcount stats for all time.", usage='`!alltimestats`')
 async def alltimestats(ctx):
     try:
         with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'r') as file:
-            lines = file.readlines()
+            filelines = file.readlines()
         
-        shortened_lines = [s.strip() for s in lines]
+        shortened_lines = [s.strip() for s in filelines]
         counter = Counter(shortened_lines)
         
         sorted_items = sorted(counter.items(), key=lambda item: item[1], reverse=True)
@@ -742,13 +788,20 @@ async def alltimestats(ctx):
         output = '\n'.join(stuff)
         
         chunk_size = 1994
-        num = len(lines)
+        lines = output.split('\n')
+        chunk = ""
+        num = len(filelines)
 
         await ctx.send("## **Bot soundboard stats for all time:** \n\n")
         await ctx.send(f"### Playcount: `{num}` \n\n")
         
-        for i in range(0, len(output), chunk_size):
-            await ctx.send(f"```{output[i:i + chunk_size]}```")
+        for line in lines:
+            if len(chunk) + len(line) + 1 > chunk_size:
+                await ctx.send(f"```{chunk}```")
+                chunk = ""
+            chunk += line + '\n'
+        if chunk:
+            await ctx.send(f"```{chunk}```")
     except FileNotFoundError:
         await ctx.send("*No stats yet! Use `!s`, `!play`, or `!playfast` to start tracking playcount stats.*")
 
@@ -757,7 +810,7 @@ async def alltimestats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='addtrigger', help='Adds a message trigger (if message CONTAINS trigger, bot will respond). Usage: !addtrigger "<trigger>" "<response>". ADMIN COMMAND.')
+@command_with_attributes(name='addtrigger', category='MESSAGE TRIGGERS', help='Adds a message trigger (if message CONTAINS trigger, bot will respond). **ADMIN COMMAND.**', usage='`!addtrigger \"<trigger>\" \"<response>\"`')
 @commands.has_permissions(administrator=True)
 async def addtrigger(ctx, *, args: str):
     try:
@@ -782,7 +835,7 @@ async def addtrigger_error(ctx, error):
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
-@bot.command(name='removetrigger', help='Removes a message trigger. Usage: !removetrigger "<trigger>". ADMIN COMMAND.')
+@command_with_attributes(name='removetrigger', category='MESSAGE TRIGGERS', help='Removes a message trigger. **ADMIN COMMAND.**', usage='`!removetrigger \"<trigger>\"`')
 @commands.has_permissions(administrator=True)
 async def removetrigger(ctx, *, args: str):
     try:
@@ -816,7 +869,7 @@ async def removetrigger_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='triggerlist', help="Displays all triggers and their responses, sorted alphabetically by triggers.")
+@command_with_attributes(name='triggerlist', category='MESSAGE TRIGGERS', help="Displays all triggers and their responses, sorted alphabetically by triggers.", usage='`!triggerlist`')
 async def triggerlist(ctx):
     triggers = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt')
     
@@ -826,19 +879,27 @@ async def triggerlist(ctx):
 
     sorted_triggers = sorted(triggers.items())
     output = "\n".join([f"{trigger}: {response}" for trigger, response in sorted_triggers])
+    
     chunk_size = 1994
+    lines = output.split('\n')
+    chunk = ""
 
     await ctx.send(f"## **List of all `{len(triggers)}` triggers and their responses:** \n\n")
     
-    for i in range(0, len(output), chunk_size):
-        await ctx.send(f"```{output[i:i + chunk_size]}```")
+    for line in lines:
+        if len(chunk) + len(line) + 1 > chunk_size:
+            await ctx.send(f"```{chunk}```")
+            chunk = ""
+        chunk += line + '\n'
+    if chunk:
+        await ctx.send(f"```{chunk}```")
 
 @triggerlist.error
 async def triggerlist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='addloop', help='Use to note down a good loop time. Usage: !addloop "<sound name>" "<delay>". ADMIN COMMAND.')
+@command_with_attributes(name='addloop', category='SOUNDBOARD - DATA', help='Use to note down a good loop time. **ADMIN COMMAND.**', usage='`!addloop \"<sound name>\" \"<delay>\"`')
 @commands.has_permissions(administrator=True)
 async def addloop(ctx, *, args: str):
     try:
@@ -863,7 +924,7 @@ async def addloop_error(ctx, error):
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
-@bot.command(name='removeloop', help='Removes a saved loop time. Usage: !removeloop "<sound name>". ADMIN COMMAND.')
+@command_with_attributes(name='removeloop', category='SOUNDBOARD - DATA', help='Removes a saved loop time. **ADMIN COMMAND.**', usage='`!removeloop \"<sound name>\"`')
 @commands.has_permissions(administrator=True)
 async def removeloop(ctx, *, args: str):
     try:
@@ -897,7 +958,7 @@ async def removeloop_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='looplist', help="Displays all saved loop infos, sorted alphabetically by sound name.")
+@command_with_attributes(name='looplist', category='SOUNDBOARD - DATA', help="Displays all saved loop infos, sorted alphabetically by sound name.", usage='`!looplist`')
 async def looplist(ctx):
     loops = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt')
     
@@ -907,22 +968,39 @@ async def looplist(ctx):
 
     sorted_loops = sorted(loops.items())
     output = "\n".join([f"{soundname}: {delay}" for soundname, delay in sorted_loops])
+    
     chunk_size = 1994
+    lines = output.split('\n')
+    chunk = ""
 
     await ctx.send(f"## **List of all `{len(loops)}` sounds with saved loop info:** \n\n")
     
-    for i in range(0, len(output), chunk_size):
-        await ctx.send(f"```{output[i:i + chunk_size]}```")
+    for line in lines:
+        if len(chunk) + len(line) + 1 > chunk_size:
+            await ctx.send(f"```{chunk}```")
+            chunk = ""
+        chunk += line + '\n'
+    if chunk:
+        await ctx.send(f"```{chunk}```")
 
 @looplist.error
 async def looplist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
+@command_with_attributes(name='config', category='CONFIG', help="*command not ready yet.*", usage='*command not ready yet.*')
+async def config(ctx):
+    await ctx.send("*This command is not yet available.*")
+
+@config.error
+async def config_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
 
 # -------------- owner commands --------------
 
-@bot.command(name='logs', help="Displays desired number of lines of log file output. Default 20 lines. OWNER COMMAND.")
+@command_with_attributes(name='logs', category='OWNER COMMANDS', help="Displays desired number of lines of log file output. Default 20 lines.", usage='`!logs` OR `!logs <numLines>`')
 @commands.is_owner()
 async def logs(ctx, lines: int = 20):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -933,7 +1011,6 @@ async def logs(ctx, lines: int = 20):
         return
     
     log_file_path = 'output.log'
-    chunk_size = 1994
 
     try:
         with open(log_file_path, 'r') as file:
@@ -944,9 +1021,17 @@ async def logs(ctx, lines: int = 20):
 
         await tchannel.send("## **Recent logs from output.log:** \n\n")
         
-        for i in range(0, len(output), chunk_size):
-            await tchannel.send(f"```{output[i:i + chunk_size]}```")
-            
+        chunk_size = 1994
+        lines = output.split('\n')
+        chunk = ""
+        
+        for line in lines:
+            if len(chunk) + len(line) + 1 > chunk_size:
+                await ctx.send(f"```{chunk}```")
+                chunk = ""
+            chunk += line + '\n'
+        if chunk:
+            await ctx.send(f"```{chunk}```")
     except FileNotFoundError:
         await tchannel.send("*The log file does not exist. You piece of shit.*")
     except Exception as e:
@@ -960,7 +1045,7 @@ async def logs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
-@bot.command(name='alllogs', help="Displays entire log file output. OWNER COMMAND.")
+@command_with_attributes(name='alllogs', category='OWNER COMMANDS', help="Displays entire log file output.", usage='`!alllogs`')
 @commands.is_owner()
 async def alllogs(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -971,7 +1056,6 @@ async def alllogs(ctx):
         return
     
     log_file_path = 'output.log'
-    chunk_size = 1994
     
     try:
         with open(log_file_path, 'r') as file:
@@ -979,8 +1063,17 @@ async def alllogs(ctx):
 
         await tchannel.send("## **Contents of output.log:** \n\n")
         
-        for i in range(0, len(log_content), chunk_size):
-            await tchannel.send(f"```{log_content[i:i + chunk_size]}```")
+        chunk_size = 1994
+        lines = log_content.split('\n')
+        chunk = ""
+        
+        for line in lines:
+            if len(chunk) + len(line) + 1 > chunk_size:
+                await ctx.send(f"```{chunk}```")
+                chunk = ""
+            chunk += line + '\n'
+        if chunk:
+            await ctx.send(f"```{chunk}```")
             
     except FileNotFoundError:
         await tchannel.send("*The log file does not exist.*")
@@ -995,7 +1088,7 @@ async def alllogs_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
-@bot.command(name='update', help="Pulls changes from github repo and restarts if necessary. OWNER COMMAND.")
+@command_with_attributes(name='update', category='OWNER COMMANDS', help="Pulls changes from github repo and restarts if necessary.", usage='`!update`')
 @commands.is_owner()
 async def update(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1078,7 +1171,7 @@ async def update_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")  
 
 
-@bot.command(name='pushdata', help="Pushes all servers' data updates to github repo. OWNER COMMAND.")
+@command_with_attributes(name='pushdata', category='OWNER COMMANDS', help="Pushes all servers' data updates to github repo.", usage='`!pushdata`')
 @commands.is_owner()
 async def pushdata(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1137,7 +1230,7 @@ async def pushdata_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='hardreset', help="Hard resets local repo to match github repo. OWNER COMMAND.")
+@command_with_attributes(name='hardreset', category='OWNER COMMANDS', help="Hard resets local repo to match github repo.", usage='`!hardreset`')
 @commands.is_owner()
 async def hardreset(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1171,7 +1264,7 @@ async def hardreset_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='forcepush', help="Force pushes all servers' data updates to github repo. OWNER COMMAND.")
+@command_with_attributes(name='forcepush', category='OWNER COMMANDS', help="Force pushes all servers' data updates to github repo.", usage='`!forcepush`')
 @commands.is_owner()
 async def forcepush(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1217,7 +1310,7 @@ async def forcepush_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='status', help="Displays the servers in which the bot exists and the voice channels to which it is connected. OWNER COMMAND.")
+@command_with_attributes(name='status', category='OWNER COMMANDS', help="Displays the servers in which the bot exists and the voice channels to which it is connected.", usage='`!status`')
 @commands.is_owner()
 async def status(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1245,7 +1338,7 @@ async def status_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='restart', help="Restarts the bot. OWNER COMMAND.")
+@command_with_attributes(name='restart', category='OWNER COMMANDS', help="Restarts the bot.", usage='`!restart`')
 @commands.is_owner()
 async def restart(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -1292,7 +1385,7 @@ async def restart_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@bot.command(name='kys', help="Shuts down the bot. OWNER COMMAND.")
+@command_with_attributes(name='kys', category='OWNER COMMANDS', help="Shuts down the bot.", usage='`!kys`')
 @commands.is_owner()
 async def kys(ctx):
     if ctx.guild.id != HOME_SERVER_ID:
