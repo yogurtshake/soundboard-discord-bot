@@ -1066,7 +1066,7 @@ async def looplist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='config', category='CONFIG', help="*command not ready yet.*", usage='*command not ready yet.*')
+@command_with_attributes(name='config', category='CONFIG', help="Configures certain bot settings", usage='*use `!config` to see full usage*')
 @commands.has_permissions(administrator=True)
 async def config(ctx, *input: str):
     if len(input) == 0:
