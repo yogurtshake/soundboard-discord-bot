@@ -1,0 +1,8 @@
+!play_message,default,bot message after command
+!join_message,default,bot message after command
+!playfast_message,default,bot message after command
+!stop_message,default,bot message after command
+!loop_message,default,bot message after command
+!troll_message,default,bot message after command
+!leave_message,default,bot message after command
+default_text_channel,default,sets default text channel for non-command-related bot messages. USE CHANNEL ID
