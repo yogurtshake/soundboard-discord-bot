@@ -263,7 +263,7 @@ async def help(ctx, *input: str):
     for category, commands in sorted(categories.items()):
         help_message += f"**{category}:**\n"
         for command in commands:
-            help_message += f"**`!{command.name}`** -> {command.help} -> **Usage:** {command.usage}\n"
+            help_message += f"**`!{command.name}`** -> {command.help}  \||  **Usage:** {command.usage}\n"
         help_message += "\n"
     
     chunk_size = 2000
