@@ -1,9 +1,3 @@
--add config folder and !config command that allows user to edit default bot command message responses (stored in different text files?)
-	-allow user to set default bot text channel
-	-have bot send any non-context based messages to default channel (restart message)
-
 -perhaps add command that allows for sound files to be sent to the bot through discord (and added to server's sound folder)? security risk? definitely admin only
 
--allow for !troll to be used in other servers? would have to get list of server's VC names somehow. remember to update troll_error as well.
-
--problem with custom bash command start_bot??? why am I sometimes getting double instances??? also how did it update itself???
+-create bot clone specifically for testing? (would just need it locally)
