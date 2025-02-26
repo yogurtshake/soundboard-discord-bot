@@ -37,14 +37,14 @@ bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 # --------------------------------- FUNCTIONS ---------------------------------
 
-def command_with_attributes(*args, category=None, usage=None, **kwargs):
+def command_with_attributes(*args, category=None, usage=None, configurable = False, **kwargs):
     def decorator(func):
         cmd = bot.command(*args, **kwargs)(func)
         cmd.category = category
         cmd.usage = usage
+        cmd.configurable = configurable
         return cmd
     return decorator
-
 
 def load_triggers(file_path):
     triggers = {}
@@ -57,7 +57,6 @@ def load_triggers(file_path):
         print(f"An error occurred while reading the file: {e}")
     return triggers
 
-
 async def delete_session_stats(ctx):
     file_path = SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt'
     try:
@@ -68,7 +67,6 @@ async def delete_session_stats(ctx):
         print(f"{file_path} does not exist.")
     except Exception as e:
         print(f"Error: {e}")
-
 
 async def initialize_guild(guild):
     global PLAYING, STOP_EVENT
@@ -93,15 +91,78 @@ async def initialize_guild(guild):
     if not os.path.exists(guild_title_path):
         with open(guild_title_path, 'a'):
             print(f"Created title file for server: {guild.name}")
-    if not os.path.exists(guild_config_path):    
+    if not os.path.exists(guild_config_path):
         with open(guild_config_path, 'a'):
             print(f"Created config file for server: {guild.name}")
+    initialize_config(guild_config_path, guild.id)
     if not os.path.exists(guild_triggers_path):    
         with open(guild_triggers_path, 'a'):
             print(f"Created triggers file for server: {guild.name}")
     if not os.path.exists(guild_loops_path):    
         with open(guild_loops_path, 'a'):
             print(f"Created loops file for server: {guild.name}")
+
+def initialize_config(path, guild_id):
+    options = {
+        "default_text_channel": ("default", "sets default text channel for non-command-related bot messages. USE CHANNEL ID"),
+        # leaving this here for when I add more config options
+    }
+      
+    config = load_config(guild_id)  
+    keys = []
+    
+    with open(path, 'a') as file:
+        for command in bot.commands:
+            if command.configurable == True and f"!{command.name}_message" not in config:
+                file.write(f"!{command.name}_message,default,bot message after command\n")
+            keys.append(f"!{command.name}_message")  
+        
+        for key, (value, description) in options.items():
+            if key not in config:
+                file.write(f"{key},{value},{description}\n")     
+            keys.append(key)
+            
+    extra_keys = set(config.keys()) - set(keys)
+    
+    if extra_keys:
+        with open(path, 'r') as file:
+            lines = file.readlines()
+        with open(path, 'w') as file:
+            for line in lines:
+                key = line.split(',', 1)[0]
+                if key not in extra_keys:
+                    file.write(line)
+        print(f"Removed extra configuration keys: {extra_keys} in server: {guild_id}")
+        
+def load_config(guild_id):
+    config_path = f"{SERVERS_PATH}{guild_id}/config.txt"
+    config = {}
+    try:
+        with open(config_path, 'r') as file:
+            for line in file:
+                key, value, description = line.strip().split(',', 2)
+                config[key] = (value, description)
+    except FileNotFoundError:
+        pass
+    return config
+
+def save_config(guild_id, config):
+    config_path = f"{SERVERS_PATH}{guild_id}/config.txt"
+    with open(config_path, 'w') as file:
+        for key, (value, description) in config.items():
+            file.write(f"{key},{value},{description}\n")
+
+def get_config(guild_id, key):
+    config = load_config(guild_id)
+    return config.get(key)
+
+def set_config(guild_id, key, value, description):
+    config = load_config(guild_id)
+    if value == "DELETE":
+        config[key] = ("default", description)
+    else:
+        config[key] = (value, description)
+    save_config(guild_id, config)
 
 
 # --------------------------------- EVENTS ---------------------------------
@@ -175,7 +236,8 @@ async def help(ctx, *input: str):
         await ctx.send("## Welcome to this scuffed ass soundboard bot!\n\n" +
                        "I can play your saved sounds *(see command category: `SOUNDBOARD - PLAYING`)*\n" + 
                        "and I can reply to your messages *(see command category: `MESSAGE TRIGGERS`)*.\n\n" + 
-                       "Use **`!help commands`** to see a full list of my commands, their descriptions, and their correct usage.")
+                       "Use **`!help commands`** to see a full list of my commands, their descriptions, and their correct usage.\n" +
+                       "If you are a server admin, try out **`!config`** as well.")
         return
     
     message = ' '.join(input)
@@ -314,13 +376,6 @@ async def s(ctx, *name):
         await ctx.send(f"*'{basename}' is missing CAPS somewhere. You piece of shit.*")
         return
 
-    choice = "What a terrible"
-    if random.randint(0,3) == 0:
-        choice = "What a wonderful"
-    if "richard patrick" in input:
-        choice = "THE BEST"
-    await ctx.send(f"Playing `{basename}`. {choice} choice.")
-
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
 
@@ -337,7 +392,7 @@ async def s_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='play', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired time interval. Default 90s.", usage='`!play` OR `!play <delay>` OR `!play <min_delay> <max_delay>`')
+@command_with_attributes(name='play', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired time interval. Default 90s.", usage='`!play` OR `!play <delay>` OR `!play <min_delay> <max_delay>`', configurable = True)
 async def play(ctx, *arr):
     global PLAYING, STOP_EVENT
     
@@ -367,7 +422,10 @@ async def play(ctx, *arr):
     PLAYING[ctx.guild.id] = True
     pcount = 0
     
-    await ctx.send("I've been sittin on some awesome material")
+    message = get_config(ctx.guild.id,"!play_message")[0]
+    if message == "default":
+        message = "I've been sittin on some awesome material"
+    await ctx.send(message)
     
     max_duration = 60 * 60
     if delay > max_duration:
@@ -427,7 +485,7 @@ async def play_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='playfast', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired fast time interval. Default 1 second.", usage='`!playfast` OR `!playfast <delay>`')
+@command_with_attributes(name='playfast', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired fast time interval. Default 1 second.", usage='`!playfast` OR `!playfast <delay>`', configurable = True)
 async def playfast(ctx, *arr):
     global PLAYING
     
@@ -458,7 +516,10 @@ async def playfast(ctx, *arr):
     PLAYING[ctx.guild.id] = True
     pfcount = 0
     
-    await ctx.send("I've been sittin on some awesome material")
+    message = get_config(ctx.guild.id,"!playfast_message")[0]
+    if message == "default":
+        message = "I've been sittin on some awesome material"
+    await ctx.send(message)
     
     while PLAYING[ctx.guild.id] and pfcount < 30:    
         
@@ -483,8 +544,7 @@ async def playfast(ctx, *arr):
         
     if pfcount == 30:
         await ctx.send(f"*Limit of {pfcount} fast sounds reached (0.1 < delay < 1). Bot is gonna explode if it keeps going.*")
-        PLAYING[ctx.guild.id] = False
-        
+        PLAYING[ctx.guild.id] = False  
 
 @playfast.error
 async def playfast_error(ctx, error):
@@ -500,7 +560,7 @@ async def playfast_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='loop', category='SOUNDBOARD - PLAYING', help="Plays desired sound over and over again at desired time interval.", usage='`!loop \"<sound name>\" <delay>`')
+@command_with_attributes(name='loop', category='SOUNDBOARD - PLAYING', help="Plays desired sound over and over again at desired time interval.", usage='`!loop \"<sound name>\" <delay>`', configurable = True)
 async def loop(ctx, soundname: str, delay: float):
     global PLAYING, STOP_EVENT
     
@@ -544,7 +604,11 @@ async def loop(ctx, soundname: str, delay: float):
     
     start_time = asyncio.get_event_loop().time()
     
-    await ctx.send(f"Looping `{soundname}` with delay {delay}. Why are you doing this?")
+    message = get_config(ctx.guild.id,"!loop_message")[0]
+    if message == "default":
+        message = "Why are you doing this?"
+    
+    await ctx.send(f"Looping `{soundname}` with delay {delay}. {message}")
     
     while PLAYING[ctx.guild.id] and lcount < 30:    
         
@@ -584,7 +648,7 @@ async def loop_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='stop', category='SOUNDBOARD - PLAYING', help="Stops playing sounds.", usage='`!stop`')
+@command_with_attributes(name='stop', category='SOUNDBOARD - PLAYING', help="Stops playing sounds.", usage='`!stop`', configurable = True)
 async def stop(ctx):
     global PLAYING, STOP_EVENT
     
@@ -592,7 +656,10 @@ async def stop(ctx):
         await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
         return
     
-    await ctx.send("Did you press the stop button?")
+    message = get_config(ctx.guild.id,"!stop_message")[0]
+    if message == "default":
+        message = "Did you press the stop button?"
+    await ctx.send(message)
     
     PLAYING[ctx.guild.id] = False      
     STOP_EVENT[ctx.guild.id].set()         
@@ -603,7 +670,7 @@ async def stop_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='join', category='VOICE CHANNEL', help="Joins user's current voice channel.", usage='`!join`')
+@command_with_attributes(name='join', category='VOICE CHANNEL', help="Joins user's current voice channel.", usage='`!join`', configurable = True)
 async def join(ctx):
     if ctx.author.voice is None:
         await ctx.send("*You are not connected to a voice channel. You piece of shit.*")
@@ -612,7 +679,10 @@ async def join(ctx):
     channel = ctx.author.voice.channel
 
     if ctx.voice_client is None:
-        await ctx.send("Won't be a problem.")
+        message = get_config(ctx.guild.id,"!join_message")[0]
+        if message == "default":
+            message = "Won't be a problem."
+        await ctx.send(message)
         await channel.connect()
         await ctx.send(f'Joined {channel}.')
     else:
@@ -626,7 +696,7 @@ async def join_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
     
         
-@command_with_attributes(name='troll', category='VOICE CHANNEL', help="Joins desired voice channel. Does not require user to be connected. **ADMIN COMMAND.**", usage='`!troll <channel name>`')
+@command_with_attributes(name='troll', category='VOICE CHANNEL', help="Joins desired voice channel. Does not require user to be connected. **ADMIN COMMAND.**", usage='`!troll <channel name>`', configurable = True)
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
     if ctx.guild.id != HOME_SERVER_ID:
@@ -645,7 +715,10 @@ async def troll(ctx, *, chName: str):
     channel = bot.get_channel(id)
     
     if ctx.voice_client is None:
-        await ctx.send("Won't be a problem.")
+        message = get_config(ctx.guild.id,"!troll_message")[0]
+        if message == "default":
+            message = "Won't be a problem."
+        await ctx.send(message)
         await channel.connect()
         await ctx.send(f'Trolling {channel}.')
     else:
@@ -666,7 +739,7 @@ async def troll_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='leave', category='VOICE CHANNEL', help="Leaves the current voice channel and displays sessions stats.", usage='`!leave`')
+@command_with_attributes(name='leave', category='VOICE CHANNEL', help="Leaves the current voice channel and displays sessions stats.", usage='`!leave`', configurable = True)
 async def leave(ctx):   
     global PLAYING, STOP_EVENT
     
@@ -677,7 +750,12 @@ async def leave(ctx):
     PLAYING[ctx.guild.id] = False      
     STOP_EVENT[ctx.guild.id].set()         
     ctx.voice_client.stop()
-    await ctx.send("Won't be a problem.")
+    
+    message = get_config(ctx.guild.id,"!leave_message")[0]
+    if message == "default":
+        message = "Won't be a problem."
+    await ctx.send(message)
+    
     await ctx.voice_client.disconnect()
     
     in_vc = False
@@ -989,12 +1067,79 @@ async def looplist_error(ctx, error):
 
 
 @command_with_attributes(name='config', category='CONFIG', help="*command not ready yet.*", usage='*command not ready yet.*')
-async def config(ctx):
-    await ctx.send("*This command is not yet available.*")
+@commands.has_permissions(administrator=True)
+async def config(ctx, *input: str):
+    if len(input) == 0:
+        await ctx.send("Welcome to the config command. From here you can view and set certain configurations for the bot.")
+        await ctx.send("**Usage:** \n`!config \"<variable>\" \"<value>\"` to set a configuration or " + 
+                       "\n`!config \"<variable>\" DELETE` to delete a configuration (reset to default) or " + 
+                       "\n`!config \"<variable>\"` to view a single configuration or " +
+                       "\n`!config viewall` to view all the variables you can set and their current values." + 
+                       "\n\n*Example: `!config \"!play_message\" \"playing stupid shit\"` - now every time you use !play, the bot will say \"playing stupid shit\".*")
+        return
+    
+    key = input[0]
+    config = load_config(ctx.guild.id)
+    
+    if key == 'viewall':
+        if not config:
+            await ctx.send("No configurations found. Message bot owner to fix this.")
+            return
+        output = "\n".join([f"**`{key}`**: `{value}`  \||  Description: *{description}.*" for key, (value, description) in sorted(config.items())])
+        await ctx.send(f"## List of all configurables, their values, and descriptions: \n\n")
+        
+        chunk_size = 2000
+        lines = output.split('\n')
+        chunk = ""
+        
+        for line in lines:
+            if len(chunk) + len(line) + 1 > chunk_size:
+                await ctx.send(f"{chunk}")
+                chunk = ""
+            chunk += line + '\n'
+        if chunk:
+            await ctx.send(f"{chunk}")
+        return
+    
+    value_description = get_config(ctx.guild.id, key)
+    if value_description is None:
+        await ctx.send(f"`{key}` is not a configurable variable.")
+        return
+    value, description = value_description
+    
+    if len(input) == 1:
+        await ctx.send(f"Configuration for **`{key}`** is: `{value}`  \||  Description: *{description}.*")
+    else:
+        new_value = ' '.join(input[1:])
+        
+        if key == "default_text_channel":
+            if new_value == 'DELETE':
+                set_config(ctx.guild.id, key, new_value, description)
+                await ctx.send(f"Configuration for `{key}` reset to default.")
+                return
+            if not new_value.isdigit():
+                await ctx.send("*You must input a channel ID, not a name, idiot. Find this by right-clicking the channel and selecting 'Copy Channel ID'.*")
+                return
+            channel_id = int(new_value)
+            channel = ctx.guild.get_channel(channel_id)
+            if channel is None:
+                await ctx.send("*The provided channel ID does not exist, dumbass. Please provide a valid channel ID.*")
+                return
+        
+        set_config(ctx.guild.id, key, new_value, description)
+        if new_value == 'DELETE':
+            await ctx.send(f"Configuration for `{key}` reset to default.")
+        else:
+            await ctx.send(f"Configuration for `{key}` set to `{new_value}`.")
+            if key == "default_text_channel":
+                await channel.send("*This channel is now the default text channel for any of my non-command-related bot messages (update messages, restart/shutdown notices, etc.)*")
 
 @config.error
 async def config_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
 
@@ -1354,7 +1499,11 @@ async def restart(ctx):
             await vc.disconnect()
             
             if vc.channel.guild.id != HOME_SERVER_ID:
-                channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
+                default_channel = get_config(vc.channel.guild.id, "default_text_channel")[0]
+                if default_channel != "default":
+                    channel = vc.channel.guild.get_channel(int(default_channel))
+                if default_channel == "default" or channel is None:
+                    channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
                 await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner is restarting the bot.*")
             
             await delete_session_stats(ctx)
@@ -1405,7 +1554,11 @@ async def kys(ctx):
             await vc.disconnect()
             
             if vc.channel.guild.id != HOME_SERVER_ID:
-                channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
+                default_channel = get_config(vc.channel.guild.id, "default_text_channel")[0]
+                if default_channel != "default":
+                    channel = vc.channel.guild.get_channel(int(default_channel))
+                if default_channel == "default" or channel is None:
+                    channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
                 await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner has shut down the bot.*")
                 
             await delete_session_stats(ctx)  
