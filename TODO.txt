@@ -1,3 +1,5 @@
 -perhaps add command that allows for sound files to be sent to the bot through discord (and added to server's sound folder)? security risk? definitely admin only
 
 -create bot clone specifically for testing? (would just need it locally)
+
+-add vc inactivity timeout
