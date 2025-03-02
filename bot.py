@@ -201,10 +201,10 @@ async def on_message(message):
             await message.channel.send(response)
             return
     
-    num = random.randint(0,4)
-    if num == 0:
-        num2 = random.randint(0,4)
-        if num2 == 0:
+    num = random.randint(0,6)
+    if num == 5:
+        num2 = random.randint(0,6)
+        if num2 == 5:
             await message.channel.send('# **Wrong! Shuddup.**')
         else: 
             await message.channel.send('**Wrong! Shuddup.**')
