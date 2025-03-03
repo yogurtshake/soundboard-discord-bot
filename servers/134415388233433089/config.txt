@@ -5,4 +5,4 @@
 !loop_message,default,bot message after command
 !troll_message,default,bot message after command
 !leave_message,default,bot message after command
-default_text_channel,default,sets default text channel for non-command-related bot messages. USE CHANNEL ID
+default_text_channel,357685899569528833,sets default text channel for non-command-related bot messages. USE CHANNEL ID
