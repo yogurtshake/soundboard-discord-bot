@@ -164,6 +164,37 @@ def set_config(guild_id, key, value, description):
         config[key] = (value, description)
     save_config(guild_id, config)
 
+async def disconnect_after_inactivity(vc):
+    global PLAYING, STOP_EVENT
+    
+    if vc.is_connected() and len(vc.channel.members) == 1:
+        PLAYING[vc.guild.id] = False      
+        STOP_EVENT[vc.guild.id].set()         
+        vc.stop()
+        
+        await vc.disconnect()
+                
+        default_tc = get_config(vc.channel.guild.id, "default_text_channel")[0]
+        if default_tc != "default":
+            default_tc = vc.channel.guild.get_channel(int(default_tc))
+        if default_tc == "default" or default_tc is None:
+            default_tc = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
+            
+        await default_tc.send(f"*Disconnected from voice channel `{vc.channel.name}` because everyone else fucking left.*")
+
+        in_vc = False
+        for vc in bot.voice_clients:
+            if vc.is_connected():
+                in_vc = True
+                break
+        if not in_vc:
+            await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
+            
+        ctx = await bot.get_context(default_tc.last_message)    
+        await ctx.invoke(bot.get_command('sessionstats'))
+        await delete_session_stats(ctx)
+        
+
 
 # --------------------------------- EVENTS ---------------------------------
 
@@ -218,6 +249,16 @@ async def on_guild_join(guild):
     channel = guild.system_channel or guild.text_channels[0]
     if channel:
         await channel.send("Which idiot added me to this shithole?\n\n Use `!help` to get started.")  
+ 
+ 
+@bot.event
+async def on_voice_state_update(member, before, after):
+    if member.bot:
+        return
+
+    for vc in bot.voice_clients:
+        if vc.channel == before.channel and len(vc.channel.members) == 1:
+            await disconnect_after_inactivity(vc)
     
     
 @bot.event
@@ -283,7 +324,6 @@ async def help_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")    
     
     
-
 # -------------- misc commands --------------    
     
 @command_with_attributes(name='raisehand', category='DEWEY', help="Raises hands in correct order.", usage='`!raisehand`')
@@ -326,7 +366,6 @@ async def randomhand(ctx):
 @randomhand.error
 async def randomhand_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
-
 
 
 # -------------- sound commands --------------
@@ -774,7 +813,6 @@ async def leave_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-
 # -------------- file-related commands --------------
 
 @command_with_attributes(name='soundlist', category='SOUNDBOARD - DATA', help="Displays full soundlist in alphabetical order.", usage='`!soundlist`')
@@ -1142,7 +1180,6 @@ async def config_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-
 # -------------- owner commands --------------
 
 @command_with_attributes(name='logs', category='OWNER COMMANDS', help="Displays desired number of lines of log file output. Default 20 lines.", usage='`!logs` OR `!logs <numLines>`')
@@ -1499,12 +1536,12 @@ async def restart(ctx):
             await vc.disconnect()
             
             if vc.channel.guild.id != HOME_SERVER_ID:
-                default_channel = get_config(vc.channel.guild.id, "default_text_channel")[0]
-                if default_channel != "default":
-                    channel = vc.channel.guild.get_channel(int(default_channel))
-                if default_channel == "default" or channel is None:
-                    channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
-                await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner is restarting the bot.*")
+                default_tc = get_config(vc.channel.guild.id, "default_text_channel")[0]
+                if default_tc != "default":
+                    default_tc = vc.channel.guild.get_channel(int(default_tc))
+                if default_tc == "default" or default_tc is None:
+                    default_tc = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
+                await default_tc.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner is restarting the bot.*")
             
             await delete_session_stats(ctx)
             
@@ -1554,12 +1591,12 @@ async def kys(ctx):
             await vc.disconnect()
             
             if vc.channel.guild.id != HOME_SERVER_ID:
-                default_channel = get_config(vc.channel.guild.id, "default_text_channel")[0]
-                if default_channel != "default":
-                    channel = vc.channel.guild.get_channel(int(default_channel))
-                if default_channel == "default" or channel is None:
-                    channel = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
-                await channel.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner has shut down the bot.*")
+                default_tc = get_config(vc.channel.guild.id, "default_text_channel")[0]
+                if default_tc != "default":
+                    default_tc = vc.channel.guild.get_channel(int(default_tc))
+                if default_tc == "default" or default_tc is None:
+                    default_tc = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
+                await default_tc.send(f"*Disconnected from voice channel: `{vc.channel.name}`. Bot owner has shut down the bot.*")
                 
             await delete_session_stats(ctx)  
                     
@@ -1576,7 +1613,6 @@ async def kys_error(ctx, error):
         await ctx.send("# No.")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")    
-
 
 
 # --------------------------------- RUN ---------------------------------
