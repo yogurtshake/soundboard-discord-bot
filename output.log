@@ -12863,3 +12863,1397 @@ SystemExit
 [2025-03-02 21:18:02] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
 [2025-03-03 00:58:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
 [2025-03-03 01:40:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 03:20:26] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-03 03:20:26] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-03 03:20:26] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: newark2412.discord.media
+[2025-03-03 03:20:26] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-03-03 03:20:34] [INFO    ] discord.player: ffmpeg process 95210 successfully terminated with return code of 0.
+[2025-03-03 03:20:40] [INFO    ] discord.player: ffmpeg process 95219 has not terminated. Waiting to terminate...
+[2025-03-03 03:20:40] [INFO    ] discord.player: ffmpeg process 95219 should have terminated with a return code of -9.
+[2025-03-03 03:20:45] [INFO    ] discord.player: ffmpeg process 95224 successfully terminated with return code of 0.
+[2025-03-03 03:20:51] [INFO    ] discord.player: ffmpeg process 95232 successfully terminated with return code of 0.
+[2025-03-03 03:20:54] [INFO    ] discord.player: ffmpeg process 95238 has not terminated. Waiting to terminate...
+[2025-03-03 03:20:54] [INFO    ] discord.player: ffmpeg process 95238 should have terminated with a return code of -9.
+[2025-03-03 03:20:56] [INFO    ] discord.player: ffmpeg process 95242 has not terminated. Waiting to terminate...
+[2025-03-03 03:20:56] [INFO    ] discord.player: ffmpeg process 95242 should have terminated with a return code of -9.
+[2025-03-03 03:21:00] [INFO    ] discord.player: ffmpeg process 95246 successfully terminated with return code of 0.
+[2025-03-03 03:21:06] [INFO    ] discord.player: ffmpeg process 95252 successfully terminated with return code of 0.
+[2025-03-03 03:21:25] [INFO    ] discord.player: ffmpeg process 95262 successfully terminated with return code of 0.
+[2025-03-03 03:21:36] [INFO    ] discord.player: ffmpeg process 95269 has not terminated. Waiting to terminate...
+[2025-03-03 03:21:36] [INFO    ] discord.player: ffmpeg process 95269 should have terminated with a return code of -9.
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x56242be7ef00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-03-03 03:21:40] [INFO    ] discord.player: ffmpeg process 95274 has not terminated. Waiting to terminate...
+[2025-03-03 03:21:40] [INFO    ] discord.player: ffmpeg process 95274 should have terminated with a return code of -9.
+[2025-03-03 03:21:44] [INFO    ] discord.player: ffmpeg process 95279 successfully terminated with return code of 0.
+[2025-03-03 03:22:38] [INFO    ] discord.player: ffmpeg process 95298 successfully terminated with return code of 0.
+[2025-03-03 03:22:43] [INFO    ] discord.player: ffmpeg process 95302 successfully terminated with return code of 0.
+[2025-03-03 03:22:48] [INFO    ] discord.player: ffmpeg process 95310 successfully terminated with return code of 0.
+[2025-03-03 03:22:53] [INFO    ] discord.player: ffmpeg process 95315 successfully terminated with return code of 0.
+[2025-03-03 03:22:58] [INFO    ] discord.player: ffmpeg process 95320 successfully terminated with return code of 0.
+[2025-03-03 03:23:02] [INFO    ] discord.player: ffmpeg process 95326 successfully terminated with return code of 0.
+[2025-03-03 03:23:07] [INFO    ] discord.player: ffmpeg process 95332 successfully terminated with return code of 0.
+[2025-03-03 03:23:12] [INFO    ] discord.player: ffmpeg process 95337 successfully terminated with return code of 0.
+[2025-03-03 03:23:17] [INFO    ] discord.player: ffmpeg process 95342 successfully terminated with return code of 0.
+[2025-03-03 03:23:18] [INFO    ] discord.player: ffmpeg process 95347 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:18] [INFO    ] discord.player: ffmpeg process 95347 should have terminated with a return code of -9.
+[2025-03-03 03:23:30] [INFO    ] discord.player: ffmpeg process 95354 successfully terminated with return code of 0.
+[2025-03-03 03:23:35] [INFO    ] discord.player: ffmpeg process 95359 successfully terminated with return code of 0.
+[2025-03-03 03:23:37] [INFO    ] discord.player: ffmpeg process 95365 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:37] [INFO    ] discord.player: ffmpeg process 95365 should have terminated with a return code of -9.
+[2025-03-03 03:23:42] [INFO    ] discord.player: ffmpeg process 95370 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:42] [INFO    ] discord.player: ffmpeg process 95370 should have terminated with a return code of -9.
+[2025-03-03 03:23:43] [INFO    ] discord.player: ffmpeg process 95374 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:43] [INFO    ] discord.player: ffmpeg process 95374 should have terminated with a return code of -9.
+[2025-03-03 03:23:44] [INFO    ] discord.player: ffmpeg process 95378 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:44] [INFO    ] discord.player: ffmpeg process 95378 should have terminated with a return code of -9.
+[2025-03-03 03:23:45] [INFO    ] discord.player: ffmpeg process 95383 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:45] [INFO    ] discord.player: ffmpeg process 95383 should have terminated with a return code of -9.
+[2025-03-03 03:23:46] [INFO    ] discord.player: ffmpeg process 95387 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:46] [INFO    ] discord.player: ffmpeg process 95387 should have terminated with a return code of -9.
+[2025-03-03 03:23:47] [INFO    ] discord.player: ffmpeg process 95391 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:47] [INFO    ] discord.player: ffmpeg process 95391 should have terminated with a return code of -9.
+[2025-03-03 03:23:49] [INFO    ] discord.player: ffmpeg process 95395 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:49] [INFO    ] discord.player: ffmpeg process 95395 should have terminated with a return code of -9.
+[2025-03-03 03:23:50] [INFO    ] discord.player: ffmpeg process 95399 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:50] [INFO    ] discord.player: ffmpeg process 95399 should have terminated with a return code of -9.
+[2025-03-03 03:23:51] [INFO    ] discord.player: ffmpeg process 95403 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:51] [INFO    ] discord.player: ffmpeg process 95403 should have terminated with a return code of -9.
+[2025-03-03 03:23:52] [INFO    ] discord.player: ffmpeg process 95408 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:52] [INFO    ] discord.player: ffmpeg process 95408 should have terminated with a return code of -9.
+[2025-03-03 03:23:53] [INFO    ] discord.player: ffmpeg process 95412 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:53] [INFO    ] discord.player: ffmpeg process 95412 should have terminated with a return code of -9.
+[2025-03-03 03:23:54] [INFO    ] discord.player: ffmpeg process 95417 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:54] [INFO    ] discord.player: ffmpeg process 95417 should have terminated with a return code of -9.
+[2025-03-03 03:23:55] [INFO    ] discord.player: ffmpeg process 95421 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:55] [INFO    ] discord.player: ffmpeg process 95421 should have terminated with a return code of -9.
+[2025-03-03 03:23:56] [INFO    ] discord.player: ffmpeg process 95425 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:56] [INFO    ] discord.player: ffmpeg process 95425 should have terminated with a return code of -9.
+[2025-03-03 03:23:57] [INFO    ] discord.player: ffmpeg process 95429 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:57] [INFO    ] discord.player: ffmpeg process 95429 should have terminated with a return code of -9.
+[2025-03-03 03:23:58] [INFO    ] discord.player: ffmpeg process 95433 has not terminated. Waiting to terminate...
+[2025-03-03 03:23:58] [INFO    ] discord.player: ffmpeg process 95433 should have terminated with a return code of -9.
+[2025-03-03 03:24:00] [INFO    ] discord.player: ffmpeg process 95439 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:00] [INFO    ] discord.player: ffmpeg process 95439 should have terminated with a return code of -9.
+[2025-03-03 03:24:01] [INFO    ] discord.player: ffmpeg process 95444 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:01] [INFO    ] discord.player: ffmpeg process 95444 should have terminated with a return code of -9.
+[2025-03-03 03:24:02] [INFO    ] discord.player: ffmpeg process 95448 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:02] [INFO    ] discord.player: ffmpeg process 95448 should have terminated with a return code of -9.
+[2025-03-03 03:24:03] [INFO    ] discord.player: ffmpeg process 95452 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:03] [INFO    ] discord.player: ffmpeg process 95452 should have terminated with a return code of -9.
+[2025-03-03 03:24:04] [INFO    ] discord.player: ffmpeg process 95457 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:04] [INFO    ] discord.player: ffmpeg process 95457 should have terminated with a return code of -9.
+[2025-03-03 03:24:05] [INFO    ] discord.player: ffmpeg process 95462 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:05] [INFO    ] discord.player: ffmpeg process 95462 should have terminated with a return code of -9.
+[2025-03-03 03:24:06] [INFO    ] discord.player: ffmpeg process 95469 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:06] [INFO    ] discord.player: ffmpeg process 95469 should have terminated with a return code of -9.
+[2025-03-03 03:24:07] [INFO    ] discord.player: ffmpeg process 95473 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:07] [INFO    ] discord.player: ffmpeg process 95473 should have terminated with a return code of -9.
+[2025-03-03 03:24:08] [INFO    ] discord.player: ffmpeg process 95477 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:08] [INFO    ] discord.player: ffmpeg process 95477 should have terminated with a return code of -9.
+[2025-03-03 03:24:10] [INFO    ] discord.player: ffmpeg process 95484 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:10] [INFO    ] discord.player: ffmpeg process 95484 should have terminated with a return code of -9.
+[2025-03-03 03:24:11] [INFO    ] discord.player: ffmpeg process 95488 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:11] [INFO    ] discord.player: ffmpeg process 95488 should have terminated with a return code of -9.
+[2025-03-03 03:24:12] [INFO    ] discord.player: ffmpeg process 95493 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:12] [INFO    ] discord.player: ffmpeg process 95493 should have terminated with a return code of -9.
+[2025-03-03 03:24:13] [INFO    ] discord.player: ffmpeg process 95498 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:13] [INFO    ] discord.player: ffmpeg process 95498 should have terminated with a return code of -9.
+[2025-03-03 03:24:18] [INFO    ] discord.player: ffmpeg process 95502 successfully terminated with return code of 0.
+[2025-03-03 03:24:22] [INFO    ] discord.player: ffmpeg process 95508 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:22] [INFO    ] discord.player: ffmpeg process 95508 should have terminated with a return code of -9.
+[2025-03-03 03:24:23] [INFO    ] discord.player: ffmpeg process 95512 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:23] [INFO    ] discord.player: ffmpeg process 95512 should have terminated with a return code of -9.
+[2025-03-03 03:24:24] [INFO    ] discord.player: ffmpeg process 95516 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:24] [INFO    ] discord.player: ffmpeg process 95516 should have terminated with a return code of -9.
+[2025-03-03 03:24:25] [INFO    ] discord.player: ffmpeg process 95520 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:25] [INFO    ] discord.player: ffmpeg process 95520 should have terminated with a return code of -9.
+[2025-03-03 03:24:26] [INFO    ] discord.player: ffmpeg process 95524 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:26] [INFO    ] discord.player: ffmpeg process 95524 should have terminated with a return code of -9.
+[2025-03-03 03:24:28] [INFO    ] discord.player: ffmpeg process 95528 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:28] [INFO    ] discord.player: ffmpeg process 95528 should have terminated with a return code of -9.
+[2025-03-03 03:24:29] [INFO    ] discord.player: ffmpeg process 95532 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:29] [INFO    ] discord.player: ffmpeg process 95532 should have terminated with a return code of -9.
+[2025-03-03 03:24:30] [INFO    ] discord.player: ffmpeg process 95537 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:30] [INFO    ] discord.player: ffmpeg process 95537 should have terminated with a return code of -9.
+[2025-03-03 03:24:31] [INFO    ] discord.player: ffmpeg process 95541 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:31] [INFO    ] discord.player: ffmpeg process 95541 should have terminated with a return code of -9.
+[2025-03-03 03:24:32] [INFO    ] discord.player: ffmpeg process 95545 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:32] [INFO    ] discord.player: ffmpeg process 95545 should have terminated with a return code of -9.
+[2025-03-03 03:24:33] [INFO    ] discord.player: ffmpeg process 95550 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:33] [INFO    ] discord.player: ffmpeg process 95550 should have terminated with a return code of -9.
+[2025-03-03 03:24:34] [INFO    ] discord.player: ffmpeg process 95554 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:34] [INFO    ] discord.player: ffmpeg process 95554 should have terminated with a return code of -9.
+[2025-03-03 03:24:35] [INFO    ] discord.player: ffmpeg process 95558 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:35] [INFO    ] discord.player: ffmpeg process 95558 should have terminated with a return code of -9.
+[2025-03-03 03:24:36] [INFO    ] discord.player: ffmpeg process 95562 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:36] [INFO    ] discord.player: ffmpeg process 95562 should have terminated with a return code of -9.
+[2025-03-03 03:24:38] [INFO    ] discord.player: ffmpeg process 95566 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:38] [INFO    ] discord.player: ffmpeg process 95566 should have terminated with a return code of -9.
+[2025-03-03 03:24:39] [INFO    ] discord.player: ffmpeg process 95570 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:39] [INFO    ] discord.player: ffmpeg process 95570 should have terminated with a return code of -9.
+[2025-03-03 03:24:40] [INFO    ] discord.player: ffmpeg process 95577 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:40] [INFO    ] discord.player: ffmpeg process 95577 should have terminated with a return code of -9.
+[2025-03-03 03:24:41] [INFO    ] discord.player: ffmpeg process 95581 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:41] [INFO    ] discord.player: ffmpeg process 95581 should have terminated with a return code of -9.
+[2025-03-03 03:24:42] [INFO    ] discord.player: ffmpeg process 95586 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:42] [INFO    ] discord.player: ffmpeg process 95586 should have terminated with a return code of -9.
+[2025-03-03 03:24:43] [INFO    ] discord.player: ffmpeg process 95590 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:43] [INFO    ] discord.player: ffmpeg process 95590 should have terminated with a return code of -9.
+[2025-03-03 03:24:44] [INFO    ] discord.player: ffmpeg process 95594 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:44] [INFO    ] discord.player: ffmpeg process 95594 should have terminated with a return code of -9.
+[2025-03-03 03:24:45] [INFO    ] discord.player: ffmpeg process 95598 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:45] [INFO    ] discord.player: ffmpeg process 95598 should have terminated with a return code of -9.
+[2025-03-03 03:24:46] [INFO    ] discord.player: ffmpeg process 95602 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:46] [INFO    ] discord.player: ffmpeg process 95602 should have terminated with a return code of -9.
+[2025-03-03 03:24:47] [INFO    ] discord.player: ffmpeg process 95606 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:47] [INFO    ] discord.player: ffmpeg process 95606 should have terminated with a return code of -9.
+[2025-03-03 03:24:49] [INFO    ] discord.player: ffmpeg process 95610 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:49] [INFO    ] discord.player: ffmpeg process 95610 should have terminated with a return code of -9.
+[2025-03-03 03:24:50] [INFO    ] discord.player: ffmpeg process 95614 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:50] [INFO    ] discord.player: ffmpeg process 95614 should have terminated with a return code of -9.
+[2025-03-03 03:24:51] [INFO    ] discord.player: ffmpeg process 95618 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:51] [INFO    ] discord.player: ffmpeg process 95618 should have terminated with a return code of -9.
+[2025-03-03 03:24:52] [INFO    ] discord.player: ffmpeg process 95623 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:52] [INFO    ] discord.player: ffmpeg process 95623 should have terminated with a return code of -9.
+[2025-03-03 03:24:53] [INFO    ] discord.player: ffmpeg process 95627 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:53] [INFO    ] discord.player: ffmpeg process 95627 should have terminated with a return code of -9.
+[2025-03-03 03:24:57] [INFO    ] discord.player: ffmpeg process 95632 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:57] [INFO    ] discord.player: ffmpeg process 95632 should have terminated with a return code of -9.
+[2025-03-03 03:24:58] [INFO    ] discord.player: ffmpeg process 95636 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:58] [INFO    ] discord.player: ffmpeg process 95636 should have terminated with a return code of -9.
+[2025-03-03 03:24:59] [INFO    ] discord.player: ffmpeg process 95640 has not terminated. Waiting to terminate...
+[2025-03-03 03:24:59] [INFO    ] discord.player: ffmpeg process 95640 should have terminated with a return code of -9.
+[2025-03-03 03:25:00] [INFO    ] discord.player: ffmpeg process 95644 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:00] [INFO    ] discord.player: ffmpeg process 95644 should have terminated with a return code of -9.
+[2025-03-03 03:25:01] [INFO    ] discord.player: ffmpeg process 95648 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:01] [INFO    ] discord.player: ffmpeg process 95648 should have terminated with a return code of -9.
+[2025-03-03 03:25:02] [INFO    ] discord.player: ffmpeg process 95653 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:02] [INFO    ] discord.player: ffmpeg process 95653 should have terminated with a return code of -9.
+[2025-03-03 03:25:03] [INFO    ] discord.player: ffmpeg process 95657 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:03] [INFO    ] discord.player: ffmpeg process 95657 should have terminated with a return code of -9.
+[2025-03-03 03:25:04] [INFO    ] discord.player: ffmpeg process 95662 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:04] [INFO    ] discord.player: ffmpeg process 95662 should have terminated with a return code of -9.
+[2025-03-03 03:25:06] [INFO    ] discord.player: ffmpeg process 95666 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:06] [INFO    ] discord.player: ffmpeg process 95666 should have terminated with a return code of -9.
+[2025-03-03 03:25:07] [INFO    ] discord.player: ffmpeg process 95670 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:07] [INFO    ] discord.player: ffmpeg process 95670 should have terminated with a return code of -9.
+[2025-03-03 03:25:08] [INFO    ] discord.player: ffmpeg process 95674 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:08] [INFO    ] discord.player: ffmpeg process 95674 should have terminated with a return code of -9.
+[2025-03-03 03:25:09] [INFO    ] discord.player: ffmpeg process 95678 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:09] [INFO    ] discord.player: ffmpeg process 95678 should have terminated with a return code of -9.
+[2025-03-03 03:25:10] [INFO    ] discord.player: ffmpeg process 95682 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:10] [INFO    ] discord.player: ffmpeg process 95682 should have terminated with a return code of -9.
+[2025-03-03 03:25:11] [INFO    ] discord.player: ffmpeg process 95686 successfully terminated with return code of -9.
+[2025-03-03 03:25:12] [INFO    ] discord.player: ffmpeg process 95691 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:12] [INFO    ] discord.player: ffmpeg process 95691 should have terminated with a return code of -9.
+[2025-03-03 03:25:13] [INFO    ] discord.player: ffmpeg process 95696 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:13] [INFO    ] discord.player: ffmpeg process 95696 should have terminated with a return code of -9.
+[2025-03-03 03:25:14] [INFO    ] discord.player: ffmpeg process 95700 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:14] [INFO    ] discord.player: ffmpeg process 95700 should have terminated with a return code of -9.
+[2025-03-03 03:25:15] [INFO    ] discord.player: ffmpeg process 95704 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:15] [INFO    ] discord.player: ffmpeg process 95704 should have terminated with a return code of -9.
+[2025-03-03 03:25:17] [INFO    ] discord.player: ffmpeg process 95708 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:17] [INFO    ] discord.player: ffmpeg process 95708 should have terminated with a return code of -9.
+[2025-03-03 03:25:18] [INFO    ] discord.player: ffmpeg process 95712 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:18] [INFO    ] discord.player: ffmpeg process 95712 should have terminated with a return code of -9.
+[2025-03-03 03:25:19] [INFO    ] discord.player: ffmpeg process 95718 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:19] [INFO    ] discord.player: ffmpeg process 95718 should have terminated with a return code of -9.
+[2025-03-03 03:25:20] [INFO    ] discord.player: ffmpeg process 95722 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:20] [INFO    ] discord.player: ffmpeg process 95722 should have terminated with a return code of -9.
+[2025-03-03 03:25:21] [INFO    ] discord.player: ffmpeg process 95727 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:21] [INFO    ] discord.player: ffmpeg process 95727 should have terminated with a return code of -9.
+[2025-03-03 03:25:22] [INFO    ] discord.player: ffmpeg process 95731 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:22] [INFO    ] discord.player: ffmpeg process 95731 should have terminated with a return code of -9.
+[2025-03-03 03:25:23] [INFO    ] discord.player: ffmpeg process 95735 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:23] [INFO    ] discord.player: ffmpeg process 95735 should have terminated with a return code of -9.
+[2025-03-03 03:25:24] [INFO    ] discord.player: ffmpeg process 95740 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:24] [INFO    ] discord.player: ffmpeg process 95740 should have terminated with a return code of -9.
+[2025-03-03 03:25:25] [INFO    ] discord.player: ffmpeg process 95744 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:25] [INFO    ] discord.player: ffmpeg process 95744 should have terminated with a return code of -9.
+[2025-03-03 03:25:27] [INFO    ] discord.player: ffmpeg process 95748 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:27] [INFO    ] discord.player: ffmpeg process 95748 should have terminated with a return code of -9.
+[2025-03-03 03:25:28] [INFO    ] discord.player: ffmpeg process 95752 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:28] [INFO    ] discord.player: ffmpeg process 95752 should have terminated with a return code of -9.
+[2025-03-03 03:25:29] [INFO    ] discord.player: ffmpeg process 95756 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:29] [INFO    ] discord.player: ffmpeg process 95756 should have terminated with a return code of -9.
+[2025-03-03 03:25:33] [INFO    ] discord.player: ffmpeg process 95760 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:33] [INFO    ] discord.player: ffmpeg process 95760 should have terminated with a return code of -9.
+[2025-03-03 03:25:34] [INFO    ] discord.player: ffmpeg process 95766 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:34] [INFO    ] discord.player: ffmpeg process 95766 should have terminated with a return code of -9.
+[2025-03-03 03:25:36] [INFO    ] discord.player: ffmpeg process 95770 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:36] [INFO    ] discord.player: ffmpeg process 95770 should have terminated with a return code of -9.
+[2025-03-03 03:25:37] [INFO    ] discord.player: ffmpeg process 95774 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:37] [INFO    ] discord.player: ffmpeg process 95774 should have terminated with a return code of -9.
+[2025-03-03 03:25:38] [INFO    ] discord.player: ffmpeg process 95778 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:38] [INFO    ] discord.player: ffmpeg process 95778 should have terminated with a return code of -9.
+[2025-03-03 03:25:39] [INFO    ] discord.player: ffmpeg process 95782 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:39] [INFO    ] discord.player: ffmpeg process 95782 should have terminated with a return code of -9.
+[2025-03-03 03:25:40] [INFO    ] discord.player: ffmpeg process 95786 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:40] [INFO    ] discord.player: ffmpeg process 95786 should have terminated with a return code of -9.
+[2025-03-03 03:25:41] [INFO    ] discord.player: ffmpeg process 95791 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:41] [INFO    ] discord.player: ffmpeg process 95791 should have terminated with a return code of -9.
+[2025-03-03 03:25:42] [INFO    ] discord.player: ffmpeg process 95795 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:42] [INFO    ] discord.player: ffmpeg process 95795 should have terminated with a return code of -9.
+[2025-03-03 03:25:43] [INFO    ] discord.player: ffmpeg process 95800 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:43] [INFO    ] discord.player: ffmpeg process 95800 should have terminated with a return code of -9.
+[2025-03-03 03:25:44] [INFO    ] discord.player: ffmpeg process 95804 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:44] [INFO    ] discord.player: ffmpeg process 95804 should have terminated with a return code of -9.
+[2025-03-03 03:25:45] [INFO    ] discord.player: ffmpeg process 95808 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:45] [INFO    ] discord.player: ffmpeg process 95808 should have terminated with a return code of -9.
+[2025-03-03 03:25:47] [INFO    ] discord.player: ffmpeg process 95812 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:47] [INFO    ] discord.player: ffmpeg process 95812 should have terminated with a return code of -9.
+[2025-03-03 03:25:48] [INFO    ] discord.player: ffmpeg process 95816 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:48] [INFO    ] discord.player: ffmpeg process 95816 should have terminated with a return code of -9.
+[2025-03-03 03:25:49] [INFO    ] discord.player: ffmpeg process 95820 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:49] [INFO    ] discord.player: ffmpeg process 95820 should have terminated with a return code of -9.
+[2025-03-03 03:25:50] [INFO    ] discord.player: ffmpeg process 95825 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:50] [INFO    ] discord.player: ffmpeg process 95825 should have terminated with a return code of -9.
+[2025-03-03 03:25:51] [INFO    ] discord.player: ffmpeg process 95829 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:51] [INFO    ] discord.player: ffmpeg process 95829 should have terminated with a return code of -9.
+[2025-03-03 03:25:52] [INFO    ] discord.player: ffmpeg process 95834 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:52] [INFO    ] discord.player: ffmpeg process 95834 should have terminated with a return code of -9.
+[2025-03-03 03:25:53] [INFO    ] discord.player: ffmpeg process 95838 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:53] [INFO    ] discord.player: ffmpeg process 95838 should have terminated with a return code of -9.
+[2025-03-03 03:25:54] [INFO    ] discord.player: ffmpeg process 95842 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:54] [INFO    ] discord.player: ffmpeg process 95842 should have terminated with a return code of -9.
+[2025-03-03 03:25:55] [INFO    ] discord.player: ffmpeg process 95846 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:55] [INFO    ] discord.player: ffmpeg process 95846 should have terminated with a return code of -9.
+[2025-03-03 03:25:56] [INFO    ] discord.player: ffmpeg process 95850 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:57] [INFO    ] discord.player: ffmpeg process 95850 should have terminated with a return code of -9.
+[2025-03-03 03:25:58] [INFO    ] discord.player: ffmpeg process 95854 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:58] [INFO    ] discord.player: ffmpeg process 95854 should have terminated with a return code of -9.
+[2025-03-03 03:25:59] [INFO    ] discord.player: ffmpeg process 95861 has not terminated. Waiting to terminate...
+[2025-03-03 03:25:59] [INFO    ] discord.player: ffmpeg process 95861 should have terminated with a return code of -9.
+[2025-03-03 03:26:00] [INFO    ] discord.player: ffmpeg process 95865 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:00] [INFO    ] discord.player: ffmpeg process 95865 should have terminated with a return code of -9.
+[2025-03-03 03:26:01] [INFO    ] discord.player: ffmpeg process 95870 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:01] [INFO    ] discord.player: ffmpeg process 95870 should have terminated with a return code of -9.
+[2025-03-03 03:26:02] [INFO    ] discord.player: ffmpeg process 95874 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:02] [INFO    ] discord.player: ffmpeg process 95874 should have terminated with a return code of -9.
+[2025-03-03 03:26:03] [INFO    ] discord.player: ffmpeg process 95878 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:03] [INFO    ] discord.player: ffmpeg process 95878 should have terminated with a return code of -9.
+[2025-03-03 03:26:04] [INFO    ] discord.player: ffmpeg process 95882 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:04] [INFO    ] discord.player: ffmpeg process 95882 should have terminated with a return code of -9.
+[2025-03-03 03:26:05] [INFO    ] discord.player: ffmpeg process 95886 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:05] [INFO    ] discord.player: ffmpeg process 95886 should have terminated with a return code of -9.
+[2025-03-03 03:26:10] [INFO    ] discord.player: ffmpeg process 95890 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:10] [INFO    ] discord.player: ffmpeg process 95890 should have terminated with a return code of -9.
+[2025-03-03 03:26:11] [INFO    ] discord.player: ffmpeg process 95895 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:11] [INFO    ] discord.player: ffmpeg process 95895 should have terminated with a return code of -9.
+[2025-03-03 03:26:12] [INFO    ] discord.player: ffmpeg process 95900 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:12] [INFO    ] discord.player: ffmpeg process 95900 should have terminated with a return code of -9.
+[2025-03-03 03:26:13] [INFO    ] discord.player: ffmpeg process 95904 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:13] [INFO    ] discord.player: ffmpeg process 95904 should have terminated with a return code of -9.
+[2025-03-03 03:26:14] [INFO    ] discord.player: ffmpeg process 95908 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:14] [INFO    ] discord.player: ffmpeg process 95908 should have terminated with a return code of -9.
+[2025-03-03 03:26:15] [INFO    ] discord.player: ffmpeg process 95912 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:15] [INFO    ] discord.player: ffmpeg process 95912 should have terminated with a return code of -9.
+[2025-03-03 03:26:16] [INFO    ] discord.player: ffmpeg process 95916 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:16] [INFO    ] discord.player: ffmpeg process 95916 should have terminated with a return code of -9.
+[2025-03-03 03:26:17] [INFO    ] discord.player: ffmpeg process 95920 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:17] [INFO    ] discord.player: ffmpeg process 95920 should have terminated with a return code of -9.
+[2025-03-03 03:26:18] [INFO    ] discord.player: ffmpeg process 95924 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:18] [INFO    ] discord.player: ffmpeg process 95924 should have terminated with a return code of -9.
+[2025-03-03 03:26:19] [INFO    ] discord.player: ffmpeg process 95928 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:19] [INFO    ] discord.player: ffmpeg process 95928 should have terminated with a return code of -9.
+[2025-03-03 03:26:21] [INFO    ] discord.player: ffmpeg process 95933 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:21] [INFO    ] discord.player: ffmpeg process 95933 should have terminated with a return code of -9.
+[2025-03-03 03:26:22] [INFO    ] discord.player: ffmpeg process 95937 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:22] [INFO    ] discord.player: ffmpeg process 95937 should have terminated with a return code of -9.
+[2025-03-03 03:26:23] [INFO    ] discord.player: ffmpeg process 95941 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:23] [INFO    ] discord.player: ffmpeg process 95941 should have terminated with a return code of -9.
+[2025-03-03 03:26:24] [INFO    ] discord.player: ffmpeg process 95946 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:24] [INFO    ] discord.player: ffmpeg process 95946 should have terminated with a return code of -9.
+[2025-03-03 03:26:25] [INFO    ] discord.player: ffmpeg process 95950 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:25] [INFO    ] discord.player: ffmpeg process 95950 should have terminated with a return code of -9.
+[2025-03-03 03:26:26] [INFO    ] discord.player: ffmpeg process 95954 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:26] [INFO    ] discord.player: ffmpeg process 95954 should have terminated with a return code of -9.
+[2025-03-03 03:26:27] [INFO    ] discord.player: ffmpeg process 95958 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:27] [INFO    ] discord.player: ffmpeg process 95958 should have terminated with a return code of -9.
+[2025-03-03 03:26:28] [INFO    ] discord.player: ffmpeg process 95962 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:28] [INFO    ] discord.player: ffmpeg process 95962 should have terminated with a return code of -9.
+[2025-03-03 03:26:29] [INFO    ] discord.player: ffmpeg process 95966 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:29] [INFO    ] discord.player: ffmpeg process 95966 should have terminated with a return code of -9.
+[2025-03-03 03:26:31] [INFO    ] discord.player: ffmpeg process 95971 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:31] [INFO    ] discord.player: ffmpeg process 95971 should have terminated with a return code of -9.
+[2025-03-03 03:26:32] [INFO    ] discord.player: ffmpeg process 95975 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:32] [INFO    ] discord.player: ffmpeg process 95975 should have terminated with a return code of -9.
+[2025-03-03 03:26:33] [INFO    ] discord.player: ffmpeg process 95980 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:33] [INFO    ] discord.player: ffmpeg process 95980 should have terminated with a return code of -9.
+[2025-03-03 03:26:34] [INFO    ] discord.player: ffmpeg process 95984 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:34] [INFO    ] discord.player: ffmpeg process 95984 should have terminated with a return code of -9.
+[2025-03-03 03:26:35] [INFO    ] discord.player: ffmpeg process 95988 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:35] [INFO    ] discord.player: ffmpeg process 95988 should have terminated with a return code of -9.
+[2025-03-03 03:26:36] [INFO    ] discord.player: ffmpeg process 95992 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:36] [INFO    ] discord.player: ffmpeg process 95992 should have terminated with a return code of -9.
+[2025-03-03 03:26:37] [INFO    ] discord.player: ffmpeg process 95996 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:37] [INFO    ] discord.player: ffmpeg process 95996 should have terminated with a return code of -9.
+[2025-03-03 03:26:38] [INFO    ] discord.player: ffmpeg process 96002 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:38] [INFO    ] discord.player: ffmpeg process 96002 should have terminated with a return code of -9.
+[2025-03-03 03:26:39] [INFO    ] discord.player: ffmpeg process 96006 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:39] [INFO    ] discord.player: ffmpeg process 96006 should have terminated with a return code of -9.
+[2025-03-03 03:26:40] [INFO    ] discord.player: ffmpeg process 96011 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:40] [INFO    ] discord.player: ffmpeg process 96011 should have terminated with a return code of -9.
+[2025-03-03 03:26:42] [INFO    ] discord.player: ffmpeg process 96015 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:42] [INFO    ] discord.player: ffmpeg process 96015 should have terminated with a return code of -9.
+[2025-03-03 03:26:47] [INFO    ] discord.player: ffmpeg process 96020 successfully terminated with return code of 0.
+[2025-03-03 03:26:54] [INFO    ] discord.player: ffmpeg process 96026 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:54] [INFO    ] discord.player: ffmpeg process 96026 should have terminated with a return code of -9.
+[2025-03-03 03:26:55] [INFO    ] discord.player: ffmpeg process 96030 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:55] [INFO    ] discord.player: ffmpeg process 96030 should have terminated with a return code of -9.
+[2025-03-03 03:26:56] [INFO    ] discord.player: ffmpeg process 96034 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:56] [INFO    ] discord.player: ffmpeg process 96034 should have terminated with a return code of -9.
+[2025-03-03 03:26:57] [INFO    ] discord.player: ffmpeg process 96038 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:57] [INFO    ] discord.player: ffmpeg process 96038 should have terminated with a return code of -9.
+[2025-03-03 03:26:58] [INFO    ] discord.player: ffmpeg process 96042 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:58] [INFO    ] discord.player: ffmpeg process 96042 should have terminated with a return code of -9.
+[2025-03-03 03:26:59] [INFO    ] discord.player: ffmpeg process 96046 has not terminated. Waiting to terminate...
+[2025-03-03 03:26:59] [INFO    ] discord.player: ffmpeg process 96046 should have terminated with a return code of -9.
+[2025-03-03 03:27:01] [INFO    ] discord.player: ffmpeg process 96051 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:01] [INFO    ] discord.player: ffmpeg process 96051 should have terminated with a return code of -9.
+[2025-03-03 03:27:02] [INFO    ] discord.player: ffmpeg process 96056 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:02] [INFO    ] discord.player: ffmpeg process 96056 should have terminated with a return code of -9.
+[2025-03-03 03:27:03] [INFO    ] discord.player: ffmpeg process 96060 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:03] [INFO    ] discord.player: ffmpeg process 96060 should have terminated with a return code of -9.
+[2025-03-03 03:27:04] [INFO    ] discord.player: ffmpeg process 96064 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:04] [INFO    ] discord.player: ffmpeg process 96064 should have terminated with a return code of -9.
+[2025-03-03 03:27:05] [INFO    ] discord.player: ffmpeg process 96068 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:05] [INFO    ] discord.player: ffmpeg process 96068 should have terminated with a return code of -9.
+[2025-03-03 03:27:06] [INFO    ] discord.player: ffmpeg process 96072 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:06] [INFO    ] discord.player: ffmpeg process 96072 should have terminated with a return code of -9.
+[2025-03-03 03:27:07] [INFO    ] discord.player: ffmpeg process 96076 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:07] [INFO    ] discord.player: ffmpeg process 96076 should have terminated with a return code of -9.
+[2025-03-03 03:27:08] [INFO    ] discord.player: ffmpeg process 96080 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:08] [INFO    ] discord.player: ffmpeg process 96080 should have terminated with a return code of -9.
+[2025-03-03 03:27:09] [INFO    ] discord.player: ffmpeg process 96084 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:09] [INFO    ] discord.player: ffmpeg process 96084 should have terminated with a return code of -9.
+[2025-03-03 03:27:10] [INFO    ] discord.player: ffmpeg process 96089 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:10] [INFO    ] discord.player: ffmpeg process 96089 should have terminated with a return code of -9.
+[2025-03-03 03:27:12] [INFO    ] discord.player: ffmpeg process 96093 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:12] [INFO    ] discord.player: ffmpeg process 96093 should have terminated with a return code of -9.
+[2025-03-03 03:27:13] [INFO    ] discord.player: ffmpeg process 96097 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:13] [INFO    ] discord.player: ffmpeg process 96097 should have terminated with a return code of -9.
+[2025-03-03 03:27:14] [INFO    ] discord.player: ffmpeg process 96102 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:14] [INFO    ] discord.player: ffmpeg process 96102 should have terminated with a return code of -9.
+[2025-03-03 03:27:15] [INFO    ] discord.player: ffmpeg process 96106 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:15] [INFO    ] discord.player: ffmpeg process 96106 should have terminated with a return code of -9.
+[2025-03-03 03:27:16] [INFO    ] discord.player: ffmpeg process 96110 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:16] [INFO    ] discord.player: ffmpeg process 96110 should have terminated with a return code of -9.
+[2025-03-03 03:27:17] [INFO    ] discord.player: ffmpeg process 96114 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:17] [INFO    ] discord.player: ffmpeg process 96114 should have terminated with a return code of -9.
+[2025-03-03 03:27:18] [INFO    ] discord.player: ffmpeg process 96120 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:18] [INFO    ] discord.player: ffmpeg process 96120 should have terminated with a return code of -9.
+[2025-03-03 03:27:19] [INFO    ] discord.player: ffmpeg process 96125 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:19] [INFO    ] discord.player: ffmpeg process 96125 should have terminated with a return code of -9.
+[2025-03-03 03:27:20] [INFO    ] discord.player: ffmpeg process 96130 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:20] [INFO    ] discord.player: ffmpeg process 96130 should have terminated with a return code of -9.
+[2025-03-03 03:27:21] [INFO    ] discord.player: ffmpeg process 96134 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:21] [INFO    ] discord.player: ffmpeg process 96134 should have terminated with a return code of -9.
+[2025-03-03 03:27:23] [INFO    ] discord.player: ffmpeg process 96138 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:23] [INFO    ] discord.player: ffmpeg process 96138 should have terminated with a return code of -9.
+[2025-03-03 03:27:24] [INFO    ] discord.player: ffmpeg process 96142 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:24] [INFO    ] discord.player: ffmpeg process 96142 should have terminated with a return code of -9.
+[2025-03-03 03:27:25] [INFO    ] discord.player: ffmpeg process 96146 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:25] [INFO    ] discord.player: ffmpeg process 96146 should have terminated with a return code of -9.
+[2025-03-03 03:27:30] [INFO    ] discord.player: ffmpeg process 96150 successfully terminated with return code of 0.
+[2025-03-03 03:27:33] [INFO    ] discord.player: ffmpeg process 96156 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:33] [INFO    ] discord.player: ffmpeg process 96156 should have terminated with a return code of -9.
+[2025-03-03 03:27:34] [INFO    ] discord.player: ffmpeg process 96160 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:34] [INFO    ] discord.player: ffmpeg process 96160 should have terminated with a return code of -9.
+[2025-03-03 03:27:35] [INFO    ] discord.player: ffmpeg process 96164 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:35] [INFO    ] discord.player: ffmpeg process 96164 should have terminated with a return code of -9.
+[2025-03-03 03:27:36] [INFO    ] discord.player: ffmpeg process 96169 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:36] [INFO    ] discord.player: ffmpeg process 96169 should have terminated with a return code of -9.
+[2025-03-03 03:27:37] [INFO    ] discord.player: ffmpeg process 96173 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:37] [INFO    ] discord.player: ffmpeg process 96173 should have terminated with a return code of -9.
+[2025-03-03 03:27:38] [INFO    ] discord.player: ffmpeg process 96178 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:38] [INFO    ] discord.player: ffmpeg process 96178 should have terminated with a return code of -9.
+[2025-03-03 03:27:39] [INFO    ] discord.player: ffmpeg process 96182 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:39] [INFO    ] discord.player: ffmpeg process 96182 should have terminated with a return code of -9.
+[2025-03-03 03:27:40] [INFO    ] discord.player: ffmpeg process 96186 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:40] [INFO    ] discord.player: ffmpeg process 96186 should have terminated with a return code of -9.
+[2025-03-03 03:27:41] [INFO    ] discord.player: ffmpeg process 96190 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:41] [INFO    ] discord.player: ffmpeg process 96190 should have terminated with a return code of -9.
+[2025-03-03 03:27:42] [INFO    ] discord.player: ffmpeg process 96194 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:42] [INFO    ] discord.player: ffmpeg process 96194 should have terminated with a return code of -9.
+[2025-03-03 03:27:44] [INFO    ] discord.player: ffmpeg process 96198 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:44] [INFO    ] discord.player: ffmpeg process 96198 should have terminated with a return code of -9.
+[2025-03-03 03:27:45] [INFO    ] discord.player: ffmpeg process 96203 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:45] [INFO    ] discord.player: ffmpeg process 96203 should have terminated with a return code of -9.
+[2025-03-03 03:27:46] [INFO    ] discord.player: ffmpeg process 96208 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:46] [INFO    ] discord.player: ffmpeg process 96208 should have terminated with a return code of -9.
+[2025-03-03 03:27:47] [INFO    ] discord.player: ffmpeg process 96212 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:47] [INFO    ] discord.player: ffmpeg process 96212 should have terminated with a return code of -9.
+[2025-03-03 03:27:48] [INFO    ] discord.player: ffmpeg process 96216 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:48] [INFO    ] discord.player: ffmpeg process 96216 should have terminated with a return code of -9.
+[2025-03-03 03:27:49] [INFO    ] discord.player: ffmpeg process 96220 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:49] [INFO    ] discord.player: ffmpeg process 96220 should have terminated with a return code of -9.
+[2025-03-03 03:27:50] [INFO    ] discord.player: ffmpeg process 96224 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:50] [INFO    ] discord.player: ffmpeg process 96224 should have terminated with a return code of -9.
+[2025-03-03 03:27:51] [INFO    ] discord.player: ffmpeg process 96228 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:51] [INFO    ] discord.player: ffmpeg process 96228 should have terminated with a return code of -9.
+[2025-03-03 03:27:52] [INFO    ] discord.player: ffmpeg process 96232 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:52] [INFO    ] discord.player: ffmpeg process 96232 should have terminated with a return code of -9.
+[2025-03-03 03:27:54] [INFO    ] discord.player: ffmpeg process 96236 successfully terminated with return code of -9.
+[2025-03-03 03:27:55] [INFO    ] discord.player: ffmpeg process 96240 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:55] [INFO    ] discord.player: ffmpeg process 96240 should have terminated with a return code of -9.
+[2025-03-03 03:27:56] [INFO    ] discord.player: ffmpeg process 96244 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:56] [INFO    ] discord.player: ffmpeg process 96244 should have terminated with a return code of -9.
+[2025-03-03 03:27:57] [INFO    ] discord.player: ffmpeg process 96248 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:57] [INFO    ] discord.player: ffmpeg process 96248 should have terminated with a return code of -9.
+[2025-03-03 03:27:58] [INFO    ] discord.player: ffmpeg process 96252 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:58] [INFO    ] discord.player: ffmpeg process 96252 should have terminated with a return code of -9.
+[2025-03-03 03:27:59] [INFO    ] discord.player: ffmpeg process 96258 has not terminated. Waiting to terminate...
+[2025-03-03 03:27:59] [INFO    ] discord.player: ffmpeg process 96258 should have terminated with a return code of -9.
+[2025-03-03 03:28:00] [INFO    ] discord.player: ffmpeg process 96262 has not terminated. Waiting to terminate...
+[2025-03-03 03:28:00] [INFO    ] discord.player: ffmpeg process 96262 should have terminated with a return code of -9.
+[2025-03-03 03:28:01] [INFO    ] discord.player: ffmpeg process 96266 has not terminated. Waiting to terminate...
+[2025-03-03 03:28:01] [INFO    ] discord.player: ffmpeg process 96266 should have terminated with a return code of -9.
+[2025-03-03 03:28:02] [INFO    ] discord.player: ffmpeg process 96270 has not terminated. Waiting to terminate...
+[2025-03-03 03:28:02] [INFO    ] discord.player: ffmpeg process 96270 should have terminated with a return code of -9.
+[2025-03-03 03:28:03] [INFO    ] discord.player: ffmpeg process 96274 has not terminated. Waiting to terminate...
+[2025-03-03 03:28:03] [INFO    ] discord.player: ffmpeg process 96274 should have terminated with a return code of -9.
+[2025-03-03 03:28:08] [INFO    ] discord.player: ffmpeg process 96279 successfully terminated with return code of 0.
+[2025-03-03 03:29:02] [INFO    ] discord.player: ffmpeg process 96291 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:02] [INFO    ] discord.player: ffmpeg process 96291 should have terminated with a return code of -9.
+[2025-03-03 03:29:03] [INFO    ] discord.player: ffmpeg process 96295 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:03] [INFO    ] discord.player: ffmpeg process 96295 should have terminated with a return code of -9.
+[2025-03-03 03:29:04] [INFO    ] discord.player: ffmpeg process 96299 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:04] [INFO    ] discord.player: ffmpeg process 96299 should have terminated with a return code of -9.
+[2025-03-03 03:29:06] [INFO    ] discord.player: ffmpeg process 96303 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:06] [INFO    ] discord.player: ffmpeg process 96303 should have terminated with a return code of -9.
+[2025-03-03 03:29:07] [INFO    ] discord.player: ffmpeg process 96307 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:07] [INFO    ] discord.player: ffmpeg process 96307 should have terminated with a return code of -9.
+[2025-03-03 03:29:09] [INFO    ] discord.player: ffmpeg process 96311 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:09] [INFO    ] discord.player: ffmpeg process 96311 should have terminated with a return code of -9.
+[2025-03-03 03:29:10] [INFO    ] discord.player: ffmpeg process 96315 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:10] [INFO    ] discord.player: ffmpeg process 96315 should have terminated with a return code of -9.
+[2025-03-03 03:29:11] [INFO    ] discord.player: ffmpeg process 96319 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:11] [INFO    ] discord.player: ffmpeg process 96319 should have terminated with a return code of -9.
+[2025-03-03 03:29:13] [INFO    ] discord.player: ffmpeg process 96323 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:13] [INFO    ] discord.player: ffmpeg process 96323 should have terminated with a return code of -9.
+[2025-03-03 03:29:14] [INFO    ] discord.player: ffmpeg process 96327 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:14] [INFO    ] discord.player: ffmpeg process 96327 should have terminated with a return code of -9.
+[2025-03-03 03:29:16] [INFO    ] discord.player: ffmpeg process 96331 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:16] [INFO    ] discord.player: ffmpeg process 96331 should have terminated with a return code of -9.
+[2025-03-03 03:29:17] [INFO    ] discord.player: ffmpeg process 96335 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:17] [INFO    ] discord.player: ffmpeg process 96335 should have terminated with a return code of -9.
+[2025-03-03 03:29:18] [INFO    ] discord.player: ffmpeg process 96339 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:18] [INFO    ] discord.player: ffmpeg process 96339 should have terminated with a return code of -9.
+[2025-03-03 03:29:20] [INFO    ] discord.player: ffmpeg process 96345 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:20] [INFO    ] discord.player: ffmpeg process 96345 should have terminated with a return code of -9.
+[2025-03-03 03:29:21] [INFO    ] discord.player: ffmpeg process 96349 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:21] [INFO    ] discord.player: ffmpeg process 96349 should have terminated with a return code of -9.
+[2025-03-03 03:29:23] [INFO    ] discord.player: ffmpeg process 96353 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:23] [INFO    ] discord.player: ffmpeg process 96353 should have terminated with a return code of -9.
+[2025-03-03 03:29:24] [INFO    ] discord.player: ffmpeg process 96357 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:24] [INFO    ] discord.player: ffmpeg process 96357 should have terminated with a return code of -9.
+[2025-03-03 03:29:25] [INFO    ] discord.player: ffmpeg process 96361 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:25] [INFO    ] discord.player: ffmpeg process 96361 should have terminated with a return code of -9.
+[2025-03-03 03:29:27] [INFO    ] discord.player: ffmpeg process 96365 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:27] [INFO    ] discord.player: ffmpeg process 96365 should have terminated with a return code of -9.
+[2025-03-03 03:29:28] [INFO    ] discord.player: ffmpeg process 96369 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:28] [INFO    ] discord.player: ffmpeg process 96369 should have terminated with a return code of -9.
+[2025-03-03 03:29:30] [INFO    ] discord.player: ffmpeg process 96373 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:30] [INFO    ] discord.player: ffmpeg process 96373 should have terminated with a return code of -9.
+[2025-03-03 03:29:31] [INFO    ] discord.player: ffmpeg process 96377 successfully terminated with return code of -9.
+[2025-03-03 03:29:32] [INFO    ] discord.player: ffmpeg process 96381 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:32] [INFO    ] discord.player: ffmpeg process 96381 should have terminated with a return code of -9.
+[2025-03-03 03:29:34] [INFO    ] discord.player: ffmpeg process 96385 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:34] [INFO    ] discord.player: ffmpeg process 96385 should have terminated with a return code of -9.
+[2025-03-03 03:29:35] [INFO    ] discord.player: ffmpeg process 96389 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:35] [INFO    ] discord.player: ffmpeg process 96389 should have terminated with a return code of -9.
+[2025-03-03 03:29:37] [INFO    ] discord.player: ffmpeg process 96393 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:37] [INFO    ] discord.player: ffmpeg process 96393 should have terminated with a return code of -9.
+[2025-03-03 03:29:38] [INFO    ] discord.player: ffmpeg process 96397 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:38] [INFO    ] discord.player: ffmpeg process 96397 should have terminated with a return code of -9.
+[2025-03-03 03:29:40] [INFO    ] discord.player: ffmpeg process 96401 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:40] [INFO    ] discord.player: ffmpeg process 96401 should have terminated with a return code of -9.
+[2025-03-03 03:29:41] [INFO    ] discord.player: ffmpeg process 96405 has not terminated. Waiting to terminate...
+[2025-03-03 03:29:41] [INFO    ] discord.player: ffmpeg process 96405 should have terminated with a return code of -9.
+[2025-03-03 03:29:46] [INFO    ] discord.player: ffmpeg process 96409 successfully terminated with return code of 0.
+[2025-03-03 03:30:10] [INFO    ] discord.player: ffmpeg process 96418 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:10] [INFO    ] discord.player: ffmpeg process 96418 should have terminated with a return code of -9.
+[2025-03-03 03:30:11] [INFO    ] discord.player: ffmpeg process 96422 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:11] [INFO    ] discord.player: ffmpeg process 96422 should have terminated with a return code of -9.
+[2025-03-03 03:30:12] [INFO    ] discord.player: ffmpeg process 96426 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:12] [INFO    ] discord.player: ffmpeg process 96426 should have terminated with a return code of -9.
+[2025-03-03 03:30:13] [INFO    ] discord.player: ffmpeg process 96430 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:13] [INFO    ] discord.player: ffmpeg process 96430 should have terminated with a return code of -9.
+[2025-03-03 03:30:14] [INFO    ] discord.player: ffmpeg process 96434 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:14] [INFO    ] discord.player: ffmpeg process 96434 should have terminated with a return code of -9.
+[2025-03-03 03:30:15] [INFO    ] discord.player: ffmpeg process 96438 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:15] [INFO    ] discord.player: ffmpeg process 96438 should have terminated with a return code of -9.
+[2025-03-03 03:30:16] [INFO    ] discord.player: ffmpeg process 96442 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:16] [INFO    ] discord.player: ffmpeg process 96442 should have terminated with a return code of -9.
+[2025-03-03 03:30:17] [INFO    ] discord.player: ffmpeg process 96446 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:17] [INFO    ] discord.player: ffmpeg process 96446 should have terminated with a return code of -9.
+[2025-03-03 03:30:18] [INFO    ] discord.player: ffmpeg process 96450 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:18] [INFO    ] discord.player: ffmpeg process 96450 should have terminated with a return code of -9.
+[2025-03-03 03:30:19] [INFO    ] discord.player: ffmpeg process 96454 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:19] [INFO    ] discord.player: ffmpeg process 96454 should have terminated with a return code of -9.
+[2025-03-03 03:30:21] [INFO    ] discord.player: ffmpeg process 96458 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:21] [INFO    ] discord.player: ffmpeg process 96458 should have terminated with a return code of -9.
+[2025-03-03 03:30:22] [INFO    ] discord.player: ffmpeg process 96462 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:22] [INFO    ] discord.player: ffmpeg process 96462 should have terminated with a return code of -9.
+[2025-03-03 03:30:23] [INFO    ] discord.player: ffmpeg process 96466 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:23] [INFO    ] discord.player: ffmpeg process 96466 should have terminated with a return code of -9.
+[2025-03-03 03:30:24] [INFO    ] discord.player: ffmpeg process 96470 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:24] [INFO    ] discord.player: ffmpeg process 96470 should have terminated with a return code of -9.
+BOT AWAKE AND READY
+Finished playing: until.ogg
+Finished playing: until.ogg
+Finished playing: you could.ogg
+Finished playing: hard.ogg
+Finished playing: hard.ogg
+Finished playing: hard.ogg
+Finished playing: hard.ogg
+Finished playing: six.ogg
+Finished playing: underage.ogg
+Finished playing: who.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: stop.ogg
+Finished playing: terrible steak.ogg
+Finished playing: terrible steak.ogg
+Finished playing: terrible steak.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: very poor taste.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg[2025-03-03 03:30:25] [INFO    ] discord.player: ffmpeg process 96474 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:25] [INFO    ] discord.player: ffmpeg process 96474 should have terminated with a return code of -9.
+[2025-03-03 03:30:26] [INFO    ] discord.player: ffmpeg process 96478 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:26] [INFO    ] discord.player: ffmpeg process 96478 should have terminated with a return code of -9.
+[2025-03-03 03:30:27] [INFO    ] discord.player: ffmpeg process 96482 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:27] [INFO    ] discord.player: ffmpeg process 96482 should have terminated with a return code of -9.
+[2025-03-03 03:30:28] [INFO    ] discord.player: ffmpeg process 96486 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:28] [INFO    ] discord.player: ffmpeg process 96486 should have terminated with a return code of -9.
+[2025-03-03 03:30:29] [INFO    ] discord.player: ffmpeg process 96490 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:29] [INFO    ] discord.player: ffmpeg process 96490 should have terminated with a return code of -9.
+[2025-03-03 03:30:31] [INFO    ] discord.player: ffmpeg process 96494 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:31] [INFO    ] discord.player: ffmpeg process 96494 should have terminated with a return code of -9.
+[2025-03-03 03:30:32] [INFO    ] discord.player: ffmpeg process 96498 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:32] [INFO    ] discord.player: ffmpeg process 96498 should have terminated with a return code of -9.
+[2025-03-03 03:30:33] [INFO    ] discord.player: ffmpeg process 96502 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:33] [INFO    ] discord.player: ffmpeg process 96502 should have terminated with a return code of -9.
+[2025-03-03 03:30:34] [INFO    ] discord.player: ffmpeg process 96506 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:34] [INFO    ] discord.player: ffmpeg process 96506 should have terminated with a return code of -9.
+[2025-03-03 03:30:35] [INFO    ] discord.player: ffmpeg process 96510 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:35] [INFO    ] discord.player: ffmpeg process 96510 should have terminated with a return code of -9.
+[2025-03-03 03:30:36] [INFO    ] discord.player: ffmpeg process 96514 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:36] [INFO    ] discord.player: ffmpeg process 96514 should have terminated with a return code of -9.
+[2025-03-03 03:30:37] [INFO    ] discord.player: ffmpeg process 96518 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:37] [INFO    ] discord.player: ffmpeg process 96518 should have terminated with a return code of -9.
+[2025-03-03 03:30:38] [INFO    ] discord.player: ffmpeg process 96522 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:38] [INFO    ] discord.player: ffmpeg process 96522 should have terminated with a return code of -9.
+[2025-03-03 03:30:39] [INFO    ] discord.player: ffmpeg process 96526 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:39] [INFO    ] discord.player: ffmpeg process 96526 should have terminated with a return code of -9.
+[2025-03-03 03:30:40] [INFO    ] discord.player: ffmpeg process 96530 has not terminated. Waiting to terminate...
+[2025-03-03 03:30:40] [INFO    ] discord.player: ffmpeg process 96530 should have terminated with a return code of -9.
+[2025-03-03 03:30:45] [INFO    ] discord.player: ffmpeg process 96534 successfully terminated with return code of 0.
+[2025-03-03 03:31:32] [INFO    ] discord.player: ffmpeg process 96541 successfully terminated with return code of 0.
+[2025-03-03 03:31:36] [INFO    ] discord.player: ffmpeg process 96545 successfully terminated with return code of 0.
+[2025-03-03 03:31:39] [INFO    ] discord.player: ffmpeg process 96549 successfully terminated with return code of 0.
+[2025-03-03 03:31:43] [INFO    ] discord.player: ffmpeg process 96553 successfully terminated with return code of 0.
+[2025-03-03 03:31:47] [INFO    ] discord.player: ffmpeg process 96557 successfully terminated with return code of 0.
+[2025-03-03 03:31:50] [INFO    ] discord.player: ffmpeg process 96561 successfully terminated with return code of 0.
+[2025-03-03 03:31:54] [INFO    ] discord.player: ffmpeg process 96565 successfully terminated with return code of 0.
+[2025-03-03 03:31:58] [INFO    ] discord.player: ffmpeg process 96569 successfully terminated with return code of 0.
+[2025-03-03 03:32:01] [INFO    ] discord.player: ffmpeg process 96573 successfully terminated with return code of 0.
+[2025-03-03 03:32:05] [INFO    ] discord.player: ffmpeg process 96577 successfully terminated with return code of 0.
+[2025-03-03 03:32:09] [INFO    ] discord.player: ffmpeg process 96583 successfully terminated with return code of 0.
+[2025-03-03 03:32:13] [INFO    ] discord.player: ffmpeg process 96587 successfully terminated with return code of 0.
+[2025-03-03 03:32:16] [INFO    ] discord.player: ffmpeg process 96591 successfully terminated with return code of 0.
+[2025-03-03 03:32:20] [INFO    ] discord.player: ffmpeg process 96595 successfully terminated with return code of 0.
+[2025-03-03 03:32:24] [INFO    ] discord.player: ffmpeg process 96599 successfully terminated with return code of 0.
+[2025-03-03 03:32:27] [INFO    ] discord.player: ffmpeg process 96603 successfully terminated with return code of 0.
+[2025-03-03 03:32:31] [INFO    ] discord.player: ffmpeg process 96607 successfully terminated with return code of 0.
+[2025-03-03 03:32:34] [INFO    ] discord.player: ffmpeg process 96611 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:34] [INFO    ] discord.player: ffmpeg process 96611 should have terminated with a return code of -9.
+[2025-03-03 03:32:43] [INFO    ] discord.player: ffmpeg process 96615 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:43] [INFO    ] discord.player: ffmpeg process 96615 should have terminated with a return code of -9.
+[2025-03-03 03:32:44] [INFO    ] discord.player: ffmpeg process 96619 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:44] [INFO    ] discord.player: ffmpeg process 96619 should have terminated with a return code of -9.
+[2025-03-03 03:32:45] [INFO    ] discord.player: ffmpeg process 96623 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:45] [INFO    ] discord.player: ffmpeg process 96623 should have terminated with a return code of -9.
+[2025-03-03 03:32:46] [INFO    ] discord.player: ffmpeg process 96627 successfully terminated with return code of -9.
+[2025-03-03 03:32:47] [INFO    ] discord.player: ffmpeg process 96631 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:47] [INFO    ] discord.player: ffmpeg process 96631 should have terminated with a return code of -9.
+[2025-03-03 03:32:48] [INFO    ] discord.player: ffmpeg process 96635 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:48] [INFO    ] discord.player: ffmpeg process 96635 should have terminated with a return code of -9.
+[2025-03-03 03:32:49] [INFO    ] discord.player: ffmpeg process 96639 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:49] [INFO    ] discord.player: ffmpeg process 96639 should have terminated with a return code of -9.
+[2025-03-03 03:32:50] [INFO    ] discord.player: ffmpeg process 96643 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:50] [INFO    ] discord.player: ffmpeg process 96643 should have terminated with a return code of -9.
+[2025-03-03 03:32:52] [INFO    ] discord.player: ffmpeg process 96647 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:52] [INFO    ] discord.player: ffmpeg process 96647 should have terminated with a return code of -9.
+[2025-03-03 03:32:53] [INFO    ] discord.player: ffmpeg process 96651 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:53] [INFO    ] discord.player: ffmpeg process 96651 should have terminated with a return code of -9.
+[2025-03-03 03:32:54] [INFO    ] discord.player: ffmpeg process 96655 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:54] [INFO    ] discord.player: ffmpeg process 96655 should have terminated with a return code of -9.
+[2025-03-03 03:32:55] [INFO    ] discord.player: ffmpeg process 96659 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:55] [INFO    ] discord.player: ffmpeg process 96659 should have terminated with a return code of -9.
+[2025-03-03 03:32:56] [INFO    ] discord.player: ffmpeg process 96663 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:56] [INFO    ] discord.player: ffmpeg process 96663 should have terminated with a return code of -9.
+[2025-03-03 03:32:57] [INFO    ] discord.player: ffmpeg process 96667 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:57] [INFO    ] discord.player: ffmpeg process 96667 should have terminated with a return code of -9.
+[2025-03-03 03:32:58] [INFO    ] discord.player: ffmpeg process 96671 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:58] [INFO    ] discord.player: ffmpeg process 96671 should have terminated with a return code of -9.
+[2025-03-03 03:32:59] [INFO    ] discord.player: ffmpeg process 96675 has not terminated. Waiting to terminate...
+[2025-03-03 03:32:59] [INFO    ] discord.player: ffmpeg process 96675 should have terminated with a return code of -9.
+[2025-03-03 03:33:00] [INFO    ] discord.player: ffmpeg process 96679 has not terminated. Waiting to terminate...
+[2025-03-03 03:33:00] [INFO    ] discord.player: ffmpeg process 96679 should have terminated with a return code of -9.
+[2025-03-03 04:23:08] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 04:51:00] [INFO    ] discord.player: ffmpeg process 97053 successfully terminated with return code of 0.
+[2025-03-03 04:52:01] [INFO    ] discord.player: ffmpeg process 97057 successfully terminated with return code of 0.
+[2025-03-03 04:52:24] [INFO    ] discord.player: ffmpeg process 97061 successfully terminated with return code of 0.
+[2025-03-03 04:52:38] [INFO    ] discord.player: ffmpeg process 97065 successfully terminated with return code of 0.
+[2025-03-03 04:52:43] [INFO    ] discord.player: ffmpeg process 97069 successfully terminated with return code of 0.
+[2025-03-03 04:52:48] [INFO    ] discord.player: ffmpeg process 97073 successfully terminated with return code of 0.
+[2025-03-03 04:52:53] [INFO    ] discord.player: ffmpeg process 97077 successfully terminated with return code of 0.
+[2025-03-03 04:52:58] [INFO    ] discord.player: ffmpeg process 97081 successfully terminated with return code of 0.
+[2025-03-03 04:53:03] [INFO    ] discord.player: ffmpeg process 97085 successfully terminated with return code of 0.
+[2025-03-03 04:53:08] [INFO    ] discord.player: ffmpeg process 97089 successfully terminated with return code of 0.
+[2025-03-03 04:53:13] [INFO    ] discord.player: ffmpeg process 97093 successfully terminated with return code of 0.
+[2025-03-03 04:53:18] [INFO    ] discord.player: ffmpeg process 97097 successfully terminated with return code of 0.
+[2025-03-03 04:53:23] [INFO    ] discord.player: ffmpeg process 97101 successfully terminated with return code of 0.
+[2025-03-03 04:53:28] [INFO    ] discord.player: ffmpeg process 97105 successfully terminated with return code of 0.
+[2025-03-03 04:53:32] [INFO    ] discord.player: ffmpeg process 97109 successfully terminated with return code of 0.
+[2025-03-03 04:53:34] [INFO    ] discord.player: ffmpeg process 97113 has not terminated. Waiting to terminate...
+[2025-03-03 04:53:34] [INFO    ] discord.player: ffmpeg process 97113 should have terminated with a return code of -9.
+[2025-03-03 04:56:52] [INFO    ] discord.player: ffmpeg process 97127 successfully terminated with return code of 0.
+[2025-03-03 04:56:57] [INFO    ] discord.player: ffmpeg process 97131 successfully terminated with return code of 0.
+[2025-03-03 04:57:02] [INFO    ] discord.player: ffmpeg process 97135 successfully terminated with return code of 0.
+[2025-03-03 04:57:07] [INFO    ] discord.player: ffmpeg process 97141 successfully terminated with return code of 0.
+[2025-03-03 04:57:12] [INFO    ] discord.player: ffmpeg process 97145 successfully terminated with return code of 0.
+[2025-03-03 04:57:17] [INFO    ] discord.player: ffmpeg process 97149 successfully terminated with return code of 0.
+[2025-03-03 04:57:26] [INFO    ] discord.player: ffmpeg process 97153 successfully terminated with return code of 0.
+[2025-03-03 04:57:29] [INFO    ] discord.player: ffmpeg process 97157 has not terminated. Waiting to terminate...
+[2025-03-03 04:57:29] [INFO    ] discord.player: ffmpeg process 97157 should have terminated with a return code of -9.
+[2025-03-03 04:57:36] [INFO    ] discord.player: ffmpeg process 97161 has not terminated. Waiting to terminate...
+[2025-03-03 04:57:36] [INFO    ] discord.player: ffmpeg process 97161 should have terminated with a return code of -9.
+[2025-03-03 04:57:39] [INFO    ] discord.player: ffmpeg process 97165 has not terminated. Waiting to terminate...
+[2025-03-03 04:57:39] [INFO    ] discord.player: ffmpeg process 97165 should have terminated with a return code of -9.
+[2025-03-03 04:57:41] [INFO    ] discord.player: ffmpeg process 97169 has not terminated. Waiting to terminate...
+[2025-03-03 04:57:41] [INFO    ] discord.player: ffmpeg process 97169 should have terminated with a return code of -9.
+[2025-03-03 04:57:52] [INFO    ] discord.player: ffmpeg process 97173 has not terminated. Waiting to terminate...
+[2025-03-03 04:57:52] [INFO    ] discord.player: ffmpeg process 97173 should have terminated with a return code of -9.
+[2025-03-03 04:57:55] [INFO    ] discord.player: ffmpeg process 97179 has not terminated. Waiting to terminate...
+[2025-03-03 04:57:55] [INFO    ] discord.player: ffmpeg process 97179 should have terminated with a return code of -9.
+[2025-03-03 04:57:58] [INFO    ] discord.player: ffmpeg process 97183 has not terminated. Waiting to terminate...
+[2025-03-03 04:57:58] [INFO    ] discord.player: ffmpeg process 97183 should have terminated with a return code of -9.
+[2025-03-03 04:58:00] [INFO    ] discord.player: ffmpeg process 97187 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:00] [INFO    ] discord.player: ffmpeg process 97187 should have terminated with a return code of -9.
+[2025-03-03 04:58:03] [INFO    ] discord.player: ffmpeg process 97191 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:03] [INFO    ] discord.player: ffmpeg process 97191 should have terminated with a return code of -9.
+[2025-03-03 04:58:06] [INFO    ] discord.player: ffmpeg process 97195 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:06] [INFO    ] discord.player: ffmpeg process 97195 should have terminated with a return code of -9.
+[2025-03-03 04:58:08] [INFO    ] discord.player: ffmpeg process 97199 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:08] [INFO    ] discord.player: ffmpeg process 97199 should have terminated with a return code of -9.
+[2025-03-03 04:58:11] [INFO    ] discord.player: ffmpeg process 97203 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:11] [INFO    ] discord.player: ffmpeg process 97203 should have terminated with a return code of -9.
+[2025-03-03 04:58:14] [INFO    ] discord.player: ffmpeg process 97207 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:14] [INFO    ] discord.player: ffmpeg process 97207 should have terminated with a return code of -9.
+[2025-03-03 04:58:16] [INFO    ] discord.player: ffmpeg process 97211 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:16] [INFO    ] discord.player: ffmpeg process 97211 should have terminated with a return code of -9.
+[2025-03-03 04:58:19] [INFO    ] discord.player: ffmpeg process 97215 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:19] [INFO    ] discord.player: ffmpeg process 97215 should have terminated with a return code of -9.
+[2025-03-03 04:58:22] [INFO    ] discord.player: ffmpeg process 97219 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:22] [INFO    ] discord.player: ffmpeg process 97219 should have terminated with a return code of -9.
+[2025-03-03 04:58:25] [INFO    ] discord.player: ffmpeg process 97223 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:25] [INFO    ] discord.player: ffmpeg process 97223 should have terminated with a return code of -9.
+[2025-03-03 04:58:27] [INFO    ] discord.player: ffmpeg process 97227 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:27] [INFO    ] discord.player: ffmpeg process 97227 should have terminated with a return code of -9.
+[2025-03-03 04:58:30] [INFO    ] discord.player: ffmpeg process 97231 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:30] [INFO    ] discord.player: ffmpeg process 97231 should have terminated with a return code of -9.
+[2025-03-03 04:58:33] [INFO    ] discord.player: ffmpeg process 97235 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:33] [INFO    ] discord.player: ffmpeg process 97235 should have terminated with a return code of -9.
+[2025-03-03 04:58:35] [INFO    ] discord.player: ffmpeg process 97239 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:35] [INFO    ] discord.player: ffmpeg process 97239 should have terminated with a return code of -9.
+[2025-03-03 04:58:38] [INFO    ] discord.player: ffmpeg process 97243 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:38] [INFO    ] discord.player: ffmpeg process 97243 should have terminated with a return code of -9.
+[2025-03-03 04:58:41] [INFO    ] discord.player: ffmpeg process 97247 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:41] [INFO    ] discord.player: ffmpeg process 97247 should have terminated with a return code of -9.
+[2025-03-03 04:58:44] [INFO    ] discord.player: ffmpeg process 97251 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:44] [INFO    ] discord.player: ffmpeg process 97251 should have terminated with a return code of -9.
+[2025-03-03 04:58:46] [INFO    ] discord.player: ffmpeg process 97255 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:46] [INFO    ] discord.player: ffmpeg process 97255 should have terminated with a return code of -9.
+[2025-03-03 04:58:49] [INFO    ] discord.player: ffmpeg process 97259 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:49] [INFO    ] discord.player: ffmpeg process 97259 should have terminated with a return code of -9.
+[2025-03-03 04:58:52] [INFO    ] discord.player: ffmpeg process 97263 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:52] [INFO    ] discord.player: ffmpeg process 97263 should have terminated with a return code of -9.
+[2025-03-03 04:58:54] [INFO    ] discord.player: ffmpeg process 97267 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:54] [INFO    ] discord.player: ffmpeg process 97267 should have terminated with a return code of -9.
+[2025-03-03 04:58:57] [INFO    ] discord.player: ffmpeg process 97272 has not terminated. Waiting to terminate...
+[2025-03-03 04:58:57] [INFO    ] discord.player: ffmpeg process 97272 should have terminated with a return code of -9.
+[2025-03-03 04:59:00] [INFO    ] discord.player: ffmpeg process 97276 has not terminated. Waiting to terminate...
+[2025-03-03 04:59:00] [INFO    ] discord.player: ffmpeg process 97276 should have terminated with a return code of -9.
+[2025-03-03 04:59:02] [INFO    ] discord.player: ffmpeg process 97280 has not terminated. Waiting to terminate...
+[2025-03-03 04:59:02] [INFO    ] discord.player: ffmpeg process 97280 should have terminated with a return code of -9.
+[2025-03-03 04:59:05] [INFO    ] discord.player: ffmpeg process 97284 has not terminated. Waiting to terminate...
+[2025-03-03 04:59:05] [INFO    ] discord.player: ffmpeg process 97284 should have terminated with a return code of -9.
+[2025-03-03 04:59:08] [INFO    ] discord.player: ffmpeg process 97288 has not terminated. Waiting to terminate...
+[2025-03-03 04:59:08] [INFO    ] discord.player: ffmpeg process 97288 should have terminated with a return code of -9.
+[2025-03-03 04:59:11] [INFO    ] discord.player: ffmpeg process 97292 successfully terminated with return code of 0.
+[2025-03-03 05:00:19] [INFO    ] discord.player: ffmpeg process 97304 successfully terminated with return code of 0.
+[2025-03-03 05:01:18] [INFO    ] discord.player: ffmpeg process 97308 successfully terminated with return code of 0.
+[2025-03-03 05:02:19] [INFO    ] discord.player: ffmpeg process 97312 successfully terminated with return code of 0.
+[2025-03-03 05:03:18] [INFO    ] discord.player: ffmpeg process 97316 successfully terminated with return code of 0.
+[2025-03-03 05:03:46] [INFO    ] discord.player: ffmpeg process 97327 successfully terminated with return code of 0.
+[2025-03-03 05:04:19] [INFO    ] discord.player: ffmpeg process 97332 successfully terminated with return code of 0.
+[2025-03-03 05:05:19] [INFO    ] discord.player: ffmpeg process 97340 successfully terminated with return code of 0.
+[2025-03-03 05:06:19] [INFO    ] discord.player: ffmpeg process 97346 successfully terminated with return code of 0.
+[2025-03-03 05:07:19] [INFO    ] discord.player: ffmpeg process 97354 successfully terminated with return code of 0.
+[2025-03-03 05:08:14] [INFO    ] discord.player: ffmpeg process 97360 successfully terminated with return code of 0.
+[2025-03-03 05:09:17] [INFO    ] discord.player: ffmpeg process 97372 successfully terminated with return code of 0.
+[2025-03-03 05:10:19] [INFO    ] discord.player: ffmpeg process 97379 successfully terminated with return code of 0.
+[2025-03-03 05:11:19] [INFO    ] discord.player: ffmpeg process 97385 successfully terminated with return code of 0.
+[2025-03-03 05:13:06] [INFO    ] discord.player: ffmpeg process 97391 successfully terminated with return code of 0.
+[2025-03-03 05:13:19] [INFO    ] discord.player: ffmpeg process 97397 successfully terminated with return code of 0.
+[2025-03-03 05:14:19] [INFO    ] discord.player: ffmpeg process 97401 successfully terminated with return code of 0.
+[2025-03-03 05:15:18] [INFO    ] discord.player: ffmpeg process 97410 successfully terminated with return code of 0.
+[2025-03-03 05:16:19] [INFO    ] discord.player: ffmpeg process 97420 successfully terminated with return code of 0.
+[2025-03-03 05:17:17] [INFO    ] discord.player: ffmpeg process 97432 successfully terminated with return code of 0.
+[2025-03-03 05:18:19] [INFO    ] discord.player: ffmpeg process 97440 successfully terminated with return code of 0.
+[2025-03-03 05:18:48] [INFO    ] discord.player: ffmpeg process 97446 successfully terminated with return code of 0.
+[2025-03-03 05:18:56] [INFO    ] discord.player: ffmpeg process 97450 successfully terminated with return code of 0.
+[2025-03-03 05:19:02] [INFO    ] discord.player: ffmpeg process 97454 successfully terminated with return code of 0.
+[2025-03-03 05:19:08] [INFO    ] discord.player: ffmpeg process 97458 successfully terminated with return code of 0.
+[2025-03-03 05:19:19] [INFO    ] discord.player: ffmpeg process 97464 successfully terminated with return code of 0.
+[2025-03-03 05:20:19] [INFO    ] discord.player: ffmpeg process 97478 successfully terminated with return code of 0.
+[2025-03-03 05:21:16] [INFO    ] discord.player: ffmpeg process 97485 successfully terminated with return code of 0.
+[2025-03-03 05:22:18] [INFO    ] discord.player: ffmpeg process 97491 successfully terminated with return code of 0.
+[2025-03-03 05:23:19] [INFO    ] discord.player: ffmpeg process 97497 successfully terminated with return code of 0.
+[2025-03-03 05:24:18] [INFO    ] discord.player: ffmpeg process 97503 successfully terminated with return code of 0.
+[2025-03-03 05:25:19] [INFO    ] discord.player: ffmpeg process 97511 successfully terminated with return code of 0.
+[2025-03-03 05:26:18] [INFO    ] discord.player: ffmpeg process 97518 successfully terminated with return code of 0.
+[2025-03-03 05:27:19] [INFO    ] discord.player: ffmpeg process 97526 successfully terminated with return code of 0.
+[2025-03-03 05:28:19] [INFO    ] discord.player: ffmpeg process 97530 successfully terminated with return code of 0.
+[2025-03-03 05:29:17] [INFO    ] discord.player: ffmpeg process 97536 successfully terminated with return code of 0.
+[2025-03-03 05:30:18] [INFO    ] discord.player: ffmpeg process 97551 successfully terminated with return code of 0.
+[2025-03-03 05:31:19] [INFO    ] discord.player: ffmpeg process 97560 successfully terminated with return code of 0.
+[2025-03-03 05:32:19] [INFO    ] discord.player: ffmpeg process 97567 successfully terminated with return code of 0.
+[2025-03-03 05:33:19] [INFO    ] discord.player: ffmpeg process 97579 successfully terminated with return code of 0.
+[2025-03-03 05:34:18] [INFO    ] discord.player: ffmpeg process 97585 successfully terminated with return code of 0.
+[2025-03-03 05:35:15] [INFO    ] discord.player: ffmpeg process 97591 successfully terminated with return code of 0.
+[2025-03-03 05:36:19] [INFO    ] discord.player: ffmpeg process 97597 successfully terminated with return code of 0.
+[2025-03-03 05:37:19] [INFO    ] discord.player: ffmpeg process 97606 successfully terminated with return code of 0.
+[2025-03-03 05:38:18] [INFO    ] discord.player: ffmpeg process 97614 successfully terminated with return code of 0.
+[2025-03-03 05:39:19] [INFO    ] discord.player: ffmpeg process 97620 successfully terminated with return code of 0.
+[2025-03-03 05:40:17] [INFO    ] discord.player: ffmpeg process 97634 successfully terminated with return code of 0.
+[2025-03-03 05:41:19] [INFO    ] discord.player: ffmpeg process 97640 successfully terminated with return code of 0.
+[2025-03-03 05:42:19] [INFO    ] discord.player: ffmpeg process 97648 successfully terminated with return code of 0.
+[2025-03-03 05:43:17] [INFO    ] discord.player: ffmpeg process 97655 successfully terminated with return code of 0.
+[2025-03-03 05:44:18] [INFO    ] discord.player: ffmpeg process 97663 successfully terminated with return code of 0.
+[2025-03-03 05:45:19] [INFO    ] discord.player: ffmpeg process 97669 successfully terminated with return code of 0.
+[2025-03-03 05:46:19] [INFO    ] discord.player: ffmpeg process 97675 successfully terminated with return code of 0.
+[2025-03-03 05:47:19] [INFO    ] discord.player: ffmpeg process 97683 successfully terminated with return code of 0.
+[2025-03-03 05:48:17] [INFO    ] discord.player: ffmpeg process 97691 successfully terminated with return code of 0.
+[2025-03-03 05:49:17] [INFO    ] discord.player: ffmpeg process 97699 successfully terminated with return code of 0.
+[2025-03-03 05:50:17] [INFO    ] discord.player: ffmpeg process 97713 successfully terminated with return code of 0.
+[2025-03-03 05:51:19] [INFO    ] discord.player: ffmpeg process 97725 successfully terminated with return code of 0.
+[2025-03-03 05:52:19] [INFO    ] discord.player: ffmpeg process 97731 successfully terminated with return code of 0.
+[2025-03-03 05:53:19] [INFO    ] discord.player: ffmpeg process 97737 successfully terminated with return code of 0.
+[2025-03-03 05:54:19] [INFO    ] discord.player: ffmpeg process 97745 successfully terminated with return code of 0.
+[2025-03-03 05:55:19] [INFO    ] discord.player: ffmpeg process 97755 successfully terminated with return code of 0.
+[2025-03-03 05:56:15] [INFO    ] discord.player: ffmpeg process 97763 successfully terminated with return code of 0.
+[2025-03-03 05:57:19] [INFO    ] discord.player: ffmpeg process 97769 successfully terminated with return code of 0.
+[2025-03-03 05:58:19] [INFO    ] discord.player: ffmpeg process 97779 successfully terminated with return code of 0.
+[2025-03-03 05:59:18] [INFO    ] discord.player: ffmpeg process 97788 successfully terminated with return code of 0.
+[2025-03-03 06:05:43] [INFO    ] discord.player: ffmpeg process 97920 successfully terminated with return code of 0.
+[2025-03-03 06:05:48] [INFO    ] discord.player: ffmpeg process 97925 successfully terminated with return code of 0.
+[2025-03-03 06:05:53] [INFO    ] discord.player: ffmpeg process 97929 successfully terminated with return code of 0.
+[2025-03-03 06:05:58] [INFO    ] discord.player: ffmpeg process 97933 successfully terminated with return code of 0.
+[2025-03-03 06:06:03] [INFO    ] discord.player: ffmpeg process 97937 successfully terminated with return code of 0.
+[2025-03-03 06:06:08] [INFO    ] discord.player: ffmpeg process 97941 successfully terminated with return code of 0.
+[2025-03-03 06:06:13] [INFO    ] discord.player: ffmpeg process 97945 successfully terminated with return code of 0.
+[2025-03-03 06:06:18] [INFO    ] discord.player: ffmpeg process 97949 successfully terminated with return code of 0.
+[2025-03-03 06:06:23] [INFO    ] discord.player: ffmpeg process 97953 successfully terminated with return code of 0.
+[2025-03-03 06:06:28] [INFO    ] discord.player: ffmpeg process 97957 successfully terminated with return code of 0.
+[2025-03-03 06:06:33] [INFO    ] discord.player: ffmpeg process 97961 successfully terminated with return code of 0.
+[2025-03-03 06:06:38] [INFO    ] discord.player: ffmpeg process 97967 successfully terminated with return code of 0.
+[2025-03-03 06:06:43] [INFO    ] discord.player: ffmpeg process 97971 successfully terminated with return code of 0.
+[2025-03-03 06:06:48] [INFO    ] discord.player: ffmpeg process 97975 successfully terminated with return code of 0.
+[2025-03-03 06:06:53] [INFO    ] discord.player: ffmpeg process 97979 successfully terminated with return code of 0.
+[2025-03-03 06:06:58] [INFO    ] discord.player: ffmpeg process 97983 successfully terminated with return code of 0.
+[2025-03-03 06:07:03] [INFO    ] discord.player: ffmpeg process 97987 successfully terminated with return code of 0.
+[2025-03-03 06:07:08] [INFO    ] discord.player: ffmpeg process 97991 successfully terminated with return code of 0.
+[2025-03-03 06:07:13] [INFO    ] discord.player: ffmpeg process 97995 successfully terminated with return code of 0.
+[2025-03-03 06:07:18] [INFO    ] discord.player: ffmpeg process 97999 successfully terminated with return code of 0.
+[2025-03-03 06:07:23] [INFO    ] discord.player: ffmpeg process 98004 successfully terminated with return code of 0.
+[2025-03-03 06:07:28] [INFO    ] discord.player: ffmpeg process 98009 successfully terminated with return code of 0.
+[2025-03-03 06:07:33] [INFO    ] discord.player: ffmpeg process 98013 successfully terminated with return code of 0.
+[2025-03-03 06:07:38] [INFO    ] discord.player: ffmpeg process 98017 successfully terminated with return code of 0.
+[2025-03-03 06:07:43] [INFO    ] discord.player: ffmpeg process 98021 successfully terminated with return code of 0.
+[2025-03-03 06:07:48] [INFO    ] discord.player: ffmpeg process 98025 successfully terminated with return code of 0.
+[2025-03-03 06:07:53] [INFO    ] discord.player: ffmpeg process 98029 successfully terminated with return code of 0.
+[2025-03-03 06:07:58] [INFO    ] discord.player: ffmpeg process 98033 successfully terminated with return code of 0.
+[2025-03-03 06:08:03] [INFO    ] discord.player: ffmpeg process 98037 successfully terminated with return code of 0.
+[2025-03-03 06:08:08] [INFO    ] discord.player: ffmpeg process 98041 successfully terminated with return code of 0.
+[2025-03-03 07:08:42] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 07:16:41] [INFO    ] discord.player: ffmpeg process 98732 successfully terminated with return code of 0.
+[2025-03-03 07:18:10] [INFO    ] discord.player: ffmpeg process 98747 successfully terminated with return code of 0.
+[2025-03-03 07:19:40] [INFO    ] discord.player: ffmpeg process 98757 successfully terminated with return code of 0.
+[2025-03-03 07:21:11] [INFO    ] discord.player: ffmpeg process 98764 successfully terminated with return code of 0.
+[2025-03-03 07:22:41] [INFO    ] discord.player: ffmpeg process 98777 successfully terminated with return code of 0.
+[2025-03-03 07:24:10] [INFO    ] discord.player: ffmpeg process 98789 successfully terminated with return code of 0.
+[2025-03-03 07:25:41] [INFO    ] discord.player: ffmpeg process 98799 successfully terminated with return code of 0.
+[2025-03-03 07:27:08] [INFO    ] discord.player: ffmpeg process 98806 successfully terminated with return code of 0.
+[2025-03-03 07:28:41] [INFO    ] discord.player: ffmpeg process 98814 successfully terminated with return code of 0.
+[2025-03-03 07:30:09] [INFO    ] discord.player: ffmpeg process 98821 successfully terminated with return code of 0.
+[2025-03-03 07:31:41] [INFO    ] discord.player: ffmpeg process 98834 successfully terminated with return code of 0.
+[2025-03-03 07:33:10] [INFO    ] discord.player: ffmpeg process 98848 successfully terminated with return code of 0.
+[2025-03-03 07:34:40] [INFO    ] discord.player: ffmpeg process 98857 successfully terminated with return code of 0.
+[2025-03-03 07:36:11] [INFO    ] discord.player: ffmpeg process 98863 successfully terminated with return code of 0.
+[2025-03-03 07:37:39] [INFO    ] discord.player: ffmpeg process 98872 successfully terminated with return code of 0.
+[2025-03-03 07:39:11] [INFO    ] discord.player: ffmpeg process 98878 successfully terminated with return code of 0.
+[2025-03-03 07:40:37] [INFO    ] discord.player: ffmpeg process 98890 successfully terminated with return code of 0.
+[2025-03-03 07:42:11] [INFO    ] discord.player: ffmpeg process 98900 successfully terminated with return code of 0.
+[2025-03-03 07:43:41] [INFO    ] discord.player: ffmpeg process 98915 successfully terminated with return code of 0.
+[2025-03-03 07:45:11] [INFO    ] discord.player: ffmpeg process 98925 successfully terminated with return code of 0.
+[2025-03-03 07:46:41] [INFO    ] discord.player: ffmpeg process 98935 successfully terminated with return code of 0.
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55ab7f294f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-03-03 07:48:10] [INFO    ] discord.player: ffmpeg process 98942 successfully terminated with return code of 0.
+[2025-03-03 07:49:41] [INFO    ] discord.player: ffmpeg process 98952 successfully terminated with return code of 0.
+[2025-03-03 07:51:10] [INFO    ] discord.player: ffmpeg process 98964 successfully terminated with return code of 0.
+[2025-03-03 07:52:38] [INFO    ] discord.player: ffmpeg process 98976 successfully terminated with return code of 0.
+[2025-03-03 07:54:09] [INFO    ] discord.player: ffmpeg process 98987 successfully terminated with return code of 0.
+[2025-03-03 07:55:41] [INFO    ] discord.player: ffmpeg process 98993 successfully terminated with return code of 0.
+[2025-03-03 07:57:11] [INFO    ] discord.player: ffmpeg process 99005 successfully terminated with return code of 0.
+[2025-03-03 07:58:39] [INFO    ] discord.player: ffmpeg process 99013 successfully terminated with return code of 0.
+[2025-03-03 08:00:11] [INFO    ] discord.player: ffmpeg process 99029 successfully terminated with return code of 0.
+[2025-03-03 08:01:40] [INFO    ] discord.player: ffmpeg process 99037 successfully terminated with return code of 0.
+[2025-03-03 08:03:11] [INFO    ] discord.player: ffmpeg process 99054 successfully terminated with return code of 0.
+[2025-03-03 08:04:41] [INFO    ] discord.player: ffmpeg process 99061 successfully terminated with return code of 0.
+[2025-03-03 08:06:10] [INFO    ] discord.player: ffmpeg process 99069 successfully terminated with return code of 0.
+[2025-03-03 08:07:41] [INFO    ] discord.player: ffmpeg process 99077 successfully terminated with return code of 0.
+[2025-03-03 08:09:11] [INFO    ] discord.player: ffmpeg process 99088 successfully terminated with return code of 0.
+[2025-03-03 08:10:40] [INFO    ] discord.player: ffmpeg process 99100 successfully terminated with return code of 0.
+[2025-03-03 08:12:11] [INFO    ] discord.player: ffmpeg process 99128 successfully terminated with return code of 0.
+[2025-03-03 08:13:41] [INFO    ] discord.player: ffmpeg process 99175 successfully terminated with return code of 0.
+[2025-03-03 08:15:11] [INFO    ] discord.player: ffmpeg process 99216 successfully terminated with return code of 0.
+[2025-03-03 09:52:31] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: yeah!.ogg
+Finished playing: uncivilized.ogg
+Finished playing: you oughtta.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: you need to.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: myass.ogg
+Finished playing: inside him.ogg
+Finished playing: chimpanzee.ogg
+Finished playing: DOTA.ogg
+Finished playing: go0o.ogg
+Finished playing: dr cock.ogg
+Finished playing: powers back.ogg
+Finished playing: universal.ogg
+Finished playing: yeah!.ogg
+Finished playing: no way.ogg
+Finished playing: hurt the boy.ogg
+Finished playing: nobody tosses.ogg
+Finished playing: legend.ogg
+Finished playing: dewey full scene.mp3
+Finished playing: there is a reason.ogg
+Finished playing: 111 cock.ogg
+Finished playing: thatswhatbilbobabobilbo.ogg
+Finished playing: chacha.ogg
+Finished playing: sebulba.ogg
+Finished playing: susan rice.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: sound.ogg
+Finished playing: padfoot.ogg
+Finished playing: titanium man.ogg
+Finished playing: this is spider.ogg
+Finished playing: hahahn.ogg
+Finished playing: barty.ogg
+Finished playing: MAKE FOR THE GAP.ogg
+Finished playing: hard.ogg
+Finished playing: yeah!.ogg
+Finished playing: all.ogg
+Finished playing: 324.ogg
+Finished playing: who.ogg
+Finished playing: WE WILL GO THROUGH THE MINES.ogg
+Finished playing: coal.ogg
+Finished playing: beer.ogg
+Finished playing: hard.ogg
+Finished playing: dewey.ogg
+Finished playing: i can only say.ogg
+Finished playing: unlimited.ogg
+Finished playing: kickass.ogg
+Finished playing: did you hear.ogg
+Finished playing: BUT.ogg
+Finished playing: oawh.ogg
+Finished playing: some MUSIC.ogg
+Finished playing: finest.ogg
+Finished playing: richard patrick.ogg
+Finished playing: clattering magpies.ogg
+Finished playing: westfold.ogg
+Finished playing: crack skulls.ogg
+Finished playing: oou.ogg
+Finished playing: hurt the boy.ogg
+Finished playing: ohforfuckssake.ogg
+Finished playing: raise money.ogg
+Finished playing: raise money.ogg
+Finished playing: powers back.ogg
+Finished playing: rosen.ogg
+Finished playing: for safekeeping.ogg
+Finished playing: crazy.ogg
+Finished playing: until.ogg
+Finished playing: legend.ogg
+Finished playing: losing ducks.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: hey buddy.ogg
+Finished playing: still i think.ogg
+Finished playing: o o o.ogg
+Finished playing: for safekeeping.ogg
+Finished playing: he will raise.ogg
+Finished playing: pippen to the ground.ogg
+Finished playing: fat.ogg
+Finished playing: sony vegas.ogg
+Finished playing: i think i'll.ogg
+Finished playing: legend.ogg
+Finished playing: five.ogg
+Finished playing: UNUNLEVENLTHELUTEATETHN.ogg
+Finished playing: it was horrible.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: breadline.ogg
+Finished playing: 324.ogg
+Finished playing: mwillulmawlu.ogg
+Finished playing: dewey.ogg
+Finished playing: cedric.ogg
+Finished playing: prime directive.ogg
+Finished playing: rule #4.ogg
+Finished playing: yourself.ogg
+Finished playing: arabian loud.ogg
+Finished playing: buckdytook.ogg
+Finished playing: feces.ogg
+Finished playing: ha loud.ogg
+Finished playing: another way in.ogg
+Finished playing: whaddidisay.ogg
+Finished playing: WE WILL GO THROUGH THE MINES.ogg
+Finished playing: hhhhh.ogg
+Finished playing: unlimited.ogg
+Finished playing: believe it.ogg
+Finished playing: open.ogg
+Finished playing: and all the.ogg
+Finished playing: we shall pee.ogg
+Finished playing: bulsabanapopetet.ogg
+Finished playing: rule #4 full.ogg
+Finished playing: heyaheya.ogg
+Finished playing: happy birthday.ogg
+Finished playing: silence.ogg
+Finished playing: the horn.ogg
+[2025-03-03 10:41:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 13:28:04] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 14:20:52] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 16:44:03] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 17:55:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 18:41:09] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 19:42:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
