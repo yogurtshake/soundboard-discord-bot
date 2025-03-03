@@ -12398,3 +12398,468 @@ SystemExit
 [2025-02-25 14:36:53] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 3eb97c9621e576e22a5e3a3700a676c2.
 [2025-02-25 17:26:38] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 3eb97c9621e576e22a5e3a3700a676c2.
 [2025-02-25 20:35:43] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 3eb97c9621e576e22a5e3a3700a676c2.
+BOT AWAKE AND READY
+Finished playing: you could.ogg
+Finished playing: chofasa.ogg
+/home/lucassukeunkim/scuffed_discord_bot/servers/134415388233433089/session_stats.txt has been deleted successfully.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 133, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1418, in kys
+    sys.exit()
+SystemExit
+[2025-02-26 08:51:40] [INFO    ] discord.client: logging in using static token
+[2025-02-26 08:51:41] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: fefae68ae795864343c73132f1bd5f28).
+BOT AWAKE AND READY
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 133, in on_message
+    if key not in extra_keys:
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1153, in update
+    return
+        ^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1375, in restart
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+    ^^^^^^^^^^
+SystemExit
+[2025-02-26 08:51:51] [INFO    ] discord.client: logging in using static token
+[2025-02-26 08:51:51] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 55318c9ff807db4d5b643cfc9713f70e).
+BOT AWAKE AND READY
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 194, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1298, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1524, in restart
+    sys.exit()
+SystemExit
+[2025-02-26 08:55:00] [INFO    ] discord.client: logging in using static token
+[2025-02-26 08:55:00] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 67c0c7feae05bed3666533a2e46546b6).
+BOT AWAKE AND READY
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 194, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1298, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1524, in restart
+    sys.exit()
+SystemExit
+[2025-02-26 09:00:23] [INFO    ] discord.client: logging in using static token
+[2025-02-26 09:00:23] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 2ef35c1eff84a30c417a6467ae59c35b).
+[2025-02-26 09:14:44] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 09:49:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 12:34:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 15:02:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 15:22:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 15:59:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 17:52:53] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 19:50:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-26 23:47:36] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 02:24:56] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 05:36:23] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 09:33:25] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 09:43:45] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 10:10:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 10:46:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 11:15:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 13:58:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 15:25:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 16:57:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 18:09:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 21:05:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-27 21:47:36] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 01:26:05] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 03:33:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 04:49:17] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 05:39:57] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 08:24:10] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 10:00:53] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 11:23:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 11:45:35] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 12:00:05] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 13:45:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 14:25:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 14:34:02] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 15:37:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 17:34:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 18:03:15] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 18:42:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 21:15:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 22:24:56] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-02-28 22:59:51] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 00:12:44] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 02:08:22] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 04:19:23] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 07:02:21] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-01 07:02:21] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-01 07:02:21] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-east5154.discord.media
+[2025-03-01 07:02:21] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-03-01 07:02:36] [INFO    ] discord.player: ffmpeg process 82031 successfully terminated with return code of 0.
+[2025-03-01 07:02:53] [INFO    ] discord.player: ffmpeg process 82036 successfully terminated with return code of 0.
+[2025-03-01 07:03:00] [INFO    ] discord.player: ffmpeg process 82040 successfully terminated with return code of 0.
+[2025-03-01 07:03:04] [INFO    ] discord.player: ffmpeg process 82044 has not terminated. Waiting to terminate...
+[2025-03-01 07:03:04] [INFO    ] discord.player: ffmpeg process 82044 should have terminated with a return code of -9.
+[2025-03-01 07:03:07] [INFO    ] discord.player: ffmpeg process 82048 has not terminated. Waiting to terminate...
+[2025-03-01 07:03:07] [INFO    ] discord.player: ffmpeg process 82048 should have terminated with a return code of -9.
+[2025-03-01 07:03:11] [INFO    ] discord.player: ffmpeg process 82054 has not terminated. Waiting to terminate...
+[2025-03-01 07:03:11] [INFO    ] discord.player: ffmpeg process 82054 should have terminated with a return code of -9.
+[2025-03-01 07:03:15] [INFO    ] discord.player: ffmpeg process 82058 successfully terminated with return code of 0.
+[2025-03-01 07:03:29] [INFO    ] discord.player: ffmpeg process 82062 successfully terminated with return code of 0.
+[2025-03-01 07:05:00] [INFO    ] discord.player: ffmpeg process 82073 successfully terminated with return code of 0.
+[2025-03-01 07:06:31] [INFO    ] discord.player: ffmpeg process 82081 successfully terminated with return code of 0.
+[2025-03-01 07:08:01] [INFO    ] discord.player: ffmpeg process 82093 successfully terminated with return code of 0.
+[2025-03-01 07:09:31] [INFO    ] discord.player: ffmpeg process 82106 successfully terminated with return code of 0.
+[2025-03-01 07:10:24] [INFO    ] discord.player: ffmpeg process 82114 successfully terminated with return code of 0.
+[2025-03-01 07:10:28] [INFO    ] discord.player: ffmpeg process 82120 successfully terminated with return code of 0.
+[2025-03-01 07:10:33] [INFO    ] discord.player: ffmpeg process 82130 has not terminated. Waiting to terminate...
+[2025-03-01 07:10:33] [INFO    ] discord.player: ffmpeg process 82130 should have terminated with a return code of -9.
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x5610c7632f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-03-01 07:10:37] [INFO    ] discord.player: ffmpeg process 82134 successfully terminated with return code of 0.
+[2025-03-01 07:10:41] [INFO    ] discord.player: ffmpeg process 82141 successfully terminated with return code of 0.
+[2025-03-01 07:11:01] [INFO    ] discord.player: ffmpeg process 82146 successfully terminated with return code of 0.
+[2025-03-01 07:12:30] [INFO    ] discord.player: ffmpeg process 82154 successfully terminated with return code of 0.
+[2025-03-01 07:14:01] [INFO    ] discord.player: ffmpeg process 82164 successfully terminated with return code of 0.
+[2025-03-01 07:15:30] [INFO    ] discord.player: ffmpeg process 82176 successfully terminated with return code of 0.
+[2025-03-01 07:17:01] [INFO    ] discord.player: ffmpeg process 82188 successfully terminated with return code of 0.
+[2025-03-01 07:18:29] [INFO    ] discord.player: ffmpeg process 82203 successfully terminated with return code of 0.
+[2025-03-01 07:20:01] [INFO    ] discord.player: ffmpeg process 82220 successfully terminated with return code of 0.
+[2025-03-01 07:21:31] [INFO    ] discord.player: ffmpeg process 82233 successfully terminated with return code of 0.
+[2025-03-01 07:23:01] [INFO    ] discord.player: ffmpeg process 82243 successfully terminated with return code of 0.
+[2025-03-01 07:24:31] [INFO    ] discord.player: ffmpeg process 82253 successfully terminated with return code of 0.
+[2025-03-01 07:26:00] [INFO    ] discord.player: ffmpeg process 82265 successfully terminated with return code of 0.
+[2025-03-01 07:27:32] [INFO    ] discord.player: ffmpeg process 82274 successfully terminated with return code of 0.
+[2025-03-01 07:29:00] [INFO    ] discord.player: ffmpeg process 82282 successfully terminated with return code of 0.
+[2025-03-01 07:30:32] [INFO    ] discord.player: ffmpeg process 82292 successfully terminated with return code of 0.
+[2025-03-01 07:32:00] [INFO    ] discord.player: ffmpeg process 82306 successfully terminated with return code of 0.
+[2025-03-01 07:33:28] [INFO    ] discord.player: ffmpeg process 82314 successfully terminated with return code of 0.
+[2025-03-01 07:34:57] [INFO    ] discord.player: ffmpeg process 82324 successfully terminated with return code of 0.
+[2025-03-01 07:36:32] [INFO    ] discord.player: ffmpeg process 82339 successfully terminated with return code of 0.
+[2025-03-01 07:38:01] [INFO    ] discord.player: ffmpeg process 82345 successfully terminated with return code of 0.
+[2025-03-01 07:39:31] [INFO    ] discord.player: ffmpeg process 82358 successfully terminated with return code of 0.
+[2025-03-01 07:40:59] [INFO    ] discord.player: ffmpeg process 82371 successfully terminated with return code of 0.
+[2025-03-01 07:42:31] [INFO    ] discord.player: ffmpeg process 82382 successfully terminated with return code of 0.
+[2025-03-01 07:44:02] [INFO    ] discord.player: ffmpeg process 82390 successfully terminated with return code of 0.
+[2025-03-01 07:45:32] [INFO    ] discord.player: ffmpeg process 82398 successfully terminated with return code of 0.
+[2025-03-01 07:47:00] [INFO    ] discord.player: ffmpeg process 82408 successfully terminated with return code of 0.
+[2025-03-01 07:48:31] [INFO    ] discord.player: ffmpeg process 82420 successfully terminated with return code of 0.
+[2025-03-01 07:50:01] [INFO    ] discord.player: ffmpeg process 82430 successfully terminated with return code of 0.
+[2025-03-01 07:51:32] [INFO    ] discord.player: ffmpeg process 82446 successfully terminated with return code of 0.
+[2025-03-01 07:53:00] [INFO    ] discord.player: ffmpeg process 82458 successfully terminated with return code of 0.
+[2025-03-01 07:54:30] [INFO    ] discord.player: ffmpeg process 82466 successfully terminated with return code of 0.
+[2025-03-01 07:56:02] [INFO    ] discord.player: ffmpeg process 82476 successfully terminated with return code of 0.
+[2025-03-01 07:56:28] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 212770924607438848 (Guild ID 134415388233433089)
+[2025-03-01 08:04:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 09:55:09] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 10:22:10] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 11:15:10] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 13:09:09] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 16:52:21] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 18:43:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 20:19:32] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 21:01:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-01 23:08:02] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-02 01:02:37] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-02 01:02:37] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-02 01:02:37] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: newark9535.discord.media
+[2025-03-02 01:02:37] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-03-02 01:03:14] [INFO    ] discord.player: ffmpeg process 86847 successfully terminated with return code of 0.
+[2025-03-02 01:03:39] [INFO    ] discord.player: ffmpeg process 86851 successfully terminated with return code of 0.
+[2025-03-02 01:08:10] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-02 01:24:09] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2ef35c1eff84a30c417a6467ae59c35b.
+[2025-03-02 01:35:44] [INFO    ] discord.player: ffmpeg process 87002 successfully terminated with return code of 0.
+[2025-03-02 01:36:04] [INFO    ] discord.player: ffmpeg process 87008 successfully terminated with return code of 0.
+[2025-03-02 01:36:16] [INFO    ] discord.player: ffmpeg process 87012 successfully terminated with return code of 0.
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x55c9d8d57f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-03-02 01:36:21] [INFO    ] discord.player: ffmpeg process 87016 successfully terminated with return code of 0.
+[2025-03-02 01:36:26] [INFO    ] discord.player: ffmpeg process 87022 successfully terminated with return code of 0.
+[2025-03-02 01:37:00] [INFO    ] discord.player: ffmpeg process 87026 successfully terminated with return code of 0.
+[2025-03-02 01:37:27] [INFO    ] discord.player: ffmpeg process 87032 successfully terminated with return code of 0.
+[2025-03-02 01:39:33] [INFO    ] discord.player: ffmpeg process 87046 successfully terminated with return code of 0.
+[2025-03-02 01:39:43] [INFO    ] discord.player: ffmpeg process 87050 successfully terminated with return code of 0.
+[2025-03-02 01:42:26] [INFO    ] discord.player: ffmpeg process 87064 successfully terminated with return code of 0.
+[2025-03-02 01:42:41] [INFO    ] discord.player: ffmpeg process 87068 successfully terminated with return code of 0.
+[2025-03-02 01:42:47] [INFO    ] discord.player: ffmpeg process 87072 successfully terminated with return code of 0.
+[2025-03-02 02:33:38] [INFO    ] discord.player: ffmpeg process 87318 successfully terminated with return code of 0.
+[2025-03-02 02:33:57] [INFO    ] discord.player: ffmpeg process 87322 successfully terminated with return code of 0.
+[2025-03-02 02:39:18] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+BOT AWAKE AND READY
+Finished playing: hard.ogg
+Finished playing: six.ogg
+Finished playing: hard.ogg
+Finished playing: six.ogg
+Finished playing: hard.ogg
+Finished playing: six.ogg
+Finished playing: hard.ogg
+Finished playing: ruru.ogg
+Finished playing: assmaster.ogg
+Finished playing: genius.ogg
+Finished playing: heavy weapons.ogg
+Finished playing: bobebobesus.ogg
+Finished playing: expert.ogg
+Finished playing: expert loud.ogg
+Finished playing: arabian.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: nobody tosses.ogg
+Finished playing: 324.ogg
+Finished playing: are LAME.ogg
+Finished playing: noh.ogg
+Finished playing: own you.ogg
+Finished playing: ha loud.ogg
+Finished playing: harry.ogg
+Finished playing: rosen.ogg
+Finished playing: here here.ogg
+Finished playing: raise money.ogg
+Finished playing: hhhhh.ogg
+Finished playing: whaddidisay.ogg
+Finished playing: hurt the boy.ogg
+Finished playing: 111 cock.ogg
+Finished playing: expert.ogg
+Finished playing: his mum.ogg
+Finished playing: no.ogg
+Finished playing: the horn.ogg
+Finished playing: arabian.ogg
+Finished playing: bulsabanapopetet.ogg
+Finished playing: ha.ogg
+Finished playing: avada.ogg
+Finished playing: clattering magpies.ogg
+Finished playing: hey buddy.ogg
+Finished playing: if there is a key.ogg
+Finished playing: riff raff.ogg
+Finished playing: too right you will.ogg
+Finished playing: mwillulmawlu.ogg
+Finished playing: if there is a key.ogg
+Finished playing: nonoonnon.ogg
+Finished playing: bring forth the hobbit.ogg
+/home/lucassukeunkim/scuffed_discord_bot/servers/134415388233433089/session_stats.txt has been deleted successfully.
+Finished playing: his mum.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: inside him.ogg
+Finished playing: harry himself.ogg
+Finished playing: arabian.ogg
+Finished playing: arabian loud.ogg
+Finished playing: arabian scuffed.ogg
+Finished playing: hard.ogg
+Finished playing: dobby.ogg
+Finished playing: until.ogg
+Finished playing: you could.ogg
+Finished playing: bobbed.ogg
+Finished playing: rosen.ogg
+Finished playing: it was horrible.ogg
+Finished playing: his mum.ogg
+Finished playing: coal.ogg
+/home/lucassukeunkim/scuffed_discord_bot/servers/134415388233433089/session_stats.txt has been deleted successfully.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 194, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1298, in update
+    await ctx.invoke(bot.get_command('restart'))
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 337, in invoke
+    return await command(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 590, in __call__
+    return await self.callback(context, *args, **kwargs)  # type: ignore
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1524, in restart
+    sys.exit()
+SystemExit
+[2025-03-02 02:39:32] [INFO    ] discord.client: logging in using static token
+[2025-03-02 02:39:33] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 01b9eb2d184b16cc12324f0ce6621323).
+[2025-03-02 04:17:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 07:15:48] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 08:26:20] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 10:37:56] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 12:02:45] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 13:34:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 16:12:51] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 18:24:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 20:11:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-02 21:18:02] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 00:58:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
+[2025-03-03 01:40:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 01b9eb2d184b16cc12324f0ce6621323.
