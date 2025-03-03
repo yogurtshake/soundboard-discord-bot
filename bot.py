@@ -6,6 +6,7 @@ import shlex
 import os
 import sys
 import subprocess
+import time
 from collections import Counter
 
 
@@ -24,6 +25,8 @@ else:
 
 PLAYING = {}
 STOP_EVENT = {}
+LAST_ACTIVITY = {}
+INACTIVITY_THRESHOLD = 3600
 
 handcount = 0
 
@@ -31,6 +34,7 @@ intents = discord.Intents.default()
 intents.message_content = True
 intents.voice_states = True
 tchannel = None
+disconnect_lock = asyncio.Lock()
 
 bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
@@ -164,10 +168,13 @@ def set_config(guild_id, key, value, description):
         config[key] = (value, description)
     save_config(guild_id, config)
 
-async def disconnect_after_inactivity(vc):
-    global PLAYING, STOP_EVENT
+async def disconnect(vc, message):
+    global PLAYING, STOP_EVENT, disconnect_lock
     
-    if vc.is_connected() and len(vc.channel.members) == 1:
+    async with disconnect_lock:
+        if not vc.is_connected():
+            return
+        
         PLAYING[vc.guild.id] = False      
         STOP_EVENT[vc.guild.id].set()         
         vc.stop()
@@ -180,7 +187,7 @@ async def disconnect_after_inactivity(vc):
         if default_tc == "default" or default_tc is None:
             default_tc = vc.channel.guild.system_channel or vc.channel.guild.text_channels[0]
             
-        await default_tc.send(f"*Disconnected from voice channel `{vc.channel.name}` because everyone else fucking left.*")
+        await default_tc.send(message)
 
         in_vc = False
         for vc in bot.voice_clients:
@@ -194,6 +201,25 @@ async def disconnect_after_inactivity(vc):
         await ctx.invoke(bot.get_command('sessionstats'))
         await delete_session_stats(ctx)
         
+async def check_inactivity():
+    global LAST_ACTIVITY
+        
+    while not bot.is_closed():
+        current_time = time.time()
+        
+        for vc in bot.voice_clients:
+            if vc.is_connected():
+                last_activity = LAST_ACTIVITY.get(vc.guild.id, 0)
+                
+                if len(vc.channel.members) == 1:
+                    message = f"*Disconnected from voice channel `{vc.channel.name}` because everyone else fucking left.*"
+                    await disconnect(vc, message)
+                    
+                elif current_time - last_activity > INACTIVITY_THRESHOLD:
+                    message = f"*Disconnected from voice channel `{vc.channel.name}` due to inactivity (1 hour).*"
+                    await disconnect(vc, message)
+                    
+        await asyncio.sleep(600)
 
 
 # --------------------------------- EVENTS ---------------------------------
@@ -214,6 +240,8 @@ async def on_ready():
         await tchannel.send("*running locally on Windows*")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
     await tchannel.send("**Atyiseusseatyiseuss!**")
+    
+    await check_inactivity()
 
 
 @bot.event
@@ -258,13 +286,14 @@ async def on_voice_state_update(member, before, after):
 
     for vc in bot.voice_clients:
         if vc.channel == before.channel and len(vc.channel.members) == 1:
-            await disconnect_after_inactivity(vc)
+            message = f"*Disconnected from voice channel `{vc.channel.name}` because everyone else fucking left.*"
+            await disconnect(vc, message)
     
     
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send("*Invalid command. You piece of shit.*")
+        await ctx.send("*Invalid command, you piece of shit.*")
 
     
 # --------------------------------- COMMANDS ---------------------------------     
@@ -372,8 +401,10 @@ async def randomhand_error(ctx, error):
 
 @command_with_attributes(name='s', category='SOUNDBOARD - PLAYING', help="Plays desired sound. Chooses randomly if no input given.", usage='`!s` OR `!s <sound name>`')
 async def s(ctx, *name):
+    global LAST_ACTIVITY
+    
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     
     input = ' '.join(name)
@@ -396,6 +427,8 @@ async def s(ctx, *name):
             file.write(basename + '\n')
         with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
             file.write(basename + '\n')
+            
+        LAST_ACTIVITY[ctx.guild.id] = time.time()
         return
     
     sound_path = SOUNDS_FOLDER_PATH + input + ".ogg"
@@ -407,12 +440,12 @@ async def s(ctx, *name):
 
     if not basename.lower() in sounds:
         if not basename_mp3.lower() in sounds:
-            await ctx.send(f"*Sound `{basename[:-4]}` does not exist. You piece of shit.*")
+            await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
             return
         sound_path = sound_path_mp3
         basename = basename_mp3
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' is missing CAPS somewhere. You piece of shit.*")
+        await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
         return
 
     ctx.voice_client.stop()
@@ -422,6 +455,9 @@ async def s(ctx, *name):
         file.write(basename + '\n')
     with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
         file.write(basename + '\n')
+
+    LAST_ACTIVITY[ctx.guild.id] = time.time()
+
 
 @s.error
 async def s_error(ctx, error):
@@ -433,7 +469,7 @@ async def s_error(ctx, error):
 
 @command_with_attributes(name='play', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired time interval. Default 90s.", usage='`!play` OR `!play <delay>` OR `!play <min_delay> <max_delay>`', configurable = True)
 async def play(ctx, *arr):
-    global PLAYING, STOP_EVENT
+    global PLAYING, STOP_EVENT, LAST_ACTIVITY
     
     if PLAYING[ctx.guild.id]:
         await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
@@ -442,7 +478,7 @@ async def play(ctx, *arr):
     STOP_EVENT[ctx.guild.id].clear()
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     
     if len(arr) > 0 and float(arr[0]) < 1:
@@ -504,6 +540,7 @@ async def play(ctx, *arr):
             await ctx.send(f"*An unexpected error occurred: {e}*")
             
         if delay < 6: pcount += 1
+        LAST_ACTIVITY[ctx.guild.id] = time.time()
         
     if pcount == 30:
         await ctx.send(f"*Limit of {pcount} fast sounds reached (1 < delay < 6). Chill for a sec, then start again if you want.*")
@@ -526,14 +563,14 @@ async def play_error(ctx, error):
 
 @command_with_attributes(name='playfast', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired fast time interval. Default 1 second.", usage='`!playfast` OR `!playfast <delay>`', configurable = True)
 async def playfast(ctx, *arr):
-    global PLAYING
+    global PLAYING, LAST_ACTIVITY
     
     if PLAYING[ctx.guild.id]:
         await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
         return
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     
     SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
@@ -552,6 +589,7 @@ async def playfast(ctx, *arr):
     else:
         delay = 1
     
+    LAST_ACTIVITY[ctx.guild.id] = time.time()
     PLAYING[ctx.guild.id] = True
     pfcount = 0
     
@@ -601,10 +639,10 @@ async def playfast_error(ctx, error):
 
 @command_with_attributes(name='loop', category='SOUNDBOARD - PLAYING', help="Plays desired sound over and over again at desired time interval.", usage='`!loop \"<sound name>\" <delay>`', configurable = True)
 async def loop(ctx, soundname: str, delay: float):
-    global PLAYING, STOP_EVENT
+    global PLAYING, STOP_EVENT, LAST_ACTIVITY
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     if PLAYING[ctx.guild.id]:
         await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
@@ -626,14 +664,15 @@ async def loop(ctx, soundname: str, delay: float):
 
     if not basename.lower() in sounds:
         if not basename_mp3.lower() in sounds:
-            await ctx.send(f"*Sound `{basename[:-4]}` does not exist. You piece of shit.*")
+            await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
             return
         sound_path = sound_path_mp3
         basename = basename_mp3
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' is missing CAPS somewhere. You piece of shit.*")
+        await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
         return
 
+    LAST_ACTIVITY[ctx.guild.id] = time.time()
     PLAYING[ctx.guild.id] = True
     lcount = 0
     
@@ -692,7 +731,7 @@ async def stop(ctx):
     global PLAYING, STOP_EVENT
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     
     message = get_config(ctx.guild.id,"!stop_message")[0]
@@ -711,8 +750,14 @@ async def stop_error(ctx, error):
 
 @command_with_attributes(name='join', category='VOICE CHANNEL', help="Joins user's current voice channel.", usage='`!join`', configurable = True)
 async def join(ctx):
+    global LAST_ACTIVITY
+    
+    if ctx.voice_client is not None:
+        await ctx.send("*I already in a voice channel, you piece of shit.*")
+        return
+    
     if ctx.author.voice is None:
-        await ctx.send("*You are not connected to a voice channel. You piece of shit.*")
+        await ctx.send("*You are not connected to a voice channel, you piece of shit.*")
         return
 
     channel = ctx.author.voice.channel
@@ -729,6 +774,7 @@ async def join(ctx):
         await ctx.send(f'Moved to {channel}')
     
     await bot.change_presence(activity=discord.Game(name="some MUSIC"))
+    LAST_ACTIVITY[ctx.guild.id] = time.time()
 
 @join.error
 async def join_error(ctx, error):
@@ -738,8 +784,14 @@ async def join_error(ctx, error):
 @command_with_attributes(name='troll', category='VOICE CHANNEL', help="Joins desired voice channel. Does not require user to be connected. **ADMIN COMMAND.**", usage='`!troll <channel name>`', configurable = True)
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
+    global LAST_ACTIVITY
+    
     if ctx.guild.id != HOME_SERVER_ID:
         await ctx.send("*This command is not yet available in your server.*")
+        return
+   
+    if ctx.voice_client is not None:
+        await ctx.send("*I already in a voice channel, you piece of shit.*")
         return
    
     if(chName.lower() == "private"): id = 265210092289261570
@@ -765,6 +817,7 @@ async def troll(ctx, *, chName: str):
         await ctx.send(f'Moved to {channel}')
         
     await bot.change_presence(activity=discord.Game(name="some MUSIC"))
+    LAST_ACTIVITY[ctx.guild.id] = time.time()
 
 @troll.error
 async def troll_error(ctx, error):
@@ -783,7 +836,7 @@ async def leave(ctx):
     global PLAYING, STOP_EVENT
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel. You piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     
     PLAYING[ctx.guild.id] = False      
@@ -1215,7 +1268,7 @@ async def logs(ctx, lines: int = 20):
         if chunk:
             await ctx.send(f"```{chunk}```")
     except FileNotFoundError:
-        await tchannel.send("*The log file does not exist. You piece of shit.*")
+        await tchannel.send("*The log file does not exist, you piece of shit.*")
     except Exception as e:
         await tchannel.send(f"*An error occurred while reading the log file: {e}*")
 
