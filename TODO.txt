@@ -2,4 +2,4 @@
 
 -create bot clone specifically for testing? (would just need it locally)
 
--add vc inactivity timeout
+-fix issue of crash when bot is force moved between VCs by server admin?
