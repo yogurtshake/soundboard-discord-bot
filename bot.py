@@ -243,7 +243,6 @@ async def on_ready():
     
     await check_inactivity()
 
-
 @bot.event
 async def on_message(message):
     if message.author == bot.user:
@@ -267,7 +266,6 @@ async def on_message(message):
             await message.channel.send('# **Wrong! Shuddup.**')
         else: 
             await message.channel.send('**Wrong! Shuddup.**')
-    
 
 @bot.event
 async def on_guild_join(guild):
@@ -278,7 +276,6 @@ async def on_guild_join(guild):
     if channel:
         await channel.send("Which idiot added me to this shithole?\n\n Use `!help` to get started.")  
  
- 
 @bot.event
 async def on_voice_state_update(member, before, after):
     if member.bot:
@@ -288,8 +285,7 @@ async def on_voice_state_update(member, before, after):
         if vc.channel == before.channel and len(vc.channel.members) == 1:
             message = f"*Disconnected from voice channel `{vc.channel.name}` because everyone else fucking left.*"
             await disconnect(vc, message)
-    
-    
+            
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
@@ -457,7 +453,6 @@ async def s(ctx, *name):
         file.write(basename + '\n')
 
     LAST_ACTIVITY[ctx.guild.id] = time.time()
-
 
 @s.error
 async def s_error(ctx, error):
