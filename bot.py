@@ -19,10 +19,9 @@ HOME_CHANNEL_ID = 1337536863640227881
 WINDOWS = False
 
 if "\\" in os.getcwd(): 
-    SERVERS_PATH = os.getcwd().replace("\\", "/") + '/servers/'
     WINDOWS = True
-else: 
-    SERVERS_PATH = os.getcwd() + '/servers/'
+
+SERVERS_PATH = os.getcwd() + f'{os.sep}servers{os.sep}'
 
 PLAYING = {}
 STOP_EVENT = {}
@@ -63,7 +62,7 @@ def load_triggers(file_path):
     return triggers
 
 async def delete_session_stats(ctx):
-    file_path = SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt'
+    file_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt')
     try:
         os.remove(file_path)
         await ctx.send("*Session stats deleted.*")
@@ -78,12 +77,12 @@ async def initialize_guild(guild):
     PLAYING[guild.id] = False
     STOP_EVENT[guild.id] = asyncio.Event()
     
-    guild_folder = SERVERS_PATH + str(guild.id)
-    guild_sounds_folder = guild_folder + "/all_sounds/"
-    guild_title_path = guild_folder + "/0. " + guild.name
-    guild_config_path = guild_folder + "/config.txt"
-    guild_triggers_path = guild_folder + "/triggers.txt"
-    guild_loops_path = guild_folder + "/loops.txt"
+    guild_folder = os.path.join(SERVERS_PATH, str(guild.id))
+    guild_sounds_folder = os.path.join(guild_folder, "all_sounds")
+    guild_title_path = os.path.join(guild_folder, "0. " + guild.name)
+    guild_config_path = os.path.join(guild_folder, "config.txt")
+    guild_triggers_path = os.path.join(guild_folder, "triggers.txt")
+    guild_loops_path = os.path.join(guild_folder, "loops.txt")
 
     if not os.path.exists(guild_folder):
         os.makedirs(guild_folder)
@@ -140,7 +139,7 @@ def initialize_config(path, guild_id):
         print(f"Removed extra configuration keys: {extra_keys} in server: {guild_id}")
         
 def load_config(guild_id):
-    config_path = f"{SERVERS_PATH}{guild_id}/config.txt"
+    config_path = os.path.join(SERVERS_PATH, guild_id, "config.txt")
     config = {}
     try:
         with open(config_path, 'r') as file:
@@ -152,7 +151,7 @@ def load_config(guild_id):
     return config
 
 def save_config(guild_id, config):
-    config_path = f"{SERVERS_PATH}{guild_id}/config.txt"
+    config_path = os.path.join(SERVERS_PATH, guild_id, "config.txt")
     with open(config_path, 'w') as file:
         for key, (value, description) in config.items():
             file.write(f"{key},{value},{description}\n")
@@ -222,6 +221,16 @@ async def check_inactivity():
                     
         await asyncio.sleep(600)
 
+def get_folder_size(folder_path):
+    total_size = 0
+    
+    for dirpath, dirnames, filenames in os.walk(folder_path):
+        for f in filenames:
+            fp = os.path.join(dirpath, f)
+            total_size += os.path.getsize(fp)
+            
+    return total_size
+
 
 # --------------------------------- EVENTS ---------------------------------
 
@@ -253,7 +262,8 @@ async def on_message(message):
         await bot.process_commands(message)
         return
     
-    triggers = load_triggers(SERVERS_PATH + str(message.guild.id) + '/triggers.txt')
+    triggers_path = os.path.join(SERVERS_PATH, str(message.guild.id), 'triggers.txt')
+    triggers = load_triggers(triggers_path)
     
     for trigger, response in triggers.items():
         if trigger in message.content:
@@ -406,7 +416,7 @@ async def s(ctx, *name):
     
     input = ' '.join(name)
     
-    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     
     if not name:
         try:
@@ -415,14 +425,14 @@ async def s(ctx, *name):
             await ctx.send("*Sounds folder does not yet exist for this server.*")
         
         sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
-        basename = sound_path.split('/')[-1].strip()
+        basename = os.path.basename(sound_path).strip()
 
         ctx.voice_client.stop()
         ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
 
-        with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
             file.write(basename + '\n')
-        with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
             file.write(basename + '\n')
             
         LAST_ACTIVITY[ctx.guild.id] = time.time()
@@ -430,8 +440,8 @@ async def s(ctx, *name):
     
     sound_path = SOUNDS_FOLDER_PATH + input + ".ogg"
     sound_path_mp3 = SOUNDS_FOLDER_PATH + input + ".mp3"
-    basename = sound_path.split('/')[-1].strip()
-    basename_mp3 = sound_path_mp3.split('/')[-1].strip()
+    basename = os.path.basename(sound_path).strip()
+    basename_mp3 = os.path.basename(sound_path_mp3).strip()
 
     sounds = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
@@ -448,9 +458,9 @@ async def s(ctx, *name):
     ctx.voice_client.stop()
     ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
 
-    with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
-        file.write(basename + '\n')
-    with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
+    with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
+            file.write(basename + '\n')
+    with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
         file.write(basename + '\n')
 
     LAST_ACTIVITY[ctx.guild.id] = time.time()
@@ -487,7 +497,7 @@ async def play(ctx, *arr):
     else:
         delay = 90
     
-    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     files = os.listdir(SOUNDS_FOLDER_PATH)
     
     PLAYING[ctx.guild.id] = True
@@ -516,7 +526,7 @@ async def play(ctx, *arr):
             return
         
         sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
-        basename = sound_path.split('/')[-1].strip()
+        basename = os.path.basename(sound_path).strip()
         
         ctx.voice_client.stop()
         
@@ -528,9 +538,9 @@ async def play(ctx, *arr):
                 except asyncio.TimeoutError:
                     pass
                 
-                with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
+                with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
-                with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
+                with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
@@ -569,7 +579,7 @@ async def playfast(ctx, *arr):
         await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     
-    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     files = os.listdir(SOUNDS_FOLDER_PATH)
     
     if len(arr) > 1:
@@ -597,7 +607,7 @@ async def playfast(ctx, *arr):
     while PLAYING[ctx.guild.id] and pfcount < 30:    
         
         sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
-        basename = sound_path.split('/')[-1].strip()
+        basename = os.path.basename(sound_path).strip()
         
         ctx.voice_client.stop()
         
@@ -606,9 +616,9 @@ async def playfast(ctx, *arr):
                 ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
                 await asyncio.sleep(delay)
                 
-                with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
+                with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
-                with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
+                with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
@@ -649,12 +659,12 @@ async def loop(ctx, soundname: str, delay: float):
     
     STOP_EVENT[ctx.guild.id].clear()
     
-    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     
     sound_path = SOUNDS_FOLDER_PATH + soundname + ".ogg"
     sound_path_mp3 = SOUNDS_FOLDER_PATH + soundname + ".mp3"
-    basename = sound_path.split('/')[-1].strip()
-    basename_mp3 = sound_path_mp3.split('/')[-1].strip()
+    basename = os.path.basename(sound_path).strip()
+    basename_mp3 = os.path.basename(sound_path_mp3).strip()
 
     sounds = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
 
@@ -701,9 +711,9 @@ async def loop(ctx, soundname: str, delay: float):
             except asyncio.TimeoutError:
                 pass
             
-            with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'a') as file:
-                file.write(basename + '\n')
-            with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'a') as file:
+            with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
+                    file.write(basename + '\n')
+            with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
                 file.write(basename + '\n')
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
@@ -866,7 +876,7 @@ async def leave_error(ctx, error):
 
 @command_with_attributes(name='soundlist', category='SOUNDBOARD - DATA', help="Displays full soundlist in alphabetical order.", usage='`!soundlist`')
 async def soundlist(ctx):
-    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     
     try:
         lines = os.listdir(SOUNDS_FOLDER_PATH)
@@ -905,7 +915,7 @@ async def soundlist_error(ctx, error):
 @command_with_attributes(name='sessionstats', category='SOUNDBOARD - DATA', help="Displays sound playcount stats for this session. Session stats delete upon bot leaving.", usage='`!sessionstats`')
 async def sessionstats(ctx):
     try:
-        with open(SERVERS_PATH + str(ctx.guild.id) + '/session_stats.txt', 'r') as file:
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'r') as file:
             filelines = file.readlines()
         
         shortened_lines = [s.strip() for s in filelines]
@@ -942,7 +952,7 @@ async def sessionstats_error(ctx, error):
 @command_with_attributes(name='alltimestats', category='SOUNDBOARD - DATA', help="Displays sound playcount stats for all time.", usage='`!alltimestats`')
 async def alltimestats(ctx):
     try:
-        with open(SERVERS_PATH + str(ctx.guild.id) + '/all_time_stats.txt', 'r') as file:
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'r') as file:
             filelines = file.readlines()
         
         shortened_lines = [s.strip() for s in filelines]
@@ -987,7 +997,7 @@ async def addtrigger(ctx, *, args: str):
         
         trigger, response = parts
         
-        with open(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt', 'a') as file:
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'triggers.txt'), 'a') as file:
             file.write(f"{trigger},{response}\n")
         await ctx.send(f"New trigger added: `{trigger}` with response: `{response}`")
         
@@ -1010,13 +1020,15 @@ async def removetrigger(ctx, *, args: str):
             await ctx.send('Usage: `!removetrigger "<trigger>"`')
             return
         
+        triggers_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), 'triggers.txt')
+        
         trigger = parts[0]
-        triggers = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt')
+        triggers = load_triggers(triggers_path)
         
         if trigger in triggers:
-            with open(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt', 'r') as file:
+            with open(triggers_path, 'r') as file:
                 lines = file.readlines()
-            with open(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt', 'w') as file:
+            with open(triggers_path, 'w') as file:
                 for line in lines:
                     if not line.startswith(trigger + ','):
                         file.write(line)
@@ -1037,7 +1049,7 @@ async def removetrigger_error(ctx, error):
 
 @command_with_attributes(name='triggerlist', category='MESSAGE TRIGGERS', help="Displays all triggers and their responses, sorted alphabetically by triggers.", usage='`!triggerlist`')
 async def triggerlist(ctx):
-    triggers = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/triggers.txt')
+    triggers = load_triggers(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'triggers.txt'))
     
     if not triggers:
         await ctx.send("*No triggers found.*")
@@ -1076,7 +1088,7 @@ async def addloop(ctx, *, args: str):
         
         soundname, delay = parts
         
-        with open(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt', 'a') as file:
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'loops.txt'), 'a') as file:
             file.write(f"{soundname},{delay}\n")
         await ctx.send(f"New loop info saved. Sound name: `{soundname}` with delay: `{delay}`")
         
@@ -1099,13 +1111,15 @@ async def removeloop(ctx, *, args: str):
             await ctx.send('Usage: `!removeloop "<sound name>"`')
             return
         
+        loops_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), 'loops.txt')
+        
         soundname = parts[0]
-        loops = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt')
+        loops = load_triggers(loops_path)
         
         if soundname in loops:
-            with open(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt', 'r') as file:
+            with open(loops_path, 'r') as file:
                 lines = file.readlines()
-            with open(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt', 'w') as file:
+            with open(loops_path, 'w') as file:
                 for line in lines:
                     if not line.startswith(soundname + ','):
                         file.write(line)
@@ -1126,7 +1140,7 @@ async def removeloop_error(ctx, error):
 
 @command_with_attributes(name='looplist', category='SOUNDBOARD - DATA', help="Displays all saved loop infos, sorted alphabetically by sound name.", usage='`!looplist`')
 async def looplist(ctx):
-    loops = load_triggers(SERVERS_PATH + str(ctx.guild.id) + '/loops.txt')
+    loops = load_triggers(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'loops.txt'))
     
     if not loops:
         await ctx.send("*No loops found.*")
@@ -1243,16 +1257,19 @@ async def upload(ctx):
 
     attachment = ctx.message.attachments[0]
     valid_extensions = ('.mp3', '.ogg')
+    guild_path = os.path.join(SERVERS_PATH, str(ctx.guild.id))
 
     if attachment.filename.endswith('.zip'):
-        zip_path = f"{SERVERS_PATH}{str(ctx.guild.id)}/{attachment.filename}"
+        zip_path = os.path.join(guild_path, attachment.filename)
         try:
             await attachment.save(zip_path)
             
-            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
-                zip_ref.extractall(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/")
+            temp_path = os.path.join(guild_path, "temp_extracted")
             
-            extracted_files = os.listdir(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/")
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(temp_path)
+            
+            extracted_files = os.listdir(temp_path)
             
             valid_files = []
             invalid_files = []
@@ -1262,20 +1279,20 @@ async def upload(ctx):
                 if not file.endswith(valid_extensions):
                     invalid_files.append(file)
                 else:
-                    if os.path.exists(f"{SERVERS_PATH}{str(ctx.guild.id)}/all_sounds/{file}"):
+                    if os.path.exists(os.path.join(guild_path, "all_sounds", file)):
                         duplicate_files.append(file)
                     else:
                         valid_files.append(file)
             
             for file in valid_files:
-                os.rename(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/{file}", f"{SERVERS_PATH}{str(ctx.guild.id)}/all_sounds/{file}")
+                os.rename(os.path.join(temp_path, file), os.path.join(guild_path, "all_sounds", file))
                     
             for file in invalid_files:
-                os.remove(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/{file}")
+                os.remove(os.path.join(temp_path, file))
             for file in duplicate_files:
-                os.remove(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/{file}")
+                os.remove(os.path.join(temp_path, file))
                 
-            os.rmdir(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/")
+            os.rmdir(temp_path)
             os.remove(zip_path)
 
             if valid_files:
@@ -1302,7 +1319,7 @@ async def upload(ctx):
             await ctx.send("_Invalid file type. Only **.mp3**, **.ogg**, and **.zip** files are supported._")
             return
 
-        file_path = f"{SERVERS_PATH}{str(ctx.guild.id)}/all_sounds/{attachment.filename}"
+        file_path = os.path.join(guild_path, "all_sounds", attachment.filename)
         
         try:
             await attachment.save(file_path)
@@ -1320,7 +1337,7 @@ async def upload_error(ctx, error):
 
 @command_with_attributes(name='download', category='SOUNDBOARD - DATA', help='Gets a sound file from the bot for download.', usage='`!download <soundname with extension>`')
 async def download(ctx, *, sound_name: str):
-    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     sound_path = SOUNDS_FOLDER_PATH + sound_name
 
     if not sound_name.endswith('.mp3') and not sound_name.endswith('.ogg'):
@@ -1335,6 +1352,11 @@ async def download(ctx, *, sound_name: str):
 
     try:
         await ctx.send(file=discord.File(file_path))
+    except discord.errors.HTTPException as e:
+        if "413 Request Entity Too Large" in str(e):
+            await ctx.send("*The file is too large to be sent via Discord. Just give up.*")
+        else:
+            await ctx.send(f"*An error occurred while sending the file: `{e}`*")
     except Exception as e:
         await ctx.send(f"*An error occurred while sending the file: `{e}`*")
 
@@ -1448,7 +1470,7 @@ async def update(ctx):
     
     servers_sounds = {}
     for guild in bot.guilds:
-        SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
+        SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
         sounds = os.listdir(SOUNDS_FOLDER_PATH)
         servers_sounds[guild.id] = sounds
     
@@ -1469,7 +1491,7 @@ async def update(ctx):
                     await tchannel.send(f"### Refreshing soundlist for server: `{guild.name}`...")
                     
                     sounds = servers_sounds[guild.id]
-                    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(guild.id) + "/all_sounds/"
+                    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
                     oldCount = len(sounds)
                     
                     sounds_new = os.listdir(SOUNDS_FOLDER_PATH)
