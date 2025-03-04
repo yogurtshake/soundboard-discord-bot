@@ -7,6 +7,7 @@ import os
 import sys
 import subprocess
 import time
+import zipfile
 from collections import Counter
 
 
@@ -1222,6 +1223,94 @@ async def config(ctx, *input: str):
 
 @config.error
 async def config_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@command_with_attributes(name='upload', category='SOUNDBOARD - DATA', help='Uploads a sound file for your server.', usage='`!upload` with a single file attachment')
+@commands.has_permissions(administrator=True)
+async def upload(ctx):
+    if not ctx.message.attachments:
+        await ctx.send("*No file attached. Attach a *.mp3* or *.ogg* sound file or a zipped folder, dumbass.*")
+        return
+    
+    if len(ctx.message.attachments) > 1:
+        await ctx.send("*I can only do one file at a time. Fuck off and try again with a single file OR a zipped folder containing many sound files.*")
+        return
+
+    attachment = ctx.message.attachments[0]
+    valid_extensions = ('.mp3', '.ogg')
+
+    if attachment.filename.endswith('.zip'):
+        zip_path = f"{SERVERS_PATH}{str(ctx.guild.id)}/{attachment.filename}"
+        try:
+            await attachment.save(zip_path)
+            
+            with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+                zip_ref.extractall(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/")
+            
+            extracted_files = os.listdir(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/")
+            
+            valid_files = []
+            invalid_files = []
+            duplicate_files = []
+            
+            for file in extracted_files:
+                if not file.endswith(valid_extensions):
+                    invalid_files.append(file)
+                else:
+                    if os.path.exists(f"{SERVERS_PATH}{str(ctx.guild.id)}/all_sounds/{file}"):
+                        duplicate_files.append(file)
+                    else:
+                        valid_files.append(file)
+            
+            for file in valid_files:
+                os.rename(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/{file}", f"{SERVERS_PATH}{str(ctx.guild.id)}/all_sounds/{file}")
+                    
+            for file in invalid_files:
+                os.remove(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/{file}")
+            for file in duplicate_files:
+                os.remove(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/{file}")
+                
+            os.rmdir(f"{SERVERS_PATH}{str(ctx.guild.id)}/temp_extracted/")
+            os.remove(zip_path)
+
+            if valid_files:
+                message = ', '.join(valid_files)
+                if len(message) > 1900:
+                    message = "Too many files to list, but all the .mp3 and or .ogg files were uploaded successfully."
+                await ctx.send(f"Files uploaded successfully: `{message}`")
+            if invalid_files:
+                message = ', '.join(invalid_files)
+                if len(message) > 1800:
+                    message = "Too many files to list."
+                await ctx.send(f"Invalid file types in zip: `{message}`. Only *.mp3* and *.ogg* files are supported.")
+            if duplicate_files:
+                message = ', '.join(duplicate_files)
+                if len(message) > 1800:
+                    message = "Too many files to list."
+                await ctx.send(f"Some files already exist and were not replaced: `{message}`. If you want to replace them, upload them one by one (not in zip folder).")
+                
+        except Exception as e:
+            await ctx.send(f"An error occurred while processing the zip file: {e}")
+            
+    else:
+        if not attachment.filename.endswith(valid_extensions):
+            await ctx.send("*Invalid file type. Only *.mp3, .ogg, and .zip* files are supported.*")
+            return
+
+        file_path = f"{SERVERS_PATH}{str(ctx.guild.id)}/all_sounds/{attachment.filename}"
+        
+        try:
+            await attachment.save(file_path)
+            await ctx.send(f"Sound file `{attachment.filename}` uploaded successfully.")
+        except Exception as e:
+            await ctx.send(f"An error occurred while uploading the file: {e}")
+
+@upload.error
+async def upload_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("No.")
     else:
