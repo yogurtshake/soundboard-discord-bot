@@ -2,4 +2,10 @@
 
 -create bot clone specifically for testing? (would just need it locally)
 
+-add bot message prefix to all messages? (something like "->")? would help distinguish between separate messages.
+
 -fix issue of crash when bot is force moved between VCs by server admin?
+
+-file size limit
+
+-all_sounds folder size limit
