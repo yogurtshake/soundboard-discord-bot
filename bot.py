@@ -557,7 +557,7 @@ async def play_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='playfast', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired fast time interval. Default 1 second.", usage='`!playfast` OR `!playfast <delay>`', configurable = True)
+@command_with_attributes(name='playfast', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired fast time interval. Default 1s.", usage='`!playfast` OR `!playfast <delay>`', configurable = True)
 async def playfast(ctx, *arr):
     global PLAYING, LAST_ACTIVITY
     
@@ -1230,11 +1230,11 @@ async def config_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='upload', category='SOUNDBOARD - DATA', help='Uploads a sound file for your server.', usage='`!upload` with a single file attachment')
+@command_with_attributes(name='upload', category='SOUNDBOARD - DATA', help='Uploads a sound file for your server. **ADMIN COMMAND.**', usage='`!upload` with a single file attachment (can be zipped folder)')
 @commands.has_permissions(administrator=True)
 async def upload(ctx):
     if not ctx.message.attachments:
-        await ctx.send("*No file attached. Attach a *.mp3* or *.ogg* sound file or a zipped folder, dumbass.*")
+        await ctx.send("_No file attached. Attach a **.mp3** or **.ogg** sound file or a zipped folder, dumbass._")
         return
     
     if len(ctx.message.attachments) > 1:
@@ -1281,25 +1281,25 @@ async def upload(ctx):
             if valid_files:
                 message = ', '.join(valid_files)
                 if len(message) > 1900:
-                    message = "Too many files to list, but all the .mp3 and or .ogg files were uploaded successfully."
+                    message = "Too many files to list, but all the **.mp3** and or **.ogg files** were uploaded successfully."
                 await ctx.send(f"Files uploaded successfully: `{message}`")
             if invalid_files:
                 message = ', '.join(invalid_files)
                 if len(message) > 1800:
                     message = "Too many files to list."
-                await ctx.send(f"Invalid file types in zip: `{message}`. Only *.mp3* and *.ogg* files are supported.")
+                await ctx.send(f"_Invalid file types in zip: `{message}`. Only **.mp3** and **.ogg** files are supported._")
             if duplicate_files:
                 message = ', '.join(duplicate_files)
                 if len(message) > 1800:
                     message = "Too many files to list."
-                await ctx.send(f"Some files already exist and were not replaced: `{message}`. If you want to replace them, upload them one by one (not in zip folder).")
+                await ctx.send(f"*Some files already exist and were not replaced: `{message}`. If you want to replace them, upload them one by one (not in zip folder).*")
                 
         except Exception as e:
             await ctx.send(f"An error occurred while processing the zip file: {e}")
             
     else:
         if not attachment.filename.endswith(valid_extensions):
-            await ctx.send("*Invalid file type. Only *.mp3, .ogg, and .zip* files are supported.*")
+            await ctx.send("_Invalid file type. Only **.mp3**, **.ogg**, and **.zip** files are supported._")
             return
 
         file_path = f"{SERVERS_PATH}{str(ctx.guild.id)}/all_sounds/{attachment.filename}"
@@ -1314,6 +1314,34 @@ async def upload(ctx):
 async def upload_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@command_with_attributes(name='download', category='SOUNDBOARD - DATA', help='Gets a sound file from the bot for download.', usage='`!download <soundname with extension>`')
+async def download(ctx, *, sound_name: str):
+    SOUNDS_FOLDER_PATH = SERVERS_PATH + str(ctx.guild.id) + "/all_sounds/"
+    sound_path = SOUNDS_FOLDER_PATH + sound_name
+
+    if not sound_name.endswith('.mp3') and not sound_name.endswith('.ogg'):
+        await ctx.send("_You must specify the file extension. Only **.mp3** and **.ogg** files are supported._")
+        return
+
+    if os.path.exists(sound_path):
+        file_path = sound_path
+    else:
+        await ctx.send(f"*Sound `{sound_name}` does not exist, you piece of shit.*")
+        return
+
+    try:
+        await ctx.send(file=discord.File(file_path))
+    except Exception as e:
+        await ctx.send(f"*An error occurred while sending the file: `{e}`*")
+
+@download.error
+async def download_error(ctx, error):
+    if isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send("*You must specify a sound name.\n\n Example: `!download dumb sound.mp3` (spaces are allowed in file name)*")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
