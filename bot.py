@@ -874,9 +874,9 @@ async def soundlist(ctx):
         await ctx.send("*Sounds folder does not yet exist for this server.*")
     
     sorted_lines = sorted(lines, key = str.lower)
+    
     output = '\n'.join(sorted_lines)
     numSounds = len(lines)
-    chunk_size = 1994
 
     if numSounds == 0:
         await ctx.send("*You have no sounds saved!*")
@@ -884,17 +884,18 @@ async def soundlist(ctx):
 
     await ctx.send(f"### **List of all `{numSounds}` soundboard sounds:** \n\n")
     
-    chunk_size = 1994
+    chunk_size = 1989
     lines = output.split('\n')
     chunk = ""
     
     for line in lines:
         if len(chunk) + len(line) + 1 > chunk_size:
-            await ctx.send(f"```{chunk}```")
+            await ctx.send(f"```txt\n{chunk}```")
             chunk = ""
         chunk += line + '\n'
     if chunk:
-        await ctx.send(f"```{chunk}```")
+        await ctx.send(f"```txt\n{chunk}```")   
+    
 
 @soundlist.error
 async def soundlist_error(ctx, error):
@@ -915,7 +916,7 @@ async def sessionstats(ctx):
         stuff = [f'{item}: {count}' for item, count in sorted_items]
         output = '\n'.join(stuff)
         
-        chunk_size = 1994
+        chunk_size = 1989
         lines = output.split('\n')
         chunk = ""
         num = len(filelines)
@@ -925,11 +926,11 @@ async def sessionstats(ctx):
         
         for line in lines:
             if len(chunk) + len(line) + 1 > chunk_size:
-                await ctx.send(f"```{chunk}```")
+                await ctx.send(f"```txt\n{chunk}```")
                 chunk = ""
             chunk += line + '\n'
         if chunk:
-            await ctx.send(f"```{chunk}```")
+            await ctx.send(f"```txt\n{chunk}```")
     except FileNotFoundError:
         await ctx.send("*No stats for this session yet!*")
 
@@ -952,7 +953,7 @@ async def alltimestats(ctx):
         stuff = [f'{item}: {count}' for item, count in sorted_items]
         output = '\n'.join(stuff)
         
-        chunk_size = 1994
+        chunk_size = 1989
         lines = output.split('\n')
         chunk = ""
         num = len(filelines)
@@ -962,11 +963,11 @@ async def alltimestats(ctx):
         
         for line in lines:
             if len(chunk) + len(line) + 1 > chunk_size:
-                await ctx.send(f"```{chunk}```")
+                await ctx.send(f"```txt\n{chunk}```")
                 chunk = ""
             chunk += line + '\n'
         if chunk:
-            await ctx.send(f"```{chunk}```")
+            await ctx.send(f"```txt\n{chunk}```")
     except FileNotFoundError:
         await ctx.send("*No stats yet! Use `!s`, `!play`, or `!playfast` to start tracking playcount stats.*")
 
@@ -1045,7 +1046,7 @@ async def triggerlist(ctx):
     sorted_triggers = sorted(triggers.items())
     output = "\n".join([f"{trigger}: {response}" for trigger, response in sorted_triggers])
     
-    chunk_size = 1994
+    chunk_size = 1989
     lines = output.split('\n')
     chunk = ""
 
@@ -1053,11 +1054,11 @@ async def triggerlist(ctx):
     
     for line in lines:
         if len(chunk) + len(line) + 1 > chunk_size:
-            await ctx.send(f"```{chunk}```")
+            await ctx.send(f"```txt\n{chunk}```")
             chunk = ""
         chunk += line + '\n'
     if chunk:
-        await ctx.send(f"```{chunk}```")
+        await ctx.send(f"```txt\n{chunk}```")
 
 @triggerlist.error
 async def triggerlist_error(ctx, error):
@@ -1134,7 +1135,7 @@ async def looplist(ctx):
     sorted_loops = sorted(loops.items())
     output = "\n".join([f"{soundname}: {delay}" for soundname, delay in sorted_loops])
     
-    chunk_size = 1994
+    chunk_size = 1989
     lines = output.split('\n')
     chunk = ""
 
@@ -1142,11 +1143,11 @@ async def looplist(ctx):
     
     for line in lines:
         if len(chunk) + len(line) + 1 > chunk_size:
-            await ctx.send(f"```{chunk}```")
+            await ctx.send(f"```txt\n{chunk}```")
             chunk = ""
         chunk += line + '\n'
     if chunk:
-        await ctx.send(f"```{chunk}```")
+        await ctx.send(f"```txt\n{chunk}```")
 
 @looplist.error
 async def looplist_error(ctx, error):
@@ -1340,17 +1341,17 @@ async def logs(ctx, lines: int = 20):
 
         await tchannel.send("## **Recent logs from output.log:** \n\n")
         
-        chunk_size = 1994
+        chunk_size = 1989
         lines = output.split('\n')
         chunk = ""
         
         for line in lines:
             if len(chunk) + len(line) + 1 > chunk_size:
-                await ctx.send(f"```{chunk}```")
+                await ctx.send(f"```txt\n{chunk}```")
                 chunk = ""
             chunk += line + '\n'
         if chunk:
-            await ctx.send(f"```{chunk}```")
+            await ctx.send(f"```txt\n{chunk}```")
     except FileNotFoundError:
         await tchannel.send("*The log file does not exist, you piece of shit.*")
     except Exception as e:
@@ -1382,17 +1383,17 @@ async def alllogs(ctx):
 
         await tchannel.send("## **Contents of output.log:** \n\n")
         
-        chunk_size = 1994
+        chunk_size = 1989
         lines = log_content.split('\n')
         chunk = ""
         
         for line in lines:
             if len(chunk) + len(line) + 1 > chunk_size:
-                await ctx.send(f"```{chunk}```")
+                await ctx.send(f"```txt\n{chunk}```")
                 chunk = ""
             chunk += line + '\n'
         if chunk:
-            await ctx.send(f"```{chunk}```")
+            await ctx.send(f"```txt\n{chunk}```")
             
     except FileNotFoundError:
         await tchannel.send("*The log file does not exist.*")
