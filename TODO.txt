@@ -6,6 +6,6 @@
 
 -fix issue of crash when bot is force moved between VCs by server admin?
 
--file size limit
+-add discord developer instructions to readme?
 
--all_sounds folder size limit
+-fix lower casing of sound file name of bot's file attachment when !download is called
