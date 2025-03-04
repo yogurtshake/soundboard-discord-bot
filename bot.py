@@ -139,7 +139,7 @@ def initialize_config(path, guild_id):
         print(f"Removed extra configuration keys: {extra_keys} in server: {guild_id}")
         
 def load_config(guild_id):
-    config_path = os.path.join(SERVERS_PATH, guild_id, "config.txt")
+    config_path = os.path.join(SERVERS_PATH, str(guild_id), "config.txt")
     config = {}
     try:
         with open(config_path, 'r') as file:
@@ -416,15 +416,15 @@ async def s(ctx, *name):
     
     input = ' '.join(name)
     
-    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     
     if not name:
         try:
-            files = os.listdir(SOUNDS_FOLDER_PATH)
+            files = os.listdir(sounds_folder_path)
         except FileNotFoundError:
             await ctx.send("*Sounds folder does not yet exist for this server.*")
         
-        sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
+        sound_path = os.path.join(sounds_folder_path, random.choice(files))
         basename = os.path.basename(sound_path).strip()
 
         ctx.voice_client.stop()
@@ -438,12 +438,12 @@ async def s(ctx, *name):
         LAST_ACTIVITY[ctx.guild.id] = time.time()
         return
     
-    sound_path = SOUNDS_FOLDER_PATH + input + ".ogg"
-    sound_path_mp3 = SOUNDS_FOLDER_PATH + input + ".mp3"
+    sound_path = os.path.join(sounds_folder_path, input + ".ogg")
+    sound_path_mp3 = os.path.join(sounds_folder_path, input + ".mp3")
     basename = os.path.basename(sound_path).strip()
     basename_mp3 = os.path.basename(sound_path_mp3).strip()
 
-    sounds = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+    sounds = [line.lower() for line in os.listdir(sounds_folder_path)]
 
     if not basename.lower() in sounds:
         if not basename_mp3.lower() in sounds:
@@ -497,8 +497,8 @@ async def play(ctx, *arr):
     else:
         delay = 90
     
-    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
-    files = os.listdir(SOUNDS_FOLDER_PATH)
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    files = os.listdir(sounds_folder_path)
     
     PLAYING[ctx.guild.id] = True
     pcount = 0
@@ -525,7 +525,7 @@ async def play(ctx, *arr):
             PLAYING[ctx.guild.id] = False
             return
         
-        sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
+        sound_path = os.path.join(sounds_folder_path, random.choice(files))
         basename = os.path.basename(sound_path).strip()
         
         ctx.voice_client.stop()
@@ -579,8 +579,8 @@ async def playfast(ctx, *arr):
         await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
         return
     
-    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
-    files = os.listdir(SOUNDS_FOLDER_PATH)
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    files = os.listdir(sounds_folder_path)
     
     if len(arr) > 1:
             raise ValueError("Wrong input.")
@@ -606,7 +606,7 @@ async def playfast(ctx, *arr):
     
     while PLAYING[ctx.guild.id] and pfcount < 30:    
         
-        sound_path = SOUNDS_FOLDER_PATH + random.choice(files)
+        sound_path = os.path.join(sounds_folder_path, random.choice(files))
         basename = os.path.basename(sound_path).strip()
         
         ctx.voice_client.stop()
@@ -659,14 +659,14 @@ async def loop(ctx, soundname: str, delay: float):
     
     STOP_EVENT[ctx.guild.id].clear()
     
-    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     
-    sound_path = SOUNDS_FOLDER_PATH + soundname + ".ogg"
-    sound_path_mp3 = SOUNDS_FOLDER_PATH + soundname + ".mp3"
+    sound_path = os.path.join(sounds_folder_path, soundname + ".ogg")
+    sound_path_mp3 = os.path.join(sounds_folder_path, soundname + ".mp3")
     basename = os.path.basename(sound_path).strip()
     basename_mp3 = os.path.basename(sound_path_mp3).strip()
 
-    sounds = [line.lower() for line in os.listdir(SOUNDS_FOLDER_PATH)]
+    sounds = [line.lower() for line in os.listdir(sounds_folder_path)]
 
     if not basename.lower() in sounds:
         if not basename_mp3.lower() in sounds:
@@ -876,10 +876,10 @@ async def leave_error(ctx, error):
 
 @command_with_attributes(name='soundlist', category='SOUNDBOARD - DATA', help="Displays full soundlist in alphabetical order.", usage='`!soundlist`')
 async def soundlist(ctx):
-    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
     
     try:
-        lines = os.listdir(SOUNDS_FOLDER_PATH)
+        lines = os.listdir(sounds_folder_path)
     except FileNotFoundError:
         await ctx.send("*Sounds folder does not yet exist for this server.*")
     
@@ -1257,8 +1257,15 @@ async def upload(ctx):
 
     attachment = ctx.message.attachments[0]
     valid_extensions = ('.mp3', '.ogg')
+    max_folder_size = 100 * 1024 * 1024  # 100 MB
     guild_path = os.path.join(SERVERS_PATH, str(ctx.guild.id))
+    sounds_folder_path = os.path.join(guild_path, "all_sounds")
 
+    folder_size = get_folder_size(sounds_folder_path)
+    if folder_size > max_folder_size:
+        await ctx.send("*You have used all of the allotted 100 MB for your server's sounds folder. Cannot upload more files.*")
+        return
+    
     if attachment.filename.endswith('.zip'):
         zip_path = os.path.join(guild_path, attachment.filename)
         try:
@@ -1279,18 +1286,26 @@ async def upload(ctx):
                 if not file.endswith(valid_extensions):
                     invalid_files.append(file)
                 else:
-                    if os.path.exists(os.path.join(guild_path, "all_sounds", file)):
+                    if os.path.exists(os.path.join(sounds_folder_path, file)):
                         duplicate_files.append(file)
                     else:
                         valid_files.append(file)
             
-            for file in valid_files:
-                os.rename(os.path.join(temp_path, file), os.path.join(guild_path, "all_sounds", file))
-                    
             for file in invalid_files:
                 os.remove(os.path.join(temp_path, file))
             for file in duplicate_files:
                 os.remove(os.path.join(temp_path, file))
+                
+            temp_valid_size = get_folder_size(temp_path)
+            
+            if folder_size + temp_valid_size > max_folder_size:
+                for file in valid_files:
+                    os.remove(os.path.join(temp_path, file))
+                await ctx.send(f"*Upload failed. Your server's sound folder would exceed the 100 MB limit with this upload.*")
+                return
+            
+            for file in valid_files:
+                os.rename(os.path.join(temp_path, file), os.path.join(sounds_folder_path, file))    
                 
             os.rmdir(temp_path)
             os.remove(zip_path)
@@ -1318,8 +1333,12 @@ async def upload(ctx):
         if not attachment.filename.endswith(valid_extensions):
             await ctx.send("_Invalid file type. Only **.mp3**, **.ogg**, and **.zip** files are supported._")
             return
+        
+        if folder_size + attachment.size > max_folder_size:
+                await ctx.send(f"*Upload failed. Your server's sound folder would exceed the 100 MB limit with this upload.*")
+                return
 
-        file_path = os.path.join(guild_path, "all_sounds", attachment.filename)
+        file_path = os.path.join(sounds_folder_path, attachment.filename)
         
         try:
             await attachment.save(file_path)
@@ -1337,8 +1356,8 @@ async def upload_error(ctx, error):
 
 @command_with_attributes(name='download', category='SOUNDBOARD - DATA', help='Gets a sound file from the bot for download.', usage='`!download <soundname with extension>`')
 async def download(ctx, *, sound_name: str):
-    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
-    sound_path = SOUNDS_FOLDER_PATH + sound_name
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    sound_path = os.path.join(sounds_folder_path, sound_name)
 
     if not sound_name.endswith('.mp3') and not sound_name.endswith('.ogg'):
         await ctx.send("_You must specify the file extension. Only **.mp3** and **.ogg** files are supported._")
@@ -1470,8 +1489,8 @@ async def update(ctx):
     
     servers_sounds = {}
     for guild in bot.guilds:
-        SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
-        sounds = os.listdir(SOUNDS_FOLDER_PATH)
+        sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+        sounds = os.listdir(sounds_folder_path)
         servers_sounds[guild.id] = sounds
     
     await tchannel.send("Pulling latest updates from github...")
@@ -1491,10 +1510,10 @@ async def update(ctx):
                     await tchannel.send(f"### Refreshing soundlist for server: `{guild.name}`...")
                     
                     sounds = servers_sounds[guild.id]
-                    SOUNDS_FOLDER_PATH = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+                    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
                     oldCount = len(sounds)
                     
-                    sounds_new = os.listdir(SOUNDS_FOLDER_PATH)
+                    sounds_new = os.listdir(sounds_folder_path)
                     newCount = len(sounds_new)
                     
                     if oldCount == newCount:
