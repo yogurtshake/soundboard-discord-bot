@@ -1610,19 +1610,23 @@ async def upload_error(ctx, error):
 
 
 @command_with_attributes(name='download', category='SOUNDBOARD - DATA', help='Gets a sound file from the bot for download.', usage='`!download <soundname with extension>`')
-async def download(ctx, *, sound_name: str):
+async def download(ctx, *, soundname: str):
     sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
-    sound_path = os.path.join(sounds_folder_path, sound_name)
-
-    if not sound_name.endswith('.mp3') and not sound_name.endswith('.ogg'):
+    sound_path = os.path.join(sounds_folder_path, soundname)
+    basename = os.path.basename(sound_path).strip()
+    sounds = [line.lower() for line in os.listdir(sounds_folder_path)]
+    
+    if not soundname.endswith('.mp3') and not soundname.endswith('.ogg'):
         await ctx.send("_You must specify the file extension. Only **.mp3** and **.ogg** files are supported._")
         return
-
-    if os.path.exists(sound_path):
-        file_path = sound_path
-    else:
-        await ctx.send(f"*Sound `{sound_name}` does not exist, you piece of shit.*")
+    if not basename.lower() in sounds:
+        await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
         return
+    if not os.path.exists(sound_path) and not WINDOWS:
+        await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+        return
+
+    file_path = sound_path
 
     try:
         await ctx.send(file=discord.File(file_path))
