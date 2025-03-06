@@ -19,3 +19,6 @@ bobebobesus,3.2
 324,2.73
 hee ooo ouhh,2.3
 hey buddy,5
+dewey,0.3
+no,0.3
+genius,4.78
