@@ -1514,14 +1514,15 @@ async def upload(ctx):
     max_folder_size = 100 * 1024 * 1024  # 100 MB
     guild_path = os.path.join(SERVERS_PATH, str(ctx.guild.id))
     sounds_folder_path = os.path.join(guild_path, "all_sounds")
-
+    attachment_name = attachment.filename.replace("_", " ")
+    
     folder_size = get_folder_size(sounds_folder_path)
     if folder_size > max_folder_size:
         await ctx.send("*You have used all of the allotted 100 MB for your server's sounds folder. Cannot upload more files.*")
         return
     
-    if attachment.filename.endswith('.zip'):
-        zip_path = os.path.join(guild_path, attachment.filename)
+    if attachment_name.endswith('.zip'):
+        zip_path = os.path.join(guild_path, attachment_name)
         try:
             await attachment.save(zip_path)
             
@@ -1584,7 +1585,7 @@ async def upload(ctx):
             await ctx.send(f"An error occurred while processing the zip file: {e}")
             
     else:
-        if not attachment.filename.endswith(valid_extensions):
+        if not attachment_name.endswith(valid_extensions):
             await ctx.send("_Invalid file type. Only **.mp3**, **.ogg**, and **.zip** files are supported._")
             return
         
@@ -1592,11 +1593,11 @@ async def upload(ctx):
                 await ctx.send(f"*Upload failed. Your server's sound folder would exceed the 100 MB limit with this upload.*")
                 return
 
-        file_path = os.path.join(sounds_folder_path, attachment.filename)
+        file_path = os.path.join(sounds_folder_path, attachment_name)
         
         try:
             await attachment.save(file_path)
-            await ctx.send(f"Sound file `{attachment.filename}` uploaded successfully.")
+            await ctx.send(f"Sound file `{attachment_name}` uploaded successfully.")
         except Exception as e:
             await ctx.send(f"An error occurred while uploading the file: {e}")
 
