@@ -468,7 +468,7 @@ async def s(ctx, *name):
         sound_path = sound_path_mp3
         basename = basename_mp3
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
         return
 
     ctx.voice_client.stop()
@@ -691,7 +691,7 @@ async def loop(ctx, soundname: str, delay: float = None):
         sound_path = sound_path_mp3
         basename = basename_mp3
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
         return
 
     if delay is None:
@@ -792,7 +792,7 @@ async def sequence(ctx, *soundnames: str):
             sound_path = sound_path_mp3
             basename = basename_mp3
         if not os.path.exists(sound_path) and not WINDOWS:
-            await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
             return
         
         audio = AudioSegment.from_file(sound_path)
@@ -1216,7 +1216,7 @@ async def addloop(ctx, *, args: str):
                 await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
                 return
         if not os.path.exists(sound_path) and not WINDOWS:
-            await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
             return
         
         with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'loops.txt'), 'a') as file:
@@ -1322,7 +1322,7 @@ async def addsequence(ctx, *soundnames: str):
                     await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
                     return
             if not os.path.exists(sound_path) and not WINDOWS:
-                await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+                await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
                 return
                 
             sequence += soundname + ","
@@ -1623,7 +1623,7 @@ async def download(ctx, *, soundname: str):
         await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
         return
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
         return
 
     file_path = sound_path
