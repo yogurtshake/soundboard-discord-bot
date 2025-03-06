@@ -63,6 +63,16 @@ def load_triggers(file_path):
         print(f"An error occurred while reading the file: {e}")
     return triggers
 
+def load_sequences(file_path):
+    sequences = []
+    try:
+        with open(file_path, 'r') as file:
+            for line in file:
+                sequences.append(line.strip())
+    except Exception as e:
+        print(f"An error occurred while reading the file: {e}")
+    return sequences
+
 async def delete_session_stats(ctx):
     file_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt')
     try:
@@ -85,6 +95,7 @@ async def initialize_guild(guild):
     guild_config_path = os.path.join(guild_folder, "config.txt")
     guild_triggers_path = os.path.join(guild_folder, "triggers.txt")
     guild_loops_path = os.path.join(guild_folder, "loops.txt")
+    guild_sequences_path = os.path.join(guild_folder, "sequences.txt")
 
     if not os.path.exists(guild_folder):
         os.makedirs(guild_folder)
@@ -107,6 +118,9 @@ async def initialize_guild(guild):
     if not os.path.exists(guild_loops_path):    
         with open(guild_loops_path, 'a'):
             print(f"Created loops file for server: {guild.name}")
+    if not os.path.exists(guild_sequences_path):    
+        with open(guild_sequences_path, 'a'):
+            print(f"Created sequences file for server: {guild.name}")
 
 def initialize_config(path, guild_id):
     options = {
@@ -645,8 +659,8 @@ async def playfast_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='loop', category='SOUNDBOARD - PLAYING', help="Plays desired sound over and over again at desired time interval.", usage='`!loop \"<sound name>\" <delay>`', configurable = True)
-async def loop(ctx, soundname: str, delay: float):
+@command_with_attributes(name='loop', category='SOUNDBOARD - PLAYING', help="Plays desired sound over and over again at desired time interval. Default interval = sound duration", usage='`!loop \"<sound name>\"` OR `!loop \"<sound name>\" <delay>`', configurable = True)
+async def loop(ctx, soundname: str, delay: float = None):
     global PLAYING, STOP_EVENT, LAST_ACTIVITY
     
     if ctx.voice_client is None:
@@ -655,7 +669,7 @@ async def loop(ctx, soundname: str, delay: float):
     if PLAYING[ctx.guild.id]:
         await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
         return
-    if delay < 0.3:
+    if delay is not None and delay < 0.3:
         await ctx.send("*Delay less than 0.3 is forbidden. Bot would literally kill itself.*")
         return
     
@@ -679,6 +693,13 @@ async def loop(ctx, soundname: str, delay: float):
     if not os.path.exists(sound_path) and not WINDOWS:
         await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
         return
+
+    if delay is None:
+        audio = AudioSegment.from_file(sound_path)
+        delay = audio.duration_seconds
+        if delay < 0.3:
+            await ctx.send("*Delay less than 0.3 is forbidden. Bot would literally kill itself.*")
+            return
 
     LAST_ACTIVITY[ctx.guild.id] = time.time()
     PLAYING[ctx.guild.id] = True
@@ -729,7 +750,7 @@ async def loop(ctx, soundname: str, delay: float):
 @loop.error
 async def loop_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument) or isinstance(error, commands.BadArgument):
-        await ctx.send("*You must specify a sound name and delay number (in seconds).\n\n Example: `!loop soundname 10`\n Example: `!loop \"sound name with spaces\" 10`*")
+        await ctx.send("*You must specify a sound name. Delay number (in seconds) is optional.\n\n Example: `!loop soundname`\n Example: `!loop \"sound name with spaces\" 4.7`*")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
@@ -1182,6 +1203,22 @@ async def addloop(ctx, *, args: str):
         
         soundname, delay = parts
         
+        sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+        sounds = [line.lower() for line in os.listdir(sounds_folder_path)]
+        
+        sound_path = os.path.join(sounds_folder_path, soundname + ".ogg")
+        sound_path_mp3 = os.path.join(sounds_folder_path, soundname + ".mp3")
+        basename = os.path.basename(sound_path).strip()
+        basename_mp3 = os.path.basename(sound_path_mp3).strip()
+
+        if not basename.lower() in sounds:
+            if not basename_mp3.lower() in sounds:
+                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+                return
+        if not os.path.exists(sound_path) and not WINDOWS:
+            await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+            return
+        
         with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'loops.txt'), 'a') as file:
             file.write(f"{soundname},{delay}\n")
         await ctx.send(f"New loop info saved. Sound name: `{soundname}` with delay: `{delay}`")
@@ -1241,7 +1278,7 @@ async def looplist(ctx):
         return
 
     sorted_loops = sorted(loops.items())
-    output = "\n".join([f"{soundname}: {delay}" for soundname, delay in sorted_loops])
+    output = "\n".join([f'!loop \"{soundname}\" {delay}' for soundname, delay in sorted_loops])
     
     chunk_size = 1989
     lines = output.split('\n')
@@ -1259,6 +1296,129 @@ async def looplist(ctx):
 
 @looplist.error
 async def looplist_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@command_with_attributes(name='addsequence', category='SOUNDBOARD - DATA', help='Use to note down a good sequence. **ADMIN COMMAND.**', usage='`!addsequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`')
+@commands.has_permissions(administrator=True)
+async def addsequence(ctx, *soundnames: str):
+    try:
+        if len(soundnames) < 2:
+            await ctx.send('Usage: `!addsequence "<first sound>" "<second sound>" ... "<last sound>"`')
+            return
+        
+        sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+        sounds = [line.lower() for line in os.listdir(sounds_folder_path)]
+        sequence = ""
+        
+        for soundname in soundnames:
+            sound_path = os.path.join(sounds_folder_path, soundname + ".ogg")
+            sound_path_mp3 = os.path.join(sounds_folder_path, soundname + ".mp3")
+            basename = os.path.basename(sound_path).strip()
+            basename_mp3 = os.path.basename(sound_path_mp3).strip()
+
+            if not basename.lower() in sounds:
+                if not basename_mp3.lower() in sounds:
+                    await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+                    return
+            if not os.path.exists(sound_path) and not WINDOWS:
+                await ctx.send(f"*'{basename}' is missing CAPS somewhere, you piece of shit.*")
+                return
+                
+            sequence += soundname + ","
+            
+        sequence = sequence[:-1]
+        
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'sequences.txt'), 'a') as file:
+            file.write(f"{sequence}\n")
+        await ctx.send(f"New sequence info saved. Sequence: `{sequence}`.")
+        
+    except Exception as e:
+        await ctx.send(f"*An error occurred while adding the sequence info: `{e}`*")
+
+@addsequence.error
+async def addsequence_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+@command_with_attributes(name='removesequence', category='SOUNDBOARD - DATA', help='Removes a saved sequence. **ADMIN COMMAND.**', usage='`!removesequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`')
+@commands.has_permissions(administrator=True)
+async def removesequence(ctx, *soundnames: str):
+    try:
+        if len(soundnames) < 2:
+            await ctx.send('Usage: `!removesequence "<first sound>" "<second sound>" ... "<last sound>"`')
+            return
+        
+        sequence = ""
+        for soundname in soundnames:
+            sequence += soundname + ","
+        sequence = sequence[:-1]
+        
+        sequences_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), 'sequences.txt')
+        sequences = load_sequences(sequences_path)
+        
+        if sequence in sequences:
+            with open(sequences_path, 'r') as file:
+                lines = file.readlines()
+            with open(sequences_path, 'w') as file:
+                for line in lines:
+                    if line.strip() != sequence:
+                        file.write(line)
+            await ctx.send(f"Sequence `{sequence}` removed successfully.")
+        else:
+            await ctx.send(f"Sequence `{sequence}` not found.")
+    
+    except Exception as e:
+        await ctx.send(f"An error occurred while removing the sequence info: {e}")
+
+@removesequence.error
+async def removesequence_error(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@command_with_attributes(name='sequencelist', category='SOUNDBOARD - DATA', help="Displays all saved sequences.", usage='`!sequencelist`')
+async def sequencelist(ctx):
+    sequences_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), 'sequences.txt')
+    sequences = load_sequences(sequences_path)
+    
+    if not sequences:
+        await ctx.send("*No sequences found.*")
+        return
+
+    sequences_withquotes = []
+    
+    for sequence in sequences:
+        sList = sequence.split(',')
+        
+        sequence_string = "!sequence "
+        for soundname in sList:
+            soundname_withquotes = f'\"{soundname}\"'
+            sequence_string += soundname_withquotes + " "
+        sequence_string = sequence_string[:-1]
+        
+        sequences_withquotes.append(sequence_string)
+        
+
+    chunk_size = 1989
+    chunk = ""
+
+    await ctx.send(f"## **List of all `{len(sequences)}` saved sound sequences:** \n\n")
+    
+    for line in sequences_withquotes:
+        if len(chunk) + len(line) + 1 > chunk_size:
+            await ctx.send(f"```txt\n{chunk}```")
+            chunk = ""
+        chunk += line + '\n\n'
+    if chunk:
+        await ctx.send(f"```txt\n{chunk}```")
+
+@sequencelist.error
+async def sequencelist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
