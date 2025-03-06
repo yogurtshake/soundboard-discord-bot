@@ -7,3 +7,5 @@
 -add discord developer instructions to readme?
 
 -fix lower casing of sound file name of bot's file attachment when !download is called
+
+-fix issue of !upload automatically adding underscores instead of spaces in file names
