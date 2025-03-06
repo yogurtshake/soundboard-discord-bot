@@ -26,3 +26,6 @@ until,2.5
 both of you,1.9
 hobbits2,3
 CUPCAKE,0.7
+and all the,2.54
+quippy snappy,3.2
+did you hear,5
