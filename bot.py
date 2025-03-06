@@ -334,8 +334,8 @@ async def help(ctx, *input: str):
     
     if ctx.guild.id != HOME_SERVER_ID:
         del categories['DEWEY']
-        if ctx.author.id != OWNER_ID:
-            del categories['OWNER COMMANDS']
+    if ctx.author.id != OWNER_ID:
+        del categories['OWNER COMMANDS']
     del categories['Help']
     
     for category, commands in sorted(categories.items()):
