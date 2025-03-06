@@ -22,3 +22,7 @@ hey buddy,5
 dewey,0.3
 no,0.3
 genius,4.78
+until,2.5
+both of you,1.9
+hobbits2,3
+CUPCAKE,0.7
