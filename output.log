@@ -1,0 +1,35 @@
+[2025-03-06 11:27:23] [INFO    ] discord.client: logging in using static token
+[2025-03-06 11:27:24] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 2b808f6cbf1301b13bfa73346f6f4868).
+[2025-03-06 11:27:47] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-06 11:27:47] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-06 11:27:47] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central295.discord.media
+[2025-03-06 11:27:47] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-03-06 11:28:54] [INFO    ] discord.player: ffmpeg process 125636 successfully terminated with return code of 0.
+[2025-03-06 11:28:59] [INFO    ] discord.player: ffmpeg process 125641 successfully terminated with return code of 0.
+[2025-03-06 11:29:04] [INFO    ] discord.player: ffmpeg process 125645 successfully terminated with return code of 0.
+[2025-03-06 11:29:22] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-03-06 11:49:37] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 11:57:03] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 12:27:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 12:40:43] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 13:51:57] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 15:53:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 15:56:03] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 18:18:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 18:43:25] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 2b808f6cbf1301b13bfa73346f6f4868.
+[2025-03-06 19:32:51] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-06 19:32:51] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-06 19:32:51] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central8865.discord.media
+[2025-03-06 19:32:51] [INFO    ] discord.voice_state: Voice connection complete.
+Fatal (internal) error in silk/resampler.c, line 184: assertion failed: inLen >= S->Fs_in_kHz
+av_interleaved_write_frame(): Broken pipe
+av_interleaved_write_frame(): Broken pipe
+Error writing trailer of pipe:1: Broken pipe
+Error closing file pipe:1: Broken pipe
+av_interleaved_write_frame(): Broken pipe
+Error writing trailer of pipe:1: Broken pipe
+Error closing file pipe:1: Broken pipe
+Error writing trailer of pipe:1: Broken pipe
+Error closing file pipe:1: Broken pipe
+[2025-03-06 19:41:13] [INFO    ] discord.client: logging in using static token
+[2025-03-06 19:41:13] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 82a15a5dfd363d1e90e1ad0f865937a6).
