@@ -16,6 +16,7 @@ from collections import Counter
 BOT_TOKEN = "MzU3NjgzMTI2MDY5MzYyNjkw.GugV8Q.GbB2VVNp1BmKt0BktRglikOvke6KIejHjoi47A"
 HOME_SERVER_ID = 134415388233433089
 HOME_CHANNEL_ID = 1337536863640227881
+OWNER_ID = 99743926423920640
 WINDOWS = False
 
 if "\\" in os.getcwd(): 
@@ -333,7 +334,7 @@ async def help(ctx, *input: str):
     
     if ctx.guild.id != HOME_SERVER_ID:
         del categories['DEWEY']
-        if not await bot.is_owner(ctx.author):
+        if ctx.author.id != OWNER_ID:
             del categories['OWNER COMMANDS']
     del categories['Help']
     
