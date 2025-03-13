@@ -5,3 +5,5 @@
 -fix issue of crash when bot is force moved between VCs by server admin?
 
 -add discord developer instructions to readme?
+
+-add !deletesound command for admins
