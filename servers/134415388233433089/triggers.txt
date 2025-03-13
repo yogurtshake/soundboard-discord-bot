@@ -26,3 +26,4 @@ nice,nice
 hots,~~ Not ~~ **the best choice**
 <@&958165471855800340>,~~ Not ~~ **the best choice**
 leonard,## Wrong! Shuddup.
+richardpatrick,# **Richard Patrick**

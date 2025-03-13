@@ -408,3 +408,129 @@ Traceback (most recent call last):
 SystemExit
 [2025-03-11 22:10:14] [INFO    ] discord.client: logging in using static token
 [2025-03-11 22:10:15] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 8b2424273da03beac3198b244088d1d4).
+[2025-03-11 22:44:35] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-11 22:44:35] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-11 22:44:35] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: newark7855.discord.media
+[2025-03-11 22:44:35] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-03-11 22:44:40] [INFO    ] discord.player: ffmpeg process 201251 successfully terminated with return code of 0.
+[2025-03-11 22:45:06] [INFO    ] discord.player: ffmpeg process 201258 successfully terminated with return code of 0.
+[2025-03-11 22:45:06] [INFO    ] discord.player: ffmpeg process 201262 successfully terminated with return code of 0.
+[2025-03-11 22:45:06] [INFO    ] discord.player: ffmpeg process 201266 successfully terminated with return code of 0.
+[2025-03-11 22:45:07] [INFO    ] discord.player: ffmpeg process 201270 successfully terminated with return code of 0.
+[2025-03-11 22:45:07] [INFO    ] discord.player: ffmpeg process 201274 successfully terminated with return code of 0.
+[2025-03-11 22:45:07] [INFO    ] discord.player: ffmpeg process 201278 successfully terminated with return code of 0.
+[2025-03-11 22:45:08] [INFO    ] discord.player: ffmpeg process 201282 successfully terminated with return code of 0.
+[2025-03-11 22:45:08] [INFO    ] discord.player: ffmpeg process 201286 successfully terminated with return code of 0.
+[2025-03-11 22:45:08] [INFO    ] discord.player: ffmpeg process 201290 successfully terminated with return code of 0.
+[2025-03-11 22:45:08] [INFO    ] discord.player: ffmpeg process 201294 successfully terminated with return code of 0.
+[2025-03-11 22:45:09] [INFO    ] discord.player: ffmpeg process 201298 successfully terminated with return code of 0.
+[2025-03-11 22:45:09] [INFO    ] discord.player: ffmpeg process 201302 successfully terminated with return code of 0.
+[2025-03-11 22:45:09] [INFO    ] discord.player: ffmpeg process 201306 successfully terminated with return code of 0.
+[2025-03-11 22:45:10] [INFO    ] discord.player: ffmpeg process 201310 successfully terminated with return code of 0.
+[2025-03-11 22:45:10] [INFO    ] discord.player: ffmpeg process 201314 successfully terminated with return code of 0.
+[2025-03-11 22:45:10] [INFO    ] discord.player: ffmpeg process 201318 successfully terminated with return code of 0.
+[2025-03-11 22:45:11] [INFO    ] discord.player: ffmpeg process 201322 successfully terminated with return code of 0.
+[2025-03-11 22:45:11] [INFO    ] discord.player: ffmpeg process 201326 successfully terminated with return code of 0.
+[2025-03-11 22:45:11] [INFO    ] discord.player: ffmpeg process 201330 successfully terminated with return code of 0.
+[2025-03-11 22:45:12] [INFO    ] discord.player: ffmpeg process 201334 successfully terminated with return code of 0.
+[2025-03-11 22:45:12] [INFO    ] discord.player: ffmpeg process 201338 successfully terminated with return code of 0.
+[2025-03-11 22:45:12] [INFO    ] discord.player: ffmpeg process 201342 successfully terminated with return code of 0.
+[2025-03-11 22:45:12] [INFO    ] discord.player: ffmpeg process 201346 successfully terminated with return code of 0.
+[2025-03-11 22:45:13] [INFO    ] discord.player: ffmpeg process 201350 successfully terminated with return code of 0.
+[2025-03-11 22:45:13] [INFO    ] discord.player: ffmpeg process 201354 successfully terminated with return code of 0.
+[2025-03-11 22:45:13] [INFO    ] discord.player: ffmpeg process 201358 successfully terminated with return code of 0.
+[2025-03-11 22:45:14] [INFO    ] discord.player: ffmpeg process 201362 successfully terminated with return code of 0.
+[2025-03-11 22:45:14] [INFO    ] discord.player: ffmpeg process 201366 successfully terminated with return code of 0.
+[2025-03-11 22:45:14] [INFO    ] discord.player: ffmpeg process 201370 successfully terminated with return code of 0.
+[2025-03-11 22:45:15] [INFO    ] discord.player: ffmpeg process 201374 successfully terminated with return code of 0.
+[2025-03-11 22:56:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-11 23:20:15] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+[2025-03-12 01:53:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 02:16:51] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 03:08:48] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 04:15:34] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 05:48:45] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 06:20:45] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 10:18:43] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 12:26:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 13:21:15] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 13:56:53] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 16:10:44] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 17:00:27] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 19:16:34] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 20:22:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 21:39:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 22:18:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-12 23:47:42] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-13 01:03:47] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-13 02:34:50] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-13 02:34:50] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-13 02:34:50] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central2086.discord.media
+[2025-03-13 02:34:51] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-03-13 02:35:03] [INFO    ] discord.player: ffmpeg process 217234 successfully terminated with return code of 0.
+[2025-03-13 02:35:08] [INFO    ] discord.player: ffmpeg process 217238 successfully terminated with return code of 0.
+[2025-03-13 02:35:13] [INFO    ] discord.player: ffmpeg process 217242 successfully terminated with return code of 0.
+[2025-03-13 02:35:40] [INFO    ] discord.player: ffmpeg process 217278 successfully terminated with return code of 0.
+[2025-03-13 02:35:45] [INFO    ] discord.player: ffmpeg process 217282 successfully terminated with return code of 0.
+[2025-03-13 02:35:46] [INFO    ] discord.player: ffmpeg process 217286 successfully terminated with return code of 0.
+[2025-03-13 02:35:51] [INFO    ] discord.player: ffmpeg process 217290 successfully terminated with return code of 0.
+[2025-03-13 02:35:52] [INFO    ] discord.player: ffmpeg process 217294 successfully terminated with return code of 0.
+[2025-03-13 02:35:57] [INFO    ] discord.player: ffmpeg process 217298 successfully terminated with return code of 0.
+[2025-03-13 02:35:58] [INFO    ] discord.player: ffmpeg process 217302 successfully terminated with return code of 0.
+[2025-03-13 02:36:16] [INFO    ] discord.player: ffmpeg process 217333 successfully terminated with return code of 0.
+[2025-03-13 02:36:21] [INFO    ] discord.player: ffmpeg process 217341 successfully terminated with return code of 0.
+[2025-03-13 02:36:26] [INFO    ] discord.player: ffmpeg process 217345 successfully terminated with return code of 0.
+[2025-03-13 02:36:29] [INFO    ] discord.player: ffmpeg process 217349 successfully terminated with return code of 0.
+[2025-03-13 02:36:34] [INFO    ] discord.player: ffmpeg process 217353 successfully terminated with return code of 0.
+[2025-03-13 02:36:39] [INFO    ] discord.player: ffmpeg process 217357 successfully terminated with return code of 0.
+[2025-03-13 02:38:03] [INFO    ] discord.player: ffmpeg process 217374 successfully terminated with return code of 0.
+[2025-03-13 02:38:08] [INFO    ] discord.player: ffmpeg process 217378 successfully terminated with return code of 0.
+[2025-03-13 02:38:13] [INFO    ] discord.player: ffmpeg process 217386 successfully terminated with return code of 0.
+[2025-03-13 02:38:18] [INFO    ] discord.player: ffmpeg process 217392 successfully terminated with return code of 0.
+[2025-03-13 02:38:23] [INFO    ] discord.player: ffmpeg process 217396 successfully terminated with return code of 0.
+[2025-03-13 02:38:28] [INFO    ] discord.player: ffmpeg process 217402 successfully terminated with return code of 0.
+[2025-03-13 02:38:32] [INFO    ] discord.player: ffmpeg process 217408 has not terminated. Waiting to terminate...
+[2025-03-13 02:38:32] [INFO    ] discord.player: ffmpeg process 217408 should have terminated with a return code of -9.
+[2025-03-13 02:39:06] [INFO    ] discord.player: ffmpeg process 217416 has not terminated. Waiting to terminate...
+[2025-03-13 02:39:06] [INFO    ] discord.player: ffmpeg process 217416 should have terminated with a return code of -9.
+[2025-03-13 02:39:09] [INFO    ] discord.player: ffmpeg process 217420 has not terminated. Waiting to terminate...
+[2025-03-13 02:39:09] [INFO    ] discord.player: ffmpeg process 217420 should have terminated with a return code of -9.
+[2025-03-13 02:39:14] [INFO    ] discord.player: ffmpeg process 217426 successfully terminated with return code of 0.
+[2025-03-13 03:05:21] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 8b2424273da03beac3198b244088d1d4.
+[2025-03-13 03:09:39] [INFO    ] discord.player: ffmpeg process 217708 successfully terminated with return code of 0.
+[2025-03-13 03:10:01] [INFO    ] discord.player: ffmpeg process 217716 successfully terminated with return code of 0.
+[2025-03-13 03:10:13] [INFO    ] discord.player: ffmpeg process 217724 successfully terminated with return code of 0.
+[2025-03-13 03:13:13] [INFO    ] discord.player: ffmpeg process 217764 successfully terminated with return code of 0.
+[2025-03-13 04:10:20] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 212770924607438848 (Guild ID 134415388233433089)
+[2025-03-13 04:40:57] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-03-13 04:40:57] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-03-13 04:40:57] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central2086.discord.media
+[2025-03-13 04:40:57] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-03-13 04:41:04] [INFO    ] discord.player: ffmpeg process 218613 successfully terminated with return code of 0.
+[2025-03-13 04:41:09] [INFO    ] discord.player: ffmpeg process 218617 successfully terminated with return code of 0.
+[2025-03-13 04:42:33] [INFO    ] discord.player: ffmpeg process 218650 successfully terminated with return code of 0.
+[2025-03-13 04:42:37] [INFO    ] discord.player: ffmpeg process 218656 successfully terminated with return code of 0.
+[2025-03-13 04:42:48] [INFO    ] discord.player: ffmpeg process 218664 successfully terminated with return code of 0.
+[2025-03-13 04:43:08] [INFO    ] discord.player: ffmpeg process 218686 successfully terminated with return code of 0.
+[2025-03-13 04:43:13] [INFO    ] discord.player: ffmpeg process 218690 successfully terminated with return code of 0.
+[2025-03-13 04:43:24] [INFO    ] discord.player: ffmpeg process 218694 successfully terminated with return code of 0.
+[2025-03-13 04:44:01] [INFO    ] discord.player: ffmpeg process 218702 successfully terminated with return code of 0.
+[2025-03-13 04:44:15] [INFO    ] discord.player: ffmpeg process 218712 successfully terminated with return code of 0.
+[2025-03-13 04:44:25] [INFO    ] discord.player: ffmpeg process 218716 successfully terminated with return code of 0.
+[2025-03-13 04:44:51] [INFO    ] discord.player: ffmpeg process 218720 successfully terminated with return code of 0.
+[2025-03-13 04:45:10] [INFO    ] discord.player: ffmpeg process 218730 successfully terminated with return code of 0.
+[2025-03-13 04:45:21] [INFO    ] discord.player: ffmpeg process 218738 has not terminated. Waiting to terminate...
+[2025-03-13 04:45:21] [INFO    ] discord.player: ffmpeg process 218738 should have terminated with a return code of -9.
+[2025-03-13 04:45:26] [INFO    ] discord.player: ffmpeg process 218742 successfully terminated with return code of 0.
+[2025-03-13 04:45:38] [INFO    ] discord.player: ffmpeg process 218746 successfully terminated with return code of 0.
+[2025-03-13 04:45:52] [INFO    ] discord.player: ffmpeg process 218764 successfully terminated with return code of 0.
+[2025-03-13 04:45:57] [INFO    ] discord.player: ffmpeg process 218768 successfully terminated with return code of 0.
+[2025-03-13 04:46:01] [INFO    ] discord.player: ffmpeg process 218774 successfully terminated with return code of 0.
+[2025-03-13 04:46:35] [INFO    ] discord.player: ffmpeg process 218782 successfully terminated with return code of 0.
+[2025-03-13 04:49:34] [INFO    ] discord.player: ffmpeg process 218805 has not terminated. Waiting to terminate...
+[2025-03-13 04:49:34] [INFO    ] discord.player: ffmpeg process 218805 should have terminated with a return code of -9.
+[2025-03-13 04:49:53] [INFO    ] discord.player: ffmpeg process 218809 successfully terminated with return code of 0.
+[2025-03-13 04:51:22] [INFO    ] discord.player: ffmpeg process 218829 successfully terminated with return code of 0.
+[2025-03-13 04:51:28] [INFO    ] discord.player: ffmpeg process 218835 successfully terminated with return code of 0.
+[2025-03-13 04:51:42] [INFO    ] discord.player: ffmpeg process 218853 successfully terminated with return code of 0.
+[2025-03-13 04:51:44] [INFO    ] discord.player: ffmpeg process 218860 successfully terminated with return code of 0.
