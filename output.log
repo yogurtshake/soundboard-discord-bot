@@ -2191,3 +2191,450 @@ Finished playing: BUT.ogg
 [2025-03-29 15:27:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
 [2025-03-29 17:30:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
 [2025-03-29 20:23:32] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-29 21:42:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-29 23:35:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 01:27:17] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 02:18:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 03:22:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 05:23:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 07:10:27] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 10:16:47] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 11:27:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 14:46:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 18:27:47] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 22:09:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 23:31:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-30 23:46:35] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 01:11:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 03:27:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 04:51:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 05:58:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 09:27:52] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 09:43:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 10:37:25] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 11:24:43] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 13:40:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 16:42:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 18:00:52] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 19:22:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 19:23:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-03-31 22:52:45] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 01:02:48] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 04:32:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 06:06:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 09:11:20] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 11:29:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 13:04:13] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 13:25:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 14:19:17] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 16:46:07] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 18:55:02] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 20:21:24] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-01 21:55:39] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 00:39:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 01:42:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 02:17:47] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 03:01:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 04:33:38] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 05:25:59] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-04-02 05:25:59] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-04-02 05:25:59] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central3192.discord.media
+[2025-04-02 05:26:00] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-04-02 05:28:40] [INFO    ] discord.player: ffmpeg process 435916 successfully terminated with return code of 0.
+[2025-04-02 05:28:51] [INFO    ] discord.player: ffmpeg process 435924 successfully terminated with return code of 0.
+[2025-04-02 05:43:48] [INFO    ] discord.player: ffmpeg process 436125 successfully terminated with return code of 0.
+[2025-04-02 05:43:53] [INFO    ] discord.player: ffmpeg process 436131 successfully terminated with return code of 0.
+[2025-04-02 05:43:57] [INFO    ] discord.player: ffmpeg process 436139 successfully terminated with return code of 0.
+[2025-04-02 05:45:33] [INFO    ] discord.player: ffmpeg process 436167 successfully terminated with return code of 0.
+[2025-04-02 05:45:38] [INFO    ] discord.player: ffmpeg process 436171 successfully terminated with return code of 0.
+[2025-04-02 05:45:42] [INFO    ] discord.player: ffmpeg process 436176 successfully terminated with return code of 0.
+[2025-04-02 05:59:29] [INFO    ] discord.player: ffmpeg process 436330 successfully terminated with return code of 0.
+[2025-04-02 05:59:34] [INFO    ] discord.player: ffmpeg process 436336 successfully terminated with return code of 0.
+[2025-04-02 05:59:45] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+[2025-04-02 08:29:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 09:53:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 11:18:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 12:31:53] [ERROR   ] discord.client: Attempting a reconnect in 1.63s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 667, in connect
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 648, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+[2025-04-02 12:31:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 12:54:03] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 13:11:52] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 13:27:55] [ERROR   ] discord.client: Attempting a reconnect in 1.81s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 667, in connect
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 648, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+[2025-04-02 13:27:57] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 15:26:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 16:02:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 16:40:03] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 17:06:22] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 17:26:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 18:44:46] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 18:45:34] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 20:03:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 22:22:17] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 22:48:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 22:55:24] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-02 23:50:34] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 02:15:45] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 05:23:17] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 07:23:04] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 07:42:43] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 09:15:04] [ERROR   ] discord.client: Attempting a reconnect in 0.64s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 667, in connect
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 648, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+[2025-04-03 09:15:05] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 10:06:11] [WARNING ] discord.gateway: Can't keep up, shard ID None websocket is 13.5s behind.
+[2025-04-03 10:06:11] [WARNING ] discord.gateway: Can't keep up, shard ID None websocket is 13.5s behind.
+[2025-04-03 11:05:22] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 12:12:44] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 13:43:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 15:10:32] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 16:22:20] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 19:26:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 20:30:21] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-03 22:19:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 01:29:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 03:20:52] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 07:10:31] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 08:47:35] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 10:39:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 13:06:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 14:25:54] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 16:08:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 17:46:52] [ERROR   ] discord.client: Attempting a reconnect in 1.12s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 667, in connect
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 648, in poll_event
+    raise ConnectionClosed(self.socket, shard_id=self.shard_id, code=code) from None
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 1000
+[2025-04-04 17:46:53] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 19:28:11] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 19:44:27] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 19:48:11] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 20:10:48] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 21:09:56] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-04 22:50:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 02:46:34] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 05:31:48] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 06:41:13] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 07:38:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 09:22:13] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 10:48:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 11:12:37] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 11:57:10] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 12:33:07] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 13:14:09] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 17:09:02] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 18:13:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 18:50:24] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 22:16:29] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-05 22:48:57] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 02:08:35] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 05:30:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 06:04:25] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 08:47:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 11:38:33] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 15:13:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 15:35:34] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 17:41:23] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 18:41:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-06 22:19:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 01:00:37] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 02:09:24] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 05:40:36] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 07:49:29] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 08:57:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 10:44:06] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 12:23:15] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 12:28:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 14:50:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 17:37:59] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 20:15:58] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 22:45:11] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 23:21:25] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-07 23:35:52] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 03:01:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 06:32:59] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 08:13:22] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 08:28:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 11:12:21] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 13:08:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 13:29:33] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 16:53:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 18:42:58] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 19:48:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-08 22:48:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 00:22:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 00:47:39] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 01:34:41] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-04-09 01:34:41] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-04-09 01:34:41] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: us-central2462.discord.media
+[2025-04-09 01:34:42] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-04-09 01:34:54] [INFO    ] discord.player: ffmpeg process 514344 successfully terminated with return code of 0.
+[2025-04-09 01:34:58] [INFO    ] discord.player: ffmpeg process 514349 has not terminated. Waiting to terminate...
+[2025-04-09 01:34:58] [INFO    ] discord.player: ffmpeg process 514349 should have terminated with a return code of -9.
+[2025-04-09 01:35:03] [INFO    ] discord.player: ffmpeg process 514353 successfully terminated with return code of 0.
+[2025-04-09 01:35:08] [INFO    ] discord.player: ffmpeg process 514357 successfully terminated with return code of 0.
+[2025-04-09 01:35:10] [INFO    ] discord.player: ffmpeg process 514361 successfully terminated with return code of 0.
+[2025-04-09 01:35:32] [INFO    ] discord.player: ffmpeg process 514369 successfully terminated with return code of 0.
+[2025-04-09 01:35:42] [INFO    ] discord.player: ffmpeg process 514375 successfully terminated with return code of 0.
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 40536
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 41560
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 42584
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 43724 >= 43608
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 88548
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 89572
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 90596
+[s16le @ 0x556f67105f00] Application provided invalid, non monotonically increasing dts to muxer in stream 0: 91736 >= 91620
+[2025-04-09 01:35:47] [INFO    ] discord.player: ffmpeg process 514379 successfully terminated with return code of 0.
+[2025-04-09 01:35:54] [INFO    ] discord.player: ffmpeg process 514383 successfully terminated with return code of 0.
+[2025-04-09 01:35:59] [INFO    ] discord.player: ffmpeg process 514387 successfully terminated with return code of 0.
+[2025-04-09 01:36:09] [INFO    ] discord.player: ffmpeg process 514393 successfully terminated with return code of 0.
+[2025-04-09 01:37:40] [INFO    ] discord.player: ffmpeg process 514416 successfully terminated with return code of 0.
+[2025-04-09 01:39:09] [INFO    ] discord.player: ffmpeg process 514428 successfully terminated with return code of 0.
+[2025-04-09 01:40:40] [INFO    ] discord.player: ffmpeg process 514443 successfully terminated with return code of 0.
+[2025-04-09 01:42:10] [INFO    ] discord.player: ffmpeg process 514457 successfully terminated with return code of 0.
+[2025-04-09 01:43:37] [INFO    ] discord.player: ffmpeg process 514467 successfully terminated with return code of 0.
+[2025-04-09 01:45:10] [INFO    ] discord.player: ffmpeg process 514487 successfully terminated with return code of 0.
+[2025-04-09 01:46:40] [INFO    ] discord.player: ffmpeg process 514500 successfully terminated with return code of 0.
+[2025-04-09 01:48:09] [INFO    ] discord.player: ffmpeg process 514516 successfully terminated with return code of 0.
+[2025-04-09 01:49:39] [INFO    ] discord.player: ffmpeg process 514526 successfully terminated with return code of 0.
+[2025-04-09 01:51:05] [INFO    ] discord.player: ffmpeg process 514537 successfully terminated with return code of 0.
+[2025-04-09 01:52:40] [INFO    ] discord.player: ffmpeg process 514548 successfully terminated with return code of 0.
+[2025-04-09 01:54:10] [INFO    ] discord.player: ffmpeg process 514556 successfully terminated with return code of 0.
+[2025-04-09 01:55:40] [INFO    ] discord.player: ffmpeg process 514574 successfully terminated with return code of 0.
+[2025-04-09 01:57:08] [INFO    ] discord.player: ffmpeg process 514585 successfully terminated with return code of 0.
+[2025-04-09 01:58:40] [INFO    ] discord.player: ffmpeg process 514600 successfully terminated with return code of 0.
+[2025-04-09 02:00:10] [INFO    ] discord.player: ffmpeg process 514612 successfully terminated with return code of 0.
+[2025-04-09 02:01:40] [INFO    ] discord.player: ffmpeg process 514622 successfully terminated with return code of 0.
+[2025-04-09 02:03:09] [INFO    ] discord.player: ffmpeg process 514635 successfully terminated with return code of 0.
+[2025-04-09 02:04:38] [INFO    ] discord.player: ffmpeg process 514647 successfully terminated with return code of 0.
+[2025-04-09 02:06:08] [INFO    ] discord.player: ffmpeg process 514665 successfully terminated with return code of 0.
+[2025-04-09 02:07:38] [INFO    ] discord.player: ffmpeg process 514678 successfully terminated with return code of 0.
+[2025-04-09 02:09:10] [INFO    ] discord.player: ffmpeg process 514692 successfully terminated with return code of 0.
+[2025-04-09 02:10:40] [INFO    ] discord.player: ffmpeg process 514702 successfully terminated with return code of 0.
+[2025-04-09 02:12:10] [INFO    ] discord.player: ffmpeg process 514714 successfully terminated with return code of 0.
+[2025-04-09 02:13:39] [INFO    ] discord.player: ffmpeg process 514727 successfully terminated with return code of 0.
+[2025-04-09 02:15:10] [INFO    ] discord.player: ffmpeg process 514746 successfully terminated with return code of 0.
+[2025-04-09 02:16:40] [INFO    ] discord.player: ffmpeg process 514754 successfully terminated with return code of 0.
+[2025-04-09 02:18:10] [INFO    ] discord.player: ffmpeg process 514774 successfully terminated with return code of 0.
+[2025-04-09 02:19:40] [INFO    ] discord.player: ffmpeg process 514787 successfully terminated with return code of 0.
+[2025-04-09 02:21:08] [INFO    ] discord.player: ffmpeg process 514797 successfully terminated with return code of 0.
+[2025-04-09 02:22:40] [INFO    ] discord.player: ffmpeg process 514807 successfully terminated with return code of 0.
+[2025-04-09 02:24:10] [INFO    ] discord.player: ffmpeg process 514818 successfully terminated with return code of 0.
+[2025-04-09 02:25:35] [INFO    ] discord.player: ffmpeg process 514832 successfully terminated with return code of 0.
+[2025-04-09 02:27:10] [INFO    ] discord.player: ffmpeg process 514846 successfully terminated with return code of 0.
+[2025-04-09 02:28:39] [INFO    ] discord.player: ffmpeg process 514863 successfully terminated with return code of 0.
+[2025-04-09 02:30:10] [INFO    ] discord.player: ffmpeg process 514873 successfully terminated with return code of 0.
+[2025-04-09 02:31:40] [INFO    ] discord.player: ffmpeg process 514885 successfully terminated with return code of 0.
+[2025-04-09 02:33:10] [INFO    ] discord.player: ffmpeg process 514897 successfully terminated with return code of 0.
+[2025-04-09 02:34:36] [INFO    ] discord.player: ffmpeg process 514912 successfully terminated with return code of 0.
+[2025-04-09 02:38:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 03:15:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 03:25:22] [INFO    ] discord.player: ffmpeg process 515249 successfully terminated with return code of 0.
+[2025-04-09 03:25:30] [INFO    ] discord.player: ffmpeg process 515253 successfully terminated with return code of 0.
+[2025-04-09 03:45:33] [INFO    ] discord.player: ffmpeg process 515382 successfully terminated with return code of 0.
+[2025-04-09 03:47:03] [INFO    ] discord.player: ffmpeg process 515403 successfully terminated with return code of 0.
+[2025-04-09 03:48:33] [INFO    ] discord.player: ffmpeg process 515416 successfully terminated with return code of 0.
+[2025-04-09 03:50:03] [INFO    ] discord.player: ffmpeg process 515428 successfully terminated with return code of 0.
+[2025-04-09 03:51:33] [INFO    ] discord.player: ffmpeg process 515438 successfully terminated with return code of 0.
+[2025-04-09 03:53:03] [INFO    ] discord.player: ffmpeg process 515454 successfully terminated with return code of 0.
+[2025-04-09 03:54:31] [INFO    ] discord.player: ffmpeg process 515464 successfully terminated with return code of 0.
+[2025-04-09 03:56:02] [INFO    ] discord.player: ffmpeg process 515476 successfully terminated with return code of 0.
+[2025-04-09 03:57:33] [INFO    ] discord.player: ffmpeg process 515491 successfully terminated with return code of 0.
+[2025-04-09 03:58:59] [INFO    ] discord.player: ffmpeg process 515508 successfully terminated with return code of 0.
+[2025-04-09 04:00:33] [INFO    ] discord.player: ffmpeg process 515523 successfully terminated with return code of 0.
+[2025-04-09 04:02:03] [INFO    ] discord.player: ffmpeg process 515532 successfully terminated with return code of 0.
+[2025-04-09 04:03:33] [INFO    ] discord.player: ffmpeg process 515551 successfully terminated with return code of 0.
+[2025-04-09 04:05:03] [INFO    ] discord.player: ffmpeg process 515567 successfully terminated with return code of 0.
+[2025-04-09 04:06:33] [INFO    ] discord.player: ffmpeg process 515582 successfully terminated with return code of 0.
+[2025-04-09 04:08:02] [INFO    ] discord.player: ffmpeg process 515606 successfully terminated with return code of 0.
+[2025-04-09 04:09:33] [INFO    ] discord.player: ffmpeg process 515623 successfully terminated with return code of 0.
+[2025-04-09 04:11:03] [INFO    ] discord.player: ffmpeg process 515639 successfully terminated with return code of 0.
+[2025-04-09 04:12:33] [INFO    ] discord.player: ffmpeg process 515661 successfully terminated with return code of 0.
+[2025-04-09 04:14:03] [INFO    ] discord.player: ffmpeg process 515678 successfully terminated with return code of 0.
+[2025-04-09 04:15:32] [INFO    ] discord.player: ffmpeg process 515696 successfully terminated with return code of 0.
+[2025-04-09 04:17:03] [INFO    ] discord.player: ffmpeg process 515721 successfully terminated with return code of 0.
+[2025-04-09 04:18:33] [INFO    ] discord.player: ffmpeg process 515741 successfully terminated with return code of 0.
+[2025-04-09 04:20:03] [INFO    ] discord.player: ffmpeg process 515763 successfully terminated with return code of 0.
+[2025-04-09 04:21:30] [INFO    ] discord.player: ffmpeg process 515788 successfully terminated with return code of 0.
+[2025-04-09 04:23:03] [INFO    ] discord.player: ffmpeg process 515812 successfully terminated with return code of 0.
+[2025-04-09 04:24:33] [INFO    ] discord.player: ffmpeg process 515833 successfully terminated with return code of 0.
+[2025-04-09 04:26:03] [INFO    ] discord.player: ffmpeg process 515863 successfully terminated with return code of 0.
+[2025-04-09 04:27:32] [INFO    ] discord.player: ffmpeg process 515880 successfully terminated with return code of 0.
+[2025-04-09 04:29:03] [INFO    ] discord.player: ffmpeg process 515899 successfully terminated with return code of 0.
+[2025-04-09 04:30:33] [INFO    ] discord.player: ffmpeg process 515921 successfully terminated with return code of 0.
+[2025-04-09 04:32:03] [INFO    ] discord.player: ffmpeg process 515939 successfully terminated with return code of 0.
+[2025-04-09 04:33:33] [INFO    ] discord.player: ffmpeg process 515961 successfully terminated with return code of 0.
+[2025-04-09 04:35:03] [INFO    ] discord.player: ffmpeg process 515974 successfully terminated with return code of 0.
+[2025-04-09 04:36:33] [INFO    ] discord.player: ffmpeg process 515994 successfully terminated with return code of 0.
+[2025-04-09 04:38:03] [INFO    ] discord.player: ffmpeg process 516013 successfully terminated with return code of 0.
+[2025-04-09 04:39:33] [INFO    ] discord.player: ffmpeg process 516040 successfully terminated with return code of 0.
+[2025-04-09 04:41:03] [INFO    ] discord.player: ffmpeg process 516066 successfully terminated with return code of 0.
+[2025-04-09 04:41:19] [INFO    ] discord.player: ffmpeg process 516074 successfully terminated with return code of 0.
+[2025-04-09 04:42:31] [INFO    ] discord.player: ffmpeg process 516084 successfully terminated with return code of 0.
+[2025-04-09 04:44:01] [INFO    ] discord.player: ffmpeg process 516106 successfully terminated with return code of 0.
+[2025-04-09 05:47:55] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+[2025-04-09 05:58:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 06:34:23] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 09:29:00] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 10:32:39] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 12:14:39] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 13:12:24] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 16:39:02] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 17:08:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 19:10:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 20:58:05] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 21:33:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-09 22:48:47] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 01:57:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 05:54:44] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 08:38:03] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 10:47:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 11:39:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 11:59:30] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 14:38:26] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 15:15:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 15:55:57] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 16:48:32] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 17:10:31] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 17:16:55] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 17:49:10] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 18:07:56] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 18:18:14] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 560cfba0074d8070b3dc51511955b158.
+[2025-04-10 19:58:38] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 19:58:54] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 19:58:59] [ERROR   ] discord.client: Attempting a reconnect in 1.18s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 1021, in _ws_connect
+    raise WSServerHandshakeError(
+aiohttp.client_exceptions.WSServerHandshakeError: 520, message='Invalid response status', url='wss://gateway-us-east1-b.discord.gg/?v=10&encoding=json&compress=zlib-stream'
+[2025-04-10 19:59:05] [ERROR   ] discord.client: Attempting a reconnect in 0.06s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 1021, in _ws_connect
+    raise WSServerHandshakeError(
+aiohttp.client_exceptions.WSServerHandshakeError: 520, message='Invalid response status', url='wss://gateway.discord.gg/?v=10&encoding=json&compress=zlib-stream'
+[2025-04-10 19:59:10] [ERROR   ] discord.client: Attempting a reconnect in 0.74s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 1021, in _ws_connect
+    raise WSServerHandshakeError(
+aiohttp.client_exceptions.WSServerHandshakeError: 520, message='Invalid response status', url='wss://gateway.discord.gg/?v=10&encoding=json&compress=zlib-stream'
+[2025-04-10 19:59:20] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:00:39] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:01:02] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:01:07] [ERROR   ] discord.client: Attempting a reconnect in 6.73s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 1021, in _ws_connect
+    raise WSServerHandshakeError(
+aiohttp.client_exceptions.WSServerHandshakeError: 520, message='Invalid response status', url='wss://gateway.discord.gg/?v=10&encoding=json&compress=zlib-stream'
+[2025-04-10 20:01:18] [ERROR   ] discord.client: Attempting a reconnect in 13.29s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 1021, in _ws_connect
+    raise WSServerHandshakeError(
+aiohttp.client_exceptions.WSServerHandshakeError: 520, message='Invalid response status', url='wss://gateway.discord.gg/?v=10&encoding=json&compress=zlib-stream'
+[2025-04-10 20:01:36] [ERROR   ] discord.client: Attempting a reconnect in 24.89s
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 664, in connect
+    self.ws = await asyncio.wait_for(coro, timeout=60.0)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 479, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 374, in from_client
+    socket = await client.http.ws_connect(str(url))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/http.py", line 550, in ws_connect
+    return await self.__session.ws_connect(url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 1021, in _ws_connect
+    raise WSServerHandshakeError(
+aiohttp.client_exceptions.WSServerHandshakeError: 520, message='Invalid response status', url='wss://gateway.discord.gg/?v=10&encoding=json&compress=zlib-stream'
+[2025-04-10 20:02:49] [WARNING ] discord.gateway: Can't keep up, shard ID None websocket is 27.1s behind.
+[2025-04-10 20:03:04] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:03:39] [WARNING ] discord.gateway: Can't keep up, shard ID None websocket is 17.9s behind.
+[2025-04-10 20:04:01] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:05:12] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:05:44] [WARNING ] discord.gateway: Can't keep up, shard ID None websocket is 18.7s behind.
+[2025-04-10 20:07:07] [WARNING ] discord.gateway: Can't keep up, shard ID None websocket is 18.7s behind.
+[2025-04-10 20:07:29] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:08:45] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:09:47] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:11:25] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:12:30] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:13:16] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-04-10 20:13:21] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: b950584bf11bc943e386171153ee048e).
+[2025-04-10 20:19:58] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session b950584bf11bc943e386171153ee048e.
