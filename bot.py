@@ -278,6 +278,17 @@ async def on_message(message):
         await bot.process_commands(message)
         return
     
+    # TO DELETE LATER
+    if "door key" in message.content:
+        await message.channel.send("If there is a door, there must be a key")
+        await message.channel.send("If there is a key, there must be a door")
+        return
+    
+    if "key door" in message.content:
+        await message.channel.send("If there is a key, there must be a door")
+        await message.channel.send("If there is a door, there must be a key")
+        return
+    
     triggers_path = os.path.join(SERVERS_PATH, str(message.guild.id), 'triggers.txt')
     triggers = load_triggers(triggers_path)
     
