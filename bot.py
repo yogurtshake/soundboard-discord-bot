@@ -859,6 +859,100 @@ async def sequence_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
+@command_with_attributes(name='opsequence', category='OWNER', help="Plays desired sounds in sequence in given order. No limit.", usage='`!sequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`', configurable = True)
+@commands.is_owner()
+async def opsequence(ctx, *soundnames: str):
+    global PLAYING, STOP_EVENT, LAST_ACTIVITY
+    
+    if ctx.voice_client is None:
+        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        return
+    if PLAYING[ctx.guild.id]:
+        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
+        return
+    if len(soundnames) < 2:
+        await ctx.send("*You need at least 2 sounds to get use out of this command, dipshit.*")
+        return
+    
+    STOP_EVENT[ctx.guild.id].clear()
+    
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    sounds = [line.lower() for line in os.listdir(sounds_folder_path)]
+    
+    soundpaths = []
+    
+    for soundname in soundnames:
+        sound_path = os.path.join(sounds_folder_path, soundname + ".ogg")
+        sound_path_mp3 = os.path.join(sounds_folder_path, soundname + ".mp3")
+        basename = os.path.basename(sound_path).strip()
+        basename_mp3 = os.path.basename(sound_path_mp3).strip()
+
+        if not basename.lower() in sounds:
+            if not basename_mp3.lower() in sounds:
+                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+                return
+            sound_path = sound_path_mp3
+            basename = basename_mp3
+        if not os.path.exists(sound_path) and not WINDOWS:
+            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+            return
+        
+        audio = AudioSegment.from_file(sound_path)
+        duration = audio.duration_seconds
+        values = (sound_path, basename, duration)
+        
+        soundpaths.append(values)
+
+    LAST_ACTIVITY[ctx.guild.id] = time.time()
+    PLAYING[ctx.guild.id] = True
+    
+    message = get_config(ctx.guild.id,"!loop_message")[0]
+    if message == "default":
+        message = "The fuck is this shit?"
+    
+    await ctx.send(f"Playing sequence. {message}")
+    
+    try:
+        for values in soundpaths:
+            sound_path = values[0]
+            basename = values[1]
+            duration = values[2]
+            
+            ctx.voice_client.stop()
+            ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
+            
+            with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
+                file.write(basename + '\n')
+            with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
+                file.write(basename + '\n')
+
+            LAST_ACTIVITY[ctx.guild.id] = time.time()    
+            
+            try:
+                await asyncio.wait_for(STOP_EVENT[ctx.guild.id].wait(), timeout=duration)
+            except asyncio.TimeoutError:
+                pass
+            
+            if PLAYING[ctx.guild.id] == False:
+                return
+            
+            #await asyncio.sleep(duration)
+    except Exception as e:
+            await ctx.send(f"*An unexpected error occurred: {e}*")
+            
+    PLAYING[ctx.guild.id] = False
+
+@opsequence.error
+async def opsequence_error(ctx, error):
+    if isinstance(error, commands.NotOwner):
+        await ctx.send("# No.")
+    elif isinstance(error, commands.MissingRequiredArgument) or isinstance(error, commands.BadArgument):
+        await ctx.send("*You must specify multiple sound names.\n\n Usage: `!sequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`*")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+
 @command_with_attributes(name='stop', category='SOUNDBOARD - PLAYING', help="Stops playing sounds.", usage='`!stop`', configurable = True)
 async def stop(ctx):
     global PLAYING, STOP_EVENT
