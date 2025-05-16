@@ -7,3 +7,4 @@
 !leave_message,default,bot message after command
 default_text_channel,357685899569528833,sets default text channel for non-command-related bot messages. USE CHANNEL ID
 !sequence_message,default,bot message after command
+!opsequence_message,default,bot message after command
