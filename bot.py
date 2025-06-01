@@ -96,6 +96,7 @@ async def initialize_guild(guild):
     guild_triggers_path = os.path.join(guild_folder, "triggers.txt")
     guild_loops_path = os.path.join(guild_folder, "loops.txt")
     guild_sequences_path = os.path.join(guild_folder, "sequences.txt")
+    guild_shutup_stats_path = os.path.join(guild_folder, "shutup_stats.txt")
 
     if not os.path.exists(guild_folder):
         os.makedirs(guild_folder)
@@ -121,6 +122,9 @@ async def initialize_guild(guild):
     if not os.path.exists(guild_sequences_path):    
         with open(guild_sequences_path, 'a'):
             print(f"Created sequences file for server: {guild.name}")
+    if not os.path.exists(guild_shutup_stats_path):    
+        with open(guild_shutup_stats_path, 'a'):
+            print(f"Created shut up stats file for server: {guild.name}")
 
 def initialize_config(path, guild_id):
     options = {
@@ -274,19 +278,11 @@ async def on_message(message):
     if message.author == bot.user:
         return
     
+    if message.guild is None:
+        return
+    
     if message.content.startswith(bot.command_prefix):
         await bot.process_commands(message)
-        return
-    
-    # TO DELETE LATER
-    if "door key" in message.content:
-        await message.channel.send("If there is a door, there must be a key")
-        await message.channel.send("If there is a key, there must be a door")
-        return
-    
-    if "key door" in message.content:
-        await message.channel.send("If there is a key, there must be a door")
-        await message.channel.send("If there is a door, there must be a key")
         return
     
     triggers_path = os.path.join(SERVERS_PATH, str(message.guild.id), 'triggers.txt')
@@ -304,6 +300,10 @@ async def on_message(message):
             await message.channel.send('# **Wrong! Shuddup.**')
         else: 
             await message.channel.send('**Wrong! Shuddup.**')
+            
+        with open(os.path.join(SERVERS_PATH, str(message.guild.id), 'shutup_stats.txt'), 'a') as file:
+            file.write(message.author.name + '\n')
+        
 
 @bot.event
 async def on_guild_join(guild):
@@ -1203,6 +1203,43 @@ async def alltimestats(ctx):
 
 @alltimestats.error
 async def alltimestats_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@command_with_attributes(name='shutupstats', category='MESSAGE TRIGGERS', help="Displays 'Wrong! Shuddup.' stats for all time.", usage='`!shutupstats`')
+async def shutupstats(ctx):
+    try:
+        with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'shutup_stats.txt'), 'r') as file:
+            filelines = file.readlines()
+        
+        shortened_lines = [s.strip() for s in filelines]
+        counter = Counter(shortened_lines)
+        
+        sorted_items = sorted(counter.items(), key=lambda item: item[1], reverse=True)
+        
+        stuff = [f'{item}: {count}' for item, count in sorted_items]
+        output = '\n'.join(stuff)
+        
+        chunk_size = 1989
+        lines = output.split('\n')
+        chunk = ""
+        num = len(filelines)
+
+        await ctx.send("## **Bot 'Wrong! Shuddup.' stats as of 2025-05-01:** \n\n")
+        await ctx.send(f"### Shuddup count: `{num}` \n\n")
+        
+        for line in lines:
+            if len(chunk) + len(line) + 1 > chunk_size:
+                await ctx.send(f"```txt\n{chunk}```")
+                chunk = ""
+            chunk += line + '\n'
+        if chunk:
+            await ctx.send(f"```txt\n{chunk}```")
+    except FileNotFoundError:
+        await ctx.send("*No stats yet! Get owned by the bot to start tracking shut up stats.*")
+
+@shutupstats.error
+async def shutupstats_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
