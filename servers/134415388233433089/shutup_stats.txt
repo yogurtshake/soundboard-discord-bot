@@ -25,3 +25,4 @@ cute.on.fridays
 LSK
 cute.on.fridays
 cute.on.fridays
+.lsk
