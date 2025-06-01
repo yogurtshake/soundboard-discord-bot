@@ -1225,7 +1225,7 @@ async def shutupstats(ctx):
         chunk = ""
         num = len(filelines)
 
-        await ctx.send("## **_'Wrong! Shuddup.'_ stats as of 2025-05-01:** \n\n")
+        await ctx.send("## **_'Wrong! Shuddup.'_ stats since 2025-05-01:** \n\n")
         await ctx.send(f"### Shuddup count: `{num}` \n\n")
         
         for line in lines:
