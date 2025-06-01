@@ -302,7 +302,7 @@ async def on_message(message):
             await message.channel.send('**Wrong! Shuddup.**')
             
         with open(os.path.join(SERVERS_PATH, str(message.guild.id), 'shutup_stats.txt'), 'a') as file:
-            file.write(message.author.name + '\n')
+            file.write(message.author.display_name + '\n')
         
 
 @bot.event
@@ -1225,7 +1225,7 @@ async def shutupstats(ctx):
         chunk = ""
         num = len(filelines)
 
-        await ctx.send("## **Bot 'Wrong! Shuddup.' stats as of 2025-05-01:** \n\n")
+        await ctx.send("## **_'Wrong! Shuddup.'_ stats as of 2025-05-01:** \n\n")
         await ctx.send(f"### Shuddup count: `{num}` \n\n")
         
         for line in lines:
