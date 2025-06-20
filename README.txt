@@ -109,7 +109,7 @@ nohup python bot.py >> output.log 2>&1 &
 -> ps aux | grep bot.py
 
    Explanation of Each Column:
-	USER: The user who owns the process (lucassu+).
+	USER: The user who owns the process.
 	PID: The process ID (e.g., 103710, 103711, 103813).
 	%CPU: The percentage of CPU usage.
 	%MEM: The percentage of memory usage.
