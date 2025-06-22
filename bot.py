@@ -289,7 +289,7 @@ async def on_message(message):
     triggers = load_triggers(triggers_path)
     
     for trigger, response in triggers.items():
-        if trigger in message.content:
+        if trigger.lower() in message.content.lower():
             await message.channel.send(response)
             return
     
