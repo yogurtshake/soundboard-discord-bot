@@ -12630,3 +12630,2003 @@ discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
 [2025-06-20 04:00:44] [INFO    ] discord.voice_state: Timed out connecting to voice
 [2025-06-20 04:00:44] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
 [2025-06-20 04:00:44] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 134415388233433090 (Guild ID 134415388233433089)
+[2025-06-20 04:01:01] [ERROR   ] discord.client: Ignoring exception in on_message
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 490, in wait_for
+    return fut.result()
+           ^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 407, in _inner_connect
+    await self._wait_for_state(ConnectionFlowState.got_both_voice_updates)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 559, in _wait_for_state
+    await sane_wait_for([self._state_event.wait()], timeout=timeout)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/utils.py", line 714, in sane_wait_for
+    done, pending = await asyncio.wait(ensured, timeout=timeout, return_when=asyncio.ALL_COMPLETED)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 418, in wait
+    return await _wait(fs, timeout, return_when, loop)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 525, in _wait
+    await waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 997, in join
+    await channel.connect()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/abc.py", line 1966, in connect
+    await voice.connect(timeout=timeout, reconnect=reconnect, self_deaf=self_deaf, self_mute=self_mute)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_client.py", line 305, in connect
+    await self._connection.connect(
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 380, in connect
+    await self._connector
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 384, in _wrap_connect
+    await self._connect(*args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 429, in _connect
+    await asyncio.wait_for(
+  File "/usr/lib/python3.11/asyncio/tasks.py", line 492, in wait_for
+    raise exceptions.TimeoutError() from exc
+TimeoutError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 244, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: TimeoutError: 
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 217, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1008, in join_error
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/context.py", line 1039, in send
+    return await super().send(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/abc.py", line 1618, in send
+    data = await state.http.send_message(channel.id, params=params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/http.py", line 638, in request
+    async with self.__session.request(method, url, **kwargs) as response:
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 1425, in __aenter__
+    self._resp: _RetType = await self._coro
+                           ^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/aiohttp/client.py", line 512, in _request
+    raise RuntimeError("Session is closed")
+RuntimeError: Session is closed
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1370, in invoke
+    await ctx.command.dispatch_error(ctx, exc)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 641, in dispatch_error
+    await injected(ctx, error)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 223, in wrapped
+    raise CommandInvokeError(exc) from exc
+discord.ext.commands.errors.CommandInvokeError: Command raised an exception: RuntimeError: Session is closed
+BOT AWAKE AND READY
+/home/lucassukeunkim/scuffed_discord_bot/servers/134415388233433089/session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2218, in kys
+    sys.exit()
+SystemExit
+[2025-06-20 05:06:26] [INFO    ] discord.client: logging in using static token
+[2025-06-20 05:06:26] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 572e1aca6ee107d3ba14df142b49572e).
+[2025-06-20 06:19:19] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 10:10:10] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 11:34:18] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 11:40:33] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 14:41:48] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 15:19:16] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 16:29:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 16:59:35] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 17:04:59] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 18:56:41] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 19:07:28] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 21:10:31] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 572e1aca6ee107d3ba14df142b49572e.
+[2025-06-20 22:46:46] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-06-20 22:46:51] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 16e086083a7e84e28de48c68b76a2a4e).
+[2025-06-20 23:39:20] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-06-20 23:39:20] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-06-20 23:39:21] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: c-ord14-9fece10e.discord.media
+[2025-06-20 23:39:21] [ERROR   ] discord.voice_state: Failed to connect to voice... Retrying in 1.0s...
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 413, in _inner_connect
+    await self._handshake_websocket()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 583, in _handshake_websocket
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 1037, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
+[2025-06-20 23:39:21] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-20 23:39:22] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 2)
+[2025-06-20 23:39:22] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: c-ord14-9fece10e.discord.media
+[2025-06-20 23:39:22] [ERROR   ] discord.voice_state: Failed to connect to voice... Retrying in 3.0s...
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 413, in _inner_connect
+    await self._handshake_websocket()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 583, in _handshake_websocket
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 1037, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
+[2025-06-20 23:39:22] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-20 23:39:25] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 3)
+[2025-06-20 23:39:25] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: c-ord14-9fece10e.discord.media
+[2025-06-20 23:39:25] [ERROR   ] discord.voice_state: Failed to connect to voice... Retrying in 5.0s...
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 413, in _inner_connect
+    await self._handshake_websocket()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 583, in _handshake_websocket
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 1037, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
+[2025-06-20 23:39:25] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-20 23:39:30] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 4)
+[2025-06-20 23:39:50] [INFO    ] discord.voice_state: Timed out connecting to voice
+[2025-06-20 23:39:50] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-20 23:39:50] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-21 02:02:12] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 03:16:50] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 04:42:24] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 07:50:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 11:40:49] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 13:31:35] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 17:20:29] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 19:21:01] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-21 22:28:44] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-22 00:16:40] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-22 03:51:36] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-22 05:09:37] [INFO    ] discord.gateway: Shard ID None has successfully RESUMED session 16e086083a7e84e28de48c68b76a2a4e.
+[2025-06-22 06:16:14] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-06-22 06:16:14] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-06-22 06:16:14] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: c-ord11-4be71d6b.discord.media
+[2025-06-22 06:16:14] [ERROR   ] discord.voice_state: Failed to connect to voice... Retrying in 1.0s...
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 413, in _inner_connect
+    await self._handshake_websocket()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 583, in _handshake_websocket
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 1037, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
+[2025-06-22 06:16:14] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-22 06:16:15] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 2)
+[2025-06-22 06:16:15] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: c-ord11-4be71d6b.discord.media
+[2025-06-22 06:16:15] [ERROR   ] discord.voice_state: Failed to connect to voice... Retrying in 3.0s...
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 413, in _inner_connect
+    await self._handshake_websocket()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 583, in _handshake_websocket
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 1037, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
+[2025-06-22 06:16:15] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-22 06:16:18] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 3)
+[2025-06-22 06:16:18] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: c-ord11-4be71d6b.discord.media
+[2025-06-22 06:16:18] [ERROR   ] discord.voice_state: Failed to connect to voice... Retrying in 5.0s...
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 413, in _inner_connect
+    await self._handshake_websocket()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/voice_state.py", line 583, in _handshake_websocket
+    await self.ws.poll_event()
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/gateway.py", line 1037, in poll_event
+    raise ConnectionClosed(self.ws, shard_id=None, code=self._close_code)
+discord.errors.ConnectionClosed: Shard ID None WebSocket closed with 4006
+[2025-06-22 06:16:18] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-22 06:16:23] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 4)
+[2025-06-22 06:16:44] [INFO    ] discord.voice_state: Timed out connecting to voice
+[2025-06-22 06:16:44] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-22 06:16:44] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+BOT AWAKE AND READY
+BOT AWAKE AND READY
+/home/lucassukeunkim/scuffed_discord_bot/servers/134415388233433089/session_stats.txt does not exist.
+/home/lucassukeunkim/scuffed_discord_bot/servers/134415388233433089/session_stats.txt does not exist.
+Task exception was never retrieved
+future: <Task finished name='discord.py: on_message' coro=<Client._run_event() done, defined at /home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py:441> exception=SystemExit()>
+Traceback (most recent call last):
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 869, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 449, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2218, in kys
+    sys.exit()
+SystemExit
+[2025-06-22 06:30:50] [INFO    ] discord.client: logging in using static token
+[2025-06-22 06:30:50] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 627fdc36ff3b634d430f54ce3f15d718).
+[2025-06-22 06:31:02] [INFO    ] discord.voice_state: Connecting to voice...
+[2025-06-22 06:31:02] [INFO    ] discord.voice_state: Starting voice handshake... (connection attempt 1)
+[2025-06-22 06:31:02] [INFO    ] discord.voice_state: Voice handshake complete. Endpoint found: c-ord11-4be71d6b.discord.media:2096
+[2025-06-22 06:31:02] [INFO    ] discord.voice_state: Voice connection complete.
+[2025-06-22 06:31:11] [INFO    ] discord.player: ffmpeg process 1224684 successfully terminated with return code of 0.
+[2025-06-22 06:31:16] [INFO    ] discord.player: ffmpeg process 1224689 successfully terminated with return code of 0.
+[2025-06-22 06:31:25] [INFO    ] discord.player: ffmpeg process 1224695 successfully terminated with return code of 0.
+[2025-06-22 06:31:30] [INFO    ] discord.player: ffmpeg process 1224699 successfully terminated with return code of 0.
+[2025-06-22 06:31:52] [INFO    ] discord.player: ffmpeg process 1224755 successfully terminated with return code of 0.
+[2025-06-22 06:31:57] [INFO    ] discord.player: ffmpeg process 1224759 successfully terminated with return code of 0.
+[2025-06-22 06:32:01] [INFO    ] discord.player: ffmpeg process 1224767 successfully terminated with return code of 0.
+[2025-06-22 06:32:03] [INFO    ] discord.player: ffmpeg process 1224771 successfully terminated with return code of 0.
+[2025-06-22 06:32:08] [INFO    ] discord.player: ffmpeg process 1224775 successfully terminated with return code of 0.
+[2025-06-22 06:32:13] [INFO    ] discord.player: ffmpeg process 1224779 successfully terminated with return code of 0.
+[2025-06-22 06:32:18] [INFO    ] discord.player: ffmpeg process 1224783 successfully terminated with return code of 0.
+[2025-06-22 06:32:19] [INFO    ] discord.player: ffmpeg process 1224787 successfully terminated with return code of 0.
+[2025-06-22 06:32:24] [INFO    ] discord.player: ffmpeg process 1224791 successfully terminated with return code of 0.
+[2025-06-22 06:32:28] [INFO    ] discord.player: ffmpeg process 1224795 successfully terminated with return code of 0.
+[2025-06-22 06:32:29] [INFO    ] discord.player: ffmpeg process 1224799 successfully terminated with return code of 0.
+[2025-06-22 06:32:34] [INFO    ] discord.player: ffmpeg process 1224803 successfully terminated with return code of 0.
+[2025-06-22 06:32:39] [INFO    ] discord.player: ffmpeg process 1224807 successfully terminated with return code of 0.
+[2025-06-22 06:33:25] [INFO    ] discord.player: ffmpeg process 1224813 successfully terminated with return code of 0.
+[2025-06-22 06:33:29] [INFO    ] discord.player: ffmpeg process 1224821 successfully terminated with return code of 0.
+[2025-06-22 06:33:33] [INFO    ] discord.player: ffmpeg process 1224825 successfully terminated with return code of 0.
+[2025-06-22 06:33:37] [INFO    ] discord.player: ffmpeg process 1224829 successfully terminated with return code of 0.
+[2025-06-22 06:33:40] [INFO    ] discord.player: ffmpeg process 1224833 successfully terminated with return code of 0.
+[2025-06-22 06:33:44] [INFO    ] discord.player: ffmpeg process 1224837 successfully terminated with return code of 0.
+[2025-06-22 06:33:47] [INFO    ] discord.player: ffmpeg process 1224841 successfully terminated with return code of 0.
+[2025-06-22 06:33:48] [INFO    ] discord.player: ffmpeg process 1224845 has not terminated. Waiting to terminate...
+[2025-06-22 06:33:48] [INFO    ] discord.player: ffmpeg process 1224845 should have terminated with a return code of -9.
+[2025-06-22 06:34:23] [INFO    ] discord.voice_state: The voice handshake is being terminated for Channel ID 1339030117430853708 (Guild ID 134415388233433089)
+[2025-06-22 06:35:08] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 10 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:35:18] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 20 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:35:28] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 30 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:35:38] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 40 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:35:48] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 50 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:35:58] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 60 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:36:08] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 70 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:36:18] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 80 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:36:28] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 90 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:36:38] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 100 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:36:48] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 110 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:36:58] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 120 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:37:08] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 130 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:37:18] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 140 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:37:28] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 150 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:37:38] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 160 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:37:48] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 170 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:37:58] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 180 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:38:08] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 190 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:38:18] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 200 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:38:28] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 210 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:38:38] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 220 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:38:48] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 230 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:38:58] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 240 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:39:08] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 250 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:39:18] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 260 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:39:28] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 270 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:39:38] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 280 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:39:48] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 290 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:39:58] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 300 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:40:08] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 310 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:40:18] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 320 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:40:28] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 330 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:40:38] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 340 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:40:48] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 350 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:40:58] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 360 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:41:08] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 370 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:41:18] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 380 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:41:28] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 390 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:41:38] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 400 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:41:48] [WARNING ] discord.gateway: Shard ID None heartbeat blocked for more than 410 seconds.
+Loop thread traceback (most recent call last):
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 2230, in <module>
+    bot.run(BOT_TOKEN, reconnect=True)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 906, in run
+    asyncio.run(runner())
+  File "/usr/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+  File "/usr/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 640, in run_until_complete
+    self.run_forever()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 607, in run_forever
+    self._run_once()
+  File "/usr/lib/python3.11/asyncio/base_events.py", line 1922, in _run_once
+    handle._run()
+  File "/usr/lib/python3.11/asyncio/events.py", line 80, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/client.py", line 481, in _run_event
+    await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 285, in on_message
+    await bot.process_commands(message)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1408, in process_commands
+    await self.invoke(ctx)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/bot.py", line 1366, in invoke
+    await ctx.command.invoke(ctx)
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 1029, in invoke
+    await injected(*ctx.args, **ctx.kwargs)  # type: ignore
+  File "/home/lucassukeunkim/myenv/lib/python3.11/site-packages/discord/ext/commands/core.py", line 235, in wrapped
+    ret = await coro(*args, **kwargs)
+  File "/home/lucassukeunkim/scuffed_discord_bot/bot.py", line 1977, in pushdata
+    subprocess.run(["git", "fetch"], capture_output=True, text=True, check=True)
+  File "/usr/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 1207, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+  File "/usr/lib/python3.11/subprocess.py", line 2059, in _communicate
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+
+[2025-06-22 06:41:49] [INFO    ] discord.gateway: Shard ID None session has been invalidated.
+[2025-06-22 06:41:55] [INFO    ] discord.gateway: Shard ID None has connected to Gateway (Session ID: 109539652d9c1dfca0385317b6636225).
