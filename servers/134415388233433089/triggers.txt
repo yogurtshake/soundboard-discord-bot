@@ -1,7 +1,6 @@
 both,**BOTH OF YOU!**
 two,**BOTH OF YOU!**
 music,My feeling is: if we're gonna win this thing, we gotta actually start playing some MUSIC.
-gimme,Last chance. GoOOo0oOooOo!
 send,Hah! What, so you can send secret messages to your sexy bitches? No, sir.
 not ,Not the best choice.
 six,At a push seven
@@ -29,3 +28,7 @@ leonard,## Wrong! Shuddup.
 richardpatrick,# **Richard Patrick**
 door,If there is a door, there must be a key
 <@&1198813095003435108>,ur tilted
+fuck u,shut up dumbass
+fuck you,shut up dumbass
+gimme 5,*slap*
+gimme 10,*slap slap*
