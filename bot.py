@@ -321,7 +321,7 @@ async def on_voice_state_update(member, before, after):
 
     for vc in bot.voice_clients:
         if vc.channel == before.channel and len(vc.channel.members) == 1:
-            message = f"*Disconnected from voice channel `{vc.channel.name}` because everyone else fucking left.*"
+            message = f"*Disconnected from voice channel `{vc.channel.name}` because everyone else left.*"
             await disconnect(vc, message)
             
 @bot.event
@@ -952,7 +952,6 @@ async def opsequence_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-
 @command_with_attributes(name='stop', category='SOUNDBOARD - PLAYING', help="Stops playing sounds.", usage='`!stop`', configurable = True)
 async def stop(ctx):
     global PLAYING, STOP_EVENT
@@ -1272,6 +1271,10 @@ async def addtrigger_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def removetrigger(ctx, *, args: str):
     try:
+        if args is None:
+            await ctx.send('Usage: `!removetrigger "<trigger>"`')
+            return
+        
         parts = shlex.split(args)
         if len(parts) != 1:
             await ctx.send('Usage: `!removetrigger "<trigger>"`')
