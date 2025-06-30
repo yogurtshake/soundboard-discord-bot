@@ -337,10 +337,10 @@ bot.remove_command('help')
 @command_with_attributes(name='help', category='Help', help='Displays help information for all commands.', usage='`!help`')
 async def help(ctx, *input: str):
     if not input:
-        await ctx.send("## Welcome to this scuffed ass soundboard bot!\n\n" +
+        await ctx.send("## Welcome to the scuffed soundboard bot!\n\n" +
                        "I can play your saved sounds *(see command category: `SOUNDBOARD - PLAYING`)*\n" + 
                        "and I can reply to your messages *(see command category: `MESSAGE TRIGGERS`)*.\n\n" + 
-                       "Use **`!help commands`** to see a full list of my commands, their descriptions, and their correct usage.\n" +
+                       "Use **`!help commands`** to see a full list of my commands, their descriptions, and their correct usage.\n\n" +
                        "If you are a server admin, try out **`!config`** as well.")
         return
     
@@ -859,7 +859,7 @@ async def sequence_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='opsequence', category='OWNER', help="Plays desired sounds in sequence in given order. No limit.", usage='`!sequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`', configurable = True)
+@command_with_attributes(name='opsequence', category='OWNER COMMANDS', help="Plays desired sounds in sequence in given order. No limit.", usage='`!sequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`', configurable = True)
 @commands.is_owner()
 async def opsequence(ctx, *soundnames: str):
     global PLAYING, STOP_EVENT, LAST_ACTIVITY
@@ -1246,6 +1246,10 @@ async def shutupstats_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def addtrigger(ctx, *, args: str):
     try:
+        if not args.strip():
+            await ctx.send('Usage: `!addtrigger "<trigger>" "<response>"`')
+            return
+        
         parts = shlex.split(args)
         if len(parts) != 2:
             await ctx.send('Usage: `!addtrigger "<trigger>" "<response>"`')
@@ -1271,7 +1275,7 @@ async def addtrigger_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def removetrigger(ctx, *, args: str):
     try:
-        if args is None:
+        if not args.strip():
             await ctx.send('Usage: `!removetrigger "<trigger>"`')
             return
         
@@ -1341,6 +1345,10 @@ async def triggerlist_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def addloop(ctx, *, args: str):
     try:
+        if not args.strip():
+            await ctx.send('Usage: `!addloop "<sound name>" "<delay>"`')
+            return
+        
         parts = shlex.split(args)
         if len(parts) != 2:
             await ctx.send('Usage: `!addloop "<sound name>" "<delay>"`')
@@ -1382,6 +1390,10 @@ async def addloop_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def removeloop(ctx, *, args: str):
     try:
+        if not args.strip():
+            await ctx.send('Usage: `!removeloop "<sound name>"`')
+            return
+        
         parts = shlex.split(args)
         if len(parts) != 1:
             await ctx.send('Usage: `!removeloop "<sound name>"`')
