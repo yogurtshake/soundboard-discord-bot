@@ -171,7 +171,7 @@ def load_config(guild_id):
     return config
 
 def save_config(guild_id, config):
-    config_path = os.path.join(SERVERS_PATH, guild_id, "config.txt")
+    config_path = os.path.join(SERVERS_PATH, str(guild_id), "config.txt")
     with open(config_path, 'w') as file:
         for key, (value, description) in config.items():
             file.write(f"{key},{value},{description}\n")
@@ -780,7 +780,7 @@ async def sequence(ctx, *soundnames: str):
         await ctx.send("*You need at least 2 sounds to get use out of this command, dipshit.*")
         return
     if len(soundnames) > 10:
-        await ctx.send("*Calm down, fugger. Stick to max 10 sounds.*")
+        await ctx.send("*Calm down. Stick to max 10 sounds.*")
         return
     
     STOP_EVENT[ctx.guild.id].clear()
@@ -817,7 +817,7 @@ async def sequence(ctx, *soundnames: str):
     
     message = get_config(ctx.guild.id,"!loop_message")[0]
     if message == "default":
-        message = "The fuck is this shit?"
+        message = "I don't even want to know what this is."
     
     await ctx.send(f"Playing sequence. {message}")
     
