@@ -1246,10 +1246,6 @@ async def shutupstats_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def addtrigger(ctx, *, args: str):
     try:
-        if not args.strip():
-            await ctx.send('Usage: `!addtrigger "<trigger>" "<response>"`')
-            return
-        
         parts = shlex.split(args)
         if len(parts) != 2:
             await ctx.send('Usage: `!addtrigger "<trigger>" "<response>"`')
@@ -1268,6 +1264,8 @@ async def addtrigger(ctx, *, args: str):
 async def addtrigger_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("No.")
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('Usage: `!addtrigger "<trigger>" "<response>"`')
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
@@ -1275,10 +1273,6 @@ async def addtrigger_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def removetrigger(ctx, *, args: str):
     try:
-        if not args.strip():
-            await ctx.send('Usage: `!removetrigger "<trigger>"`')
-            return
-        
         parts = shlex.split(args)
         if len(parts) != 1:
             await ctx.send('Usage: `!removetrigger "<trigger>"`')
@@ -1307,6 +1301,8 @@ async def removetrigger(ctx, *, args: str):
 async def removetrigger_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("No.")
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('Usage: `!removetrigger "<trigger>"`')
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
@@ -1345,10 +1341,6 @@ async def triggerlist_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def addloop(ctx, *, args: str):
     try:
-        if not args.strip():
-            await ctx.send('Usage: `!addloop "<sound name>" "<delay>"`')
-            return
-        
         parts = shlex.split(args)
         if len(parts) != 2:
             await ctx.send('Usage: `!addloop "<sound name>" "<delay>"`')
@@ -1383,17 +1375,16 @@ async def addloop(ctx, *, args: str):
 async def addloop_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("No.")
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('Usage: `!addloop "<sound name>" "<delay>"`')
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
 
 @command_with_attributes(name='removeloop', category='SOUNDBOARD - DATA', help='Removes a saved loop time. **ADMIN COMMAND.**', usage='`!removeloop \"<sound name>\"`')
 @commands.has_permissions(administrator=True)
 async def removeloop(ctx, *, args: str):
     try:
-        if not args.strip():
-            await ctx.send('Usage: `!removeloop "<sound name>"`')
-            return
-        
         parts = shlex.split(args)
         if len(parts) != 1:
             await ctx.send('Usage: `!removeloop "<sound name>"`')
@@ -1422,6 +1413,8 @@ async def removeloop(ctx, *, args: str):
 async def removeloop_error(ctx, error):
     if isinstance(error, commands.MissingPermissions):
         await ctx.send("No.")
+    elif isinstance(error, commands.MissingRequiredArgument):
+        await ctx.send('Usage: `!removeloop "<sound name>"`')
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
