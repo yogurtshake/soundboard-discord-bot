@@ -28,6 +28,8 @@ SERVERS_PATH = os.getcwd() + f'{os.sep}servers{os.sep}'
 PLAYING = {}
 STOP_EVENT = {}
 LAST_ACTIVITY = {}
+REACTION_ROLES = {}
+REACTION_MESSAGE_ID = {}
 INACTIVITY_THRESHOLD = 3600
 
 handcount = 0
@@ -35,6 +37,7 @@ handcount = 0
 intents = discord.Intents.default()
 intents.message_content = True
 intents.voice_states = True
+intents.members = True
 tchannel = None
 disconnect_lock = asyncio.Lock()
 
@@ -86,9 +89,10 @@ async def delete_session_stats(ctx):
 
 async def initialize_guild(guild):
     global PLAYING, STOP_EVENT
+    
     PLAYING[guild.id] = False
     STOP_EVENT[guild.id] = asyncio.Event()
-    
+
     guild_folder = os.path.join(SERVERS_PATH, str(guild.id))
     guild_sounds_folder = os.path.join(guild_folder, "all_sounds")
     guild_title_path = os.path.join(guild_folder, "0. " + guild.name)
@@ -97,7 +101,12 @@ async def initialize_guild(guild):
     guild_loops_path = os.path.join(guild_folder, "loops.txt")
     guild_sequences_path = os.path.join(guild_folder, "sequences.txt")
     guild_shutup_stats_path = os.path.join(guild_folder, "shutup_stats.txt")
+    guild_reaction_roles_path = os.path.join(guild_folder, "reaction_roles.txt")
+    guild_reaction_message_id_path = os.path.join(guild_folder, "reaction_message_id.txt")
 
+    # yes, I probably could've done this much cleaner with a loop but these were all things added over time
+    # just learned about os.makedirs()... that would've been useful
+    
     if not os.path.exists(guild_folder):
         os.makedirs(guild_folder)
         print(f"Created folder for server: {guild.name} ({guild.id})")
@@ -121,11 +130,18 @@ async def initialize_guild(guild):
             print(f"Created loops file for server: {guild.name}")
     if not os.path.exists(guild_sequences_path):    
         with open(guild_sequences_path, 'a'):
-            print(f"Created sequences file for server: {guild.name}")
+            print(f"Created sequences file for server: {guild.name}")        
     if not os.path.exists(guild_shutup_stats_path):    
         with open(guild_shutup_stats_path, 'a'):
             print(f"Created shut up stats file for server: {guild.name}")
-
+    if not os.path.exists(guild_reaction_roles_path):    
+        with open(guild_reaction_roles_path, 'a'):
+            print(f"Created reaction roles file for server: {guild.name}")
+    if not os.path.exists(guild_reaction_message_id_path):    
+        with open(guild_reaction_message_id_path, 'a'):
+            print(f"Created reaction message ID file for server: {guild.name}")
+    initialize_reaction_roles(guild.id, guild_reaction_roles_path, guild_reaction_message_id_path)
+    
 def initialize_config(path, guild_id):
     options = {
         "default_text_channel": ("default", "sets default text channel for non-command-related bot messages. USE CHANNEL ID"),
@@ -251,6 +267,46 @@ def get_folder_size(folder_path):
             
     return total_size
 
+def initialize_reaction_roles(guild_id, path1, path2):
+    global REACTION_ROLES, REACTION_MESSAGE_ID
+
+    REACTION_ROLES[guild_id] = {}
+    REACTION_MESSAGE_ID[guild_id] = None
+
+    reaction_roles_path = path1
+    reaction_message_id_path = path2
+
+    with open(reaction_roles_path, 'r', encoding='utf-8') as file:
+        for line in file:
+            role_id, emoji = line.strip().split(',')
+            REACTION_ROLES[guild_id][role_id] = emoji
+            
+    with open(reaction_message_id_path, 'r') as file:
+        message_id = file.read().strip()
+        REACTION_MESSAGE_ID[guild_id] = int(message_id) if message_id.isdigit() else None
+    
+async def handle_reaction_role(payload, add: bool):
+    if payload.guild_id is None:
+        return
+    if payload.message_id != REACTION_MESSAGE_ID[payload.guild_id]:
+        return
+
+    guild = bot.get_guild(payload.guild_id)
+    member = guild.get_member(payload.user_id)
+    if guild is None or member is None or member.bot:
+        return
+
+    role_id = next((rid for rid, emj in REACTION_ROLES[payload.guild_id].items() if emj == str(payload.emoji)), None)
+    if role_id is None:
+        return
+
+    role = guild.get_role(int(role_id))
+    if role:
+        if add:
+            await member.add_roles(role, reason="Reaction role added")
+        else:
+            await member.remove_roles(role, reason="Reaction role removed")
+
 
 # --------------------------------- EVENTS ---------------------------------
 
@@ -304,7 +360,6 @@ async def on_message(message):
         with open(os.path.join(SERVERS_PATH, str(message.guild.id), 'shutup_stats.txt'), 'a') as file:
             file.write(message.author.display_name + '\n')
         
-
 @bot.event
 async def on_guild_join(guild):
     await tchannel.send(f"### Joined server: `{guild.name}` (`{guild.id}`)")
@@ -329,19 +384,28 @@ async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
         await ctx.send("*Invalid command, you piece of shit.*")
 
-    
-# --------------------------------- COMMANDS ---------------------------------     
-    
+@bot.event
+async def on_raw_reaction_add(payload):
+    await handle_reaction_role(payload, add=True)
+
+@bot.event
+async def on_raw_reaction_remove(payload):
+    await handle_reaction_role(payload, add=False)
+
+
+# --------------------------------- COMMANDS ---------------------------------
+
 bot.remove_command('help')
 
 @command_with_attributes(name='help', category='Help', help='Displays help information for all commands.', usage='`!help`')
 async def help(ctx, *input: str):
     if not input:
         await ctx.send("## Welcome to the scuffed soundboard bot!\n\n" +
-                       "I can play your saved sounds *(see command category: `SOUNDBOARD - PLAYING`)*\n" + 
-                       "and I can reply to your messages *(see command category: `MESSAGE TRIGGERS`)*.\n\n" + 
+                       "I can play your saved sounds *(see command category: `SOUNDBOARD - PLAYING`)*,\n" + 
+                       "I can reply to your messages *(see command category: `MESSAGE TRIGGERS`)*,\n" +
+                       "and I can help members manage their own server roles *(see `!roles`)*.\n\n" + 
                        "Use **`!help commands`** to see a full list of my commands, their descriptions, and their correct usage.\n\n" +
-                       "If you are a server admin, try out **`!config`** as well.")
+                       "If you are a server admin, try out **`!config`** and **`!roles`** as well.")
         return
     
     message = ' '.join(input)
@@ -1011,25 +1075,17 @@ async def join_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def troll(ctx, *, chName: str):
     global LAST_ACTIVITY
-    
-    if ctx.guild.id != HOME_SERVER_ID:
-        await ctx.send("*This command is not yet available in your server.*")
-        return
    
     if ctx.voice_client is not None:
         await ctx.send("*I already in a voice channel, you piece of shit.*")
         return
    
-    if(chName.lower() == "private"): id = 265210092289261570
-    elif(chName.lower() == "general"): id = 134415388233433090
-    elif(chName.lower() == "poor man's general"): id = 212770924607438848
-    elif(chName.lower() == "poverse general"): id = 1234341517041078383
-    elif(chName.lower() == "harvey dent"): id = 1339030117430853708
-    else: 
+    channels = ctx.guild.voice_channels
+
+    channel = discord.utils.get(channels, name=chName)
+    if channel is None:
         await ctx.send("*Invalid channel name, idiot.*")
         return
-
-    channel = bot.get_channel(id)
     
     if ctx.voice_client is None:
         message = get_config(ctx.guild.id,"!troll_message")[0]
@@ -1572,7 +1628,7 @@ async def sequencelist_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
-@command_with_attributes(name='config', category='CONFIG', help="Configures certain bot settings", usage='*use `!config` to see full usage*')
+@command_with_attributes(name='config', category='ADMINISTRATION', help="Configures certain bot settings", usage='*use `!config` to see full usage*')
 @commands.has_permissions(administrator=True)
 async def config(ctx, *input: str):
     if len(input) == 0:
@@ -1636,7 +1692,7 @@ async def config(ctx, *input: str):
         if new_value == 'DELETE':
             await ctx.send(f"Configuration for `{key}` reset to default.")
         else:
-            await ctx.send(f"Configuration for `{key}` set to `{new_value}`.")
+            await ctx.send(f"Configuration for `{key}` set to `{new_value}`")
             if key == "default_text_channel":
                 await channel.send("*This channel is now the default text channel for any of my non-command-related bot messages (update messages, restart/shutdown notices, etc.)*")
 
@@ -1792,6 +1848,109 @@ async def download(ctx, *, soundname: str):
 async def download_error(ctx, error):
     if isinstance(error, commands.MissingRequiredArgument):
         await ctx.send("*You must specify a sound name.\n\n Example: `!download dumb sound.mp3` (spaces are allowed in file name)*")
+    else:
+        await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
+@command_with_attributes(name='roles', category='ADMINISTRATION', help="Allows for self-assignment of roles", usage='*use `!roles` to see full usage*')
+@commands.has_permissions(administrator=True)
+async def roles(ctx, *input: str):
+    global REACTION_MESSAGE_ID, REACTION_ROLES
+    reaction_roles_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "reaction_roles.txt")
+    reaction_message_id_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "reaction_message_id.txt")
+    
+    if len(input) == 0:
+        await ctx.send("Welcome to the roles command. From here you can manage the bot's reaction-based role assignment.")
+        await ctx.send("**Usage:** \n`!roles update` to have me send a new reactable roles message" + 
+                       "\n`!roles add <role id> <emoji>` to add a new role-emoji pair or " + 
+                       "\n`!roles remove <role id>` to remove a role-emoji pair")
+        return
+
+    action = input[0].lower()
+    if action not in ["update", "add", "remove"]:
+        await ctx.send("Invalid input. Please use `!roles update`, `!roles add`, or `!roles remove`.")
+        return
+    
+    if action == "update":       
+        if not REACTION_ROLES[ctx.guild.id]:
+            await ctx.send("*No role-emoji pairs have been set up yet. Use `!roles add \"<role id>\" <emoji>` to add roles.*")
+            return
+        
+        embed = discord.Embed(title="React to assign yourself roles", description="React with the corresponding emoji to get the role. Roles give game-specific text channel access.")
+        
+        for role_id, emoji in REACTION_ROLES[ctx.guild.id].items():
+            role = ctx.guild.get_role(int(role_id))
+            if role:
+                embed.add_field(name=role.name, value=emoji, inline=False)
+        
+        try:
+            message = await ctx.send(embed=embed)
+            REACTION_MESSAGE_ID[ctx.guild.id] = message.id
+            
+            with open(reaction_message_id_path, 'w') as file:
+                file.write(str(message.id))
+
+            for emoji in REACTION_ROLES[ctx.guild.id].values():
+                await message.add_reaction(emoji)
+                
+        except Exception as e:
+            await ctx.send(f"*An error occurred while updating the roles message: `{e}`*")
+    
+    elif action == "add":
+        if len(input) != 3:
+            await ctx.send("Usage: `!roles add <role id> <emoji>`")
+            return
+        
+        role_id = input[1].strip()
+        emoji = input[2]
+        
+        if role_id in REACTION_ROLES[ctx.guild.id]:
+            await ctx.send(f"*Pair with role ID `{role_id}` already exists. Use a different ID or remove it first.*")
+            return
+        if str(emoji) in REACTION_ROLES[ctx.guild.id].values():
+            await ctx.send(f"*Pair with emoji `{emoji}` already exists. Use a different emoji or remove it first.*")
+            return
+        
+        try:
+            role = ctx.guild.get_role(int(role_id))
+            if not role:
+                await ctx.send(f"*Role with ID `{role_id}` does not exist.*")
+                return
+
+            REACTION_ROLES[ctx.guild.id][role_id] = str(emoji)
+            
+            with open(reaction_roles_path, 'w', encoding='utf-8') as file:
+                for roleid, emoj in REACTION_ROLES[ctx.guild.id].items():
+                    file.write(f"{roleid},{emoj}\n")
+            
+            await ctx.send(f"Pair with role ID `{role_id}` and emoji `{emoji}` added successfully. Now use `!roles update` to generate the updated reactable message.")
+            
+        except ValueError:
+            await ctx.send("*Invalid role ID. Please provide a valid role ID.*")
+        
+    else:
+        if len(input) != 2:
+            await ctx.send("Usage: `!roles remove <role id>`")
+            return
+        
+        role_id = input[1].strip()
+                
+        if role_id not in REACTION_ROLES[ctx.guild.id].keys():
+            await ctx.send(f"*Pair with role ID `{role_id}` does not exist.*")
+            return
+        
+        del REACTION_ROLES[ctx.guild.id][role_id]
+
+        with open(reaction_roles_path, 'w', encoding='utf-8') as file:
+            for roleid, emoj in REACTION_ROLES[ctx.guild.id].items():
+                file.write(f"{roleid},{emoj}\n")
+                
+        await ctx.send(f"Pair with role ID `{role_id}` removed successfully. Now use `!roles update` to generate the updated reactable message.")
+        
+@roles.error
+async def roles(ctx, error):
+    if isinstance(error, commands.MissingPermissions):
+        await ctx.send("No.")
     else:
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
