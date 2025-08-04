@@ -32,3 +32,6 @@ did you hear,5
 copper 1,0.7
 who,1.5
 only friend,3.5
+jikijiki,0.9
+junkrat,1
+labibidibibidum,3.65
