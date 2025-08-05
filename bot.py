@@ -1904,6 +1904,12 @@ async def roles(ctx, *input: str):
         role_id = input[1].strip()
         emoji = input[2]
         
+        try:
+            valid_emoji = discord.PartialEmoji(name=emoji)
+        except Exception:
+            await ctx.send(f"*Are you stupid? `{emoji}` is not a valid emoji. Use a valid Unicode emoji or a custom Discord emoji.*")
+            return
+
         if role_id in REACTION_ROLES[ctx.guild.id]:
             await ctx.send(f"*Pair with role ID `{role_id}` already exists. Use a different ID or remove it first.*")
             return
