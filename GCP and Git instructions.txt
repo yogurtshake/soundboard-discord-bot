@@ -30,7 +30,7 @@ Section 1: How to set up a free GCP server for your bot
 
 -> source myenv/bin/activate
 
--> pip install discord.py pynacl asyncio
+-> pip install discord.py pynacl asyncio dotenv
 
 -------------------------------------------------------------------------
 
