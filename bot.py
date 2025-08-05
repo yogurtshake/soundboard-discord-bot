@@ -9,6 +9,7 @@ import sys
 import subprocess
 import time
 import zipfile
+import emoji as emoji_lib
 from collections import Counter
 
 
@@ -1906,8 +1907,10 @@ async def roles(ctx, *input: str):
         
         try:
             valid_emoji = discord.PartialEmoji.from_str(emoji)
+            
             if not valid_emoji.is_unicode_emoji() and not valid_emoji.is_custom_emoji():
-                raise ValueError
+                if not emoji_lib.is_emoji(emoji):
+                    raise ValueError
         except Exception:
             await ctx.send(f"*Are you stupid? `{emoji}` is not a valid emoji. Use a valid Unicode emoji or a custom Discord emoji.*")
             return
