@@ -17,9 +17,9 @@ import zipfile
 
 load_dotenv()
 BOT_TOKEN = os.getenv("BOT_TOKEN")
-HOME_SERVER_ID = os.getenv("HOME_SERVER_ID")
-HOME_CHANNEL_ID = os.getenv("HOME_CHANNEL_ID")
-OWNER_ID = os.getenv("OWNER_ID")
+HOME_SERVER_ID = int(os.getenv("HOME_SERVER_ID"))
+HOME_CHANNEL_ID = int(os.getenv("HOME_CHANNEL_ID"))
+OWNER_ID = int(os.getenv("OWNER_ID"))
 VENV_ACTIVATE_PATH = os.getenv("VENV_ACTIVATE_PATH")
 WINDOWS = os.getenv("WINDOWS") == "True"
 
