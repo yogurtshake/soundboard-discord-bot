@@ -16,16 +16,19 @@ import zipfile
 # --------------------------------- GLOBALS ---------------------------------
 
 load_dotenv()
-BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
-HOME_SERVER_ID = 134415388233433089
-HOME_CHANNEL_ID = 1337536863640227881
-OWNER_ID = 99743926423920640
-WINDOWS = False
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+HOME_SERVER_ID = os.getenv("HOME_SERVER_ID")
+HOME_CHANNEL_ID = os.getenv("HOME_CHANNEL_ID")
+OWNER_ID = os.getenv("OWNER_ID")
+VENV_ACTIVATE_PATH = os.getenv("VENV_ACTIVATE_PATH")
+WINDOWS = os.getenv("WINDOWS") == "True"
 
 if "\\" in os.getcwd(): 
     WINDOWS = True
 
 SERVERS_PATH = os.getcwd() + f'{os.sep}servers{os.sep}'
+if not os.path.exists(SERVERS_PATH):
+    os.mkdir(SERVERS_PATH)
 
 PLAYING = {}
 STOP_EVENT = {}
@@ -33,7 +36,6 @@ LAST_ACTIVITY = {}
 REACTION_ROLES = {}
 REACTION_MESSAGE_ID = {}
 INACTIVITY_THRESHOLD = 3600
-handcount = 0
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -106,7 +108,6 @@ async def initialize_guild(guild):
     guild_reaction_message_id_path = os.path.join(guild_folder, "reaction_message_id.txt")
 
     # yes, I probably could've done this much cleaner with a loop but these were all things added over time
-    # just learned about os.makedirs()... that would've been useful
     
     if not os.path.exists(guild_folder):
         os.makedirs(guild_folder)
@@ -247,12 +248,8 @@ async def check_inactivity():
         for vc in bot.voice_clients:
             if vc.is_connected():
                 last_activity = LAST_ACTIVITY.get(vc.guild.id, 0)
-                
-                if len(vc.channel.members) == 1:
-                    message = f"*Disconnected from voice channel `{vc.channel.name}` because everyone else fucking left.*"
-                    await disconnect(vc, message)
-                    
-                elif current_time - last_activity > INACTIVITY_THRESHOLD:
+
+                if current_time - last_activity > INACTIVITY_THRESHOLD:
                     message = f"*Disconnected from voice channel `{vc.channel.name}` due to inactivity (1 hour).*"
                     await disconnect(vc, message)
                     
@@ -326,7 +323,7 @@ async def on_ready():
     if WINDOWS:
         await tchannel.send("*running locally on Windows*")
     await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="for stupid messages"))
-    await tchannel.send("**Atyiseusseatyiseuss!**")
+    await tchannel.send("**Ready for anything**")
     
     await check_inactivity()
 
@@ -368,7 +365,7 @@ async def on_guild_join(guild):
         
     channel = guild.system_channel or guild.text_channels[0]
     if channel:
-        await channel.send("Which idiot added me to this shithole?\n\n Use `!help` to get started.")  
+        await channel.send("Who added me to this dump?\n\n Use `!help` to get started.")  
  
 @bot.event
 async def on_voice_state_update(member, before, after):
@@ -383,7 +380,7 @@ async def on_voice_state_update(member, before, after):
 @bot.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
-        await ctx.send("*Invalid command, you piece of shit.*")
+        await ctx.send("*Invalid command, dimwit.*")
 
 @bot.event
 async def on_raw_reaction_add(payload):
@@ -423,8 +420,6 @@ async def help(ctx, *input: str):
     
     help_message = "## Bot Commands:\n\n"
     
-    if ctx.guild.id != HOME_SERVER_ID:
-        del categories['DEWEY']
     if ctx.author.id != OWNER_ID:
         del categories['OWNER COMMANDS']
     del categories['Help']
@@ -452,50 +447,6 @@ async def help_error(ctx, error):
     await ctx.send(f"*An unexpected error occurred: `{error}`*")    
     
     
-# -------------- misc commands --------------    
-    
-@command_with_attributes(name='raisehand', category='DEWEY', help="Raises hands in correct order.", usage='`!raisehand`')
-async def raisehand(ctx):
-    
-    global handcount
-    
-    if ctx.guild.id != HOME_SERVER_ID:
-        await ctx.send("*This command can only be used in the bot's home server.*")
-        return
-    
-    if handcount % 3 == 0:
-        m = "Frankie?"
-    elif handcount % 3 == 1:
-        m = "Lenny?"
-    else:
-        m = "Leonard?"
-    await ctx.send(m)
-    handcount += 1
-@raisehand.error
-async def raisehand_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: `{error}`*")    
-    
-    
-@command_with_attributes(name='randomhand', category='DEWEY', help="Raises hands in random order.", usage='`!randomhand`')
-async def randomhand(ctx):
-    if ctx.guild.id != HOME_SERVER_ID:
-        await ctx.send("*This command can only be used in the bot's home server.*")
-        return
-    
-    num = random.randint(0,2)
-    if num == 0:
-        m = "Frankie?"
-    elif num == 1:
-        m = "Lenny?"
-    else:
-        m = "Leonard?"
-    await ctx.send(m)
-
-@randomhand.error
-async def randomhand_error(ctx, error):
-    await ctx.send(f"*An unexpected error occurred: `{error}`*")
-
-
 # -------------- sound commands --------------
 
 @command_with_attributes(name='s', category='SOUNDBOARD - PLAYING', help="Plays desired sound. Chooses randomly if no input given.", usage='`!s` OR `!s <sound name>`')
@@ -503,7 +454,7 @@ async def s(ctx, *name):
     global LAST_ACTIVITY
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, dumbo.*")
         return
     
     input = ' '.join(name)
@@ -539,12 +490,12 @@ async def s(ctx, *name):
 
     if not basename.lower() in sounds:
         if not basename_mp3.lower() in sounds:
-            await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+            await ctx.send(f"*Sound `{basename[:-4]}` does not exist, dumbo.*")
             return
         sound_path = sound_path_mp3
         basename = basename_mp3
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, dumbo.*")
         return
 
     ctx.voice_client.stop()
@@ -570,13 +521,13 @@ async def play(ctx, *arr):
     global PLAYING, STOP_EVENT, LAST_ACTIVITY
     
     if PLAYING[ctx.guild.id]:
-        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
+        await ctx.send("*I am already playing, dimwit. Stop first and then try again.*")
         return
     
     STOP_EVENT[ctx.guild.id].clear()
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, dumbo.*")
         return
     
     if len(arr) > 0 and float(arr[0]) < 1:
@@ -651,7 +602,7 @@ async def play_error(ctx, error):
         await ctx.send("*You have no sounds saved! Add some before playing.*")
         PLAYING[ctx.guild.id] = False
     elif isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
-        await ctx.send("Wrong input, idiot. \n\nCorrect usage examples: \n\n" +
+        await ctx.send("Wrong input, dimwit. \n\nCorrect usage examples: \n\n" +
                        "`!play`: *Plays random sounds at default interval of 90 seconds.* \n" +
                        "`!play 30`: *Plays random sounds at interval of 30 seconds* \n" +
                        "`!play 25 60`: *Plays random sounds at random interval between 25 and 60 seconds (randomized after each sound)*")
@@ -664,11 +615,11 @@ async def playfast(ctx, *arr):
     global PLAYING, LAST_ACTIVITY
     
     if PLAYING[ctx.guild.id]:
-        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
+        await ctx.send("*I am already playing, dunce. Stop first and then try again.*")
         return
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, dumbo.*")
         return
     
     sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
@@ -728,7 +679,7 @@ async def playfast_error(ctx, error):
         await ctx.send("*You have no sounds saved! Add some before playing.*")
         PLAYING[ctx.guild.id] = False
     elif isinstance(error, commands.CommandInvokeError) and isinstance(error.original, ValueError):
-        await ctx.send("Wrong input, idiot. \n\nCorrect usage examples: \n\n" +
+        await ctx.send("Wrong input, dunce. \n\nCorrect usage examples: \n\n" +
                        "`!playfast`: *Plays random sounds at default interval of 1 second.* \n" +
                        "`!playfast 0.7`: *Plays random sounds at interval of 0.7 seconds*")
     else:
@@ -740,10 +691,10 @@ async def loop(ctx, soundname: str, delay: float = None):
     global PLAYING, STOP_EVENT, LAST_ACTIVITY
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, dumbo.*")
         return
     if PLAYING[ctx.guild.id]:
-        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
+        await ctx.send("*I am already playing, dunce. Stop first and then try again.*")
         return
     if delay is not None and delay < 0.3:
         await ctx.send("*Delay less than 0.3 is forbidden. Bot would literally kill itself.*")
@@ -762,12 +713,12 @@ async def loop(ctx, soundname: str, delay: float = None):
 
     if not basename.lower() in sounds:
         if not basename_mp3.lower() in sounds:
-            await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+            await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you dumbo.*")
             return
         sound_path = sound_path_mp3
         basename = basename_mp3
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you dumbo.*")
         return
 
     if delay is None:
@@ -836,13 +787,13 @@ async def sequence(ctx, *soundnames: str):
     global PLAYING, STOP_EVENT, LAST_ACTIVITY
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you dumbo.*")
         return
     if PLAYING[ctx.guild.id]:
-        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
+        await ctx.send("*I am already playing, dunce. Stop first and then try again.*")
         return
     if len(soundnames) < 2:
-        await ctx.send("*You need at least 2 sounds to get use out of this command, dipshit.*")
+        await ctx.send("*You need at least 2 sounds to get use out of this command, dimwit.*")
         return
     if len(soundnames) > 10:
         await ctx.send("*Calm down. Stick to max 10 sounds.*")
@@ -863,12 +814,12 @@ async def sequence(ctx, *soundnames: str):
 
         if not basename.lower() in sounds:
             if not basename_mp3.lower() in sounds:
-                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you dumbo.*")
                 return
             sound_path = sound_path_mp3
             basename = basename_mp3
         if not os.path.exists(sound_path) and not WINDOWS:
-            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you dumbo.*")
             return
         
         audio = AudioSegment.from_file(sound_path)
@@ -930,13 +881,13 @@ async def opsequence(ctx, *soundnames: str):
     global PLAYING, STOP_EVENT, LAST_ACTIVITY
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you dumbo.*")
         return
     if PLAYING[ctx.guild.id]:
-        await ctx.send("*I am already playing, idiot. Stop first and then try again.*")
+        await ctx.send("*I am already playing, dumbo. Stop first and then try again.*")
         return
     if len(soundnames) < 2:
-        await ctx.send("*You need at least 2 sounds to get use out of this command, dipshit.*")
+        await ctx.send("*You need at least 2 sounds to get use out of this command, dimwit.*")
         return
     
     STOP_EVENT[ctx.guild.id].clear()
@@ -954,12 +905,12 @@ async def opsequence(ctx, *soundnames: str):
 
         if not basename.lower() in sounds:
             if not basename_mp3.lower() in sounds:
-                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you dumbo.*")
                 return
             sound_path = sound_path_mp3
             basename = basename_mp3
         if not os.path.exists(sound_path) and not WINDOWS:
-            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you dumbo.*")
             return
         
         audio = AudioSegment.from_file(sound_path)
@@ -973,7 +924,7 @@ async def opsequence(ctx, *soundnames: str):
     
     message = get_config(ctx.guild.id,"!loop_message")[0]
     if message == "default":
-        message = "The fuck is this shit?"
+        message = "What the hell is this?"
     
     await ctx.send(f"Playing sequence. {message}")
     
@@ -1022,7 +973,7 @@ async def stop(ctx):
     global PLAYING, STOP_EVENT
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you dumbo.*")
         return
     
     message = get_config(ctx.guild.id,"!stop_message")[0]
@@ -1044,11 +995,11 @@ async def join(ctx):
     global LAST_ACTIVITY
     
     if ctx.voice_client is not None:
-        await ctx.send("*I already in a voice channel, you piece of shit.*")
+        await ctx.send("*I already in a voice channel, you dumbo.*")
         return
     
     if ctx.author.voice is None:
-        await ctx.send("*You are not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*You are not connected to a voice channel, you dumbo.*")
         return
 
     channel = ctx.author.voice.channel
@@ -1078,14 +1029,14 @@ async def troll(ctx, *, chName: str):
     global LAST_ACTIVITY
    
     if ctx.voice_client is not None:
-        await ctx.send("*I already in a voice channel, you piece of shit.*")
+        await ctx.send("*I already in a voice channel, you dumbo.*")
         return
    
     channels = ctx.guild.voice_channels
 
     channel = discord.utils.get(channels, name=chName)
     if channel is None:
-        await ctx.send("*Invalid channel name, idiot.*")
+        await ctx.send("*Invalid channel name, dumbo.*")
         return
     
     if ctx.voice_client is None:
@@ -1119,7 +1070,7 @@ async def leave(ctx):
     global PLAYING, STOP_EVENT
     
     if ctx.voice_client is None:
-        await ctx.send("*I am not connected to a voice channel, you piece of shit.*")
+        await ctx.send("*I am not connected to a voice channel, you dumbo.*")
         return
     
     PLAYING[ctx.guild.id] = False      
@@ -1415,10 +1366,10 @@ async def addloop(ctx, *, args: str):
 
         if not basename.lower() in sounds:
             if not basename_mp3.lower() in sounds:
-                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+                await ctx.send(f"*Sound `{basename[:-4]}` does not exist, dumbo.*")
                 return
         if not os.path.exists(sound_path) and not WINDOWS:
-            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+            await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, dumbo.*")
             return
         
         with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'loops.txt'), 'a') as file:
@@ -1526,10 +1477,10 @@ async def addsequence(ctx, *soundnames: str):
 
             if not basename.lower() in sounds:
                 if not basename_mp3.lower() in sounds:
-                    await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+                    await ctx.send(f"*Sound `{basename[:-4]}` does not exist, dumbo.*")
                     return
             if not os.path.exists(sound_path) and not WINDOWS:
-                await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+                await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, dumbo.*")
                 return
                 
             sequence += soundname + ","
@@ -1638,7 +1589,7 @@ async def config(ctx, *input: str):
                        "\n`!config \"<variable>\" DELETE` to delete a configuration (reset to default) or " + 
                        "\n`!config \"<variable>\"` to view a single configuration or " +
                        "\n`!config viewall` to view all the variables you can set and their current values." + 
-                       "\n\n*Example: `!config \"!play_message\" \"playing stupid shit\"` - now every time you use !play, the bot will say \"playing stupid shit\".*")
+                       "\n\n*Example: `!config \"!play_message\" \"playing stupid stuff\"` - now every time you use !play, the bot will say \"playing stupid stuff\".*")
         return
     
     key = input[0]
@@ -1681,12 +1632,12 @@ async def config(ctx, *input: str):
                 await ctx.send(f"Configuration for `{key}` reset to default.")
                 return
             if not new_value.isdigit():
-                await ctx.send("*You must input a channel ID, not a name, idiot. Find this by right-clicking the channel and selecting 'Copy Channel ID'.*")
+                await ctx.send("*You must input a channel ID, not a name, dunce. Find this by right-clicking the channel and selecting 'Copy Channel ID'.*")
                 return
             channel_id = int(new_value)
             channel = ctx.guild.get_channel(channel_id)
             if channel is None:
-                await ctx.send("*The provided channel ID does not exist, dumbass. Please provide a valid channel ID.*")
+                await ctx.send("*The provided channel ID does not exist, moron. Please provide a valid channel ID.*")
                 return
         
         set_config(ctx.guild.id, key, new_value, description)
@@ -1709,11 +1660,11 @@ async def config_error(ctx, error):
 @commands.has_permissions(administrator=True)
 async def upload(ctx):
     if not ctx.message.attachments:
-        await ctx.send("_No file attached. Attach a **.mp3** or **.ogg** sound file or a zipped folder, dumbass._")
+        await ctx.send("_No file attached. Attach a **.mp3** or **.ogg** sound file or a zipped folder, moron._")
         return
     
     if len(ctx.message.attachments) > 1:
-        await ctx.send("*I can only do one file at a time. Fuck off and try again with a single file OR a zipped folder containing many sound files.*")
+        await ctx.send("*I can only do one file at a time. Try again with a single file OR a zipped folder containing many sound files.*")
         return
 
     attachment = ctx.message.attachments[0]
@@ -1827,10 +1778,10 @@ async def download(ctx, *, soundname: str):
         await ctx.send("_You must specify the file extension. Only **.mp3** and **.ogg** files are supported._")
         return
     if not basename.lower() in sounds:
-        await ctx.send(f"*Sound `{basename[:-4]}` does not exist, you piece of shit.*")
+        await ctx.send(f"*Sound `{basename[:-4]}` does not exist, dumbo.*")
         return
     if not os.path.exists(sound_path) and not WINDOWS:
-        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, you piece of shit.*")
+        await ctx.send(f"*'{basename}' has the wrong UPPER/lower case somewhere, dumbo.*")
         return
 
     file_path = sound_path
@@ -1963,6 +1914,8 @@ async def roles(ctx, error):
 
 
 # -------------- owner commands --------------
+# CAREFUL WITH THESE COMMANDS, MAKE SURE TO REVIEW THE CODE BEFORE USING THEM (might have to change things based on your setup)
+# most of them are supposed to spawn subprocesses and run git commands, so make sure everything is set up correctly before using them
 
 @command_with_attributes(name='logs', category='OWNER COMMANDS', help="Displays desired number of lines of log file output. Default 20 lines.", usage='`!logs` OR `!logs <numLines>`')
 @commands.is_owner()
@@ -1997,7 +1950,7 @@ async def logs(ctx, lines: int = 20):
         if chunk:
             await ctx.send(f"```txt\n{chunk}```")
     except FileNotFoundError:
-        await tchannel.send("*The log file does not exist, you piece of shit.*")
+        await tchannel.send("*The log file does not exist, dumbo.*")
     except Exception as e:
         await tchannel.send(f"*An error occurred while reading the log file: {e}*")
 
@@ -2152,7 +2105,7 @@ async def pushdata(ctx):
 
         status_result = subprocess.run(["git", "status"], capture_output=True, text=True, check=True)
         if "Your branch is behind" in status_result.stdout:
-            await tchannel.send("*There are changes on the remote repository, idiot. Update then try again.*")
+            await tchannel.send("*There are changes on the remote repository, dunce. Update then try again.*")
             return
         
         await tchannel.send("*Local repo is up to date. Continuing with pushing updates.*\n\n" +
@@ -2338,9 +2291,9 @@ async def restart(ctx):
         if WINDOWS:
             subprocess.Popen("python bot.py", shell=True)
         else:
-            command = "bash -c 'source /home/lucassukeunkim/myenv/bin/activate && nohup python3 bot.py >> output.log 2>&1 &'"
-            subprocess.Popen(command, shell=True) 
-    
+            command = f"bash -c 'source {VENV_ACTIVATE_PATH} && nohup python3 bot.py >> output.log 2>&1 &'"
+            subprocess.Popen(command, shell=True)
+
         sys.exit()
         
     except Exception as e:
