@@ -14,6 +14,3 @@
 
 -maybe use discord.Embed() for cleaner interface for !help, !config, and !roles ???
 
-
--for !roles add, enforce real emojis and not other text
-

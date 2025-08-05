@@ -1,5 +1,7 @@
 from discord.ext import commands
 from pydub import AudioSegment
+from collections import Counter
+from dotenv import load_dotenv
 import discord
 import asyncio
 import random
@@ -9,12 +11,12 @@ import sys
 import subprocess
 import time
 import zipfile
-from collections import Counter
 
 
 # --------------------------------- GLOBALS ---------------------------------
 
-BOT_TOKEN = "MzU3NjgzMTI2MDY5MzYyNjkw.GugV8Q.GbB2VVNp1BmKt0BktRglikOvke6KIejHjoi47A"
+load_dotenv()
+BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
 HOME_SERVER_ID = 134415388233433089
 HOME_CHANNEL_ID = 1337536863640227881
 OWNER_ID = 99743926423920640
@@ -31,7 +33,6 @@ LAST_ACTIVITY = {}
 REACTION_ROLES = {}
 REACTION_MESSAGE_ID = {}
 INACTIVITY_THRESHOLD = 3600
-
 handcount = 0
 
 intents = discord.Intents.default()
