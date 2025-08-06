@@ -6,6 +6,8 @@ Over time, I gradually implemented more and more features, and eventually it got
 
 I've created this public repository to serve as the cleaned-up, ready to use template of the monstrosity that I still update in my original private repo.
 
+You can find a list of dependencies in the text file called "GCP and Git instructions.txt".
+
 ## Here's a list of some of the features of this bot which are all accessible through bot commands in Discord:
 
 ### soundboard
