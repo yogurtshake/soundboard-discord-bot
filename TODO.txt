@@ -1,12 +1,12 @@
--fix issue of crash when bot is force moved between VCs by server admin?
+feel free to implement any or all of these changes for your own version. this is just stuff I haven't gotten around to yet.
 
--add discord developer instructions to readme?
+
+-fix issue of crash when bot is force moved between VCs by server admin
 
 -add !deletesound command for admins
 
--change !upload to allow for sound name input from user?
+-change !upload to allow for sound name input from user
 
--maybe aggregate !addtrigger, !removetrigger, !triggerlist into one !triggers command? (same with !sequences, !loops)
+-to mirror !roles and !config, maybe aggregate !addtrigger, !removetrigger, !triggerlist into one !triggers command? (same with !sequences, !loops)
 
--maybe use discord.Embed() for cleaner interface for !help, !config, and !roles ???
-
+-maybe use discord.Embed() for cleaner interface for !help, !config, and !roles ?
