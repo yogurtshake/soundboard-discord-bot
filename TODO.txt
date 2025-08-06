@@ -1,0 +1,12 @@
+-fix issue of crash when bot is force moved between VCs by server admin?
+
+-add discord developer instructions to readme?
+
+-add !deletesound command for admins
+
+-change !upload to allow for sound name input from user?
+
+-maybe aggregate !addtrigger, !removetrigger, !triggerlist into one !triggers command? (same with !sequences, !loops)
+
+-maybe use discord.Embed() for cleaner interface for !help, !config, and !roles ???
+
