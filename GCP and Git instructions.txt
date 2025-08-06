@@ -7,7 +7,7 @@ Section 1: How to set up a free GCP server for your bot
 -------------------------------------------------------------------------
 
 
-1. Set up a GCP Compute Engine (free tier: https://cloud.google.com/free/docs/free-cloud-features#free-tier).
+1. Set up a GCP Compute Engine Virtual Machine (free tier: https://cloud.google.com/free/docs/free-cloud-features#free-tier).
 
    Then connect your VM instance via SSH window.
 
