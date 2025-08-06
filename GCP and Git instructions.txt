@@ -57,11 +57,12 @@ Section 2: Other SSH Window instructions - Once the bot.py script exists
 
 -> nohup python bot.py >> output.log 2>&1 &
 
-    nohup → Keep running after disconnecting.
-    python bot.py → Runs your Discord bot.
-    >> output.log → Appends logs to output.log.
-    2>&1 → Include error messages in the same log file.
-    & → Run in the background.
+Explanation:
+    nohup - keeps running after disconnecting
+    python bot.py - runs the bot script
+    >> output.log - appends logs to output.log
+    2>&1 - includes error messages in the same log file
+    & - runs in the background
 
    NOTE: must be in the directory where bot.py is located.
 
@@ -98,7 +99,7 @@ nohup python bot.py >> output.log 2>&1 &
 
 -------------------------------------------------------------------------
 
-4. to kill the script, simply create and use a shutdown command in discord (might have to be bot owner).
+4. to kill the script, simply use a shutdown command in discord (might have to be bot owner).
 
    **OR** use the following in the SSH window:
 
@@ -108,18 +109,18 @@ nohup python bot.py >> output.log 2>&1 &
 	
 -> ps aux | grep bot.py
 
-   Explanation of Each Column:
-	USER: The user who owns the process.
-	PID: The process ID (e.g., 103710, 103711, 103813).
-	%CPU: The percentage of CPU usage.
-	%MEM: The percentage of memory usage.
-	VSZ: The virtual memory size.
-	RSS: The resident set size (physical memory usage).
-	TTY: The terminal associated with the process (? for none, pts/1 for a pseudo-terminal).
-	STAT: The process state (e.g., S for sleeping, R for running).
-	START: The start time of the process.
-	TIME: The cumulative CPU time used by the process.
-	COMMAND: The command that started the process.
+   Explanation of each column:
+	USER: user who owns the process
+	PID: process ID (e.g., 103710, 103711, 103813)
+	%CPU: percentage of CPU usage
+	%MEM: percentage of memory usage
+	VSZ: virtual memory size.
+	RSS: resident set size (physical memory usage)
+	TTY: terminal associated with the process (? for none, pts/1 for a pseudo-terminal)
+	STAT: process state (e.g., S for sleeping, R for running)
+	START: start time of the process
+	TIME: cumulative CPU time used by the process
+	COMMAND: command that started the process
 
    and then take the 4digit number it gives at the start and do: 
 
@@ -127,7 +128,7 @@ nohup python bot.py >> output.log 2>&1 &
 
 -------------------------------------------------------------------------
 
-5. to view logs, create and use a bot command in discord. Or use in SSH window:
+5. to view logs, use a bot command in discord. Or use in SSH window:
 
 -> tail -f output.log
 
@@ -156,26 +157,24 @@ Section 3: How to use git in your VM SSH Window (github)
 -------------------------------------------------------------------------
 
 
-1. IF YOUR GITHUB REPO IS PRIVATE, use an SSH deploy key to connect your bot to your repo.
+1. IF YOUR GITHUB REPO IS PRIVATE, you can use an SSH deploy key to connect your bot to your repo.
 
-   i) Generate an SSH key in your VM SSH window:
+   i) generate an SSH key in your VM SSH window:
    
    -> ssh-keygen -t rsa -b 4096 -C "your-email@example.com"
 
       Press enter to save it in the default path (/home/youruser/.ssh/id_rsa). Press enter twice more to save without a passphrase.
 
-   ii) Display then copy the public key:
+   ii) display then copy the public key:
 
    -> cat ~/.ssh/id_rsa.pub
 
-      Copy the output. 
+   iii) add the key as a deploy key in github: 
 
-   iii) Add the key as a Deploy Key in GitHub: 
-
-      Go to your repo in Github > Settings > Deploy Keys > Add Deploy Key. 
+      Go to your repo in github > settings > deploy keys > add deploy key. 
       Add a title, then paste the key under Key. Allow write access if you want. Click Add Key.
 
-   iv) Test the connection in your SSH window: 
+   iv) test the connection in your SSH window: 
 
    -> ssh -T git@github.com
 
@@ -193,7 +192,15 @@ Section 3: How to use git in your VM SSH Window (github)
 
 -------------------------------------------------------------------------
 
-3. To pull changes, navigate to the repo folder in your VM (-> cd folder) and use:
+3. Set your global git user email and username identity:
+
+-> git config --global user.email "you@example.com"
+
+-> git config --global user.name "Your Name"
+
+-------------------------------------------------------------------------
+
+4. To pull changes, navigate to the repo folder in your VM (-> cd foldername) and use:
 
 -> git pull origin main
 
@@ -207,7 +214,7 @@ Section 3: How to use git in your VM SSH Window (github)
 
 -------------------------------------------------------------------------
 
-4. To check the status of your repo use:
+5. To check the status of your repo use:
 
 -> git fetch
 
@@ -218,12 +225,5 @@ Section 3: How to use git in your VM SSH Window (github)
    "On branch main
     Your branch is up to date with 'origin/main'."
 
--------------------------------------------------------------------------
-
-5. Set your global git user email and username identity:
-
--> git config --global user.email "you@example.com"
-
--> git config --global user.name "Your Name"
 
 -------------------------------------------------------------------------
