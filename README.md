@@ -2,7 +2,7 @@
 
 I originally created this bot with the sole purpose of using it to play custom soundbites since unboosted Discord servers only allow a maximum number of 8 sounds on the soundboard. I used to run the bot locally on my own machine and it did its simple job well enough.
 
-Over time, I gradually implemented more and more features, and eventually it got sophisticated enough that I decided to move it to the cloud (I am using GCP Compute Engine VM) so that it could run 24/7. Nowadays it does much more than just play stupid sounds.
+Over time, I gradually implemented more and more features, and eventually it got sophisticated enough that I decided to move it to the cloud (I am running it on a free tier GCP Compute Engine VM) so that it could run 24/7. Nowadays it does much more than just play stupid sounds.
 
 I've created this public repository to serve as the cleaned-up, ready to use template of the monstrosity that I still update in my original private repo.
 
