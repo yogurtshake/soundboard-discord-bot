@@ -1,7 +1,10 @@
 # Welcome to my discord bot template!
 
 I originally created this bot with the sole purpose of using it to play custom soundbites since unboosted Discord servers only allow a maximum number of 8 sounds on the soundboard. I used to run the bot locally on my own machine and it did its simple job well enough.
+
 Over time, I gradually implemented more and more features, and eventually it got sophisticated enough that I decided to move it to the cloud (I am using GCP Compute Engine VM) so that it could run 24/7. Nowadays it does much more than just play stupid sounds.
+
+I've created this public repository to serve as the cleaned-up, ready to use template of the monstrosity that I still update in my original private repo.
 
 ## Here's a list of some of the features of this bot which are all accessible through bot commands in Discord:
 
@@ -29,7 +32,7 @@ Over time, I gradually implemented more and more features, and eventually it got
 -while there are not currently many configurable settings, the code has been written such that it would be very easy to add more
 
 ### roles
--the bot can generate special emoji-reactable message which allows users to self-assign server roles
+-the bot can generate a special emoji-reactable message which allows users to self-assign server roles
 
 -server admins can set role-emoji pairs such that a reaction with a specific emoji will have the bot assign the user a specific role
 
@@ -66,6 +69,5 @@ Over time, I gradually implemented more and more features, and eventually it got
 -displays data from text files as messages in 2000 char chunks (Discord's character limit) and formats such that it does not split up lines
 
 
-
-
-Just to give you an idea of how much my Discord server has used this bot of mine: in less than 1 year, the bot has nearly 30000 total sound plays and we've uploaded nearly 300 custom sounds for our server (so much for the built-in soundboard's limit of 8).
+## Note
+Just to give you an idea of how much my Discord server has used this bot: in less than 1 year, the bot has nearly 30000 total sound plays and we've uploaded nearly 300 custom sounds for our server (so much for the built-in soundboard's limit of 8).
