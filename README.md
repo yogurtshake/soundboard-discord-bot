@@ -70,4 +70,6 @@ I've created this public repository to serve as the cleaned-up, ready to use tem
 
 
 ## Note
-Just to give you an idea of how much my Discord server has used this bot: in less than 1 year, the bot has nearly 30000 total sound plays and we've uploaded nearly 300 custom sounds for our server (so much for the built-in soundboard's limit of 8).
+Just to give you an idea of how much my Discord server has used this bot: 
+
+In less than 1 year, the bot has nearly 30000 total sound plays and we've uploaded nearly 300 custom sounds for our server (so much for the built-in soundboard's limit of 8).
