@@ -157,8 +157,9 @@ async def initialize_guild(guild):
     
 def initialize_config(path, guild_id):
     options = {
-        "default_text_channel": ("default", "sets default text channel for non-command-related bot messages. USE CHANNEL ID"),
-        # leaving this here for when I add more config options
+        "default_text_channel": ("default", "sets default text channel for non-command-related/trigger-related bot messages. USE CHANNEL ID"),
+        "text_channels_to_ignore": ("default", "comma-separated list of text channel IDs where bot will not respond to messages. Default: none"),
+        "default_new_member_role": ("default", "sets default role assigned to new members. USE ROLE ID. Default: none"),
     }
       
     config = load_config(guild_id)  
@@ -350,6 +351,9 @@ async def on_message(message):
         await bot.process_commands(message)
         return
     
+    if message.channel.id in [int(ch_id) for ch_id in get_config(message.guild.id, "text_channels_to_ignore")[0].split(',') if ch_id.strip().isdigit()]:
+        return
+    
     triggers_path = os.path.join(SERVERS_PATH, str(message.guild.id), 'triggers.txt')
     triggers = load_triggers(triggers_path)
     
@@ -400,6 +404,37 @@ async def on_raw_reaction_add(payload):
 @bot.event
 async def on_raw_reaction_remove(payload):
     await handle_reaction_role(payload, add=False)
+
+@bot.event
+async def on_member_join(member):
+    cfg = get_config(member.guild.id, "default_new_member_role")
+    
+    if not cfg:
+        return
+    
+    role_id = cfg[0]
+    
+    if role_id == "default" or not role_id.strip().isdigit():
+        return
+
+    role = member.guild.get_role(int(role_id))
+    if role is None:
+        return
+
+    bot_member = member.guild.me
+    if not bot_member.guild_permissions.manage_roles:
+        print(f"Missing manage_roles in guild {member.guild.id}")
+        return
+    if role.position >= bot_member.top_role.position:
+        print(f"Cannot assign role {role.id} because it's >= bot top role")
+        return
+
+    try:
+        await member.add_roles(role, reason="Default role for new members")
+    except discord.Forbidden:
+        print(f"Forbidden assigning role {role.id} in guild {member.guild.id}")
+    except Exception as e:
+        print(f"Error assigning default role on join: {e}")
 
 
 # --------------------------------- COMMANDS ---------------------------------
