@@ -1828,12 +1828,12 @@ async def roles(ctx, *input: str):
             await ctx.send("*No role-emoji pairs have been set up yet. Use `!roles add \"<role id>\" <emoji>` to add roles.*")
             return
         
-        embed = discord.Embed(title="React to assign yourself roles", description="React with the corresponding emoji to get the role. Roles give game-specific text channel access.")
+        embed = discord.Embed(title="React to assign yourself roles", description="React with the corresponding emoji to get the role. Roles give game-specific text channel access. If you reacted to an older message, no need to react again. If you want to rid yourself of a role, unreact (or react and then unreact).")
         
         for role_id, emoji in REACTION_ROLES[ctx.guild.id].items():
             role = ctx.guild.get_role(int(role_id))
             if role:
-                embed.add_field(name=role.name, value=emoji, inline=False)
+                embed.add_field(name=f"{role.name} {emoji}", value="\u200b", inline=True)
         
         try:
             message = await ctx.send(embed=embed)
