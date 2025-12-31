@@ -35,6 +35,7 @@ STOP_EVENT = {}
 LAST_ACTIVITY = {}
 REACTION_ROLES = {}
 REACTION_MESSAGE_ID = {}
+LAST_PLAYED = {}
 INACTIVITY_THRESHOLD = 3600
 
 intents = discord.Intents.default()
@@ -91,7 +92,7 @@ async def delete_session_stats(ctx):
         print(f"Error: {e}")
 
 async def initialize_guild(guild):
-    global PLAYING, STOP_EVENT
+    global PLAYING, STOP_EVENT, LAST_PLAYED
     
     PLAYING[guild.id] = False
     STOP_EVENT[guild.id] = asyncio.Event()
@@ -143,6 +144,16 @@ async def initialize_guild(guild):
         with open(guild_reaction_message_id_path, 'a'):
             print(f"Created reaction message ID file for server: {guild.name}")
     initialize_reaction_roles(guild.id, guild_reaction_roles_path, guild_reaction_message_id_path)
+    
+    if os.path.exists(os.path.join(guild_folder, "all_time_stats.txt")):
+        with open(os.path.join(guild_folder, "all_time_stats.txt"), 'r') as file:
+            lines = file.readlines()
+            if lines:
+                LAST_PLAYED[guild.id] = lines[-1].strip()
+            else:
+                LAST_PLAYED[guild.id] = None
+    else:
+        LAST_PLAYED[guild.id] = None   
     
 def initialize_config(path, guild_id):
     options = {
@@ -451,7 +462,7 @@ async def help_error(ctx, error):
 
 @command_with_attributes(name='s', category='SOUNDBOARD - PLAYING', help="Plays desired sound. Chooses randomly if no input given.", usage='`!s` OR `!s <sound name>`')
 async def s(ctx, *name):
-    global LAST_ACTIVITY
+    global LAST_ACTIVITY, LAST_PLAYED
     
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel, dumbo.*")
@@ -479,6 +490,7 @@ async def s(ctx, *name):
             file.write(basename + '\n')
             
         LAST_ACTIVITY[ctx.guild.id] = time.time()
+        LAST_PLAYED[ctx.guild.id] = basename
         return
     
     sound_path = os.path.join(sounds_folder_path, input + ".ogg")
@@ -507,6 +519,7 @@ async def s(ctx, *name):
         file.write(basename + '\n')
 
     LAST_ACTIVITY[ctx.guild.id] = time.time()
+    LAST_PLAYED[ctx.guild.id] = basename
 
 @s.error
 async def s_error(ctx, error):
@@ -516,9 +529,49 @@ async def s_error(ctx, error):
         await ctx.send(f"*An unexpected error occurred: `{error}`*")
 
 
+@command_with_attributes(name='r', category='SOUNDBOARD - PLAYING', help="Plays last played sound.", usage='`!r`')
+async def r(ctx):
+    global LAST_ACTIVITY, LAST_PLAYED
+    
+    if ctx.voice_client is None:
+        await ctx.send("*I am not connected to a voice channel.*")
+        return
+    
+    last_played = LAST_PLAYED.get(ctx.guild.id, None)
+    
+    if last_played is None:
+        await ctx.send("*No sound has been played yet. Play some stuff already.*")
+        return
+    
+    sounds_folder_path = os.path.join(SERVERS_PATH, str(ctx.guild.id), "all_sounds")
+    
+    sound_path = os.path.join(sounds_folder_path, last_played)
+    basename = os.path.basename(sound_path).strip()
+
+    sounds = [line.lower() for line in os.listdir(sounds_folder_path)]
+
+    if not basename.lower() in sounds:
+        await ctx.send(f"*Sound `{basename[:-4]}` does not exist.*")
+        return
+
+    ctx.voice_client.stop()
+    ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
+
+    with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
+            file.write(basename + '\n')
+    with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
+        file.write(basename + '\n')
+
+    LAST_ACTIVITY[ctx.guild.id] = time.time()
+
+@r.error
+async def r_error(ctx, error):
+    await ctx.send(f"*An unexpected error occurred: `{error}`*")
+
+
 @command_with_attributes(name='play', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired time interval. Default 90s.", usage='`!play` OR `!play <delay>` OR `!play <min_delay> <max_delay>`', configurable = True)
 async def play(ctx, *arr):
-    global PLAYING, STOP_EVENT, LAST_ACTIVITY
+    global PLAYING, STOP_EVENT, LAST_ACTIVITY, LAST_PLAYED
     
     if PLAYING[ctx.guild.id]:
         await ctx.send("*I am already playing, dimwit. Stop first and then try again.*")
@@ -576,20 +629,23 @@ async def play(ctx, *arr):
         try:
             if basename.endswith((".ogg", ".mp3")):
                 ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
-                try:
-                    await asyncio.wait_for(STOP_EVENT[ctx.guild.id].wait(), timeout=delay)
-                except asyncio.TimeoutError:
-                    pass
                 
                 with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
                 with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
+                    
+                LAST_ACTIVITY[ctx.guild.id] = time.time()
+                LAST_PLAYED[ctx.guild.id] = basename
+                
+                try:
+                    await asyncio.wait_for(STOP_EVENT[ctx.guild.id].wait(), timeout=delay)
+                except asyncio.TimeoutError:
+                    pass
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
             
         if delay < 6: pcount += 1
-        LAST_ACTIVITY[ctx.guild.id] = time.time()
         
     if pcount == 30:
         await ctx.send(f"*Limit of {pcount} fast sounds reached (1 < delay < 6). Chill for a sec, then start again if you want.*")
@@ -612,7 +668,7 @@ async def play_error(ctx, error):
 
 @command_with_attributes(name='playfast', category='SOUNDBOARD - PLAYING', help="Plays random sounds at desired fast time interval. Default 1s.", usage='`!playfast` OR `!playfast <delay>`', configurable = True)
 async def playfast(ctx, *arr):
-    global PLAYING, LAST_ACTIVITY
+    global PLAYING, LAST_ACTIVITY, LAST_PLAYED
     
     if PLAYING[ctx.guild.id]:
         await ctx.send("*I am already playing, dunce. Stop first and then try again.*")
@@ -657,12 +713,15 @@ async def playfast(ctx, *arr):
         try:
             if basename.endswith((".ogg", ".mp3")):
                 ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
-                await asyncio.sleep(delay)
                 
                 with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
                 with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
+                    
+                LAST_PLAYED[ctx.guild.id] = basename
+                
+                await asyncio.sleep(delay)
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
             
@@ -688,7 +747,7 @@ async def playfast_error(ctx, error):
 
 @command_with_attributes(name='loop', category='SOUNDBOARD - PLAYING', help="Plays desired sound over and over again at desired time interval. Default interval = sound duration", usage='`!loop \"<sound name>\"` OR `!loop \"<sound name>\" <delay>`', configurable = True)
 async def loop(ctx, soundname: str, delay: float = None):
-    global PLAYING, STOP_EVENT, LAST_ACTIVITY
+    global PLAYING, STOP_EVENT, LAST_ACTIVITY, LAST_PLAYED
     
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel, dumbo.*")
@@ -756,15 +815,18 @@ async def loop(ctx, soundname: str, delay: float = None):
         
         try:
             ctx.voice_client.play(discord.FFmpegPCMAudio(sound_path), after=lambda e: print(f'Finished playing: {basename}'))
-            try:
-                await asyncio.wait_for(STOP_EVENT[ctx.guild.id].wait(), timeout=delay)
-            except asyncio.TimeoutError:
-                pass
             
             with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'session_stats.txt'), 'a') as file:
                     file.write(basename + '\n')
             with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
                 file.write(basename + '\n')
+                
+            LAST_PLAYED[ctx.guild.id] = basename
+            
+            try:
+                await asyncio.wait_for(STOP_EVENT[ctx.guild.id].wait(), timeout=delay)
+            except asyncio.TimeoutError:
+                pass
         except Exception as e:
             await ctx.send(f"*An unexpected error occurred: {e}*")
             
@@ -784,7 +846,7 @@ async def loop_error(ctx, error):
 
 @command_with_attributes(name='sequence', category='SOUNDBOARD - PLAYING', help="Plays desired sounds in sequence in given order.", usage='`!sequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`', configurable = True)
 async def sequence(ctx, *soundnames: str):
-    global PLAYING, STOP_EVENT, LAST_ACTIVITY
+    global PLAYING, STOP_EVENT, LAST_ACTIVITY, LAST_PLAYED
     
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel, you dumbo.*")
@@ -851,7 +913,8 @@ async def sequence(ctx, *soundnames: str):
             with open(os.path.join(SERVERS_PATH, str(ctx.guild.id), 'all_time_stats.txt'), 'a') as file:
                 file.write(basename + '\n')
 
-            LAST_ACTIVITY[ctx.guild.id] = time.time()    
+            LAST_ACTIVITY[ctx.guild.id] = time.time()
+            LAST_PLAYED[ctx.guild.id] = basename    
             
             try:
                 await asyncio.wait_for(STOP_EVENT[ctx.guild.id].wait(), timeout=duration)
@@ -878,7 +941,7 @@ async def sequence_error(ctx, error):
 @command_with_attributes(name='opsequence', category='OWNER COMMANDS', help="Plays desired sounds in sequence in given order. No limit.", usage='`!sequence \"<first sound>\" \"<second sound>\" ... \"<last sound>\"`', configurable = True)
 @commands.is_owner()
 async def opsequence(ctx, *soundnames: str):
-    global PLAYING, STOP_EVENT, LAST_ACTIVITY
+    global PLAYING, STOP_EVENT, LAST_ACTIVITY, LAST_PLAYED
     
     if ctx.voice_client is None:
         await ctx.send("*I am not connected to a voice channel, you dumbo.*")
@@ -943,6 +1006,7 @@ async def opsequence(ctx, *soundnames: str):
                 file.write(basename + '\n')
 
             LAST_ACTIVITY[ctx.guild.id] = time.time()    
+            LAST_PLAYED[ctx.guild.id] = basename
             
             try:
                 await asyncio.wait_for(STOP_EVENT[ctx.guild.id].wait(), timeout=duration)
